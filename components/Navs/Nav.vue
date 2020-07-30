@@ -14,7 +14,7 @@
                 title="API"
                 href="/api"
                 v-on:click="addActive('api')"
-                >Get Started</a
+                >API</a
               >
             </li>
             <li class="nav-links-li">
@@ -28,7 +28,7 @@
                 title="Tutorials"
                 href="/tutorials/?lang=en_US"
                 v-on:click="addActive('tutorials')"
-                >API</a
+                >Tutorials</a
               >
             </li>
             <li class="nav-links-li">
@@ -42,7 +42,7 @@
                 title="Resources"
                 href="/resources/changelog"
                 v-on:click="addActive('resources')"
-                >Tutorial</a
+                >Resources</a
               >
             </li>
             <li class="nav-links-li">
@@ -56,7 +56,7 @@
                 title="Policies"
                 href="/policies/coc"
                 v-on:click="addActive('policies')"
-                >Schema Tester</a
+                >Policies</a
               >
             </li>
             <li class="nav-links-li">
@@ -70,7 +70,46 @@
                 title="Modules"
                 href="/module?sort=name"
                 v-on:click="addActive('family')"
-                >Changelog</a
+                >Modules</a
+              >
+            </li>
+            <li class="nav-links-li">
+              <a
+                :class="
+                  getDisplay === 'plugins'
+                    ? 'nav-link nav-link-active'
+                    : 'nav-link'
+                "
+                ref="plugins"
+                title="Plugins"
+                href="/plugins"
+                v-on:click="addActive('plugins')"
+                >Plugins</a
+              >
+            </li>
+            <li class="nav-links-li">
+              <a
+                class="nav-link"
+                ref="shop"
+                title="Shop"
+                target="_blank"
+                rel="noopener"
+                href="https://hapi.threadless.com"
+                >Shop</a
+              >
+            </li>
+            <li class="nav-links-li">
+              <a
+                :class="
+                  getDisplay === 'support'
+                    ? 'nav-link nav-link-active'
+                    : 'nav-link'
+                "
+                ref="support"
+                title="Support"
+                href="/support"
+                v-on:click="addActive('support')"
+                >Support</a
               >
             </li>
           </ul>

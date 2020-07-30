@@ -66,6 +66,80 @@
       <div class="mobile-nav-flex-right">
         <div class="mobile-nav-flex-right-background"></div>
         <div class="mobile-nav-right-content">
+          <div class="hide" id="mobile-tutorials">
+            <h5 class="mobile-content-header">Tutorials</h5>
+            <ul class="mobile-content-ul">
+              <li class="mobile-link mobile-tutorial-link">
+                <a
+                  title="Tutorials"
+                  href="/tutorials/gettingstarted/?lang=en_US"
+                  >Getting Started</a
+                >
+              </li>
+              <li class="mobile-link mobile-tutorial-link">
+                <a
+                  title="ExpressToHapi"
+                  href="/tutorials/expresstohapi/?lang=en_US"
+                  >Express Migration</a
+                >
+              </li>
+              <li class="mobile-link mobile-tutorial-link">
+                <a title="Tutorials" href="/tutorials/auth/?lang=en_US"
+                  >Authentication</a
+                >
+              </li>
+              <li class="mobile-link mobile-tutorial-link">
+                <a title="Tutorials" href="/tutorials/caching/?lang=en_US"
+                  >Caching</a
+                >
+              </li>
+              <li class="mobile-link mobile-tutorial-link">
+                <a title="Tutorials" href="/tutorials/cookies/?lang=en_US"
+                  >Cookies</a
+                >
+              </li>
+              <li class="mobile-link mobile-tutorial-link">
+                <a title="Tutorials" href="/tutorials/logging/?lang=en_US"
+                  >Logging</a
+                >
+              </li>
+              <li class="mobile-link mobile-tutorial-link">
+                <a title="Tutorials" href="/tutorials/plugins/?lang=en_US"
+                  >Plugins</a
+                >
+              </li>
+              <li class="mobile-link mobile-tutorial-link">
+                <a title="Tutorials" href="/tutorials/routing/?lang=en_US"
+                  >Routing</a
+                >
+              </li>
+              <li class="mobile-link mobile-tutorial-link">
+                <a title="Tutorials" href="/tutorials/servermethods/?lang=en_US"
+                  >Server Methods</a
+                >
+              </li>
+              <li class="mobile-link mobile-tutorial-link">
+                <a title="Tutorials" href="/tutorials/servingfiles/?lang=en_US"
+                  >Serving Static Files</a
+                >
+              </li>
+              <li class="mobile-link mobile-tutorial-link">
+                <a title="Tutorials" href="/tutorials/testing/?lang=en_US"
+                  >Testing</a
+                >
+              </li>
+              <li class="mobile-link mobile-tutorial-link">
+                <a title="Tutorials" href="/tutorials/validation/?lang=en_US"
+                  >Validation</a
+                >
+              </li>
+              <li class="mobile-link mobile-tutorial-link">
+                <a title="Tutorials" href="/tutorials/views/?lang=en_US"
+                  >Views</a
+                >
+              </li>
+            </ul>
+          </div>
           <div class="hide" id="mobile-resources">
             <h5 class="mobile-content-header">Resources</h5>
             <ul class="mobile-content-ul">
@@ -105,6 +179,50 @@
               </li>
             </ul>
           </div>
+          <div class="hide" id="mobile-modules">
+            <h5 class="mobile-content-header">Modules</h5>
+            <ul class="module-ul mobile-content-ul">
+              <li
+                v-for="name in getModules"
+                v-bind:key="name"
+                :name="name"
+                class="mobile-link mobile-tutorial-link mobile-module-link"
+                :title="name"
+              >
+                <div
+                  :href="'/family/' + name"
+                  class="mobile-family-link mobile-family-plus"
+                  :id="name + '-wrapper'"
+                  v-on:click="triggerMenu(name)"
+                >
+                  {{ name }}
+                </div>
+                <ul class="mobile-subul" :id="name + '2'">
+                  <li class="mobile-sublink">
+                    <a :href="'/module/' + name">Home</a>
+                  </li>
+                  <li v-if="name === 'joi'" class="mobile-sublink">
+                    <a href="/module/joi/tester">Schema Tester</a>
+                  </li>
+                  <li v-if="name === 'bell'" class="mobile-sublink">
+                    <a href="/module/bell/providers">Providers</a>
+                  </li>
+                  <li v-if="name === 'bell'" class="mobile-sublink">
+                    <a href="/module/bell/examples">Examples</a>
+                  </li>
+                  <li
+                    class="mobile-sublink"
+                    v-if="moduleInfo[name].api === true"
+                  >
+                    <a :href="'/module/' + name + '/api'">API</a>
+                  </li>
+                  <li class="mobile-sublink">
+                    <a :href="'/module/' + name + '/changelog'">Changelog</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -112,8 +230,16 @@
 </template>
 
 <script>
+const tutorial = require("../../static/lib/tutorials/");
+const page = require("../../static/lib/");
+const moduleInfo = require("../../static/lib/moduleInfo.json");
 
 export default {
+  data() {
+    return {
+      moduleInfo: moduleInfo
+    };
+  },
   methods: {
     closeNav() {
       this.$refs.nav.parentNode.classList.remove("show-nav");
