@@ -10,6 +10,8 @@
     "serve": "nuxt serve"
   },
   "dependencies": {
+    "@aitodotai/json-stringify-pretty-compact": "^1.3.0",
+    "@hapi/joi": "^17.1.1",
     "@nuxtjs/axios": "^5.11.0",
     "@nuxtjs/dotenv": "^1.4.1",
     "@nuxtjs/markdownit": "^1.2.10",
@@ -22,7 +24,9 @@
     "node-sass": "^4.14.1",
     "nuxt": "^2.13.0",
     "sass-loader": "^9.0.2",
-    "semver": "^7.3.2"
+    "semver": "^7.3.2",
+    "vue-codemirror": "^4.0.6",
+    "vue-highlightjs": "^1.3.3"
   },
   "devDependencies": {
     "eslint-config-prettier": "^6.11.0",

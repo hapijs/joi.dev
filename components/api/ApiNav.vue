@@ -279,17 +279,7 @@ export default {
       let points = {};
       let offsets = [];
       for (let i = 1; i < tags.length; i++) {
-        if (i === 1) {
-          points[tags[1].offsetTop + 116] = {
-            name: "#" + tags[i].id
-          };
-          offsets.push(tags[i].offsetTop + 116);
-        } else if (this.version !== this.versions[3] && tags[i].id) {
-          points[tags[i].offsetTop - 40] = {
-            name: "#" + tags[i].id
-          };
-          offsets.push(tags[i].offsetTop - 40);
-        } else if (this.version === this.versions[3] && tags[i].id) {
+        if(tags[i].id){
           points[tags[i].offsetTop - 40] = {
             name: "#" + tags[i].id
           };

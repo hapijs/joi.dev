@@ -28,6 +28,14 @@ export const state = () => ({
     ' repeat_password: "password",\n' +
     " birth_year: 1994\n" +
     "}",
+    modules: [
+      "address",
+      "formula",
+      "joi",
+      "joi-date",
+      "pinpoint",
+      "tarnish",
+    ]
 });
 
 export const mutations = {
