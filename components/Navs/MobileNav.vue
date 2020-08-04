@@ -47,20 +47,6 @@
               Modules
             </div>
           </li>
-          <li class="mobile-links-li">
-            <a class="mobile-link" title="Plugins" href="/plugins">Plugins</a>
-          </li>
-          <li class="mobile-links-li">
-            <a
-              class="mobile-link"
-              title="Shop"
-              href="https://hapi.threadless.com"
-              >Shop</a
-            >
-          </li>
-          <li class="mobile-links-li">
-            <a class="mobile-link" title="Support" href="/support">Support</a>
-          </li>
         </ul>
       </div>
       <div class="mobile-nav-flex-right">
@@ -149,9 +135,6 @@
               <li class="mobile-link mobile-tutorial-link">
                 <a title="Changelog" href="/resources/status">Module Status</a>
               </li>
-              <li class="mobile-link mobile-tutorial-link">
-                <a title="List" href="/resources/list">List</a>
-              </li>
             </ul>
           </div>
           <div class="hide" id="mobile-policies">
@@ -173,9 +156,6 @@
                 <a title="Style Guide" href="/policies/styleguide"
                   >Style Guide</a
                 >
-              </li>
-              <li class="mobile-link mobile-tutorial-link">
-                <a title="Support" href="/policies/support">Support</a>
               </li>
             </ul>
           </div>

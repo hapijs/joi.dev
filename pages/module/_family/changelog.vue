@@ -40,7 +40,7 @@ export default {
   head() {
     return {
       title:
-        "hapi.dev - " +
+        "joi.dev - " +
         this.page.replace(/([A-Z])/g, " $1").replace(/^./, function(str) {
           return str.toUpperCase();
         }),

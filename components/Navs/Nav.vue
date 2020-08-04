@@ -76,40 +76,15 @@
             <li class="nav-links-li">
               <a
                 :class="
-                  getDisplay === 'plugins'
+                  getDisplay === 'tester'
                     ? 'nav-link nav-link-active'
                     : 'nav-link'
                 "
-                ref="plugins"
-                title="Plugins"
-                href="/plugins"
-                v-on:click="addActive('plugins')"
-                >Plugins</a
-              >
-            </li>
-            <li class="nav-links-li">
-              <a
-                class="nav-link"
-                ref="shop"
-                title="Shop"
-                target="_blank"
-                rel="noopener"
-                href="https://hapi.threadless.com"
-                >Shop</a
-              >
-            </li>
-            <li class="nav-links-li">
-              <a
-                :class="
-                  getDisplay === 'support'
-                    ? 'nav-link nav-link-active'
-                    : 'nav-link'
-                "
-                ref="support"
-                title="Support"
-                href="/support"
-                v-on:click="addActive('support')"
-                >Support</a
+                ref="tester"
+                title="Schema Tester"
+                href="/tester"
+                v-on:click="addActive('tester')"
+                >Schema Tester</a
               >
             </li>
           </ul>

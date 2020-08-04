@@ -37,7 +37,7 @@ export default {
   },
   head() {
     return {
-      title: "hapi.dev - " + this.$route.query.v + " API Reference",
+      title: "joi.dev - " + this.$route.query.v + " API Reference",
       meta: [
         { hid: "description", name: "description", content: "The hapi API" }
       ]
@@ -171,7 +171,68 @@ export default {
           }, 3000);
         });
       }
-    }
+            let anchors = document.querySelectorAll(".family-nav-select-wrapper a");
+      let code = document.querySelectorAll(".family-nav-select-wrapper a code");
+      let pre = document.querySelectorAll("pre");
+      let count = 0;
+      let store = this.$store;
+      let router = this.$router;
+
+      for (let p of pre) {
+        let textContent = p.textContent;
+        if (
+          textContent.match(/schema\s=\s(Joi.*\{(.|\n)*?[^\)]\));/) ||
+          textContent.match(/schema\s=\s(Joi.*\(\)([\s\S]*?\);))/)
+        ) {
+          p.insertAdjacentHTML(
+            "afterend",
+            "<img src='/img/joiTestIcon.png' class='test-icon' id='icon" +
+              count +
+              "' title='Import to joi Schema Tester'/>"
+          );
+          p.classList.add("pre-icon");
+          p.id = "pre-icon" + count;
+        }
+        count++;
+      }
+
+      let testIcons = document.querySelectorAll(".test-icon");
+      for (let icon of testIcons) {
+        icon.addEventListener("click", function(event) {
+          let object = false;
+          let text = document.getElementById("pre-" + icon.id).textContent;
+          let schema = text.match(/schema\s=\s(Joi.*\(\)([\s\S]*?\);))/);
+          if (!schema) {
+            schema = text.match(/schema\s=\s(Joi.*\{(.|\n)*?[^\)]\));/);
+            object = true;
+          }
+          schema = schema[1].replace(";", "");
+          if (!object) {
+            store.commit(
+              "setSchema",
+              "//Insert your joi schema here \nJoi.object({\n  a: " +
+                schema +
+                "\n})"
+            );
+          } else {
+            store.commit(
+              "setSchema",
+              "//Insert your joi schema here \n" + schema
+            );
+          }
+
+          store.commit(
+            "setValidate",
+            "//Insert data to validate here \n" + "{ \n" + " \n" + "}"
+          );
+
+          router.push({
+            path: "/tester"
+          });
+        });
+      }
+    },
+    
   },
   async asyncData({ params, $axios }) {
     let versions = [];
@@ -343,6 +404,21 @@ code ~ .api-clipboardCheck {
   opacity: 0.3;
   cursor: pointer;
   transition: all 0.2s;
+}
+
+.test-icon {
+  position: absolute;
+  top: 5px;
+  right: 28px;
+  height: 21px;
+  width: 21px;
+  opacity: 0.3;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.test-icon:hover {
+  opacity: 0.7;
 }
 
 code ~ .api-clipboard {

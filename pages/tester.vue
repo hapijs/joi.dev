@@ -1,15 +1,6 @@
 <template>
   <no-ssr>
-    <div class="container">
-      <LandingNav
-        :moduleInfo="moduleAPI"
-        :intro="intro"
-        :example="example"
-        :usage="usage"
-        :faq="faq"
-        :page="page"
-        :advanced="advanced"
-      />
+    <div class="test-container">
       <div class="markdown-wrapper tester-wrapper">
         <h1 class="hapi-header">
           joi Schema Tester <span class="api-version-span">v{{ version }}</span>
@@ -39,8 +30,7 @@
 </template>
 
 <script>
-import LandingNav from "~/components/family/LandingNav.vue";
-const moduleInfo = require("../../../static/lib/moduleInfo.json");
+const moduleInfo = require("../static/lib/moduleInfo.json");
 const stringify = require("@aitodotai/json-stringify-pretty-compact");
 const Joi = require("@hapi/joi");
 
@@ -49,12 +39,10 @@ if (process.client) {
 }
 
 export default {
-  components: {
-    LandingNav
-  },
+  layout: "noSide",
   head() {
     return {
-      title: "hapi.dev - joi Schema Tester v" + this.version,
+      title: "joi.dev - Schema Tester v" + this.version,
       meta: [
         {
           hid: "description",
@@ -190,7 +178,7 @@ export default {
     this.$data.version = versionsArray[0];
     this.$data.schema = this.getSchema;
     this.$data.validate = this.getValidate;
-    this.$store.commit("setDisplay", "family");
+    this.$store.commit("setDisplay", "tester");
     this.$store.commit("setFamily", "joi");
     if (this.moduleAPI.joi[versionsArray[0]].intro) {
       this.$store.commit("setIntro", true);
@@ -212,7 +200,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../../../assets/styles/main.scss";
+@import "../assets/styles/main.scss";
 @import "codemirror/lib/codemirror.css";
 @import "codemirror/theme/eclipse.css";
 

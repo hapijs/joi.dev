@@ -28,66 +28,6 @@
                 >Module Status</a
               >
             </li>
-            <ul class="resources-ul">
-              <li class="resources-header-link">
-                <a
-                  ref="books"
-                  :class="$props.page === '#books' ? 'resources-active' : ''"
-                  v-on:click="onClick('books')"
-                  href="/resources/list#books"
-                  >Books</a
-                >
-              </li>
-              <li class="resources-header-link">
-                <a
-                  ref="gists"
-                  :class="$props.page === '#gists' ? 'resources-active' : ''"
-                  v-on:click="onClick('gists')"
-                  href="/resources/list#gists"
-                  >Gists and code samples</a
-                >
-              </li>
-              <li class="resources-header-link">
-                <a
-                  ref="boilerplates"
-                  :class="
-                    $props.page === '#boilerplates' ? 'resources-active' : ''
-                  "
-                  v-on:click="onClick('boilerplates')"
-                  href="/resources/list#boilerplates"
-                  >Boilerplates</a
-                >
-              </li>
-              <li class="resources-header-link">
-                <a
-                  ref="projects"
-                  :class="$props.page === '#projects' ? 'resources-active' : ''"
-                  v-on:click="onClick('projects')"
-                  href="/resources/list#projects"
-                  >Projects built with hapi</a
-                >
-              </li>
-              <li class="resources-header-link">
-                <a
-                  ref="tutorials"
-                  :class="
-                    $props.page === '#tutorials' ? 'resources-active' : ''
-                  "
-                  v-on:click="onClick('tutorials')"
-                  href="/resources/list#tutorials"
-                  >Tutorials</a
-                >
-              </li>
-              <li class="resources-header-link">
-                <a
-                  ref="videos"
-                  :class="$props.page === '#videos' ? 'resources-active' : ''"
-                  v-on:click="onClick('videos')"
-                  href="/resources/list#videos"
-                  >Videos</a
-                >
-              </li>
-            </ul>
           </ul>
         </div>
       </div>
