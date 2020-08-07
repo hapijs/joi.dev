@@ -277,7 +277,7 @@ export default {
       let that = this
       //Add active class to elements on scroll
       window.onscroll = function () {
-        if (that.$route.path === '/api') {
+        if (that.$route.path !== '/tester') {
           let location = document.documentElement.scrollTop
           let locationBody = document.body.scrollTop
           let actives = document.getElementsByClassName('api-active')
