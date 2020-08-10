@@ -20,20 +20,6 @@
             <li class="nav-links-li">
               <a
                 :class="
-                  getDisplay === 'tutorials'
-                    ? 'nav-link nav-link-active'
-                    : 'nav-link'
-                "
-                ref="tutorials"
-                title="Tutorials"
-                href="/tutorials/?lang=en_US"
-                v-on:click="addActive('tutorials')"
-                >Tutorials</a
-              >
-            </li>
-            <li class="nav-links-li">
-              <a
-                :class="
                   getDisplay === 'resources'
                     ? 'nav-link nav-link-active'
                     : 'nav-link'
@@ -84,7 +70,7 @@
                 title="Schema Tester"
                 href="/tester"
                 v-on:click="addActive('tester')"
-                >Schema Tester</a
+                >Sandbox</a
               >
             </li>
           </ul>

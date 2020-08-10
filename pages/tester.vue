@@ -3,7 +3,7 @@
     <div class="test-container">
       <div class="markdown-wrapper tester-wrapper">
         <h1 class="hapi-header">
-          joi Schema Tester <span class="api-version-span">v{{ version }}</span>
+          joi Sandbox <span class="api-version-span">v{{ version }}</span>
         </h1>
         <h2 class="tester-subTitle">Schema:</h2>
         <codemirror

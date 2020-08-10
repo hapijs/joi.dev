@@ -48,7 +48,7 @@ html {
 }
 
 .logo {
-  background: url("/img/hapi.svg") no-repeat 0 0;
+  background: url("/img/joiLogo.jpg") no-repeat 0 0;
   background-size: contain;
   height: 150px !important;
   width: 200px !important;
