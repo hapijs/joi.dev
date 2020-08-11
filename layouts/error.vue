@@ -117,7 +117,7 @@ export default {
 }
 
 .logo {
-  background: url("/img/hapi.svg") no-repeat 0 0;
+  background: url("/img/joiLogo.jpg") no-repeat 0 0;
   background-size: contain;
   height: 112.5px;
   width: 150px;

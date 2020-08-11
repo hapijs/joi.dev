@@ -5,6 +5,28 @@ export default {
   ** See https://nuxtjs.org/api/configuration-mode
   */
   mode: 'universal',
+
+  generate: {
+    fallback: true,
+    interval: 2000,
+    routes: [
+      "/module/address",
+      "/module/address/api",
+      "/module/address/changelog",
+      "/module/formula",
+      "/module/formula/api",
+      "/module/formula/changelog",
+      "/module/joi-date",
+      "/module/joi-date/api",
+      "/module/joi-date/changelog",
+      "/module/pinpoint",
+      "/module/pinpoint/api",
+      "/module/pinpoint/changelog",
+      "/module/tarnish",
+      "/module/b64/api",
+      "/module/tarnish s/changelog",
+    ]
+  },
   /*
   ** Nuxt target
   ** See https://nuxtjs.org/api/configuration-target

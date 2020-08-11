@@ -9,7 +9,7 @@
       @change="sortModules"
     />
     <div class="family-grid-wrapper">
-      <h1 class="hapi-header">hapi Modules</h1>
+      <h1 class="hapi-header">joi Modules</h1>
       <div class="family-grid">
         <div
           class="family-grid-cell"
@@ -72,7 +72,7 @@ export default {
   },
   head() {
     return {
-      title: "hapi.dev - Modules",
+      title: "joi.dev - Modules",
       meta: [
         {
           hid: "description",
