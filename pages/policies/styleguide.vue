@@ -23,9 +23,9 @@ export default {
   },
   head() {
     return {
-      title: "Style Guide - hapi.dev",
+      title: "Style Guide - joi.dev",
       meta: [
-        { hid: "description", name: "description", content: "The official hapi style guide" }
+        { hid: "description", name: "description", content: "The official joi style guide" }
       ]
     };
   },

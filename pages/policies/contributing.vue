@@ -23,9 +23,9 @@ export default {
   },
   head() {
     return {
-      title: "Contributing - hapi.dev",
+      title: "Contributing - joi.dev",
       meta: [
-        { hid: "description", name: "description", content: "Contributing to hapi" }
+        { hid: "description", name: "description", content: "Contributing to joi" }
       ]
     };
   },
@@ -47,7 +47,7 @@ export default {
       }
     };
     let contribute = await $axios.$get(
-      "https://api.github.com/repos/hapijs/.github/contents/CONTRIBUTING.md",
+      "https://api.github.com/repos/sideway/.github/contents/CONTRIBUTING.md",
       options
     );
 

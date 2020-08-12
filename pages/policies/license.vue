@@ -23,9 +23,9 @@ export default {
   },
   head() {
     return {
-      title: "License - hapi.dev",
+      title: "License - joi.dev",
       meta: [
-        { hid: "description", name: "description", content: "The hapi license" }
+        { hid: "description", name: "description", content: "The joi license" }
       ]
     };
   },
@@ -47,7 +47,7 @@ export default {
       }
     };
     let l = await $axios.$get(
-      "https://api.github.com/repos/hapijs/.github/contents/LICENSE.md",
+      "https://api.github.com/repos/sideway/.github/contents/LICENSE.md",
       options
     );
 

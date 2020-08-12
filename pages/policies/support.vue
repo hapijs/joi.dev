@@ -1,8 +1,8 @@
 <template>
   <div class="container">
-    <PoliciesNav page="support" />
+    <PoliciesNav page="supoort" />
     <div class="community-wrapper">
-      <HTML :display='page' />
+      <HTML :display="support" />
     </div>
   </div>
 </template>
@@ -10,7 +10,6 @@
 <script>
 import HTML from "~/components/HTML.vue";
 import PoliciesNav from "~/components/policies/PoliciesNav.vue";
-import page from "../../static/lib/supportPolicy.md";
 
 export default {
   components: {
@@ -19,19 +18,19 @@ export default {
   },
   data() {
     return {
-      page: page
+      page: "support"
     };
   },
   head() {
     return {
-      title: "Support Policy - hapi.dev",
+      title: "Support Policy - joi.dev",
       meta: [
-        { hid: "description", name: "description", content: "The hapi code of conduct" }
+        { hid: "description", name: "description", content: "The official joi support policy" }
       ]
     };
   },
   async created() {
-    await this.$store.commit("setDisplay", "policies");
+    await this.$store.commit("setDisplay", "support");
   },
   methods: {
     changePage(value) {
@@ -39,6 +38,32 @@ export default {
       this.$store.commit("setCommunity", value);
       window.scrollTo(0, 0);
     }
+  },
+  async asyncData({ params, $axios }) {
+    const options = {
+      headers: {
+        accept: "application/vnd.github.v3.raw+json",
+        authorization: "token " + process.env.GITHUB_TOKEN
+      }
+    };
+    let s = await $axios.$get(
+      "https://api.github.com/repos/sideway/.github/contents/SUPPORT.md",
+      options
+    );
+
+    const support = await $axios.$post(
+      "https://api.github.com/markdown",
+      {
+        text: s.toString(),
+        mode: "markdown"
+      },
+      {
+        headers: {
+          authorization: "token " + process.env.GITHUB_TOKEN
+        }
+      }
+    );
+    return { support };
   }
 };
 </script>

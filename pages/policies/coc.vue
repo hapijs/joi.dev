@@ -23,9 +23,9 @@ export default {
   },
   head() {
     return {
-      title: "Code of Conduct - hapi.dev",
+      title: "Code of Conduct - joi.dev",
       meta: [
-        { hid: "description", name: "description", content: "The hapi code of conduct" }
+        { hid: "description", name: "description", content: "The joi code of conduct" }
       ]
     };
   },
@@ -47,7 +47,7 @@ export default {
       }
     };
     let coc = await $axios.$get(
-      "https://api.github.com/repos/hapijs/.github/contents/CODE_OF_CONDUCT.md",
+      "https://api.github.com/repos/sideway/.github/contents/CODE_OF_CONDUCT.md",
       options
     );
 

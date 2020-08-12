@@ -23,9 +23,9 @@ export default {
   },
   head() {
     return {
-      title: "Security Policy - hapi.dev",
+      title: "Security Policy - joi.dev",
       meta: [
-        { hid: "description", name: "description", content: "The official hapi style guide" }
+        { hid: "description", name: "description", content: "The official joi security policy" }
       ]
     };
   },
@@ -47,7 +47,7 @@ export default {
       }
     };
     let s = await $axios.$get(
-      "https://api.github.com/repos/hapijs/.github/contents/SECURITY.md",
+      "https://api.github.com/repos/sideway/.github/contents/SECURITY.md",
       options
     );
 
