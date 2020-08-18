@@ -6,7 +6,7 @@
           class="footer-link"
           title="GitHub"
           target="__blank"
-          href="https://github.com/hapijs/hapi"
+          href="https://github.com/sideway/joi"
           >GitHub</a
         >
       </li>
@@ -15,7 +15,7 @@
           class="footer-link"
           title="Twitter"
           target="_blank"
-          href="https://twitter.com/hapijs"
+          href="https://twitter.com/sidewaytech"
           >Twitter</a
         >
       </li>
