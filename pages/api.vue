@@ -257,7 +257,7 @@ export default {
     for (let branch of branches) {
       let v = "";
       try {
-        if (branch.name.match(/^v+[0-9]+/g)) {
+        if (branch.name.match(/^v+[0-9]+/g) || branch.name === "master") {
           v = await $axios.$get(
             "https://api.github.com/repos/sideway/joi/contents/package.json?ref=" +
               branch.name,
