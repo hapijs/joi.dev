@@ -37,7 +37,7 @@ export default {
   ** See https://nuxtjs.org/api/configuration-head
   */
  head: {
-  title: "joi",
+  title: "joi.dev",
   htmlAttrs: {
     lang: "en"
   },
@@ -57,7 +57,7 @@ export default {
     }
   ],
   link: [
-    { rel: "icon", type: "image/x-icon", href: "/favicon.png?v=1.0" },
+    { rel: "icon", type: "image/x-icon", href: "/favicon2.png?v=1.0" },
     {
       rel: "stylesheet",
       href:
@@ -91,6 +91,7 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     "@nuxtjs/markdownit",
     '@nuxtjs/axios',
+    "@nuxtjs/google-analytics",
     "@nuxtjs/dotenv",
     '@nuxtjs/pwa',
   ],
@@ -103,7 +104,7 @@ export default {
   },
 
   googleAnalytics: {
-    id: "UA-144917045-1"
+    id: "UA-175809611-1"
   },
 
   env: {
