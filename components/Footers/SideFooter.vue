@@ -19,15 +19,6 @@
           >Twitter</a
         >
       </li>
-      <li class="footer-links-li">
-        <a
-          class="footer-link"
-          title="Slack"
-          target="__blank"
-          href="https://join.slack.com/t/joijs/shared_invite/zt-h14ocijk-6VicWa_ae33LExhWidSDog"
-          >Slack</a
-        >
-      </li>
     </ul>
     <div class="footer-text">&copy; 2012 - {{ year }} Sideway Inc.</div>
   </footer>
