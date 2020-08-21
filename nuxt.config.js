@@ -23,15 +23,14 @@ export default {
       "/module/pinpoint/api",
       "/module/pinpoint/changelog",
       "/module/tarnish",
-      "/module/b64/api",
-      "/module/tarnish s/changelog",
+      "/module/tarnish/api",
+      "/module/tarnish/changelog",
     ]
   },
   /*
   ** Nuxt target
   ** See https://nuxtjs.org/api/configuration-target
   */
-  target: 'static',
   /*
   ** Headers of the page
   ** See https://nuxtjs.org/api/configuration-head
