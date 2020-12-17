@@ -27,21 +27,21 @@
                     ? '/module/' + name + '/api?v=' + version.name
                     : name === 'hapi'
                     ? '/api/?v=' + version.name
-                    : 'https://github.com/hapijs/' +
+                    : 'https://github.com/sideway/' +
                       name +
                       '/tree/' +
                       version.branch
                 "
               >
                 <img
-                  src="/img/helmet.png"
-                  alt="hapi helmet"
+                  src="/img/joiTransparent.png"
+                  alt="joi logo"
                   class="version-img"
                 />
               </a>
               <a
                 :href="
-                  'https://github.com/hapijs/' +
+                  'https://github.com/sideway/' +
                     name +
                     '/tree/' +
                     version.branch
@@ -61,7 +61,7 @@
           <td class="status-badge">
             <img
               :src="
-                'https://david-dm.org/hapijs/' +
+                'https://david-dm.org/sideway/' +
                   name +
                   '.svg?branch=' +
                   version.branch
@@ -76,14 +76,14 @@
             <a
               :href="
                 module.versions.length > 1
-                  ? 'https://travis-ci.org/hapijs/' + name + '/branches'
-                  : 'https://travis-ci.org/hapijs/' + name
+                  ? 'https://travis-ci.org/sideway/' + name + '/branches'
+                  : 'https://travis-ci.org/sideway/' + name
               "
               target="_blank"
             >
               <img
                 :src="
-                  'https://travis-ci.org/hapijs/' +
+                  'https://travis-ci.org/sideway/' +
                     name +
                     '.svg?branch=' +
                     version.branch
