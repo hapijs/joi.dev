@@ -11,7 +11,6 @@ const modules = [
   "joi",
   "joi-date",
   "pinpoint",
-  "podium",
 ];
 
 getInfo();
@@ -50,7 +49,7 @@ async function getInfo() {
     if (
       repositories.data[r].name !== "assets" &&
       repositories.data[r].name !== ".github" &&
-      repositories.data[r].name !== "hapi.dev"
+      repositories.data[r].name !== "joi.dev"
     ) {
       repos[repositories.data[r].name] = {
         name: repositories.data[r].name,
@@ -181,7 +180,6 @@ async function getInfo() {
                 }
               );
               let apiString = await apiHTML.data.toString();
-              console.log(apiString)
               finalHtmlDisplay = await apiString.replace(/user-content-/g, "");
             }
           } catch (err) {
@@ -201,7 +199,6 @@ async function getInfo() {
                 : "BSD",
               node: nodeVersions.join(", ").replace("node,", "")
             });
-            console.log(gitHubVersion.data.version)
             repos[repositories.data[r].name][gitHubVersion.data.version] = {
               menu: finalMenu,
               api: await finalHtmlDisplay,
@@ -225,7 +222,7 @@ async function getInfo() {
     if (
       repositories.data[r].name !== "assets" &&
       repositories.data[r].name !== ".github" &&
-      repositories.data[r].name !== "hapi.dev"
+      repositories.data[r].name !== "joi.dev"
     ) {
       let readme = await axios.get(
         "https://api.github.com/repos/sideway/" +

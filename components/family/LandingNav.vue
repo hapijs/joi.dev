@@ -167,17 +167,6 @@
             >
           </div>
           <hr v-if="family === 'joi'" class="landing-hr" />
-          <div
-            v-if="family === 'joi'"
-            id="joi1"
-            :class="
-              page === 'tester'
-                ? 'landing-nav-api-title bold'
-                : 'landing-nav-api-title'
-            "
-          >
-            <a href="/module/joi/tester">Schema Tester</a>
-          </div>
           <hr v-if="family === 'bell'" class="landing-hr" />
           <div
             v-if="family === 'bell'"

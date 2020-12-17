@@ -22,9 +22,6 @@ export default {
       "/module/pinpoint",
       "/module/pinpoint/api",
       "/module/pinpoint/changelog",
-      "/module/tarnish",
-      "/module/tarnish/api",
-      "/module/tarnish/changelog",
     ]
   },
   /*
