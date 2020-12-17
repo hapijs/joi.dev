@@ -30,11 +30,6 @@
             <span class="bold">{{ modules[name].versionsArray[0] }}</span>
           </div>
         </div>
-        <img
-          src="/img/family.svg"
-          alt="hapi-family"
-          class="landing-family-img"
-        />
       </div>
       <div class="landing-install-wrapper">
         <div class="install-wrapper">
@@ -47,16 +42,16 @@
               class="install-link"
               target="__blank"
               :href="
-                modules[name].versions[0].license === 'Commercial'
-                  ? 'https://www.npmjs.com/package/@commercial/' + name
-                  : 'https://www.npmjs.com/package/@hapi/' + name
+                name === 'joi-date'
+                  ? 'https://www.npmjs.com/package/@joi/date'
+                  : 'https://www.npmjs.com/package/@sideway/' + name
               "
               >npm</a
             >:
             <span
               ><code>{{
                 name === "joi-date"
-                  ? "npm install @joi/" + name
+                  ? "npm install @joi/date"
                   : "npm install @sideway/" + name
               }}</code></span
             >
@@ -66,16 +61,16 @@
               class="install-link"
               target="__blank"
               :href="
-                modules[name].versions[0].license === 'Commercial'
-                  ? 'https://yarnpkg.com/en/package/@commercial/' + name
-                  : 'https://yarnpkg.com/en/package/@hapi/' + name
+                name === 'joi-date'
+                  ? 'https://yarnpkg.com/en/package/@joi/date'
+                  : 'https://yarnpkg.com/en/package/@sideway/' + name
               "
               >yarn</a
             >:
             <span
               ><code>{{
                 name === "joi-date"
-                  ? "yarn add @joi/" + name
+                  ? "yarn add @joi/date"
                   : "yarn add @sideway/" + name
               }}</code></span
             >

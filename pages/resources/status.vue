@@ -63,7 +63,7 @@
                           </a>
                           <a
                             :href="
-                              'https://github.com/hapijs/' +
+                              'https://github.com/sideway/' +
                                 repo.name +
                                 '/tree/' +
                                 version.branch
@@ -83,7 +83,7 @@
                       <td class="status-badge">
                         <img
                           :src="
-                            'https://david-dm.org/hapijs/' +
+                            'https://david-dm.org/sideway/' +
                               repo.name +
                               '.svg?branch=' +
                               version.branch
@@ -103,16 +103,16 @@
                         <a
                           :href="
                             repo.versions.length > 1
-                              ? 'https://travis-ci.org/hapijs/' +
+                              ? 'https://travis-ci.org/sideway/' +
                                 repo.name +
                                 '/branches'
-                              : 'https://travis-ci.org/hapijs/' + repo.name
+                              : 'https://travis-ci.org/sideway/' + repo.name
                           "
                           target="_blank"
                         >
                           <img
                             :src="
-                              'https://travis-ci.org/hapijs/' +
+                              'https://travis-ci.org/sideway/' +
                                 repo.name +
                                 '.svg?branch=' +
                                 version.branch
