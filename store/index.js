@@ -31,7 +31,6 @@ export const state = () => ({
     modules: [
       "address",
       "formula",
-      "joi",
       "joi-date",
       "pinpoint",
     ]

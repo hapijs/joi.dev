@@ -56,7 +56,7 @@
                             "
                           >
                             <img
-                              src="/img/helmet.png"
+                              src="/img/joiTransparent.png"
                               alt="hapi helmet"
                               class="version-img"
                             />
