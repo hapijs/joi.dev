@@ -55,9 +55,9 @@
             >:
             <span
               ><code>{{
-                modules[name].versions[0].license === "Commercial"
-                  ? "npm install @commercial/" + name
-                  : "npm install @hapi/" + name
+                name === "joi-date"
+                  ? "npm install @joi/" + name
+                  : "npm install @sideway/" + name
               }}</code></span
             >
           </p>
@@ -74,9 +74,9 @@
             >:
             <span
               ><code>{{
-                modules[name].versions[0].license === "Commercial"
-                  ? "yarn add @commercial/" + name
-                  : "yarn add @hapi/" + name
+                name === "joi-date"
+                  ? "yarn add @joi/" + name
+                  : "yarn add @sideway/" + name
               }}</code></span
             >
           </p>
