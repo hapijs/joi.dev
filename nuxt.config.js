@@ -87,7 +87,6 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     "@nuxtjs/markdownit",
     '@nuxtjs/axios',
-    "@nuxtjs/google-analytics",
     "@nuxtjs/dotenv",
     '@nuxtjs/pwa',
   ],
@@ -97,10 +96,6 @@ export default {
     html: true,
     breaks: true,
     injected: true
-  },
-
-  googleAnalytics: {
-    id: "UA-175809611-1"
   },
 
   env: {
