@@ -1,8 +1,10 @@
 <template>
   <div class="install-wrapper">
     <div class="install-header">Installation:</div>
-    <p class="install-how"><a class="install-link" target="__blank" :href='moduleAPI[name][routeQuery].license === "Commercial" ? "https://www.npmjs.com/package/@commercial/" + name : "https://www.npmjs.com/package/@hapi/" + name'>npm</a>: <span><code>{{moduleAPI[name][routeQuery].license === "Commercial" ? "npm install @commercial/" + name : "npm install @hapi/" + name}}</code></span></p>
-    <p class="install-how"><a class="install-link" target="__blank" :href='moduleAPI[name][routeQuery].license === "Commercial" ? "https://yarnpkg.com/en/package/@commercial/" + name : "https://yarnpkg.com/en/package/@hapi/" + name'>yarn</a>: <span><code>{{moduleAPI[name][routeQuery].license === "Commercial" ? "yarn add @commercial/" + name : "yarn add @hapi/" + name}}</code></span></p>
+    <p v-if="name !== 'joi-date'" class="install-how"><a class="install-link" target="__blank" :href='moduleAPI[name][routeQuery].license === "Commercial" ? "https://www.npmjs.com/package/@commercial/" + name : "https://www.npmjs.com/package/@sideway/" + name'>npm</a>: <span><code>{{moduleAPI[name][routeQuery].license === "Commercial" ? "npm install @commercial/" + name : "npm install @sideway/" + name}}</code></span></p>
+    <p v-if="name !== 'joi-date'" class="install-how"><a class="install-link" target="__blank" :href='moduleAPI[name][routeQuery].license === "Commercial" ? "https://yarnpkg.com/en/package/@commercial/" + name : "https://yarnpkg.com/en/package/@sideway/" + name'>yarn</a>: <span><code>{{moduleAPI[name][routeQuery].license === "Commercial" ? "yarn add @commercial/" + name : "yarn add @sideway/" + name}}</code></span></p>
+    <p v-if="name === 'joi-date'" class="install-how"><a class="install-link" target="__blank" :href='moduleAPI[name][routeQuery].license === "Commercial" ? "https://www.npmjs.com/package/@commercial/" + name : "https://www.npmjs.com/package/@joi/date"'>npm</a>: <span><code>{{moduleAPI[name][routeQuery].license === "Commercial" ? "npm install @commercial/" + name : "npm install @joi/date"}}</code></span></p>
+    <p v-if="name === 'joi-date'" class="install-how"><a class="install-link" target="__blank" :href='moduleAPI[name][routeQuery].license === "Commercial" ? "https://yarnpkg.com/en/package/@commercial/" + name : "https://yarnpkg.com/en/package/@joi/date"'>yarn</a>: <span><code>{{moduleAPI[name][routeQuery].license === "Commercial" ? "yarn add @commercial/" + name : "yarn add @joi/date"}}</code></span></p>
   </div>
 </template>
 
