@@ -40,11 +40,11 @@ async function getInfo() {
     finalMenu = "";
     let branches = await axios.get(
       "https://api.github.com/repos/sideway/" +
-        repositories.data[r].name +
-        "/branches",
+      repositories.data[r].name +
+      "/branches",
       options
     );
-    console.log(repositories.data[r].name);
+    console.log(repositories.data[r].name)
     branches = branches.data.sort((a, b) => (a.name > b.name) ? 1 : -1)
     if (
       repositories.data[r].name !== "assets" &&
@@ -63,30 +63,33 @@ async function getInfo() {
         usage = "";
         faq = "";
         advance = "";
+
         if (branch.name.match(/^v+[0-9]+|\bmaster\b/g)) {
           const gitHubVersion = await axios.get(
             "https://api.github.com/repos/sideway/" +
-              repositories.data[r].name +
-              "/contents/package.json?ref=" +
-              branch.name,
+            repositories.data[r].name +
+            "/contents/package.json?ref=" +
+            branch.name,
             options
           );
-          const nodeYaml = await axios.get(
-            "https://api.github.com/repos/sideway/" +
+          let nodeYaml = []
+          if (branch.name !== 'master' && repositories.data[r].name !== 'joi') {
+            nodeYaml = await axios.get(
+              "https://api.github.com/repos/sideway/" +
               repositories.data[r].name +
               "/contents/.travis.yml?ref=" +
               branch.name,
-            options
-          );
-
+              options
+            );
+          }
           //Get API
           try {
             if (modules.includes(repositories.data[r].name)) {
               const api = await axios.get(
                 "https://api.github.com/repos/sideway/" +
-                  repositories.data[r].name +
-                  "/contents/API.md?ref=" +
-                  branch.name,
+                repositories.data[r].name +
+                "/contents/API.md?ref=" +
+                branch.name,
                 options
               );
               repos[repositories.data[r].name].api = true;
@@ -167,6 +170,7 @@ async function getInfo() {
               let finalDisplay = await rawString.replace(/\/>/g, "></a>");
               finalMenu = await finalMenu.replace(/Boom\./g, "");
               finalMenu = await finalMenu.replace(/\(([^#*]+)\)/g, "()");
+              console.log("HERERERERE")
               const apiHTML = await axios.post(
                 "https://api.github.com/markdown",
                 {
@@ -186,7 +190,12 @@ async function getInfo() {
             continue;
           }
 
-          let nodeVersions = Yaml.safeLoad(nodeYaml.data).node_js.reverse();
+          let nodeVersions = [];
+          if (branch.name !== 'master' && repositories.data[r].name !== 'joi') {
+            nodeVersions = Yaml.safeLoad(nodeYaml.data).node_js.reverse();
+          } else {
+            nodeVersions = ["14", "12"]
+          }
           if (repos[repositories.data[r].name].versionsArray.indexOf(gitHubVersion.data.version) === -1) {
             repos[repositories.data[r].name].versionsArray.push(
               gitHubVersion.data.version
@@ -212,7 +221,7 @@ async function getInfo() {
                 : "BSD"
             };
           }
-          await repos[repositories.data[r].name].versions.sort(function(a, b) {
+          await repos[repositories.data[r].name].versions.sort(function (a, b) {
             return Semver.compare(b.name, a.name);
           });
         }
@@ -226,8 +235,8 @@ async function getInfo() {
     ) {
       let readme = await axios.get(
         "https://api.github.com/repos/sideway/" +
-          repositories.data[r].name +
-          "/contents/README.md",
+        repositories.data[r].name +
+        "/contents/README.md",
         options
       );
       let forks = await axios.get(
@@ -268,7 +277,7 @@ async function getInfo() {
     const orderedRepos = {};
     await Object.keys(repos)
       .sort()
-      .forEach(function(key) {
+      .forEach(function (key) {
         orderedRepos[key] = repos[key];
       });
 
@@ -281,7 +290,7 @@ async function getInfo() {
   await fs.writeFile(
     "./static/lib/moduleInfo.json",
     JSON.stringify(newRepos),
-    function(err) {
+    function (err) {
       if (err) throw err;
     }
   );
