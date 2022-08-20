@@ -1,4 +1,4 @@
-FROM node:16.17.0-alpine3.15 as dev
+FROM node:14.20.0-alpine3.15 as dev
 
 # Taken from: https://github.com/Docker-Hub-frolvlad/docker-alpine-python2/blob/master/Dockerfile
 # This hack is widely applied to avoid python printing issues in docker containers.
