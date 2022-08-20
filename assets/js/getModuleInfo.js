@@ -31,28 +31,24 @@ async function getInfo() {
       authorization: "token " + process.env.GITHUB_TOKEN
     }
   };
-  let repositories = await axios.get(
-    "https://api.github.com/orgs/sideway/repos?per_page=100",
-    options
-  );
-  for (let r = 0; r < repositories.data.length; ++r) {
+  for (const moduleName of modules) {
     finalHtmlDisplay = "";
     finalMenu = "";
     let branches = await axios.get(
-      "https://api.github.com/repos/sideway/" +
-      repositories.data[r].name +
+      "https://api.github.com/repos/hapijs/" +
+      moduleName +
       "/branches",
       options
     );
-    console.log(repositories.data[r].name)
+    console.log(moduleName)
     branches = branches.data.sort((a, b) => (a.name > b.name) ? 1 : -1)
     if (
-      repositories.data[r].name !== "assets" &&
-      repositories.data[r].name !== ".github" &&
-      repositories.data[r].name !== "joi.dev"
+      moduleName !== "assets" &&
+      moduleName !== ".github" &&
+      moduleName !== "joi.dev"
     ) {
-      repos[repositories.data[r].name] = {
-        name: repositories.data[r].name,
+      repos[moduleName] = {
+        name: moduleName,
         versions: [],
         versionsArray: [],
         api: false
@@ -66,17 +62,17 @@ async function getInfo() {
 
         if (branch.name.match(/^v+[0-9]+|\bmaster\b/g)) {
           const gitHubVersion = await axios.get(
-            "https://api.github.com/repos/sideway/" +
-            repositories.data[r].name +
+            "https://api.github.com/repos/hapijs/" +
+            moduleName +
             "/contents/package.json?ref=" +
             branch.name,
             options
           );
           let nodeYaml = []
-          if (branch.name !== 'master' && repositories.data[r].name !== 'joi') {
+          if (branch.name !== 'master' && moduleName !== 'joi') {
             nodeYaml = await axios.get(
-              "https://api.github.com/repos/sideway/" +
-              repositories.data[r].name +
+              "https://api.github.com/repos/hapijs/" +
+              moduleName +
               "/contents/.travis.yml?ref=" +
               branch.name,
               options
@@ -84,15 +80,15 @@ async function getInfo() {
           }
           //Get API
           try {
-            if (modules.includes(repositories.data[r].name)) {
+            if (modules.includes(moduleName)) {
               const api = await axios.get(
-                "https://api.github.com/repos/sideway/" +
-                repositories.data[r].name +
+                "https://api.github.com/repos/hapijs/" +
+                moduleName +
                 "/contents/API.md?ref=" +
                 branch.name,
                 options
               );
-              repos[repositories.data[r].name].api = true;
+              repos[moduleName].api = true;
               let rawString = await api.data.toString();
 
               if (branch.name === "master") {
@@ -129,7 +125,7 @@ async function getInfo() {
                 let examples = await rawString.match(
                   /(?=#.*Example\s\s)([\s\S]*?)(?=\n#)/
                 );
-                if (examples && repositories.data[r].name !== "bell") {
+                if (examples && moduleName !== "bell") {
                   rawString = await rawString.replace(
                     /(?=#.*Example)([\s\S]*?)(?=\n#)/,
                     ""
@@ -191,16 +187,16 @@ async function getInfo() {
           }
 
           let nodeVersions = [];
-          if (branch.name !== 'master' && repositories.data[r].name !== 'joi') {
+          if (branch.name !== 'master' && moduleName !== 'joi') {
             nodeVersions = Yaml.safeLoad(nodeYaml.data).node_js.reverse();
           } else {
             nodeVersions = ["14", "12"]
           }
-          if (repos[repositories.data[r].name].versionsArray.indexOf(gitHubVersion.data.version) === -1) {
-            repos[repositories.data[r].name].versionsArray.push(
+          if (repos[moduleName].versionsArray.indexOf(gitHubVersion.data.version) === -1) {
+            repos[moduleName].versionsArray.push(
               gitHubVersion.data.version
             );
-            repos[repositories.data[r].name].versions.push({
+            repos[moduleName].versions.push({
               name: gitHubVersion.data.version,
               branch: branch.name,
               license: gitHubVersion.data.name.includes("commercial")
@@ -208,7 +204,7 @@ async function getInfo() {
                 : "BSD",
               node: nodeVersions.join(", ").replace("node,", "")
             });
-            repos[repositories.data[r].name][gitHubVersion.data.version] = {
+            repos[moduleName][gitHubVersion.data.version] = {
               menu: finalMenu,
               api: await finalHtmlDisplay,
               intro: intro,
@@ -221,7 +217,7 @@ async function getInfo() {
                 : "BSD"
             };
           }
-          await repos[repositories.data[r].name].versions.sort(function (a, b) {
+          await repos[moduleName].versions.sort(function (a, b) {
             return Semver.compare(b.name, a.name);
           });
         }
@@ -229,18 +225,18 @@ async function getInfo() {
     }
 
     if (
-      repositories.data[r].name !== "assets" &&
-      repositories.data[r].name !== ".github" &&
-      repositories.data[r].name !== "joi.dev"
+      moduleName !== "assets" &&
+      moduleName !== ".github" &&
+      moduleName !== "joi.dev"
     ) {
       let readme = await axios.get(
-        "https://api.github.com/repos/sideway/" +
-        repositories.data[r].name +
+        "https://api.github.com/repos/hapijs/" +
+        moduleName +
         "/contents/README.md",
         options
       );
       let forks = await axios.get(
-        "https://api.github.com/repos/sideway/" + repositories.data[r].name,
+        "https://api.github.com/repos/hapijs/" + moduleName,
         options
       );
       let slogan =
@@ -248,17 +244,17 @@ async function getInfo() {
           ? await readme.data.match(/####(.*)/gm)[0].substring(5)
           : "Description coming soon...";
       let date = await new Date(forks.data.pushed_at);
-      (repos[repositories.data[r].name].slogan = await slogan),
-        (repos[repositories.data[r].name].forks = await Number(
+      (repos[moduleName].slogan = await slogan),
+        (repos[moduleName].forks = await Number(
           forks.data.forks_count
         )),
-        (repos[repositories.data[r].name].stars = await Number(
+        (repos[moduleName].stars = await Number(
           forks.data.stargazers_count
         )),
-        (repos[repositories.data[r].name].date = await forks.data.pushed_at),
-        (repos[repositories.data[r].name].updated = await date.toDateString()),
-        (repos[repositories.data[r].name].link =
-          "https://github.com/sideway/" + repositories.data[r].name);
+        (repos[moduleName].date = await forks.data.pushed_at),
+        (repos[moduleName].updated = await date.toDateString()),
+        (repos[moduleName].link =
+          "https://github.com/hapijs/" + moduleName);
 
       for (let key of Object.keys(repos)) {
         if (repos[key].versions.length > 1) {

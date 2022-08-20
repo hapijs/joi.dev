@@ -47,7 +47,7 @@ export default {
       }
     };
     let s = await $axios.$get(
-      "https://api.github.com/repos/sideway/.github/contents/SECURITY.md",
+      "https://api.github.com/repos/hapijs/.github/contents/SECURITY.md",
       options
     );
 
