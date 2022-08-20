@@ -68,7 +68,7 @@ export default {
         };
         for (let p = 1; p <= 2; ++p) {
           milestones = await $axios.$get(
-            "https://api.github.com/repos/sideway/" +
+            "https://api.github.com/repos/hapijs/" +
               params.family +
               "/milestones?state=closed&per_page=100&page=" +
               p,
@@ -86,7 +86,7 @@ export default {
         //Get milestone issues
         for (let milestone of sortedMilestones) {
           let m = await $axios.$get(
-            "https://api.github.com/repos/sideway/" +
+            "https://api.github.com/repos/hapijs/" +
               params.family +
               "/issues?state=closed&milestone=" +
               milestone.number +

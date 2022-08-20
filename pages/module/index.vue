@@ -130,7 +130,7 @@ export default {
     for (let module of store.getters.loadModules) {
       try {
         let forks = await $axios.$get(
-          "https://api.github.com/repos/sideway/" + module,
+          "https://api.github.com/repos/hapijs/" + module,
           options
         );
         let date = await new Date(forks.pushed_at);
@@ -141,7 +141,7 @@ export default {
           date: await forks.pushed_at,
           updated: await date.toDateString(),
           slogan: await forks.description,
-          link: "https://github.com/sideway/" + module
+          link: "https://github.com/hapijs/" + module
         });
       } catch (err) {
         console.log(err);

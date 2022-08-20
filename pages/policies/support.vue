@@ -47,7 +47,7 @@ export default {
       }
     };
     let s = await $axios.$get(
-      "https://api.github.com/repos/sideway/.github/contents/SUPPORT.md",
+      "https://api.github.com/repos/hapijs/.github/contents/SUPPORT.md",
       options
     );
 

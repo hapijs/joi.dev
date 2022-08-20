@@ -47,7 +47,7 @@ export default {
       }
     };
     let l = await $axios.$get(
-      "https://api.github.com/repos/sideway/.github/contents/LICENSE.md",
+      "https://api.github.com/repos/hapijs/.github/contents/LICENSE.md",
       options
     );
 

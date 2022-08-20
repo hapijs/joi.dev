@@ -6,7 +6,7 @@
           class="footer-link"
           title="GitHub"
           target="__blank"
-          href="https://github.com/sideway/joi"
+          href="https://github.com/hapijs/joi"
           >GitHub</a
         >
       </li>

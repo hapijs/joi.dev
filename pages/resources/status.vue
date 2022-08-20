@@ -63,7 +63,7 @@
                           </a>
                           <a
                             :href="
-                              'https://github.com/sideway/' +
+                              'https://github.com/hapijs/' +
                                 repo.name +
                                 '/tree/' +
                                 version.branch

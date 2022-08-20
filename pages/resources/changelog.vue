@@ -61,7 +61,7 @@ export default {
     };
     for (let p = 1; p <= 3; p++) {
       milestones = await $axios.$get(
-        "https://api.github.com/repos/sideway/joi/milestones?state=closed&per_page=100&page=" +
+        "https://api.github.com/repos/hapijs/joi/milestones?state=closed&per_page=100&page=" +
           p,
         mileOptions
       );
@@ -78,7 +78,7 @@ export default {
     for (let milestone of sortedMilestones) {
       let changes = [];
       let m = await $axios.$get(
-        "https://api.github.com/repos/sideway/joi/issues?state=closed&milestone=" +
+        "https://api.github.com/repos/hapijs/joi/issues?state=closed&milestone=" +
           milestone.number,
         mileOptions
       );
