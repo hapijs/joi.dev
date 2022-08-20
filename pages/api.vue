@@ -232,7 +232,7 @@ export default {
         });
       }
     },
-    
+
   },
   async asyncData({ params, $axios }) {
     let versions = [];
@@ -245,7 +245,7 @@ export default {
     };
 
     let branches = await $axios.$get(
-      "https://api.github.com/repos/sideway/joi/branches",
+      "https://api.github.com/repos/hapijs/joi/branches",
       options
     );
     branches = branches.sort((a, b) => (a.name > b.name ? 1 : -1));
@@ -259,7 +259,7 @@ export default {
       try {
         if (branch.name.match(/^v+[0-9]+/g) || branch.name === "master") {
           v = await $axios.$get(
-            "https://api.github.com/repos/sideway/joi/contents/package.json?ref=" +
+            "https://api.github.com/repos/hapijs/joi/contents/package.json?ref=" +
               branch.name,
             options
           );
@@ -276,7 +276,7 @@ export default {
     versions = await versions.sort((a, b) => Semver.compare(b, a));
     for (let version of versions) {
       const res = await $axios.$get(
-        "https://api.github.com/repos/sideway/joi/contents/API.md?ref=" +
+        "https://api.github.com/repos/hapijs/joi/contents/API.md?ref=" +
           branchVersions[version],
         options
       );
