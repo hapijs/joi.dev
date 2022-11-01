@@ -82,28 +82,28 @@
 </template>
 
 <script>
-import SideFooter from "~/components/Footers/SideFooter.vue";
-import Ads from "~/components/Ads.vue";
+import SideFooter from '~/components/Footers/SideFooter.vue';
+import Ads from '~/components/Ads.vue';
 
 export default {
   components: {
     SideFooter,
-    Ads
+    Ads,
   },
-  props: ["page"],
+  props: ['page'],
   methods: {
     onClick(ref) {
-      let actives = document.querySelectorAll(".policies-active");
+      let actives = document.querySelectorAll('.policies-active');
       for (let active of actives) {
-        active.classList.remove("policies-active");
+        active.classList.remove('policies-active');
       }
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style lang="scss">
-@import "../../assets/styles/sideNav.scss";
+@import '../../assets/styles/sideNav.scss';
 
 .policies-header-link {
   position: relative;

@@ -162,7 +162,7 @@ code + .copy-clipboard {
 
 @media screen and (min-width: 1088px) {
   .container {
-    max-width: 100%;
+    max-width: 100% !important;
   }
 }
 
@@ -211,5 +211,24 @@ code + .copy-clipboard {
   }
   .tutorial-markdown-window {
     max-width: 100%;
+  }
+}
+
+
+@media (prefers-color-scheme: dark) {
+
+  html,
+  body {
+    color: $off-white;
+    background: $black;
+    z-index: -1;
+  }
+
+  .landing-hr {
+    background-color: $blacker;
+  }
+
+  strong, b {
+    color: $off-white;
   }
 }

@@ -1,13 +1,11 @@
 <template>
-  <div>
-
-  </div>
+  <div></div>
 </template>
 
 <script>
 export default {
   beforeMount() {
-    window.location.href = '/resources/changelog'
-  }
-}
+    window.location.href = '/resources/changelog';
+  },
+};
 </script>

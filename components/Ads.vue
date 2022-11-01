@@ -16,12 +16,12 @@ export default {
   data() {
     return {
       loadAd: false,
-    }
+    };
   },
   async mounted() {
-    this.loadAd = true
+    this.loadAd = true;
   },
-}
+};
 </script>
 
 <style lang="scss">
@@ -91,5 +91,12 @@ export default {
   font-weight: 600;
   font-size: 9px;
   line-height: 1;
+}
+
+@media (prefers-color-scheme: dark) {
+  #carbonads {
+    background-color: $blacker;
+    border: 1px solid $blackest;
+  }
 }
 </style>

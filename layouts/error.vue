@@ -1,39 +1,46 @@
 <template>
   <div class="error">
-    <Nav/>
+    <Nav />
     <div class="error-container">
-      <div class="error-heading">4<span><img class="error-helmet" src="../static/img/helmet.png" alt="hapi-helmet"></span>4</div>
+      <div class="error-heading">
+        4<span
+          ><img
+            class="error-helmet"
+            src="../static/img/helmet.png"
+            alt="hapi-helmet" /></span
+        >4
+      </div>
       <div class="error-description-heading">Oh No!</div>
-      <div class="error-description">It seems as though that page is not filled with joi today.</div>
-      <a
-        class="error-button"
-        href="/"
-        aria-label="home-button"
-      >Back to the hapi place</a>
+      <div class="error-description">
+        It seems as though that page is not filled with joi today.
+      </div>
+      <a class="error-button" href="/" aria-label="home-button"
+        >Back to the hapi place</a
+      >
     </div>
-    <Footer/>
+    <Footer />
   </div>
 </template>
 
 <script>
-import Nav from "~/components/Navs/Nav.vue";
-import Footer from "~/components/Footers/Footer.vue";
+import Nav from '~/components/Navs/Nav.vue';
+import Footer from '~/components/Footers/Footer.vue';
 
 export default {
   components: {
     Nav,
-    Footer
+    Footer,
   },
   head() {
     return {
-      title: "hapi.dev - Error!"
+      title: 'joi.dev - Error!',
     };
-  }
+  },
 };
 </script>
 
 <style lang="scss">
-@import "../assets/styles/main.scss";
+@import '../assets/styles/main.scss';
 
 .error {
   position: relative;
@@ -108,7 +115,7 @@ export default {
   align-items: center;
   height: 50px;
   max-width: 735px;
-  background-color: $white !important;
+  // background-color: $white !important;
   padding: 0 20px !important;
 }
 
@@ -117,7 +124,7 @@ export default {
 }
 
 .logo {
-  background: url("/img/joiLogo.jpg") no-repeat 0 0;
+  background: url('/img/joiTransparent.png') no-repeat 0 0;
   background-size: contain;
   height: 112.5px;
   width: 150px;

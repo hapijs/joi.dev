@@ -8,70 +8,74 @@
 </template>
 
 <script>
-import HTML from "~/components/HTML.vue";
-import PoliciesNav from "~/components/policies/PoliciesNav.vue";
+import HTML from '~/components/HTML.vue';
+import PoliciesNav from '~/components/policies/PoliciesNav.vue';
 
 export default {
   components: {
     HTML,
-    PoliciesNav
+    PoliciesNav,
   },
   data() {
     return {
-      page: "conduct"
+      page: 'conduct',
     };
   },
   head() {
     return {
-      title: "Code of Conduct - joi.dev",
+      title: 'Code of Conduct - joi.dev',
       meta: [
-        { hid: "description", name: "description", content: "The joi code of conduct" }
-      ]
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'The joi code of conduct',
+        },
+      ],
     };
   },
   async created() {
-    await this.$store.commit("setDisplay", "policies");
+    await this.$store.commit('setDisplay', 'policies');
   },
   methods: {
     changePage(value) {
       this.$data.page = value;
-      this.$store.commit("setCommunity", value);
+      this.$store.commit('setCommunity', value);
       window.scrollTo(0, 0);
-    }
+    },
   },
   async asyncData({ params, $axios }) {
     const options = {
       headers: {
-        accept: "application/vnd.github.v3.raw+json",
-        authorization: "token " + process.env.GITHUB_TOKEN
-      }
+        accept: 'application/vnd.github.v3.raw+json',
+        authorization: 'token ' + process.env.GITHUB_TOKEN,
+      },
     };
     let coc = await $axios.$get(
-      "https://api.github.com/repos/hapijs/.github/contents/CODE_OF_CONDUCT.md",
+      'https://api.github.com/repos/hapijs/.github/contents/CODE_OF_CONDUCT.md',
       options
     );
 
     const conduct = await $axios.$post(
-      "https://api.github.com/markdown",
+      'https://api.github.com/markdown',
       {
         text: coc.toString(),
-        mode: "markdown"
+        mode: 'markdown',
       },
       {
         headers: {
-          authorization: "token " + process.env.GITHUB_TOKEN
-        }
+          authorization: 'token ' + process.env.GITHUB_TOKEN,
+        },
       }
     );
     return { conduct };
-  }
+  },
 };
 </script>
 
 <style lang="scss">
-@import "../../assets/styles/main.scss";
-@import "../../assets/styles/markdown.scss";
-@import "../../assets/styles/api.scss";
+@import '../../assets/styles/main.scss';
+@import '../../assets/styles/markdown.scss';
+@import '../../assets/styles/api.scss';
 
 .community-wrapper {
   margin: 0;

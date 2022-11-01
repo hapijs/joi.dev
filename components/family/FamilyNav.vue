@@ -15,8 +15,9 @@
                   v-for="version in versions"
                   v-bind:key="version"
                   :value="version"
-                  >{{ version }}</option
                 >
+                  {{ version }}
+                </option>
               </select>
             </span>
             <Ads />
@@ -74,81 +75,81 @@
 </template>
 
 <script>
-import SideFooter from "~/components/Footers/SideFooter.vue";
-import FamilyNavItem from "./FamilyNavItem.vue";
-import Ads from "~/components/Ads.vue";
+import SideFooter from '~/components/Footers/SideFooter.vue';
+import FamilyNavItem from './FamilyNavItem.vue';
+import Ads from '~/components/Ads.vue';
 
 export default {
   components: {
     SideFooter,
     FamilyNavItem,
-    Ads
+    Ads,
   },
   props: [
-    "page",
-    "moduleAPI",
-    "version",
-    "versions",
-    "menu",
-    "results",
-    "indexResults",
-    "search"
+    'page',
+    'moduleAPI',
+    'version',
+    'versions',
+    'menu',
+    'results',
+    'indexResults',
+    'search',
   ],
   methods: {
     async onVersionChange(event) {
-      this.$store.commit("setVersion", event.target.value);
+      this.$store.commit('setVersion', event.target.value);
       await this.$router.push({
         path: this.$route.path,
-        query: { v: event.target.value }
+        query: { v: event.target.value },
       });
-      this.$emit("input", "");
+      this.$emit('input', '');
       document
-        .querySelector(".family-search-results")
-        .classList.remove("nav-display");
+        .querySelector('.family-search-results')
+        .classList.remove('nav-display');
       document
-        .querySelector(".family-search-error")
-        .classList.remove("nav-display");
+        .querySelector('.family-search-error')
+        .classList.remove('nav-display');
       window.scrollTo(0, 0);
-      await this.$parent.setClasses()
+      await this.$parent.setClasses();
     },
     onSearch() {
-      if (this.search !== "") {
-        this.$emit("search");
+      if (this.search !== '') {
+        this.$emit('search');
       }
     },
     onPrevious() {
       if (this.indexResults !== 0) {
-        this.$emit("previous", this.indexResults - 1, this.uls, this.links);
+        this.$emit('previous', this.indexResults - 1, this.uls, this.links);
       }
     },
     onNext() {
       if (this.indexResults !== this.results.length - 1) {
-        this.$emit("next", this.indexResults + 1, this.uls, this.links);
+        this.$emit('next', this.indexResults + 1, this.uls, this.links);
       }
     },
     onInput(event) {
       document
-        .querySelector(".family-search-error")
-        .classList.remove("nav-display");
+        .querySelector('.family-search-error')
+        .classList.remove('nav-display');
       document
-        .querySelector(".family-search-results")
-        .classList.remove("nav-display");
-      this.$emit("input", event.target.value);
-    }
+        .querySelector('.family-search-results')
+        .classList.remove('nav-display');
+      this.$emit('input', event.target.value);
+    },
   },
   data() {
     return {
       header: this.$route.params.family,
       title: !this.$route.params.family
-        ? "Bell"
+        ? 'Bell'
         : this.$route.params.family.charAt(0).toUpperCase(0) +
-          this.$route.params.family.slice(1)
+          this.$route.params.family.slice(1),
     };
   },
   computed: {
     getModules() {
       return this.$store.getters.loadModules;
-    }
+    },
   },
   mounted() {
     let aClass = this.$route.hash;
@@ -159,12 +160,12 @@ export default {
       );
       active.scrollIntoView(false);
     }
-  }
+  },
 };
 </script>
 
 <style lang="scss">
-@import "../../assets/styles/sideNav.scss";
+@import '../../assets/styles/sideNav.scss';
 
 .family-top-wrapper {
   display: flex;
@@ -203,7 +204,7 @@ export default {
 
 .family-search-img {
   position: absolute;
-  background: url("/img/search.png") no-repeat;
+  background: url('/img/search.png') no-repeat;
   background-position: center;
   background-color: $white;
   background-size: contain;
@@ -275,6 +276,27 @@ export default {
 
   .family-version-select {
     width: 80px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .family-version-select,
+  .family-search-box {
+    background-color: $black !important;
+    border-color: $blackest !important;
+    color: $light-gray !important;
+  }
+
+  .family-top-wrapper,
+  .family-search-button,
+  .family-search-img {
+    background: $black !important;
+    border-color: $blackest !important;
+  }
+
+  .family-search-img {
+    background-color: $blackest !important;
+    border-color: $blackest !important;
   }
 }
 </style>

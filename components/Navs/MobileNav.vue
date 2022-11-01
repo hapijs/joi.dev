@@ -118,58 +118,57 @@
 </template>
 
 <script>
-const tutorial = require("../../static/lib/tutorials/");
-const page = require("../../static/lib/");
-const moduleInfo = require("../../static/lib/moduleInfo.json");
+const page = require('../../static/lib/');
+const moduleInfo = require('../../static/lib/moduleInfo.json');
 
 export default {
   data() {
     return {
-      moduleInfo: moduleInfo
+      moduleInfo: moduleInfo,
     };
   },
   methods: {
     closeNav() {
-      this.$refs.nav.parentNode.classList.remove("show-nav");
-      let overlay = document.querySelector(".mobile-overlay");
-      overlay.classList.remove("show-nav");
+      this.$refs.nav.parentNode.classList.remove('show-nav');
+      let overlay = document.querySelector('.mobile-overlay');
+      overlay.classList.remove('show-nav');
       let body = document.body;
-      body.classList.remove("no-scroll");
+      body.classList.remove('no-scroll');
     },
     triggerMenu(name) {
-      let wrapper = document.querySelector("#" + name + "-wrapper");
-      if (wrapper.classList.contains("mobile-family-plus")) {
-        document.querySelector("#" + name + 2).classList.add("nav-display");
-        wrapper.classList.add("mobile-family-minus");
-        wrapper.classList.remove("mobile-family-plus");
+      let wrapper = document.querySelector('#' + name + '-wrapper');
+      if (wrapper.classList.contains('mobile-family-plus')) {
+        document.querySelector('#' + name + 2).classList.add('nav-display');
+        wrapper.classList.add('mobile-family-minus');
+        wrapper.classList.remove('mobile-family-plus');
       } else {
-        document.querySelector("#" + name + 2).classList.remove("nav-display");
-        wrapper.classList.remove("mobile-family-minus");
-        wrapper.classList.add("mobile-family-plus");
+        document.querySelector('#' + name + 2).classList.remove('nav-display');
+        wrapper.classList.remove('mobile-family-minus');
+        wrapper.classList.add('mobile-family-plus');
       }
     },
     showMenu(name) {
-      let visible = document.querySelector(".visible");
+      let visible = document.querySelector('.visible');
       if (visible) {
-        visible.classList.remove("visible");
-        visible.classList.add("hide");
+        visible.classList.remove('visible');
+        visible.classList.add('hide');
       }
-      let menu = document.querySelector("#mobile-" + name);
-      menu.classList.add("visible");
-      menu.classList.remove("hide");
-    }
+      let menu = document.querySelector('#mobile-' + name);
+      menu.classList.add('visible');
+      menu.classList.remove('hide');
+    },
   },
   computed: {
     getModules() {
       return this.$store.getters.loadModules;
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style lang="scss">
-@import "../../assets/styles/variables.scss";
-@import "../../assets/styles/markdown.scss";
+@import '../../assets/styles/variables.scss';
+@import '../../assets/styles/markdown.scss';
 
 .mobile-nav {
   position: relative;
@@ -220,7 +219,7 @@ export default {
   height: 100%;
   width: 200px;
   opacity: 0.1;
-  background-image: url("../../static/img/helmet.png");
+  background-image: url('../../static/img/helmet.png');
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
@@ -247,7 +246,7 @@ export default {
 }
 
 .mobile-family-link:after {
-  content: "\002B";
+  content: '\002B';
   display: flex;
   justify-content: center;
   align-items: center;
@@ -262,7 +261,7 @@ export default {
 }
 
 .mobile-family-minus:after {
-  content: "\2212";
+  content: '\2212';
   color: inherit;
   display: flex;
   justify-content: center;

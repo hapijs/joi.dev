@@ -4,12 +4,12 @@
 
 <script>
 export default {
-  props: ["display"]
+  props: ['display'],
 };
 </script>
 
 <style lang="scss">
-@import "../../assets/styles/markdown.scss";
+@import '../../assets/styles/markdown.scss';
 
 .octicon {
   display: none;

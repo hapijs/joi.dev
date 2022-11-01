@@ -55,42 +55,42 @@
 </template>
 
 <script>
-import FamilyIndexNav from "~/components/family/FamilyIndexNav.vue";
-const moduleInfo = require("../../static/lib/moduleInfo.json");
+import FamilyIndexNav from '~/components/family/FamilyIndexNav.vue';
+const moduleInfo = require('../../static/lib/moduleInfo.json');
 export default {
   components: {
-    FamilyIndexNav
+    FamilyIndexNav,
   },
   data() {
     return {
       modules: this.$store.getters.loadModules,
       moduleInfo: moduleInfo,
-      search: "",
+      search: '',
       core: true,
-      sort: "name"
+      sort: 'name',
     };
   },
   head() {
     return {
-      title: "joi.dev - Modules",
+      title: 'joi.dev - Modules',
       meta: [
         {
-          hid: "description",
-          name: "description",
-          content: "View the APIs for the hapi modules"
-        }
-      ]
+          hid: 'description',
+          name: 'description',
+          content: 'View the APIs for the hapi modules',
+        },
+      ],
     };
   },
   methods: {
     onChildInput(event) {
       this.$data.search = event.target.value;
-      if (this.$data.search === "") {
-        let hidden = document.querySelectorAll(".hide");
+      if (this.$data.search === '') {
+        let hidden = document.querySelectorAll('.hide');
         for (let hide of hidden) {
-          hide.classList.remove("hide");
+          hide.classList.remove('hide');
         }
-        document.querySelector(".module-clear-button").classList.add("hide");
+        document.querySelector('.module-clear-button').classList.add('hide');
       }
     },
     onChildSearch() {
@@ -99,38 +99,38 @@ export default {
           !module.name.includes(this.$data.search.toLowerCase()) &&
           !module.slogan.toLowerCase().includes(this.$data.search.toLowerCase())
         ) {
-          document.querySelector("#" + module.name + 1).classList.add("hide");
+          document.querySelector('#' + module.name + 1).classList.add('hide');
         }
       }
     },
     onChildClear() {
-      this.$data.search = "";
+      this.$data.search = '';
     },
     sortModules(value) {
       this.$data.sort = value;
-      if (value === "stars" || value === "forks") {
+      if (value === 'stars' || value === 'forks') {
         this.moduleData.sort((a, b) =>
           a[value.toLowerCase()] < b[value] ? 1 : -1
         );
-      } else if (value === "name") {
+      } else if (value === 'name') {
         this.moduleData.sort((a, b) => (a.name > b.name ? 1 : -1));
-      } else if (value === "updated") {
+      } else if (value === 'updated') {
         this.moduleData.sort((a, b) => (a.date < b.date ? 1 : -1));
       }
-    }
+    },
   },
   async asyncData({ params, $axios, route, store }) {
     const options = {
       headers: {
-        accept: "application/vnd.github.v3.raw+json",
-        authorization: "token " + process.env.GITHUB_TOKEN
-      }
+        accept: 'application/vnd.github.v3.raw+json',
+        authorization: 'token ' + process.env.GITHUB_TOKEN,
+      },
     };
     let moduleData = [];
     for (let module of store.getters.loadModules) {
       try {
         let forks = await $axios.$get(
-          "https://api.github.com/repos/hapijs/" + module,
+          'https://api.github.com/repos/hapijs/' + module,
           options
         );
         let date = await new Date(forks.pushed_at);
@@ -141,7 +141,7 @@ export default {
           date: await forks.pushed_at,
           updated: await date.toDateString(),
           slogan: await forks.description,
-          link: "https://github.com/hapijs/" + module
+          link: 'https://github.com/hapijs/' + module,
         });
       } catch (err) {
         console.log(err);
@@ -150,28 +150,28 @@ export default {
     return { moduleData };
   },
   created() {
-    this.$store.commit("setDisplay", "family");
-    const sortedBy = ["name", "stars", "forks", "updated"];
+    this.$store.commit('setDisplay', 'family');
+    const sortedBy = ['name', 'stars', 'forks', 'updated'];
     if (sortedBy.includes(this.$route.query.sort)) {
       this.sortModules(this.$route.query.sort);
     } else {
       this.$router.push({
-        query: { sort: "name" }
+        query: { sort: 'name' },
       });
-      this.sortModules("name");
+      this.sortModules('name');
     }
   },
   updated() {
     this.$router.push({
-      query: { sort: this.$data.sort }
+      query: { sort: this.$data.sort },
     });
-  }
+  },
 };
 </script>
 
 <style lang="scss">
-@import "../../assets/styles/main.scss";
-@import "../../assets/styles/api.scss";
+@import '../../assets/styles/main.scss';
+@import '../../assets/styles/api.scss';
 .family-grid-wrapper {
   padding: 20px 100px;
   width: 100%;
@@ -272,6 +272,13 @@ export default {
   }
   .family-grid-cell-slogan p {
     font-size: 0.97em;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .family-grid-cell {
+    background: $blacker;
+    border: 1px solid #000;
   }
 }
 </style>

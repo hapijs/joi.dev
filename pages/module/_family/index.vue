@@ -50,9 +50,9 @@
             >:
             <span
               ><code>{{
-                name === "joi-date"
-                  ? "npm install @joi/date"
-                  : "npm install @sideway/" + name
+                name === 'joi-date'
+                  ? 'npm install @joi/date'
+                  : 'npm install @sideway/' + name
               }}</code></span
             >
           </p>
@@ -69,9 +69,9 @@
             >:
             <span
               ><code>{{
-                name === "joi-date"
-                  ? "yarn add @joi/date"
-                  : "yarn add @sideway/" + name
+                name === 'joi-date'
+                  ? 'yarn add @joi/date'
+                  : 'yarn add @sideway/' + name
               }}</code></span
             >
           </p>
@@ -106,40 +106,37 @@
 </template>
 
 <script>
-import LandingNav from "~/components/family/LandingNav.vue";
-import LandingTable from "~/components/family/LandingTable.vue";
-const moduleInfo = require("../../../static/lib/moduleInfo.json");
-let Toc = require("markdown-toc");
-let Semver = require("semver");
-let Yaml = require("js-yaml");
+import LandingNav from '~/components/family/LandingNav.vue';
+import LandingTable from '~/components/family/LandingTable.vue';
+const moduleInfo = require('../../../static/lib/moduleInfo.json');
 
 export default {
   components: {
     LandingNav,
-    LandingTable
+    LandingTable,
   },
   head() {
     return {
-      title: "joi.dev - " + this.$route.params.family,
+      title: 'joi.dev - ' + this.$route.params.family,
       meta: [
         {
-          hid: "description",
-          name: "description",
-          content: "View the APIs for the hapi modules"
-        }
-      ]
+          hid: 'description',
+          name: 'description',
+          content: 'View the APIs for the hapi modules',
+        },
+      ],
     };
   },
   data() {
     return {
-      page: "home",
-      display: "",
+      page: 'home',
+      display: '',
       modules: moduleInfo,
-      version: "",
-      menu: "",
+      version: '',
+      menu: '',
       name: this.$route.params.family,
       indexResults: 0,
-      search: "",
+      search: '',
       results: [],
       uls: {},
       links: {},
@@ -147,14 +144,14 @@ export default {
       example: false,
       usage: false,
       faq: false,
-      advanced: false
+      advanced: false,
     };
   },
   methods: {
     goToAnchor() {
       let hash = document.location.hash;
-      if (hash != "") {
-        setTimeout(function() {
+      if (hash != '') {
+        setTimeout(function () {
           if (location.hash) {
             window.scrollTo(0, 0);
             window.location.href = hash;
@@ -168,10 +165,10 @@ export default {
       let headlines = [];
       let text = [];
       this.indexResults = 0;
-      const headers = ["H2", "H3", "H4", "H5", "H6"];
+      const headers = ['H2', 'H3', 'H4', 'H5', 'H6'];
       let pages = document
-        .querySelector(".family-markdown-wrapper")
-        .querySelectorAll("*");
+        .querySelector('.family-markdown-wrapper')
+        .querySelectorAll('*');
 
       //Check if search item is in a headline
       for (let page of pages) {
@@ -191,8 +188,8 @@ export default {
       this.results = headlines.concat(text);
       if (this.results.length) {
         document
-          .querySelector(".family-search-results")
-          .classList.add("nav-display");
+          .querySelector('.family-search-results')
+          .classList.add('nav-display');
         if (window.innerWidth <= 900) {
           document.body.scrollTo(
             0,
@@ -203,8 +200,8 @@ export default {
         }
       } else if (this.results.length === 0) {
         document
-          .querySelector(".family-search-error")
-          .classList.add("nav-display");
+          .querySelector('.family-search-error')
+          .classList.add('nav-display');
       }
     },
     onChildIndex(value) {
@@ -213,73 +210,76 @@ export default {
     },
     onChildInput(value) {
       this.$data.search = value;
-    }
+    },
   },
   async asyncData({ $axios, params }) {
     const options = {
       headers: {
-        accept: "application/vnd.github.v3.raw+json",
-        authorization: "token " + process.env.GITHUB_TOKEN
-      }
+        accept: 'application/vnd.github.v3.raw+json',
+        authorization: 'token ' + process.env.GITHUB_TOKEN,
+      },
     };
-    let exampleHTML = "";
-    let usageHTML = "";
-    let faqHTML = "";
-    let advancedHTML = "";
+    let exampleHTML = '';
+    let usageHTML = '';
+    let faqHTML = '';
+    let advancedHTML = '';
     let version = moduleInfo[params.family].versionsArray[0];
     if (moduleInfo[params.family][version].example) {
       exampleHTML = await $axios.$post(
-        "https://api.github.com/markdown",
+        'https://api.github.com/markdown',
         {
           text: moduleInfo[params.family][version].example,
-          mode: "markdown"
+          mode: 'markdown',
         },
         {
           headers: {
-            authorization: "token " + process.env.GITHUB_TOKEN
-          }
+            authorization: 'token ' + process.env.GITHUB_TOKEN,
+          },
         }
       );
     }
-    if (moduleInfo[params.family][version].usage && moduleInfo[params.family][version].usage.length > 10) {
+    if (
+      moduleInfo[params.family][version].usage &&
+      moduleInfo[params.family][version].usage.length > 10
+    ) {
       usageHTML = await $axios.$post(
-        "https://api.github.com/markdown",
+        'https://api.github.com/markdown',
         {
           text: moduleInfo[params.family][version].usage,
-          mode: "markdown"
+          mode: 'markdown',
         },
         {
           headers: {
-            authorization: "token " + process.env.GITHUB_TOKEN
-          }
+            authorization: 'token ' + process.env.GITHUB_TOKEN,
+          },
         }
       );
     }
     if (moduleInfo[params.family][version].faq) {
       faqHTML = await $axios.$post(
-        "https://api.github.com/markdown",
+        'https://api.github.com/markdown',
         {
           text: moduleInfo[params.family][version].faq,
-          mode: "markdown"
+          mode: 'markdown',
         },
         {
           headers: {
-            authorization: "token " + process.env.GITHUB_TOKEN
-          }
+            authorization: 'token ' + process.env.GITHUB_TOKEN,
+          },
         }
       );
     }
     if (moduleInfo[params.family][version].advanced) {
       advancedHTML = await $axios.$post(
-        "https://api.github.com/markdown",
+        'https://api.github.com/markdown',
         {
           text: moduleInfo[params.family][version].advanced,
-          mode: "markdown"
+          mode: 'markdown',
         },
         {
           headers: {
-            authorization: "token " + process.env.GITHUB_TOKEN
-          }
+            authorization: 'token ' + process.env.GITHUB_TOKEN,
+          },
         }
       );
     }
@@ -295,23 +295,26 @@ export default {
     let version = versionsArray.includes(this.$route.query.v)
       ? this.$route.query.v
       : versionsArray[0];
-    this.$store.commit("setDisplay", "family");
-    this.$store.commit("setVersion", version);
-    this.$store.commit("setFamily", module);
+    this.$store.commit('setDisplay', 'family');
+    this.$store.commit('setVersion', version);
+    this.$store.commit('setFamily', module);
     if (this.modules[module][version].intro) {
-      this.$store.commit("setIntro", true);
+      this.$store.commit('setIntro', true);
     }
     if (this.modules[module][version].example) {
-      this.$store.commit("setExample", true);
+      this.$store.commit('setExample', true);
     }
-    if (this.modules[module][version].usage && this.modules[module][version].usage.length > 10) {
-      this.$store.commit("setUsage", true);
+    if (
+      this.modules[module][version].usage &&
+      this.modules[module][version].usage.length > 10
+    ) {
+      this.$store.commit('setUsage', true);
     }
     if (this.modules[module][version].faq) {
-      this.$store.commit("setFaq", true);
+      this.$store.commit('setFaq', true);
     }
     if (this.modules[module][version].advanced) {
-      this.$store.commit("setAdvanced", true);
+      this.$store.commit('setAdvanced', true);
     }
   },
   computed: {
@@ -343,18 +346,18 @@ export default {
     },
     getAdvanced() {
       return this.$store.getters.loadAdvanced;
-    }
+    },
   },
   mounted() {
     this.goToAnchor();
-  }
+  },
 };
 </script>
 
 <style lang="scss">
-@import "../../../assets/styles/main.scss";
-@import "../../../assets/styles/api.scss";
-@import "../../../assets/styles/markdown.scss";
+@import '../../../assets/styles/main.scss';
+@import '../../../assets/styles/api.scss';
+@import '../../../assets/styles/markdown.scss';
 
 .landing-wrapper {
   width: 100%;

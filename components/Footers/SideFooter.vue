@@ -28,14 +28,14 @@
 export default {
   data() {
     return {
-      year: new Date().getFullYear()
+      year: new Date().getFullYear(),
     };
-  }
+  },
 };
 </script>
 
 <style lang="scss">
-@import "../../assets/styles/variables.scss";
+@import '../../assets/styles/variables.scss';
 
 a {
   color: $orange;
@@ -107,6 +107,10 @@ a {
 @media screen and (max-width: 900px) {
   .side-footer {
     display: none;
+  }
+
+  a:hover {
+    color: $gray;
   }
 }
 </style>

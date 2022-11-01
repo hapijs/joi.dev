@@ -17,12 +17,12 @@
 
 <script>
 export default {
-  props: ["menu", "name"]
+  props: ['menu', 'name'],
 };
 </script>
 
 <style lang="scss">
-@import "../../assets/styles/sideNav.scss";
+@import '../../assets/styles/sideNav.scss';
 
 .family-side-nav-item {
   margin: 0 !important;

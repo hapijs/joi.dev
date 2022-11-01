@@ -1,7 +1,8 @@
 <template>
   <div class="changelog-wrapper">
     <h2 class="hapi-header">
-      <a id="changelog" href="#changelog" class="anchor" aria-hidden="true"></a>Changelog
+      <a id="changelog" href="#changelog" class="anchor" aria-hidden="true"></a
+      >Changelog
     </h2>
     <ChangelogVersion
       v-for="change in milestones"
@@ -17,14 +18,13 @@
 import ChangelogVersion from './ChangelogVersion.vue';
 export default {
   components: {
-    ChangelogVersion
+    ChangelogVersion,
   },
-  props: ['milestones']
+  props: ['milestones'],
 };
 </script>
 
 <style lang="scss">
-
 .changelog-wrapper {
   width: 100%;
   padding: 20px 100px 10px 100px;

@@ -1,26 +1,24 @@
 <template>
   <div class="contain">
-    <Nav/>
+    <Nav />
     <nuxt />
   </div>
 </template>
 
 <script>
-import Nav from "~/components/Navs/Nav.vue";
+import Nav from '~/components/Navs/Nav.vue';
 import CopyCodeSnippetMixin from '~/mixins/CopyCodeSnippet';
 
 export default {
   components: {
-    Nav
+    Nav,
   },
-  mixins: [
-    CopyCodeSnippetMixin
-  ],
+  mixins: [CopyCodeSnippetMixin],
 };
 </script>
 
 <style lang="scss">
-@import "../assets/styles/variables.scss";
+@import '../assets/styles/variables.scss';
 
 html {
   font-size: 16px;
@@ -54,7 +52,7 @@ html {
 }
 
 .logo {
-  background: url("/img/joiLogo.jpg") no-repeat 0 0;
+  background: url('/img/joiTransparent.png') no-repeat 0 0;
   background-size: contain;
   height: 75px !important;
   width: 100px !important;
@@ -70,7 +68,8 @@ html {
     margin: 0 auto;
   }
 
-  .nav-container, .navbar {
+  .nav-container,
+  .navbar {
     min-height: 39px;
   }
 }

@@ -37,37 +37,37 @@
 </template>
 
 <script>
-import SideFooter from "~/components/Footers/SideFooter.vue";
-import Ads from "~/components/Ads.vue";
+import SideFooter from '~/components/Footers/SideFooter.vue';
+import Ads from '~/components/Ads.vue';
 
 export default {
   components: {
     SideFooter,
-    Ads
+    Ads,
   },
-  props: ["page"],
+  props: ['page'],
   methods: {
     onClick(ref) {
-      let actives = document.querySelectorAll(".resources-active");
+      let actives = document.querySelectorAll('.resources-active');
       for (let active of actives) {
-        active.classList.remove("resources-active");
+        active.classList.remove('resources-active');
       }
     },
     onScroll() {
       let links = [];
-      links = document.querySelectorAll(".resources-ul a");
+      links = document.querySelectorAll('.resources-ul a');
       let points = {};
       let offsets = [];
       for (let i = 0; i < links.length; i++) {
         let point = document.querySelector(
           `.markdown-wrapper h2 a[name*='${links[i].href.replace(
             /^[^_]*#/,
-            ""
+            ''
           )}']`
         );
         if (point && point.name) {
           points[point.offsetTop - 20] = {
-            name: "#" + point.name
+            name: '#' + point.name,
           };
           offsets.push(point.offsetTop - 20);
         }
@@ -75,16 +75,16 @@ export default {
       offsets = [...new Set(offsets)];
 
       //Add active class to elements on scroll
-      window.onscroll = function() {
+      window.onscroll = function () {
         let location = document.documentElement.scrollTop;
         let locationBody = document.body.scrollTop;
-        let actives = document.getElementsByClassName("resources-active");
+        let actives = document.getElementsByClassName('resources-active');
         let i = 0;
         for (i in offsets) {
           if (offsets[i] <= location || offsets[i] <= locationBody) {
             let aClass = points[offsets[i]].name;
             for (let active of actives) {
-              active.classList.remove("resources-active");
+              active.classList.remove('resources-active');
             }
 
             let element = document.querySelector(
@@ -93,25 +93,25 @@ export default {
             if (element.children.length !== 0) {
               document
                 .querySelector(`a[href*='/resources/list${aClass}'] *`)
-                .classList.add("resources-active");
+                .classList.add('resources-active');
             } else if (element.children.length === 0) {
               document
                 .querySelector(`a[href*='/resources/list${aClass}']`)
-                .classList.add("resources-active");
+                .classList.add('resources-active');
             }
           }
         }
       };
-    }
+    },
   },
   mounted() {
     this.onScroll();
-  }
+  },
 };
 </script>
 
 <style lang="scss">
-@import "../../assets/styles/sideNav.scss";
+@import '../../assets/styles/sideNav.scss';
 
 .resources-header-link {
   position: relative;

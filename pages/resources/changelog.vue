@@ -8,9 +8,9 @@
 </template>
 
 <script>
-import Changelog from "../../components/resources/Changelog.vue";
-import ResourcesNav from "../../components/resources/ResourcesNav.vue";
-let Semver = require("semver");
+import Changelog from '../../components/resources/Changelog.vue';
+import ResourcesNav from '../../components/resources/ResourcesNav.vue';
+let Semver = require('semver');
 let weekAgo = new Date();
 weekAgo.setDate(weekAgo.getDate() - 7);
 weekAgo = weekAgo.toISOString();
@@ -18,23 +18,27 @@ weekAgo = weekAgo.toISOString();
 export default {
   components: {
     Changelog,
-    ResourcesNav
+    ResourcesNav,
   },
   data() {
     return {
-      page: "changelog"
+      page: 'changelog',
     };
   },
   head() {
     return {
       title:
-        "joi.dev - " +
-        this.page.replace(/([A-Z])/g, " $1").replace(/^./, function(str) {
+        'joi.dev - ' +
+        this.page.replace(/([A-Z])/g, ' $1').replace(/^./, function (str) {
           return str.toUpperCase();
         }),
       meta: [
-        { hid: "description", name: "description", content: "View hapi's version history" }
-      ]
+        {
+          hid: 'description',
+          name: 'description',
+          content: "View hapi's version history",
+        },
+      ],
     };
   },
   computed: {
@@ -43,10 +47,10 @@ export default {
     },
     getMilestones() {
       return this.milestoneList;
-    }
+    },
   },
   async created() {
-    await this.$store.commit("setDisplay", "resources");
+    await this.$store.commit('setDisplay', 'resources');
   },
   async asyncData({ $axios, params, store }) {
     let milestoneList = [];
@@ -55,13 +59,13 @@ export default {
 
     const mileOptions = {
       headers: {
-        accept: "application/vnd.github.v3.raw+json",
-        authorization: "token " + process.env.GITHUB_TOKEN
-      }
+        accept: 'application/vnd.github.v3.raw+json',
+        authorization: 'token ' + process.env.GITHUB_TOKEN,
+      },
     };
     for (let p = 1; p <= 3; p++) {
       milestones = await $axios.$get(
-        "https://api.github.com/repos/hapijs/joi/milestones?state=closed&per_page=100&page=" +
+        'https://api.github.com/repos/hapijs/joi/milestones?state=closed&per_page=100&page=' +
           p,
         mileOptions
       );
@@ -78,7 +82,7 @@ export default {
     for (let milestone of sortedMilestones) {
       let changes = [];
       let m = await $axios.$get(
-        "https://api.github.com/repos/hapijs/joi/issues?state=closed&milestone=" +
+        'https://api.github.com/repos/hapijs/joi/issues?state=closed&milestone=' +
           milestone.number,
         mileOptions
       );
@@ -88,22 +92,22 @@ export default {
     }
 
     return {
-      milestoneList
+      milestoneList,
     };
   },
   methods: {
     changePage(value) {
       this.$data.page = value;
-      this.$store.commit("setCommunity", value);
+      this.$store.commit('setCommunity', value);
       window.scrollTo(0, 0);
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style lang="scss">
-@import "../../assets/styles/main.scss";
-@import "../../assets/styles/markdown.scss";
+@import '../../assets/styles/main.scss';
+@import '../../assets/styles/markdown.scss';
 
 .community-wrapper {
   margin: 0;

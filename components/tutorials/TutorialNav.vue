@@ -34,9 +34,7 @@
                 :href="'/tutorials/validation/?lang=' + getLanguage"
                 >Validation</a
               >
-              <ul
-                class="side-nav-select-list"
-              >
+              <ul class="side-nav-select-list">
                 <TutorialNavItem :menu="menu" :name="name" />
               </ul>
             </li>
@@ -49,17 +47,17 @@
 </template>
 
 <script>
-import SideFooter from "~/components/Footers/SideFooter.vue";
-import TutorialNavItem from "~/components/tutorials/TutorialNavItem.vue";
-const page = require("../../static/lib/tutorials/");
-import Ads from "~/components/Ads.vue";
+import SideFooter from '~/components/Footers/SideFooter.vue';
+import TutorialNavItem from '~/components/tutorials/TutorialNavItem.vue';
+const page = require('../../static/lib/tutorials/');
+import Ads from '~/components/Ads.vue';
 
 export default {
-  props: ["language", "menu"],
+  props: ['language', 'menu'],
   computed: {
     getLanguage() {
       return this.$store.getters.loadLanguage;
-    }
+    },
   },
   data() {
     return {
@@ -67,71 +65,71 @@ export default {
       uls: {},
       name: this.$route.params.tutorial
         ? this.$route.params.tutorial
-        : "gettingstarted"
+        : 'gettingstarted',
     };
   },
   methods: {
     onChange(event) {
-      this.$emit("changed", event.target.value);
+      this.$emit('changed', event.target.value);
     },
     setClasses() {
       //Set TOC classes
-      let anchors = document.querySelectorAll(".tutorial-nav-select-wrapper a");
-      let code = document.querySelectorAll(".tutorial-nav-select-wrapper code");
+      let anchors = document.querySelectorAll('.tutorial-nav-select-wrapper a');
+      let code = document.querySelectorAll('.tutorial-nav-select-wrapper code');
       let count = 0;
       let store = this.$store;
       let router = this.$router;
 
       for (let link of anchors) {
-        link.classList.add("tutorial-anchor");
+        link.classList.add('tutorial-anchor');
         this.links[link.hash] = link.getBoundingClientRect().top;
-        link.addEventListener("click", function(event) {
-          let currentActive = document.querySelector(".tutorial-active");
+        link.addEventListener('click', function (event) {
+          let currentActive = document.querySelector('.tutorial-active');
           if (currentActive) {
-            currentActive.classList.remove("tutorial-active");
+            currentActive.classList.remove('tutorial-active');
           }
-          link.classList.add("tutorial-active");
+          link.classList.add('tutorial-active');
           if (
             link.parentElement.children[1] &&
             link.parentElement.children[1].classList.contains(
-              "tutorial-ul-display"
+              'tutorial-ul-display'
             )
           ) {
             link.parentElement.children[1].classList.remove(
-              "tutorial-ul-display"
+              'tutorial-ul-display'
             );
-            link.classList.remove("tutorial-minus");
-            link.classList.add("tutorial-plus");
+            link.classList.remove('tutorial-minus');
+            link.classList.add('tutorial-plus');
           } else if (
             link.parentElement.children[1] &&
             !link.parentElement.children[1].classList.contains(
-              "tutorial-ul-display"
+              'tutorial-ul-display'
             )
           ) {
-            link.parentElement.children[1].classList.add("tutorial-ul-display");
-            link.classList.remove("tutorial-plus");
-            link.classList.add("tutorial-minus");
+            link.parentElement.children[1].classList.add('tutorial-ul-display');
+            link.classList.remove('tutorial-plus');
+            link.classList.add('tutorial-minus');
           }
         });
       }
 
       for (let i = code.length - 1; i >= 0; i--) {
-        code[i].classList.add("tutorial-nav-code");
+        code[i].classList.add('tutorial-nav-code');
       }
 
       let familyUls = document.querySelectorAll(
-        ".tutorial-nav-select-wrapper > ul ul"
+        '.tutorial-nav-select-wrapper > ul ul'
       );
 
       for (let ul of familyUls) {
         this.uls[ul.getBoundingClientRect().top] = {
           name: ul,
           top: ul.getBoundingClientRect().top,
-          bottom: ul.getBoundingClientRect().bottom
+          bottom: ul.getBoundingClientRect().bottom,
         };
       }
 
-      let links = document.querySelectorAll("#" + this.name + " a");
+      let links = document.querySelectorAll('#' + this.name + ' a');
       let points = {};
       let offsets = [];
       for (let i = 0; i < links.length; i++) {
@@ -139,37 +137,36 @@ export default {
           `.markdown-wrapper a[href='${links[i].hash}']`
         );
         if (point) {
-          point.id = point.id.replace("user-content-", "");
+          point.id = point.id.replace('user-content-', '');
           if (point.id) {
             points[point.offsetTop - 116] = {
-              name: "#" + point.id
+              name: '#' + point.id,
             };
           } else {
             points[point.offsetTop - 116] = {
-              name: point.hash
+              name: point.hash,
             };
           }
           offsets.push(point.offsetTop - 116);
         }
       }
 
-
       offsets = [...new Set(offsets)];
-      let currentElement = document.querySelector(".markdown-wrapper ");
+      let currentElement = document.querySelector('.markdown-wrapper ');
 
       for (let ul of familyUls) {
-        ul.parentNode.children[0].classList.remove("tutorial-minus");
-        ul.parentNode.children[0].classList.add("tutorial-plus");
-        ul.classList.add("tutorial-hide");
+        ul.parentNode.children[0].classList.remove('tutorial-minus');
+        ul.parentNode.children[0].classList.add('tutorial-plus');
+        ul.classList.add('tutorial-hide');
       }
 
       let that = this;
 
       //Add active class to elements on scroll
-      window.onscroll = function() {
+      window.onscroll = function () {
         let location = document.documentElement.scrollTop;
         let locationBody = document.body.scrollTop;
-        let actives = document.getElementsByClassName("tutorial-active");
+        let actives = document.getElementsByClassName('tutorial-active');
         let active;
         let element;
         let i = 0;
@@ -181,7 +178,7 @@ export default {
             if (offsets[i] <= location || offsets[i] <= locationBody) {
               let aClass = points[offsets[i]].name;
               for (let active of actives) {
-                active.classList.remove("tutorial-active");
+                active.classList.remove('tutorial-active');
               }
               element = document.querySelector(
                 `.side-nav-wrapper a[href='${aClass}']`
@@ -189,13 +186,13 @@ export default {
               if (element && element.children.length !== 0) {
                 document
                   .querySelector(`a[href='${aClass}']`)
-                  .classList.add("tutorial-active");
-                active = document.querySelector(".tutorial-active");
+                  .classList.add('tutorial-active');
+                active = document.querySelector('.tutorial-active');
               } else if (element && element.children.length === 0) {
                 document
                   .querySelector(`a[href='${aClass}']`)
-                  .classList.add("tutorial-active");
-                active = document.querySelector(".tutorial-active");
+                  .classList.add('tutorial-active');
+                active = document.querySelector('.tutorial-active');
               }
             }
           }
@@ -211,12 +208,12 @@ export default {
               activePosition >= that.uls[key].top &&
               activePosition < that.uls[key].bottom
             ) {
-              that.uls[key].name.classList.add("tutorial-ul-display");
+              that.uls[key].name.classList.add('tutorial-ul-display');
               that.uls[key].name.parentElement.children[0].classList.remove(
-                "tutorial-plus"
+                'tutorial-plus'
               );
               that.uls[key].name.parentElement.children[0].classList.add(
-                "tutorial-minus"
+                'tutorial-minus'
               );
             }
           }
@@ -229,12 +226,12 @@ export default {
           }
         }
       };
-    }
+    },
   },
   components: {
     SideFooter,
     Ads,
-    TutorialNavItem
+    TutorialNavItem,
   },
   // mounted() {
   //   this.setClasses()
@@ -246,7 +243,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../../assets/styles/sideNav.scss";
+@import '../../assets/styles/sideNav.scss';
 
 .tutorial-nav-window {
   position: -webkit-sticky;
@@ -307,7 +304,7 @@ export default {
 }
 
 .tutorial-plus:after {
-  content: "\002B";
+  content: '\002B';
   display: flex;
   justify-content: center;
   align-items: center;
@@ -322,7 +319,7 @@ export default {
 }
 
 .tutorial-minus:after {
-  content: "\2212";
+  content: '\2212';
   color: inherit;
   display: flex;
   justify-content: center;
@@ -371,7 +368,7 @@ export default {
 
 .tutorial-nav-code {
   background: rgba(0, 0, 0, 0);
-  font-family: "Lato", sans-serif;
+  font-family: 'Lato', sans-serif;
   color: $gray;
   font-size: 1rem;
   margin: 0 5px 0 0;
@@ -379,7 +376,7 @@ export default {
   border: none;
 }
 
-.tutorial-anchor:hover .tutorial-nav-code{
+.tutorial-anchor:hover .tutorial-nav-code {
   color: $orange !important;
 }
 
@@ -404,10 +401,8 @@ export default {
 }
 
 @media (prefers-color-scheme: dark) {
-
-.tutorial-nav-window {
-    background: $black;
+  .tutorial-nav-window {
+    background: $blacker;
   }
-
 }
 </style>

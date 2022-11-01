@@ -30,50 +30,50 @@
 </template>
 
 <script>
-const moduleInfo = require("../static/lib/moduleInfo.json");
-const stringify = require("@aitodotai/json-stringify-pretty-compact");
-const Joi = require("@hapi/joi");
+const moduleInfo = require('../static/lib/moduleInfo.json');
+const stringify = require('json-stringify-pretty-compact');
+const Joi = require('joi');
 
 if (process.client) {
-  require("codemirror/mode/javascript/javascript.js");
+  require('codemirror/mode/javascript/javascript.js');
 }
 
 export default {
-  layout: "noSide",
+  layout: 'noSide',
   head() {
     return {
-      title: "joi.dev - Schema Tester v" + this.version,
+      title: 'joi.dev - Schema Tester v' + this.version,
       meta: [
         {
-          hid: "description",
-          name: "description",
-          content: "Test your joi schemas"
-        }
-      ]
+          hid: 'description',
+          name: 'description',
+          content: 'Test your joi schemas',
+        },
+      ],
     };
   },
   data() {
     return {
-      schema: "",
-      validate: "",
-      result: "",
-      validatedResult: "",
+      schema: '',
+      validate: '',
+      result: '',
+      validatedResult: '',
       options: {
-        theme: "eclipse",
+        theme: 'eclipse',
         tabSize: 2,
-        mode: "text/javascript",
+        mode: 'text/javascript',
         lineNumbers: true,
         lineWrapping: true,
-        addModeClass: true
+        addModeClass: true,
       },
       moduleAPI: moduleInfo,
-      page: "tester",
+      page: 'tester',
       intro: false,
       example: false,
       usage: false,
       faq: false,
       advanced: false,
-      version: ""
+      version: '',
     };
   },
   computed: {
@@ -82,38 +82,38 @@ export default {
     },
     getValidate() {
       return this.$store.getters.loadValidate;
-    }
+    },
   },
   methods: {
     onSchemaChange(input) {
-      this.$store.commit("setSchema", input);
+      this.$store.commit('setSchema', input);
       this.$data.schema = this.getSchema;
     },
     onValidateChange(input) {
-      this.$store.commit("setValidate", input);
+      this.$store.commit('setValidate', input);
       this.$data.validate = this.getValidate;
     },
     findErrors(error) {
-      let element = document.querySelector(".validated-result");
+      let element = document.querySelector('.validated-result');
       let innerText = this.validatedResult;
       for (let e of error) {
-        let f = "  " + e.replace(/["]/gm, "").replace(/\..*/, "") + ":";
+        let f = '  ' + e.replace(/["]/gm, '').replace(/\..*/, '') + ':';
         let regEx = new RegExp(f);
         let line = this.validatedResult.match(regEx)[0];
         innerText = innerText.replace(
           line,
-          "  <span class='error-span'>" + line.slice(2, -1) + "</span>:"
+          "  <span class='error-span'>" + line.slice(2, -1) + '</span>:'
         );
         element.innerHTML = innerText;
       }
     },
     removeJson() {
       let keys = this.validatedResult.match(/".*":/gm);
-      let element = document.querySelector(".validated-result");
+      let element = document.querySelector('.validated-result');
       for (let key in keys) {
         this.validatedResult = this.validatedResult.replace(
           /(")(?=.*:)(?!,.*:)/gm,
-          ""
+          ''
         );
         element.innerHTML = this.validatedResult;
       }
@@ -125,84 +125,84 @@ export default {
       return value;
     },
     onValidateClick() {
-      this.validatedResult = "";
+      this.validatedResult = '';
       let isSchema;
-      let element = document.querySelector(".validated-result");
-      if (this.schema[this.schema.length - 1] === ";") {
+      let element = document.querySelector('.validated-result');
+      if (this.schema[this.schema.length - 1] === ';') {
         this.schema = this.schema.slice(0, -1);
       }
-      if (this.validate[this.validate.length - 1] === ";") {
+      if (this.validate[this.validate.length - 1] === ';') {
         this.validate = this.validate.slice(0, -1);
       }
       try {
         let validatedObject = Function(
-          '"use strict";return (' + this.validate + ")"
+          '"use strict";return (' + this.validate + ')'
         )();
         let joiSchema = Function(
-          "Joi",
-          '"use strict";return (' + this.schema + ")"
+          'Joi',
+          '"use strict";return (' + this.schema + ')'
         );
-        let isSchema = Joi.isSchema(joiSchema(Joi));
+        isSchema = Joi.isSchema(joiSchema(Joi));
         let validatedResults = joiSchema(Joi).validate(validatedObject, {
-          abortEarly: false
+          abortEarly: false,
         });
         this.validatedResult = stringify(validatedResults.value, {
-          maxNesting: 1
+          maxNesting: 1,
         });
         this.removeJson();
 
         if (validatedResults.error) {
           let errorMessage = validatedResults.error.message.toString();
-          this.result = "Validation Error: " + errorMessage;
+          this.result = 'Validation Error: ' + errorMessage;
           let schemaErrors = errorMessage.match(/"(.*?)"/gm);
           try {
             this.findErrors(schemaErrors);
           } catch (error) {}
         } else {
-          this.result = "Validation Passed";
+          this.result = 'Validation Passed';
         }
       } catch (error) {
         if (!isSchema && error instanceof TypeError) {
-          this.result = "Not a valid joi Schema";
+          this.result = 'Not a valid joi Schema';
         } else {
           console.log(error);
           this.result = error.toString();
-          let element = document.querySelector(".validated-result");
+          let element = document.querySelector('.validated-result');
           element.innerHTML = "<span class='error-span'>Error</span>";
         }
       }
-    }
+    },
   },
   created() {
     let versionsArray = this.moduleAPI.joi.versionsArray;
     this.$data.version = versionsArray[0];
     this.$data.schema = this.getSchema;
     this.$data.validate = this.getValidate;
-    this.$store.commit("setDisplay", "tester");
-    this.$store.commit("setFamily", "joi");
+    this.$store.commit('setDisplay', 'tester');
+    this.$store.commit('setFamily', 'joi');
     if (this.moduleAPI.joi[versionsArray[0]].intro) {
-      this.$store.commit("setIntro", true);
+      this.$store.commit('setIntro', true);
     }
     if (this.moduleAPI.joi[versionsArray[0]].example) {
-      this.$store.commit("setExample", true);
+      this.$store.commit('setExample', true);
     }
     if (this.moduleAPI.joi[versionsArray[0]].usage) {
-      this.$store.commit("setUsage", true);
+      this.$store.commit('setUsage', true);
     }
     if (this.moduleAPI.joi[versionsArray[0]].faq) {
-      this.$store.commit("setFaq", true);
+      this.$store.commit('setFaq', true);
     }
     if (this.moduleAPI.joi[versionsArray[0]].advanced) {
-      this.$store.commit("setAdvanced", true);
+      this.$store.commit('setAdvanced', true);
     }
-  }
+  },
 };
 </script>
 
 <style lang="scss">
-@import "../assets/styles/main.scss";
-@import "codemirror/lib/codemirror.css";
-@import "codemirror/theme/eclipse.css";
+@import '../assets/styles/main.scss';
+@import 'codemirror/lib/codemirror.css';
+@import 'codemirror/theme/eclipse.css';
 
 .test-wrapper {
   width: 100%;

@@ -1,7 +1,9 @@
 <template>
   <div class="logWrapper">
     <div class="logVersionWrapper">
-      <a :href="versionUrl" target="__blank" class="log-title" :id='version'>{{ version }}</a>
+      <a :href="versionUrl" target="__blank" class="log-title" :id="version">{{
+        version
+      }}</a>
       <a :href="releaseURL" v-if="release" class="releaseLink" target="_blank"
         ><div class="release">
           <img
@@ -23,7 +25,13 @@
         :issueText="issue.title"
         :issueLabels="issue.labels"
       />
-      <div :class="showMoreIssues ? 'hidden-issues-wrapper activeIssues' : 'hidden-issues-wrapper'">
+      <div
+        :class="
+          showMoreIssues
+            ? 'hidden-issues-wrapper activeIssues'
+            : 'hidden-issues-wrapper'
+        "
+      >
         <ChangelogText
           v-for="issue in hiddenIssues"
           v-bind:key="issue.number"
@@ -33,8 +41,18 @@
           :issueLabels="issue.labels"
         />
       </div>
-      <button class="issuesButton" v-if="showMoreButton" v-on:click="showIssues()">
-        <img src="/img/down.png" alt="down arrow" :class="showMoreIssues ? 'issuesButtonUpArrow' : 'issuesButtonDownArrow'" />{{ !getShowMoreIssues ? 'Show More' : 'Hide Issues' }}
+      <button
+        class="issuesButton"
+        v-if="showMoreButton"
+        v-on:click="showIssues()"
+      >
+        <img
+          src="/img/down.png"
+          alt="down arrow"
+          :class="
+            showMoreIssues ? 'issuesButtonUpArrow' : 'issuesButtonDownArrow'
+          "
+        />{{ !getShowMoreIssues ? 'Show More' : 'Hide Issues' }}
       </button>
     </div>
   </div>
@@ -45,7 +63,7 @@ import ChangelogText from './ChangelogText.vue';
 
 export default {
   components: {
-    ChangelogText
+    ChangelogText,
   },
   props: ['version', 'versionUrl', 'issues'],
   data() {
@@ -56,30 +74,30 @@ export default {
       releaseURL: '',
       showMoreButton: false,
       showMoreIssues: false,
-      hiddenIssues: []
+      hiddenIssues: [],
     };
   },
   methods: {
     showIssues() {
       this.$data.showMoreIssues = !this.$data.showMoreIssues;
       if (!this.$data.showMoreIssues) {
-        let id = document.getElementById(this.$props.version)
-        window.scrollTo(0, id.offsetTop)
+        let id = document.getElementById(this.$props.version);
+        window.scrollTo(0, id.offsetTop);
       }
-    }
+    },
   },
   computed: {
     getShowMoreIssues() {
       return this.$data.showMoreIssues;
-    }
+    },
   },
   created() {
     this.$data.issuesArray = this.$props.issues;
     for (let issue of this.$data.issuesArray) {
-      if (issue.labels.some(label => label.name === 'breaking changes')) {
+      if (issue.labels.some((label) => label.name === 'breaking changes')) {
         this.$data.breaking = true;
       }
-      if (issue.labels.some(label => label.name === 'release notes')) {
+      if (issue.labels.some((label) => label.name === 'release notes')) {
         this.$data.release = true;
         this.$data.releaseURL = issue.html_url;
       }
@@ -89,7 +107,7 @@ export default {
       this.$data.hiddenIssues = this.$props.issues.slice(10);
       this.$data.showMoreButton = true;
     }
-  }
+  },
 };
 </script>
 
@@ -168,7 +186,7 @@ export default {
   background: none;
   border: none;
   padding: 2px 4px;
-  font-size: .95em;
+  font-size: 0.95em;
   cursor: pointer;
 }
 

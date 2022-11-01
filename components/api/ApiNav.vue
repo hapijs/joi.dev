@@ -6,12 +6,18 @@
           <div class="api-nav-title-wrapper">
             <div class="api-nav-title">API</div>
             <div class="api-lang-wrapper">
-              <select @change="onChange($event)" class="api-lang-select" :value="version">
+              <select
+                @change="onChange($event)"
+                class="api-lang-select"
+                :value="version"
+              >
                 <option
                   v-for="version in versions"
                   v-bind:key="version"
                   :value="version"
-                >{{ version }}</option>
+                >
+                  {{ version }}
+                </option>
               </select>
             </div>
           </div>
@@ -33,8 +39,12 @@
                     {{ results.length }}
                   </div>
                   <div class="api-search-buttons">
-                    <button class="api-search-button" v-on:click="onPrevious">Previous</button>
-                    <button class="api-search-button" v-on:click="onNext">Next</button>
+                    <button class="api-search-button" v-on:click="onPrevious">
+                      Previous
+                    </button>
+                    <button class="api-search-button" v-on:click="onNext">
+                      Next
+                    </button>
                   </div>
                 </div>
               </div>
@@ -42,7 +52,10 @@
             </div>
           </div>
         </div>
-        <div class="api-nav-select-wrapper" v-html="$md.render(this.$props.menu)"></div>
+        <div
+          class="api-nav-select-wrapper"
+          v-html="$md.render(this.$props.menu)"
+        ></div>
       </div>
       <div class="api-side-footer-wrapper">
         <SideFooter />
@@ -52,8 +65,8 @@
 </template>
 
 <script>
-import SideFooter from '~/components/Footers/SideFooter.vue'
-import Ads from '~/components/Ads.vue'
+import SideFooter from '~/components/Footers/SideFooter.vue';
+import Ads from '~/components/Ads.vue';
 export default {
   components: {
     SideFooter,
@@ -64,159 +77,159 @@ export default {
     return {
       uls: {},
       links: {},
-    }
+    };
   },
   methods: {
     onChange(event) {
-      this.$emit('change', event.target.value)
+      this.$emit('change', event.target.value);
     },
     onInput(event) {
       document
         .querySelector('.api-search-error')
-        .classList.remove('nav-display')
+        .classList.remove('nav-display');
       document
         .querySelector('.api-search-results')
-        .classList.remove('nav-display')
-      this.$emit('input', event.target.value)
+        .classList.remove('nav-display');
+      this.$emit('input', event.target.value);
     },
     onSearch() {
       if (this.search !== '') {
-        this.$emit('search', this.uls, this.links)
+        this.$emit('search', this.uls, this.links);
       }
     },
     onPrevious() {
       if (this.indexResults !== 0) {
-        this.$emit('previous', this.indexResults - 1, this.uls, this.links)
+        this.$emit('previous', this.indexResults - 1, this.uls, this.links);
       }
     },
     onNext() {
       if (this.indexResults !== this.results.length - 1) {
-        this.$emit('next', this.indexResults + 1, this.uls, this.links)
+        this.$emit('next', this.indexResults + 1, this.uls, this.links);
       }
     },
     setClasses() {
       //Add classes to API nav
-      let lis = document.querySelectorAll('.api-nav-select-wrapper li')
-      let code = document.querySelectorAll('.api-nav-select-wrapper code')
-      let wrapper = document.querySelector('.markdown-wrapper')
-      let hapiHeader = document.createElement('h1')
+      let lis = document.querySelectorAll('.api-nav-select-wrapper li');
+      let code = document.querySelectorAll('.api-nav-select-wrapper code');
+      let wrapper = document.querySelector('.markdown-wrapper');
+      let hapiHeader = document.createElement('h1');
       hapiHeader.innerHTML =
         "API <span class='api-version-span'>v" +
         this.version.match(/.*(?=\.)/)[0] +
-        '.x'
-      hapiHeader.setAttribute('class', 'hapi-header')
-      wrapper.insertBefore(hapiHeader, wrapper.firstChild)
+        '.x';
+      hapiHeader.setAttribute('class', 'hapi-header');
+      wrapper.insertBefore(hapiHeader, wrapper.firstChild);
       const height = document
         .querySelector('.api-nav-select-wrapper')
-        .getBoundingClientRect().bottom
+        .getBoundingClientRect().bottom;
       for (let li of lis) {
-        li.classList.add('api-nav-li')
+        li.classList.add('api-nav-li');
         if (li.children[1]) {
-          li.children[0].classList.add('api-nav-plus')
+          li.children[0].classList.add('api-nav-plus');
         }
       }
       let topLinks = document.querySelectorAll(
         '.api-nav-select-wrapper > ul > li > a'
-      )
+      );
       for (let top of topLinks) {
-        top.classList.add('api-header')
+        top.classList.add('api-header');
       }
       let aLinks = document.querySelectorAll(
         '.api-nav-select-wrapper > ul > li > ul > li a'
-      )
+      );
       for (let a of aLinks) {
-        a.classList.add('api-nav-header')
-        this.links[a.hash] = a.getBoundingClientRect().top
+        a.classList.add('api-nav-header');
+        this.links[a.hash] = a.getBoundingClientRect().top;
       }
-      let uls = document.querySelectorAll('.api-nav-li ul')
+      let uls = document.querySelectorAll('.api-nav-li ul');
       for (let ul of uls) {
         this.uls[ul.getBoundingClientRect().top] = {
           name: ul,
           top: ul.getBoundingClientRect().top,
           bottom: ul.getBoundingClientRect().bottom,
-        }
+        };
       }
       for (let ul of uls) {
-        ul.classList.add('api-nav-ul')
+        ul.classList.add('api-nav-ul');
       }
       let links = document.querySelectorAll(
         '.api-nav-select-wrapper > ul > li a'
-      )
+      );
       for (let link of links) {
         if (
           link.parentElement.children[1] &&
           link.parentElement.children[1].classList.contains('api-nav-ul')
         ) {
-          link.classList.add('api-nav-plus')
+          link.classList.add('api-nav-plus');
         }
         link.addEventListener('click', function (event) {
-          let currentActive = document.querySelector('.api-active')
+          let currentActive = document.querySelector('.api-active');
           if (currentActive) {
-            currentActive.classList.remove('api-active')
+            currentActive.classList.remove('api-active');
           }
-          link.classList.add('api-active')
+          link.classList.add('api-active');
           if (
             link.parentElement.children[1] &&
             link.parentElement.children[1].classList.contains('nav-display')
           ) {
             if (link.classList.contains('api-header')) {
-              let headers = document.querySelectorAll('.nav-display')
+              let headers = document.querySelectorAll('.nav-display');
               for (let head of headers) {
-                head.classList.remove('nav-display')
+                head.classList.remove('nav-display');
               }
-              let minus = document.querySelectorAll('.api-nav-minus')
+              let minus = document.querySelectorAll('.api-nav-minus');
               for (let m of minus) {
-                m.classList.remove('api-nav-minus')
-                m.classList.add('api-nav-plus')
+                m.classList.remove('api-nav-minus');
+                m.classList.add('api-nav-plus');
               }
             }
-            link.parentElement.children[1].classList.remove('nav-display')
-            link.classList.remove('api-nav-minus')
-            link.classList.add('api-nav-plus')
+            link.parentElement.children[1].classList.remove('nav-display');
+            link.classList.remove('api-nav-minus');
+            link.classList.add('api-nav-plus');
           } else if (
             link.parentElement.children[1] &&
             !link.parentElement.children[1].classList.contains('nav-display')
           ) {
             if (link.classList.contains('api-header')) {
-              let headers = document.querySelectorAll('.nav-display')
+              let headers = document.querySelectorAll('.nav-display');
               for (let head of headers) {
-                head.classList.remove('nav-display')
+                head.classList.remove('nav-display');
               }
-              let minus = document.querySelectorAll('.api-nav-minus')
+              let minus = document.querySelectorAll('.api-nav-minus');
               for (let m of minus) {
-                m.classList.remove('api-nav-minus')
-                m.classList.add('api-nav-plus')
+                m.classList.remove('api-nav-minus');
+                m.classList.add('api-nav-plus');
               }
             }
-            let linkSibling = link.parentElement.children[1]
-            linkSibling.classList.add('nav-display')
-            link.classList.remove('api-nav-plus')
-            link.classList.add('api-nav-minus')
+            let linkSibling = link.parentElement.children[1];
+            linkSibling.classList.add('nav-display');
+            link.classList.remove('api-nav-plus');
+            link.classList.add('api-nav-minus');
           }
-          if (!document.getElementById('carbonads')) return
-          if (typeof _carbonads !== 'undefined') _carbonads.refresh()
-        })
+          if (!document.getElementById('carbonads')) return;
+          if (typeof _carbonads !== 'undefined') _carbonads.refresh();
+        });
       }
-      let plus = document.querySelectorAll('.api-nav-plus')
-      let methods = []
+      let plus = document.querySelectorAll('.api-nav-plus');
+      let methods = [];
       for (let p of plus) {
-        methods.push(p)
+        methods.push(p);
       }
       //Remove extra text from TOC elements
       for (let i = code.length - 1; i >= 0; i--) {
-        code[i].classList.add('api-nav-code')
-        let matchHeader = ''
-        let match = ''
+        code[i].classList.add('api-nav-code');
+        let matchHeader = '';
+        let match = '';
         for (let m = methods.length - 1; m >= 0; m--) {
           if (methods[m].innerHTML.includes('Response')) {
-            match = 'response.'
+            match = 'response.';
           } else {
             match =
               methods[m].innerHTML
                 .replace(/<[^>]*>/g, '')
                 .toLowerCase()
                 .split(' ')
-                .join('.') + '.'
+                .join('.') + '.';
           }
           if (
             methods[m].parentElement.children[1].contains(code[i]) &&
@@ -225,146 +238,148 @@ export default {
             if (code[i].innerHTML.replace(match, '').length > matchHeader) {
               matchHeader = code[i].innerHTML
                 .replace(match, '')
-                .replace('await ', '')
+                .replace('await ', '');
             }
           }
         }
         if (matchHeader) {
-          code[i].innerHTML = matchHeader
+          code[i].innerHTML = matchHeader;
         }
         if (code[i + 1]) {
           let a = code[i].innerHTML
             .replace(/\(([^#/(/)]+)\)/g, '()')
-            .replace('await ', '')
+            .replace('await ', '');
           let b = code[i + 1].innerHTML
             .replace(/\(([^#/(/)]+)\)/g, '()')
-            .replace('await ', '')
+            .replace('await ', '');
           if (a === b) {
-            continue
+            continue;
           }
         }
         if (code[i - 1]) {
-          let a = code[i].innerHTML.replace(/\(([^#/(/)]+)\)/g, '()')
+          let a = code[i].innerHTML.replace(/\(([^#/(/)]+)\)/g, '()');
           let b = code[i - 1].innerHTML
             .replace(/\(([^#/(/)]+)\)/g, '()')
-            .replace(match, '')
+            .replace(match, '');
           if (a !== b) {
             code[i].innerHTML = code[i].innerHTML.replace(
               /\(([^#/(/)]+)\)/g,
               '()'
-            )
+            );
           }
         }
         if (!code[i - 1]) {
           code[i].innerHTML = code[i].innerHTML.replace(
             /\(([^#/(/)]+)\)/g,
             '()'
-          )
+          );
         }
       }
       //API nav scroll spy
-      let tags = document.querySelectorAll('.markdown-wrapper a')
-      let points = {}
-      let offsets = []
+      let tags = document.querySelectorAll('.markdown-wrapper a');
+      let points = {};
+      let offsets = [];
       for (let i = 1; i < tags.length; i++) {
         if (tags[i].id) {
           points[tags[i].offsetTop - 40] = {
             name: '#' + tags[i].id,
-          }
-          offsets.push(tags[i].offsetTop - 40)
+          };
+          offsets.push(tags[i].offsetTop - 40);
         }
       }
-      let that = this
+      let that = this;
       //Add active class to elements on scroll
       window.onscroll = function () {
         if (that.$route.path !== '/tester') {
-          let location = document.documentElement.scrollTop
-          let locationBody = document.body.scrollTop
-          let actives = document.getElementsByClassName('api-active')
-          let i = 0
-          let active
-          let aClass
+          let location = document.documentElement.scrollTop;
+          let locationBody = document.body.scrollTop;
+          let actives = document.getElementsByClassName('api-active');
+          let i = 0;
+          let active;
+          let aClass;
           for (i in offsets) {
-            aClass = points[offsets[i]].name
-            let element = document.querySelector(`a[href='${aClass}']`)
+            aClass = points[offsets[i]].name;
+            let element = document.querySelector(`a[href='${aClass}']`);
             if (offsets[i] <= location || offsets[i] <= locationBody) {
               for (let a of actives) {
-                a.classList.remove('api-active')
+                a.classList.remove('api-active');
               }
               if (aClass !== '#route.options.validate.state') {
-                element.classList.add('api-active')
-                active = document.querySelector('.api-active')
+                element.classList.add('api-active');
+                active = document.querySelector('.api-active');
               }
             }
           }
           if (active) {
-            let activeClass
+            let activeClass;
             if (that.$route.hash === active.hash && bottom === 0) {
               let wrapperHeight = document
                 .querySelector('.api-nav-wrapper')
-                .getBoundingClientRect().height
-              activeClass = that.$route.hash
+                .getBoundingClientRect().height;
+              activeClass = that.$route.hash;
             } else {
-              activeClass = active.hash
+              activeClass = active.hash;
             }
-            let activeLink = document.querySelector(`a[href*='${activeClass}']`)
-            let activePosition = that.links[activeLink.hash]
+            let activeLink = document.querySelector(
+              `a[href*='${activeClass}']`
+            );
+            let activePosition = that.links[activeLink.hash];
             for (let key in that.uls) {
               if (
                 activePosition >= that.uls[key].top &&
                 activePosition < that.uls[key].bottom
               ) {
-                that.uls[key].name.classList.add('nav-display')
+                that.uls[key].name.classList.add('nav-display');
                 that.uls[key].name.parentElement.children[0].classList.remove(
                   'api-nav-plus'
-                )
+                );
                 that.uls[key].name.parentElement.children[0].classList.add(
                   'api-nav-minus'
-                )
+                );
               }
             }
-            let bottom = active.getBoundingClientRect().bottom
-            let location = active.getBoundingClientRect()
+            let bottom = active.getBoundingClientRect().bottom;
+            let location = active.getBoundingClientRect();
             if (bottom > window.innerHeight || location.top < 131) {
-              active.scrollIntoView(false)
+              active.scrollIntoView(false);
             }
             if (that.$route.hash === active.hash && bottom === 0) {
-              active.scrollIntoView(false)
+              active.scrollIntoView(false);
             }
           }
         }
-      }
+      };
     },
   },
   async mounted() {
-    await this.setClasses()
+    await this.setClasses();
     if (this.$route.hash) {
-      document.querySelector('.api-nav-select-wrapper').getBoundingClientRect()
+      document.querySelector('.api-nav-select-wrapper').getBoundingClientRect();
       let wrapperHeight = document
         .querySelector('.api-nav-wrapper')
-        .getBoundingClientRect().height
-      let aClass = this.$route.hash
-      let active = document.querySelector(`a[href*='${aClass}']`)
-      active.classList.add('api-active')
-      const activePosition = this.links[active.hash]
+        .getBoundingClientRect().height;
+      let aClass = this.$route.hash;
+      let active = document.querySelector(`a[href*='${aClass}']`);
+      active.classList.add('api-active');
+      const activePosition = this.links[active.hash];
       for (let key in this.uls) {
         if (
           activePosition > this.uls[key].top &&
           activePosition < this.uls[key].bottom
         ) {
-          this.uls[key].name.classList.add('nav-display')
+          this.uls[key].name.classList.add('nav-display');
           this.uls[key].name.parentElement.children[0].classList.remove(
             'api-nav-plus'
-          )
+          );
           this.uls[key].name.parentElement.children[0].classList.add(
             'api-nav-minus'
-          )
+          );
         }
       }
-      active.scrollIntoView(false)
+      active.scrollIntoView(false);
     }
   },
-}
+};
 </script>
 
 <style lang="scss">
@@ -456,6 +471,7 @@ export default {
   position: relative;
   padding: 0 20px;
   width: 100%;
+  margin-top: 20px;
 }
 .api-search-box {
   height: 30px;
@@ -636,9 +652,9 @@ export default {
 }
 .api-active {
   display: inline-block;
-  left: -60px;
-  padding: 2px 30px 2px 60px !important;
-  width: 375px !important;
+  left: -70px;
+  padding: 2px 30px 2px 70px !important;
+  width: 410px !important;
 }
 .api-side-footer-wrapper {
   width: 100%;
@@ -665,6 +681,31 @@ export default {
 @media print {
   .api-nav-window {
     display: none;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .api-nav-window,
+  .api-header-wrapper,
+  .api-search-button {
+    background-color: $blacker !important;
+  }
+
+  .api-nav-title {
+    color: $ash;
+  }
+  .api-lang-select,
+  .api-search-box {
+    background-color: $blackest;
+    border-color: #000;
+  }
+  .api-search-box {
+    border: 1px solid $dark-white;
+  }
+  .api-search-button {
+    border: 1px solid $dark-white;
+    background: $white;
+    color: $white;
   }
 }
 </style>

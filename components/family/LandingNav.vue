@@ -15,8 +15,9 @@
                   v-for="version in versions"
                   v-bind:key="version"
                   :value="version"
-                  >{{ version }}</option
                 >
+                  {{ version }}
+                </option>
               </select>
             </span>
             <Ads />
@@ -189,7 +190,7 @@
               @change="onVersionChange"
             />
           </ul>
-          <hr class="landing-hr" v-if="family === 'bell'"/>
+          <hr class="landing-hr" v-if="family === 'bell'" />
           <div
             v-if="family === 'bell'"
             id="bell2"
@@ -250,82 +251,82 @@
 </template>
 
 <script>
-import SideFooter from "~/components/Footers/SideFooter.vue";
-import FamilyNavItem from "~/components/family/FamilyNavItem.vue";
-import Ads from "~/components/Ads.vue";
+import SideFooter from '~/components/Footers/SideFooter.vue';
+import FamilyNavItem from '~/components/family/FamilyNavItem.vue';
+import Ads from '~/components/Ads.vue';
 
 export default {
   components: {
     SideFooter,
     FamilyNavItem,
-    Ads
+    Ads,
   },
   props: [
-    "page",
-    "moduleAPI",
-    "version",
-    "versions",
-    "menu",
-    "results",
-    "indexResults",
-    "search",
-    "moduleInfo",
-    "menuProvider"
+    'page',
+    'moduleAPI',
+    'version',
+    'versions',
+    'menu',
+    'results',
+    'indexResults',
+    'search',
+    'moduleInfo',
+    'menuProvider',
   ],
   methods: {
     async onVersionChange(event) {
-      this.$store.commit("setVersion", event.target.value);
+      this.$store.commit('setVersion', event.target.value);
       await this.$router.push({
         path: this.$route.path,
-        query: { v: event.target.value }
+        query: { v: event.target.value },
       });
-      this.$emit("input", "");
+      this.$emit('input', '');
       document
-        .querySelector(".family-search-results")
-        .classList.remove("nav-display");
+        .querySelector('.family-search-results')
+        .classList.remove('nav-display');
       document
-        .querySelector(".family-search-error")
-        .classList.remove("nav-display");
+        .querySelector('.family-search-error')
+        .classList.remove('nav-display');
       window.scrollTo(0, 0);
       this.$parent.setClasses();
-      this.$emit("clipboards")
+      this.$emit('clipboards');
     },
     onSearch() {
-      if (this.search !== "") {
-        this.$emit("search");
+      if (this.search !== '') {
+        this.$emit('search');
       }
     },
     onPrevious() {
       if (this.indexResults !== 0) {
-        this.$emit("previous", this.indexResults - 1, this.uls, this.links);
+        this.$emit('previous', this.indexResults - 1, this.uls, this.links);
       }
     },
     onNext() {
       if (this.indexResults !== this.results.length - 1) {
-        this.$emit("next", this.indexResults + 1, this.uls, this.links);
+        this.$emit('next', this.indexResults + 1, this.uls, this.links);
       }
     },
     onInput(event) {
       document
-        .querySelector(".family-search-error")
-        .classList.remove("nav-display");
+        .querySelector('.family-search-error')
+        .classList.remove('nav-display');
       document
-        .querySelector(".family-search-results")
-        .classList.remove("nav-display");
-      this.$emit("input", event.target.value);
+        .querySelector('.family-search-results')
+        .classList.remove('nav-display');
+      this.$emit('input', event.target.value);
     },
     onScroll() {
       let links = [];
-      links = document.querySelectorAll(".landing-nav-api-title a");
+      links = document.querySelectorAll('.landing-nav-api-title a');
       let points = {};
       let offsets = [];
       for (let i = 0; i < links.length; i++) {
         let point = document.querySelector(
-          `.landing-anchor[name*='${links[i].href.replace(/^[^_]*#/, "")}']`
+          `.landing-anchor[name*='${links[i].href.replace(/^[^_]*#/, '')}']`
         );
         if (point && point.name) {
           points[point.offsetTop - 20] = {
-            name: "#" + point.name
+            name: '#' + point.name,
           };
           offsets.push(point.offsetTop - 20);
         }
@@ -333,10 +334,10 @@ export default {
       offsets = [...new Set(offsets)];
 
       //Add active class to elements on scroll
-      window.onscroll = function() {
+      window.onscroll = function () {
         let location = document.documentElement.scrollTop;
         let locationBody = document.body.scrollTop;
-        let actives = document.getElementsByClassName("bold");
+        let actives = document.getElementsByClassName('bold');
         let i = 0;
         // for (i in offsets) {
         //   if (offsets[i] <= location || offsets[i] <= locationBody) {
@@ -357,22 +358,22 @@ export default {
             if (offsets[i] <= location || offsets[i] <= locationBody) {
               let aClass = points[offsets[i]].name;
               for (let active of actives) {
-                active.classList.remove("bold");
+                active.classList.remove('bold');
               }
-              let element = document.querySelector(aClass + "1");
-              element.classList.add("bold");
+              let element = document.querySelector(aClass + '1');
+              element.classList.add('bold');
             }
           }
         }
       };
-    }
+    },
   },
   data() {
     return {
       header: this.$route.params.family,
       showAPI: false,
-      hash: "",
-      family: ""
+      hash: '',
+      family: '',
     };
   },
   computed: {
@@ -402,7 +403,7 @@ export default {
     },
     getAdvanced() {
       return this.$store.getters.loadAdvanced;
-    }
+    },
   },
   created() {
     this.$data.family = this.getFamily;
@@ -414,13 +415,13 @@ export default {
   updated() {
     this.$data.hash = this.getHash;
     this.$data.family = this.getFamily;
-  }
+  },
 };
 </script>
 
 <style lang="scss">
-@import "../../assets/styles/sideNav.scss";
-@import "../../assets/styles/markdown.scss";
+@import '../../assets/styles/sideNav.scss';
+@import '../../assets/styles/markdown.scss';
 
 .family-top-wrapper {
   display: flex;
@@ -472,7 +473,7 @@ export default {
 
 .family-search-img {
   position: absolute;
-  background: url("/img/search.png") no-repeat;
+  background: url('/img/search.png') no-repeat;
   background-position: center;
   background-color: $white;
   background-size: contain;
@@ -562,6 +563,20 @@ export default {
 
   .landing-hr {
     display: none;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .family-top-wrapper,
+  .family-search-button {
+    background: $black !important;
+    border-color: $blackest !important;
+    color: $white !important;
+  }
+  .family-nav-title,
+  .family-nav-title a,
+  .family-nav-title a:hover {
+    color: $white !important;
   }
 }
 </style>
