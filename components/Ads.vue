@@ -4,7 +4,7 @@
       <script
         async
         type="text/javascript"
-        src="//cdn.carbonads.com/carbon.js?serve=CE7DK5QL&placement=hapidev"
+        src="//cdn.carbonads.com/carbon.js?serve=CEAIL27W&placement=joidev"
         id="_carbonads_js"
       ></script>
     </div>
@@ -15,20 +15,20 @@
 export default {
   data() {
     return {
-      loadAd: false
-    };
+      loadAd: false,
+    }
   },
   async mounted() {
-    this.loadAd = true;
-  }
-};
+    this.loadAd = true
+  },
+}
 </script>
 
 <style lang="scss">
-@import "../assets/styles/variables.scss";
+@import '../assets/styles/variables.scss';
 
 #carbonads {
-  font-family: "Lato", sans-serif;
+  font-family: 'Lato', sans-serif;
 }
 
 #carbonads {
