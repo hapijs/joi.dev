@@ -1,29 +1,27 @@
 <template>
   <div class="contain">
-    <Nav/>
-    <nuxt/>
-    <Footer/>
+    <Nav />
+    <nuxt />
+    <Footer />
   </div>
 </template>
 
 <script>
-import Nav from "~/components/Navs/Nav.vue";
-import Footer from "~/components/Footers/Footer.vue";
+import Nav from '~/components/Navs/Nav.vue';
+import Footer from '~/components/Footers/Footer.vue';
 import CopyCodeSnippetMixin from '~/mixins/CopyCodeSnippet';
 
 export default {
   components: {
     Nav,
-    Footer
+    Footer,
   },
-  mixins: [
-    CopyCodeSnippetMixin
-  ],
+  mixins: [CopyCodeSnippetMixin],
 };
 </script>
 
 <style lang="scss">
-@import "../assets/styles/variables.scss";
+@import '../assets/styles/variables.scss';
 
 html {
   word-spacing: 1px;
@@ -39,7 +37,7 @@ body {
 }
 
 .logo {
-  background: url("/img/joiLogo.jpg") no-repeat 0 0;
+  background: url('/img/joiTransparent.png') no-repeat 0 0;
   background-size: contain;
   height: 75px !important;
   width: 100px !important;

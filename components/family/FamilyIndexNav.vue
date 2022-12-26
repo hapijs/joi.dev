@@ -33,42 +33,42 @@
 </template>
 
 <script>
-import SideFooter from "~/components/Footers/SideFooter.vue";
-import Ads from "~/components/Ads.vue";
+import SideFooter from '~/components/Footers/SideFooter.vue';
+import Ads from '~/components/Ads.vue';
 
 export default {
-  props: ["search", "sort"],
+  props: ['search', 'sort'],
   components: {
     SideFooter,
-    Ads
+    Ads,
   },
   methods: {
     onInput(event) {
-      this.$emit("input", event);
+      this.$emit('input', event);
     },
     onSearch() {
-      if (this.search !== "") {
-        this.$emit("search");
-        document.querySelector(".module-clear-button").classList.remove("hide");
+      if (this.search !== '') {
+        this.$emit('search');
+        document.querySelector('.module-clear-button').classList.remove('hide');
       }
     },
     onClear() {
-      let hidden = document.querySelectorAll(".hide");
+      let hidden = document.querySelectorAll('.hide');
       for (let hide of hidden) {
-        hide.classList.remove("hide");
+        hide.classList.remove('hide');
       }
-      document.querySelector(".module-clear-button").classList.add("hide");
-      this.$emit("clear");
+      document.querySelector('.module-clear-button').classList.add('hide');
+      this.$emit('clear');
     },
     onChange(event) {
-      this.$emit("change", event.target.value);
-    }
-  }
+      this.$emit('change', event.target.value);
+    },
+  },
 };
 </script>
 
 <style lang="scss">
-@import "../../assets/styles/sideNav.scss";
+@import '../../assets/styles/sideNav.scss';
 
 .family-checkbox-wrapper {
   display: flex;
@@ -124,7 +124,7 @@ export default {
 
 .family-module-search-img {
   position: absolute;
-  background: url("/img/search.png") no-repeat;
+  background: url('/img/search.png') no-repeat;
   background-position: center;
   background-color: $white;
   background-size: contain;
@@ -148,5 +148,19 @@ export default {
   color: #333;
   cursor: pointer;
   margin: 10px 0 0 0;
+}
+
+@media (prefers-color-scheme: dark) {
+  .family-sort,
+  .family-module-search-box {
+    background: $black;
+    border-color: $blackest;
+    color: $light-gray;
+  }
+
+  .family-module-search-img {
+    background-color: $blackest;
+    border-color: $blackest;
+  }
 }
 </style>

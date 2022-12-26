@@ -6,9 +6,7 @@
           <th class="version-header">Version</th>
           <th class="license-header">License</th>
           <th class="node-header">Node</th>
-          <th class="dependencies-header">Dependencies</th>
-          <th class="travis-header">Travis</th>
-          <th class="life-header">End of Life</th>
+          <th class="ci-header">CI</th>
         </tr>
       </thead>
       <tbody>
@@ -23,14 +21,11 @@
               <a
                 class="version-helmet"
                 :href="
-                  newRepos[name][version.name].api
-                    ? '/module/' + name + '/api?v=' + version.name
-                    : name === 'hapi'
-                    ? '/api/?v=' + version.name
-                    : 'https://github.com/hapijs/' +
-                      name +
-                      '/tree/' +
-                      version.branch
+                  name === 'joi'
+                    ? `/api/?v=${version.name}`
+                    : newRepos[name][version.name].api
+                    ? `/module/${name}/api?v=${version.name}`
+                    : `https://github.com/hapijs/${name}/tree/${version.branch}`
                 "
               >
                 <img
@@ -42,9 +37,9 @@
               <a
                 :href="
                   'https://github.com/hapijs/' +
-                    name +
-                    '/tree/' +
-                    version.branch
+                  name +
+                  '/tree/' +
+                  version.branch
                 "
                 target="_blank"
               >
@@ -59,44 +54,22 @@
           <td class="module-license">{{ version.license }}</td>
           <td class="table-version">{{ version.node }}</td>
           <td class="status-badge">
-            <img
-              :src="
-                'https://david-dm.org/hapijs/' +
-                  name +
-                  '.svg?branch=' +
-                  version.branch
-              "
-              alt="Dependency Status"
-              class="hide"
-              @load="swapImg('depend' + name + version.name, version.branch)"
-              :id="'depend' + name + version.name"
-            />
-          </td>
-          <td class="status-badge">
             <a
               :href="
                 module.versions.length > 1
-                  ? 'https://travis-ci.org/hapijs/' + name + '/branches'
-                  : 'https://travis-ci.org/hapijs/' + name
+                  ? `https://github.com/hapijs/${name}/branches/actions?query=workflow%3Aci`
+                  : `https://github.com/hapijs/${name}/actions?query=workflow%3Aci`
               "
               target="_blank"
             >
               <img
-                :src="
-                  'https://travis-ci.org/hapijs/' +
-                    name +
-                    '.svg?branch=' +
-                    version.branch
-                "
+                :src="`https://github.com/hapijs/${name}/workflows/ci/badge.svg?branch=${version.branch}`"
                 alt="Build Status"
                 class="hide"
-                @load="swapImg('travis' + name + version.name)"
-                :id="'travis' + name + version.name"
+                @load="swapImg(`ci${name}${version.name}`, version.branch)"
+                :id="`ci${name}${version.name}`"
               />
             </a>
-          </td>
-          <td class="module-life">
-            {{ getSemver(name, version.name, version.license) }}
           </td>
         </tr>
       </tbody>
@@ -105,64 +78,57 @@
 </template>
 
 <script>
-const life = require("../../static/lib/endOfLife.js");
-const moduleInfo = require("../../static/lib/moduleInfo.json");
-let Semver = require("semver");
-import _ from "lodash";
+const moduleInfo = require('../../static/lib/moduleInfo.json');
+import _ from 'lodash';
 
 export default {
-  props: ["module", "name"],
+  props: ['module', 'name'],
   data() {
     return {
       img: {
         0: '<div class="status-code status-unknown"></div>',
         76: '<div class="status-code status-unknown"></div>',
+        // github action failing
+        79: '<div class="status-code status-failing"></div>',
         81: '<div class="status-code status-failing"></div>',
-        90: '<div class="status-code status-passing"></div>',
+        // github action pass
+        86: '<div class="status-code status-passing"></div>',
+        // github action no status
+        96: '<div class="status-code status-unknown"></div>',
         98: '<div class="status-code status-unknown"></div>',
         126: '<div class="status-code status-passing"></div>',
         149: '<div class="status-code status-unknown"></div>',
         156: '<div class="status-code status-passing"></div>',
         160: '<div class="status-code status-failing"></div>',
-        nonMaster: '<div class="status-code status-nonMaster"></div>'
+        nonMaster: '<div class="status-code status-nonMaster"></div>',
       },
-      life: life,
-      newRepos: moduleInfo
+      newRepos: moduleInfo,
     };
   },
   methods: {
-    getSemver(name, version, license) {
-      if (life.endOfLife[_.camelCase(name)] && license !== "Commercial") {
-        for (let v in life.endOfLife[_.camelCase(name)]) {
-          if (Semver.satisfies(version, v)) {
-            return life.endOfLife[_.camelCase(name)][v];
-          }
-          return null;
-        }
-      }
-    },
     camelName(name) {
       return _.camelCase(name);
     },
     async swapImg(id, branch) {
       let badge = await document.getElementById(id);
-      if (branch === "master" || !branch) {
+      // this uses the width of the svg image to determine what to swap it out with
+      if (branch === 'master' || !branch) {
         badge.parentNode.innerHTML = await this.img[badge.naturalWidth];
       } else {
-        badge.parentNode.innerHTML = await this.img["nonMaster"];
+        badge.parentNode.innerHTML = await this.img['nonMaster'];
       }
-    }
+    },
   },
   computed: {
     getModules() {
       return this.$store.getters.loadModules;
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style lang="scss">
-@import "../../assets/styles/statusTable.scss";
+@import '../../assets/styles/statusTable.scss';
 
 .landing-table-wrapper {
   width: 80%;
@@ -178,10 +144,9 @@ export default {
   width: 16.6%;
 }
 
-.landing-table .travis-header,
+.landing-table .ci-header,
 .landing-table .license-header,
-.landing-table .node-header,
-.landing-table .life-header {
+.landing-table .node-header {
   width: 16.6%;
   text-align: center;
   font-weight: 900;
@@ -204,7 +169,9 @@ export default {
   vertical-align: middle;
 }
 
-.module-life {
-  text-align: center !important;
+@media (prefers-color-scheme: dark) {
+  .landing-table tbody {
+    border-color: $blackest !important;
+  }
 }
 </style>

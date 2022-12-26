@@ -1,4 +1,4 @@
-import { setCodeClipboards } from "~/utils/clipboard";
+import { setCodeClipboards } from '~/utils/clipboard';
 
 export default {
   data() {
@@ -11,6 +11,6 @@ export default {
     this.listeners.clear();
   },
   mounted() {
-    setCodeClipboards(this.listeners)
-  }
-}
+    setCodeClipboards(this.listeners);
+  },
+};

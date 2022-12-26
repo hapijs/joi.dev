@@ -2,42 +2,42 @@
   <main>
     <section class="home-container">
       <div class="index-header">
-        <div class="index-header1">The most powerful schema description language</div>
+        <div class="index-header1">
+          The most powerful schema description language
+        </div>
         <div class="index-header2">and data validator for JavaScript</div>
       </div>
-      <a
-        class="index-button"
-        href="/api"
-        aria-label="get-started-button" 
-      >Get started with joi</a>
+      <a class="index-button" href="/api" aria-label="get-started-button"
+        >Get started with joi</a
+      >
     </section>
   </main>
 </template>
 
 <script>
-import Security from "~/components/home/Security.vue";
-import Quality from "~/components/home/Quality.vue";
-import DevelopersFirst from "~/components/home/DevelopersFirst.vue";
-import Predictability from "~/components/home/Predictability.vue";
-import Extensibility from "~/components/home/Extensibility.vue";
+import Security from '~/components/home/Security.vue';
+import Quality from '~/components/home/Quality.vue';
+import DevelopersFirst from '~/components/home/DevelopersFirst.vue';
+import Predictability from '~/components/home/Predictability.vue';
+import Extensibility from '~/components/home/Extensibility.vue';
 
 export default {
-  layout: "home",
+  layout: 'home',
   components: {
     Security,
     Quality,
     DevelopersFirst,
     Predictability,
-    Extensibility
+    Extensibility,
   },
   created() {
-    this.$store.commit("setDisplay", "home");
-  }
+    this.$store.commit('setDisplay', 'home');
+  },
 };
 </script>
 
 <style lang="scss">
-@import "../assets/styles/main.scss";
+@import '../assets/styles/main.scss';
 
 .home-container {
   margin: 50px auto 0 auto;
@@ -165,7 +165,7 @@ export default {
 }
 
 .quote-wrapper:before {
-  content: "";
+  content: '';
   background-color: $quote-gray;
   position: absolute;
   height: 100%;
@@ -328,7 +328,11 @@ export default {
     align-items: center;
   }
 
-  .sec-helmet, .qua-helmet, .dev-helmet, .pre-helmet, .ext-helmet {
+  .sec-helmet,
+  .qua-helmet,
+  .dev-helmet,
+  .pre-helmet,
+  .ext-helmet {
     width: 65px;
     height: 65px;
   }
@@ -342,6 +346,20 @@ export default {
   .index-about {
     width: 100%;
     font-size: 0.9rem;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .home-container {
+    color: $off-white;
+  }
+  .underline,
+  .code {
+    border-color: $blacker;
+  }
+  .quote-wrapper,
+  .quote-wrapper:before {
+    background-color: $blacker !important;
   }
 }
 </style>

@@ -1,12 +1,16 @@
 <template>
   <li
-    :class="this.$route.params.family === name ? 'side-nav-select-link family-side-nav-item side-nav-active' : 'side-nav-select-link family-side-nav-item'"
+    :class="
+      this.$route.params.family === name
+        ? 'side-nav-select-link family-side-nav-item side-nav-active'
+        : 'side-nav-select-link family-side-nav-item'
+    "
     :ref="name"
   >
     <div
       class="family-nav-select-wrapper family-display"
-      :id='name'
-      :key='version'
+      :id="name"
+      :key="version"
       v-html="$md.render(this.$props.menu)"
     ></div>
   </li>
@@ -14,17 +18,17 @@
 
 <script>
 export default {
-  props: ["active", "name", "page", "version", "versions", "menu"],
+  props: ['active', 'name', 'page', 'version', 'versions', 'menu'],
   methods: {
     onChange(event) {
-      this.$emit("change", event.target.value);
+      this.$emit('change', event.target.value);
     },
-  }
+  },
 };
 </script>
 
 <style lang="scss">
-@import "../../assets/styles/sideNav.scss";
+@import '../../assets/styles/sideNav.scss';
 
 .family-side-nav-item {
   margin: 0 !important;
@@ -65,5 +69,4 @@ export default {
 .family-display {
   display: block;
 }
-
 </style>

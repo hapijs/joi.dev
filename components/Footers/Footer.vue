@@ -37,14 +37,14 @@
 export default {
   data() {
     return {
-      year: new Date().getFullYear()
+      year: new Date().getFullYear(),
     };
-  }
+  },
 };
 </script>
 
 <style lang="scss">
-@import "../../assets/styles/variables.scss";
+@import '../../assets/styles/variables.scss';
 
 a {
   color: $orange;
@@ -61,7 +61,7 @@ a {
   align-items: center;
   height: 50px;
   max-width: 735px;
-  background-color: $white;
+  background-color: $white !important;
   padding: 0 20px;
 }
 
@@ -116,5 +116,11 @@ a {
 
 .netlify {
   max-width: 50px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .footer {
+    background-color: $black !important;
+  }
 }
 </style>

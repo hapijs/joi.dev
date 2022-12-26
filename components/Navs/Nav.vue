@@ -103,57 +103,57 @@
 </template>
 
 <script>
-import MobileNav from "./MobileNav.vue";
+import MobileNav from './MobileNav.vue';
 
 export default {
   components: {
-    MobileNav
+    MobileNav,
   },
   computed: {
     getDisplay() {
       return this.$store.getters.loadDisplay;
-    }
+    },
   },
   methods: {
     showNav() {
-      this.$refs.hamburger.classList.add("hide");
-      this.$refs.mobileClose.classList.remove("hide");
-      this.$refs.mobileNav.classList.add("show-nav");
-      this.$refs.overlay.classList.add("show-nav");
+      this.$refs.hamburger.classList.add('hide');
+      this.$refs.mobileClose.classList.remove('hide');
+      this.$refs.mobileNav.classList.add('show-nav');
+      this.$refs.overlay.classList.add('show-nav');
       let body = document.body;
-      body.classList.add("no-scroll");
+      body.classList.add('no-scroll');
     },
     closeNav() {
-      this.$refs.mobileNav.classList.remove("show-nav");
-      this.$refs.hamburger.classList.remove("hide");
-      this.$refs.mobileClose.classList.add("hide");
-      this.$refs.overlay.classList.remove("show-nav");
-      let visible = document.querySelector(".visible");
-      let minus = document.querySelectorAll(".mobile-family-minus");
-      let display = document.querySelectorAll(".nav-display");
+      this.$refs.mobileNav.classList.remove('show-nav');
+      this.$refs.hamburger.classList.remove('hide');
+      this.$refs.mobileClose.classList.add('hide');
+      this.$refs.overlay.classList.remove('show-nav');
+      let visible = document.querySelector('.visible');
+      let minus = document.querySelectorAll('.mobile-family-minus');
+      let display = document.querySelectorAll('.nav-display');
       for (let d of display) {
-        d.classList.remove("nav-display");
+        d.classList.remove('nav-display');
       }
       for (let m of minus) {
-        m.classList.remove("mobile-family-minus");
-        m.classList.add("mobile-family-plus");
+        m.classList.remove('mobile-family-minus');
+        m.classList.add('mobile-family-plus');
       }
       if (visible) {
-        visible.classList.remove("visible");
-        visible.classList.add("hide");
+        visible.classList.remove('visible');
+        visible.classList.add('hide');
       }
       let body = document.body;
-      body.classList.remove("no-scroll");
+      body.classList.remove('no-scroll');
     },
     addActive(ref) {
-      this.$store.commit("setDisplay", ref);
-    }
-  }
+      this.$store.commit('setDisplay', ref);
+    },
+  },
 };
 </script>
 
 <style lang="scss">
-@import "../../assets/styles/variables.scss";
+@import '../../assets/styles/variables.scss';
 
 .navbar {
   position: relative;
@@ -224,7 +224,7 @@ export default {
 .nav-link-active:before {
   width: 0;
   position: absolute;
-  content: "";
+  content: '';
   left: 0;
   right: 0;
   top: 0;
@@ -238,7 +238,7 @@ export default {
 .nav-link-active:after {
   width: 0;
   position: absolute;
-  content: "";
+  content: '';
   left: 0;
   right: 0;
   bottom: 0;
@@ -337,6 +337,17 @@ export default {
 
   .nav-collapse {
     display: none;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .navbar {
+    background: $blacker !important;
+    border-bottom: 1px solid $blacker !important;
+  }
+
+  #__layout .contain > header {
+    background: $blacker;
   }
 }
 </style>
