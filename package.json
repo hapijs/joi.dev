@@ -30,7 +30,6 @@
     "cross-env": "^7.0.3",
     "joi": "^17.7.0",
     "js-yaml": "^4.1.0",
-    "json-stringify-pretty-compact": "^3.0.0",
     "lodash": "^4.17.21",
     "markdown-toc": "^1.2.0",
     "nuxt": "^2.15.8",

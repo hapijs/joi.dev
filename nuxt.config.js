@@ -78,7 +78,11 @@ export default {
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins
    */
-  plugins: ['~/plugins/vue-codemirror', '~/plugins/vue-highlightjs'],
+  plugins: [
+    '~/plugins/vue-codemirror',
+    '~/plugins/vue-highlightjs',
+    '~/plugins/vue-darkmode',
+  ],
 
   /*
    ** Nuxt.js modules
