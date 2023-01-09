@@ -10,20 +10,24 @@
           :value="schema"
           :options="options"
           @input="onSchemaChange"
-        ></codemirror>
+        />
         <h2 class="tester-subTitle">Data To Validate:</h2>
         <codemirror
           :value="validate"
           :options="options"
           @input="onValidateChange"
-        ></codemirror>
-        <button class="validate-button" v-on:click="onValidateClick">
+        />
+        <button class="validate-button" @click="onValidateClick">
           Validate
         </button>
         <h2 class="tester-subTitle">Result:</h2>
         <pre class="tester-result">{{ result }}</pre>
         <h2 class="tester-subTitle">Validated Object:</h2>
-        <pre class="tester-result validated-result"></pre>
+        <codemirror
+          class="validated-result"
+          :options="options"
+          :value="validatedResult"
+        />
       </div>
     </div>
   </no-ssr>
@@ -31,8 +35,8 @@
 
 <script>
 const moduleInfo = require('../static/lib/moduleInfo.json');
-const stringify = require('json-stringify-pretty-compact');
 const Joi = require('joi');
+const { annotate } = require('../utils/annotate');
 
 if (process.client) {
   require('codemirror/mode/javascript/javascript.js');
@@ -40,6 +44,22 @@ if (process.client) {
 
 export default {
   layout: 'noSide',
+  data() {
+    return {
+      schema: '',
+      validate: '',
+      result: '',
+      validatedResult: '',
+      moduleAPI: moduleInfo,
+      page: 'tester',
+      intro: false,
+      example: false,
+      usage: false,
+      faq: false,
+      advanced: false,
+      version: '',
+    };
+  },
   head() {
     return {
       title: 'joi.dev - Schema Tester v' + this.version,
@@ -52,30 +72,6 @@ export default {
       ],
     };
   },
-  data() {
-    return {
-      schema: '',
-      validate: '',
-      result: '',
-      validatedResult: '',
-      options: {
-        theme: 'eclipse',
-        tabSize: 2,
-        mode: 'text/javascript',
-        lineNumbers: true,
-        lineWrapping: true,
-        addModeClass: true,
-      },
-      moduleAPI: moduleInfo,
-      page: 'tester',
-      intro: false,
-      example: false,
-      usage: false,
-      faq: false,
-      advanced: false,
-      version: '',
-    };
-  },
   computed: {
     getSchema() {
       return this.$store.getters.loadSchema;
@@ -83,94 +79,15 @@ export default {
     getValidate() {
       return this.$store.getters.loadValidate;
     },
-  },
-  methods: {
-    onSchemaChange(input) {
-      this.$store.commit('setSchema', input);
-      this.$data.schema = this.getSchema;
-    },
-    onValidateChange(input) {
-      this.$store.commit('setValidate', input);
-      this.$data.validate = this.getValidate;
-    },
-    findErrors(error) {
-      let element = document.querySelector('.validated-result');
-      let innerText = this.validatedResult;
-      for (let e of error) {
-        let f = '  ' + e.replace(/["]/gm, '').replace(/\..*/, '') + ':';
-        let regEx = new RegExp(f);
-        let line = this.validatedResult.match(regEx)[0];
-        innerText = innerText.replace(
-          line,
-          "  <span class='error-span'>" + line.slice(2, -1) + '</span>:'
-        );
-        element.innerHTML = innerText;
-      }
-    },
-    removeJson() {
-      let keys = this.validatedResult.match(/".*":/gm);
-      let element = document.querySelector('.validated-result');
-      for (let key in keys) {
-        this.validatedResult = this.validatedResult.replace(
-          /(")(?=.*:)(?!,.*:)/gm,
-          ''
-        );
-        element.innerHTML = this.validatedResult;
-      }
-    },
-    replaceArray(key, value) {
-      if (value instanceof Array) {
-        return JSON.stringify(value);
-      }
-      return value;
-    },
-    onValidateClick() {
-      this.validatedResult = '';
-      let isSchema;
-      let element = document.querySelector('.validated-result');
-      if (this.schema[this.schema.length - 1] === ';') {
-        this.schema = this.schema.slice(0, -1);
-      }
-      if (this.validate[this.validate.length - 1] === ';') {
-        this.validate = this.validate.slice(0, -1);
-      }
-      try {
-        let validatedObject = Function(
-          '"use strict";return (' + this.validate + ')'
-        )();
-        let joiSchema = Function(
-          'Joi',
-          '"use strict";return (' + this.schema + ')'
-        );
-        isSchema = Joi.isSchema(joiSchema(Joi));
-        let validatedResults = joiSchema(Joi).validate(validatedObject, {
-          abortEarly: false,
-        });
-        this.validatedResult = stringify(validatedResults.value, {
-          maxNesting: 1,
-        });
-        this.removeJson();
-
-        if (validatedResults.error) {
-          let errorMessage = validatedResults.error.message.toString();
-          this.result = 'Validation Error: ' + errorMessage;
-          let schemaErrors = errorMessage.match(/"(.*?)"/gm);
-          try {
-            this.findErrors(schemaErrors);
-          } catch (error) {}
-        } else {
-          this.result = 'Validation Passed';
-        }
-      } catch (error) {
-        if (!isSchema && error instanceof TypeError) {
-          this.result = 'Not a valid joi Schema';
-        } else {
-          console.log(error);
-          this.result = error.toString();
-          let element = document.querySelector('.validated-result');
-          element.innerHTML = "<span class='error-span'>Error</span>";
-        }
-      }
+    options() {
+      return {
+        theme: this.$darkMode.theme === 'dark' ? 'darcula' : 'eclipse',
+        tabSize: 2,
+        mode: 'text/javascript',
+        lineNumbers: true,
+        lineWrapping: true,
+        addModeClass: true,
+      };
     },
   },
   created() {
@@ -196,6 +113,59 @@ export default {
       this.$store.commit('setAdvanced', true);
     }
   },
+  methods: {
+    onSchemaChange(input) {
+      this.$store.commit('setSchema', input);
+      this.$data.schema = this.getSchema;
+    },
+    onValidateChange(input) {
+      this.$store.commit('setValidate', input);
+      this.$data.validate = this.getValidate;
+    },
+    onValidateClick() {
+      this.validatedResult = '';
+      let isSchema;
+      if (this.schema[this.schema.length - 1] === ';') {
+        this.schema = this.schema.slice(0, -1);
+      }
+      if (this.validate[this.validate.length - 1] === ';') {
+        this.validate = this.validate.slice(0, -1);
+      }
+      try {
+        let validatedObject = Function(
+          '"use strict";return (' + this.validate + ')'
+        )();
+        let joiSchema = Function(
+          'Joi',
+          '"use strict";return (' + this.schema + ')'
+        );
+        isSchema = Joi.isSchema(joiSchema(Joi));
+        const validatedResults = joiSchema(Joi).validate(validatedObject, {
+          abortEarly: false,
+        });
+
+        if (validatedResults.error) {
+          let errorMessage = validatedResults.error.message.toString();
+          this.result = 'Validation Error: ' + errorMessage;
+          this.validatedResult = annotate(validatedResults.error);
+        } else {
+          this.result = 'Validation Passed';
+          this.validatedResult = JSON.stringify(
+            validatedResults.value,
+            null,
+            2
+          );
+        }
+      } catch (error) {
+        if (!isSchema && error instanceof TypeError) {
+          this.result = 'Not a valid joi Schema';
+        } else {
+          this.result = error.toString();
+          this.validatedResult = 'Error';
+        }
+      }
+    },
+  },
 };
 </script>
 
@@ -203,6 +173,7 @@ export default {
 @import '../assets/styles/main.scss';
 @import 'codemirror/lib/codemirror.css';
 @import 'codemirror/theme/eclipse.css';
+@import 'codemirror/theme/darcula.css';
 
 .test-wrapper {
   width: 100%;
@@ -228,7 +199,6 @@ export default {
 }
 
 .CodeMirror {
-  background: $off-white;
   border: 1px solid $dark-white;
   width: 100%;
   margin-left: 0 !important;
@@ -245,6 +215,10 @@ export default {
 
 .cm-comment {
   color: $gray-light !important;
+}
+
+.validated-result .cm-comment {
+  color: #ff6a6a !important;
 }
 
 .validate-button {
@@ -281,18 +255,6 @@ export default {
   margin-bottom: 30px;
 }
 
-.cm-number {
-  color: #1131cb !important;
-}
-
-.cm-string-2 {
-  color: #fa0000 !important;
-}
-
-.cm-string {
-  color: #28813f !important;
-}
-
 .error-span {
   display: inline-block;
   background: #ff6a6a;
@@ -303,6 +265,13 @@ export default {
 @media screen and (max-width: 900px) {
   .tester-wrapper {
     padding: 0 20px !important;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .tester-result {
+    background: $blacker;
+    color: $white;
   }
 }
 </style>
