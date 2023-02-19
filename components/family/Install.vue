@@ -5,19 +5,11 @@
       <a
         class="install-link"
         target="__blank"
-        :href="
-          moduleAPI[name][routeQuery].license === 'Commercial'
-            ? 'https://www.npmjs.com/package/@commercial/' + name
-            : 'https://www.npmjs.com/package/@sideway/' + name
-        "
+        :href="`https://www.npmjs.com/package/@hapi/${name}`"
         >npm</a
       >:
       <span
-        ><code>{{
-          moduleAPI[name][routeQuery].license === 'Commercial'
-            ? 'npm install @commercial/' + name
-            : 'npm install @sideway/' + name
-        }}</code></span
+        ><code>{{ `npm install @hapi/${name}` }}</code></span
       >
     </p>
     <p v-if="name !== 'joi-date'" class="install-how">
@@ -27,16 +19,12 @@
         :href="
           moduleAPI[name][routeQuery].license === 'Commercial'
             ? 'https://yarnpkg.com/en/package/@commercial/' + name
-            : 'https://yarnpkg.com/en/package/@sideway/' + name
+            : 'https://yarnpkg.com/en/package/@hapi/' + name
         "
         >yarn</a
       >:
       <span
-        ><code>{{
-          moduleAPI[name][routeQuery].license === 'Commercial'
-            ? 'yarn add @commercial/' + name
-            : 'yarn add @sideway/' + name
-        }}</code></span
+        ><code>{{ `yarn add @hapi/${name}` }}</code></span
       >
     </p>
     <p v-if="name === 'joi-date'" class="install-how">

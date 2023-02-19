@@ -3,10 +3,10 @@
     <LandingNav
       :version="getVersion"
       :results="results"
-      :indexResults="indexResults"
+      :index-results="indexResults"
       :search="search"
       :page="page"
-      :moduleInfo="modules"
+      :module-info="modules"
       :intro="intro"
       :example="example"
       :usage="usage"
@@ -44,7 +44,7 @@
               :href="
                 name === 'joi-date'
                   ? 'https://www.npmjs.com/package/@joi/date'
-                  : 'https://www.npmjs.com/package/@sideway/' + name
+                  : `https://www.npmjs.com/package/@hapi/${name}`
               "
               >npm</a
             >:
@@ -52,7 +52,7 @@
               ><code>{{
                 name === 'joi-date'
                   ? 'npm install @joi/date'
-                  : 'npm install @sideway/' + name
+                  : `npm install @hapi/${name}`
               }}</code></span
             >
           </p>
@@ -63,7 +63,7 @@
               :href="
                 name === 'joi-date'
                   ? 'https://yarnpkg.com/en/package/@joi/date'
-                  : 'https://yarnpkg.com/en/package/@sideway/' + name
+                  : `https://yarnpkg.com/en/package/@hapi/${name}`
               "
               >yarn</a
             >:
@@ -71,7 +71,7 @@
               ><code>{{
                 name === 'joi-date'
                   ? 'yarn add @joi/date'
-                  : 'yarn add @sideway/' + name
+                  : `yarn add @hapi/${name}`
               }}</code></span
             >
           </p>
@@ -114,103 +114,6 @@ export default {
   components: {
     LandingNav,
     LandingTable,
-  },
-  head() {
-    return {
-      title: 'joi.dev - ' + this.$route.params.family,
-      meta: [
-        {
-          hid: 'description',
-          name: 'description',
-          content: 'View the APIs for the hapi modules',
-        },
-      ],
-    };
-  },
-  data() {
-    return {
-      page: 'home',
-      display: '',
-      modules: moduleInfo,
-      version: '',
-      menu: '',
-      name: this.$route.params.family,
-      indexResults: 0,
-      search: '',
-      results: [],
-      uls: {},
-      links: {},
-      intro: false,
-      example: false,
-      usage: false,
-      faq: false,
-      advanced: false,
-    };
-  },
-  methods: {
-    goToAnchor() {
-      let hash = document.location.hash;
-      if (hash != '') {
-        setTimeout(function () {
-          if (location.hash) {
-            window.scrollTo(0, 0);
-            window.location.href = hash;
-          }
-        }, 1);
-      } else {
-        return false;
-      }
-    },
-    onChildSearch() {
-      let headlines = [];
-      let text = [];
-      this.indexResults = 0;
-      const headers = ['H2', 'H3', 'H4', 'H5', 'H6'];
-      let pages = document
-        .querySelector('.family-markdown-wrapper')
-        .querySelectorAll('*');
-
-      //Check if search item is in a headline
-      for (let page of pages) {
-        if (
-          headers.indexOf(page.nodeName) !== -1 &&
-          page.innerHTML.indexOf(this.search.toLowerCase()) !== -1
-        ) {
-          headlines.push(page);
-        } else if (
-          headers.indexOf(page.nodeName) === -1 &&
-          page.innerHTML.indexOf(this.search.toLowerCase()) !== -1
-        ) {
-          text.push(page);
-        }
-      }
-
-      this.results = headlines.concat(text);
-      if (this.results.length) {
-        document
-          .querySelector('.family-search-results')
-          .classList.add('nav-display');
-        if (window.innerWidth <= 900) {
-          document.body.scrollTo(
-            0,
-            this.results[this.indexResults].offsetTop + 166
-          );
-        } else {
-          window.scrollTo(0, this.results[this.indexResults].offsetTop);
-        }
-      } else if (this.results.length === 0) {
-        document
-          .querySelector('.family-search-error')
-          .classList.add('nav-display');
-      }
-    },
-    onChildIndex(value) {
-      this.$data.indexResults = value;
-      window.scrollTo(0, this.results[this.indexResults].offsetTop);
-    },
-    onChildInput(value) {
-      this.$data.search = value;
-    },
   },
   async asyncData({ $axios, params }) {
     const options = {
@@ -285,37 +188,37 @@ export default {
     }
     return { exampleHTML, usageHTML, faqHTML, advancedHTML };
   },
-  created() {
-    this.$data.modules = moduleInfo;
-    let module = this.$route.params.family;
-    let versionsArray = moduleInfo[module].versionsArray;
-    if (!this.$store.getters.loadModules.includes(module)) {
-      return this.$nuxt.error({ statusCode: 404 });
-    }
-    let version = versionsArray.includes(this.$route.query.v)
-      ? this.$route.query.v
-      : versionsArray[0];
-    this.$store.commit('setDisplay', 'family');
-    this.$store.commit('setVersion', version);
-    this.$store.commit('setFamily', module);
-    if (this.modules[module][version].intro) {
-      this.$store.commit('setIntro', true);
-    }
-    if (this.modules[module][version].example) {
-      this.$store.commit('setExample', true);
-    }
-    if (
-      this.modules[module][version].usage &&
-      this.modules[module][version].usage.length > 10
-    ) {
-      this.$store.commit('setUsage', true);
-    }
-    if (this.modules[module][version].faq) {
-      this.$store.commit('setFaq', true);
-    }
-    if (this.modules[module][version].advanced) {
-      this.$store.commit('setAdvanced', true);
-    }
+  data() {
+    return {
+      page: 'home',
+      display: '',
+      modules: moduleInfo,
+      version: '',
+      menu: '',
+      name: this.$route.params.family,
+      indexResults: 0,
+      search: '',
+      results: [],
+      uls: {},
+      links: {},
+      intro: false,
+      example: false,
+      usage: false,
+      faq: false,
+      advanced: false,
+    };
+  },
+  head() {
+    return {
+      title: 'joi.dev - ' + this.$route.params.family,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'View the APIs for the hapi modules',
+        },
+      ],
+    };
   },
   computed: {
     getDisplay() {
@@ -348,8 +251,105 @@ export default {
       return this.$store.getters.loadAdvanced;
     },
   },
+  created() {
+    this.$data.modules = moduleInfo;
+    let module = this.$route.params.family;
+    let versionsArray = moduleInfo[module].versionsArray;
+    if (!this.$store.getters.loadModules.includes(module)) {
+      return this.$nuxt.error({ statusCode: 404 });
+    }
+    let version = versionsArray.includes(this.$route.query.v)
+      ? this.$route.query.v
+      : versionsArray[0];
+    this.$store.commit('setDisplay', 'family');
+    this.$store.commit('setVersion', version);
+    this.$store.commit('setFamily', module);
+    if (this.modules[module][version].intro) {
+      this.$store.commit('setIntro', true);
+    }
+    if (this.modules[module][version].example) {
+      this.$store.commit('setExample', true);
+    }
+    if (
+      this.modules[module][version].usage &&
+      this.modules[module][version].usage.length > 10
+    ) {
+      this.$store.commit('setUsage', true);
+    }
+    if (this.modules[module][version].faq) {
+      this.$store.commit('setFaq', true);
+    }
+    if (this.modules[module][version].advanced) {
+      this.$store.commit('setAdvanced', true);
+    }
+  },
   mounted() {
     this.goToAnchor();
+  },
+  methods: {
+    goToAnchor() {
+      let hash = document.location.hash;
+      if (hash != '') {
+        setTimeout(function () {
+          if (location.hash) {
+            window.scrollTo(0, 0);
+            window.location.href = hash;
+          }
+        }, 1);
+      } else {
+        return false;
+      }
+    },
+    onChildSearch() {
+      let headlines = [];
+      let text = [];
+      this.indexResults = 0;
+      const headers = ['H2', 'H3', 'H4', 'H5', 'H6'];
+      let pages = document
+        .querySelector('.family-markdown-wrapper')
+        .querySelectorAll('*');
+
+      //Check if search item is in a headline
+      for (let page of pages) {
+        if (
+          headers.indexOf(page.nodeName) !== -1 &&
+          page.innerHTML.indexOf(this.search.toLowerCase()) !== -1
+        ) {
+          headlines.push(page);
+        } else if (
+          headers.indexOf(page.nodeName) === -1 &&
+          page.innerHTML.indexOf(this.search.toLowerCase()) !== -1
+        ) {
+          text.push(page);
+        }
+      }
+
+      this.results = headlines.concat(text);
+      if (this.results.length) {
+        document
+          .querySelector('.family-search-results')
+          .classList.add('nav-display');
+        if (window.innerWidth <= 900) {
+          document.body.scrollTo(
+            0,
+            this.results[this.indexResults].offsetTop + 166
+          );
+        } else {
+          window.scrollTo(0, this.results[this.indexResults].offsetTop);
+        }
+      } else if (this.results.length === 0) {
+        document
+          .querySelector('.family-search-error')
+          .classList.add('nav-display');
+      }
+    },
+    onChildIndex(value) {
+      this.$data.indexResults = value;
+      window.scrollTo(0, this.results[this.indexResults].offsetTop);
+    },
+    onChildInput(value) {
+      this.$data.search = value;
+    },
   },
 };
 </script>

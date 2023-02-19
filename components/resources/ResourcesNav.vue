@@ -46,6 +46,9 @@ export default {
     Ads,
   },
   props: ['page'],
+  mounted() {
+    this.onScroll();
+  },
   methods: {
     onClick(ref) {
       let actives = document.querySelectorAll('.resources-active');
@@ -103,9 +106,6 @@ export default {
         }
       };
     },
-  },
-  mounted() {
-    this.onScroll();
   },
 };
 </script>

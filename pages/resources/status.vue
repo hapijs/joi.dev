@@ -15,16 +15,12 @@
             </tr>
           </thead>
           <tbody>
-            <tr
-              v-for="repo in newRepos"
-              v-bind:key="repo.name"
-              class="module-row"
-            >
+            <tr v-for="repo in newRepos" :key="repo.name" class="module-row">
               <td class="module-name">
                 {{ repo.name }}
                 <a
-                  class="module-name-link"
                   :id="repo.name"
+                  class="module-name-link"
                   :href="'#' + repo.name"
                 ></a>
               </td>
@@ -33,7 +29,7 @@
                   <tbody class="nested-tbody">
                     <tr
                       v-for="version in repo.versions"
-                      v-bind:key="version.name + version.license"
+                      :key="version.name + version.license"
                     >
                       <td class="module-version">
                         <div class="module-version-wrapper">
@@ -84,6 +80,7 @@
                           target="_blank"
                         >
                           <img
+                            :id="`ci${repo.name}${version.name}`"
                             :src="`https://github.com/hapijs/${repo.name}/workflows/ci/badge.svg?branch=${version.branch}`"
                             alt="Build Status"
                             class="hide"
@@ -93,7 +90,6 @@
                                 version.branch
                               )
                             "
-                            :id="`ci${repo.name}${version.name}`"
                           />
                         </a>
                       </td>
@@ -115,22 +111,10 @@ const moduleInfo = require('../../static/lib/moduleInfo.json');
 import _ from 'lodash';
 
 export default {
-  layout: 'default',
   components: {
     ResourcesNav,
   },
-  head() {
-    return {
-      title: 'joi.dev - Module Status',
-      meta: [
-        {
-          hid: 'description',
-          name: 'description',
-          content: "View hapi's module status",
-        },
-      ],
-    };
-  },
+  layout: 'default',
   data() {
     return {
       page: 'status',
@@ -154,10 +138,26 @@ export default {
       },
     };
   },
+  head() {
+    return {
+      title: 'joi.dev - Module Status',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: "View hapi's module status",
+        },
+      ],
+    };
+  },
   computed: {
     getModules() {
       return this.$store.getters.loadModules;
     },
+  },
+  async created() {
+    await this.$store.commit('setDisplay', 'resources');
+    this.$data.newRepos = this.newRepos;
   },
   methods: {
     camelName(name) {
@@ -171,10 +171,6 @@ export default {
         badge.parentNode.innerHTML = await this.img['nonMaster'];
       }
     },
-  },
-  async created() {
-    await this.$store.commit('setDisplay', 'resources');
-    this.$data.newRepos = this.newRepos;
   },
 };
 </script>

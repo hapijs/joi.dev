@@ -16,6 +16,32 @@ export default {
     HTML,
     PoliciesNav,
   },
+  async asyncData({ params, $axios }) {
+    const options = {
+      headers: {
+        accept: 'application/vnd.github.v3.raw+json',
+        authorization: 'token ' + process.env.GITHUB_TOKEN,
+      },
+    };
+    let s = await $axios.$get(
+      'https://api.github.com/repos/hapijs/.github/contents/SECURITY.md',
+      options
+    );
+
+    const security = await $axios.$post(
+      'https://api.github.com/markdown',
+      {
+        text: s.toString(),
+        mode: 'markdown',
+      },
+      {
+        headers: {
+          authorization: 'token ' + process.env.GITHUB_TOKEN,
+        },
+      }
+    );
+    return { security };
+  },
   data() {
     return {
       page: 'security',
@@ -42,32 +68,6 @@ export default {
       this.$store.commit('setCommunity', value);
       window.scrollTo(0, 0);
     },
-  },
-  async asyncData({ params, $axios }) {
-    const options = {
-      headers: {
-        accept: 'application/vnd.github.v3.raw+json',
-        authorization: 'token ' + process.env.GITHUB_TOKEN,
-      },
-    };
-    let s = await $axios.$get(
-      'https://api.github.com/repos/hapijs/.github/contents/SECURITY.md',
-      options
-    );
-
-    const security = await $axios.$post(
-      'https://api.github.com/markdown',
-      {
-        text: s.toString(),
-        mode: 'markdown',
-      },
-      {
-        headers: {
-          authorization: 'token ' + process.env.GITHUB_TOKEN,
-        },
-      }
-    );
-    return { security };
   },
 };
 </script>

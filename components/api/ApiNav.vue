@@ -7,13 +7,13 @@
             <div class="api-nav-title">API</div>
             <div class="api-lang-wrapper">
               <select
-                @change="onChange($event)"
                 class="api-lang-select"
                 :value="version"
+                @change="onChange($event)"
               >
                 <option
                   v-for="version in versions"
-                  v-bind:key="version"
+                  :key="version"
                   :value="version"
                 >
                   {{ version }}
@@ -26,11 +26,11 @@
             <input
               class="api-search-box"
               :value="search"
-              v-on:keyup.enter="onSearch"
-              @input="onInput($event)"
               placeholder="Search API"
+              @keyup.enter="onSearch"
+              @input="onInput($event)"
             />
-            <div class="api-search-img" v-on:click="onSearch"></div>
+            <div class="api-search-img" @click="onSearch"></div>
             <div class="api-search-info">
               <div class="api-search-results">
                 <div class="api-search-results-wrapper">
@@ -39,10 +39,10 @@
                     {{ results.length }}
                   </div>
                   <div class="api-search-buttons">
-                    <button class="api-search-button" v-on:click="onPrevious">
+                    <button class="api-search-button" @click="onPrevious">
                       Previous
                     </button>
-                    <button class="api-search-button" v-on:click="onNext">
+                    <button class="api-search-button" @click="onNext">
                       Next
                     </button>
                   </div>
@@ -54,7 +54,7 @@
         </div>
         <div
           class="api-nav-select-wrapper"
-          v-html="$md.render(this.$props.menu)"
+          v-html="$md.render($props.menu)"
         ></div>
       </div>
       <div class="api-side-footer-wrapper">
@@ -78,6 +78,34 @@ export default {
       uls: {},
       links: {},
     };
+  },
+  async mounted() {
+    await this.setClasses();
+    if (this.$route.hash) {
+      document.querySelector('.api-nav-select-wrapper').getBoundingClientRect();
+      let wrapperHeight = document
+        .querySelector('.api-nav-wrapper')
+        .getBoundingClientRect().height;
+      let aClass = this.$route.hash;
+      let active = document.querySelector(`a[href*='${aClass}']`);
+      active.classList.add('api-active');
+      const activePosition = this.links[active.hash];
+      for (let key in this.uls) {
+        if (
+          activePosition > this.uls[key].top &&
+          activePosition < this.uls[key].bottom
+        ) {
+          this.uls[key].name.classList.add('nav-display');
+          this.uls[key].name.parentElement.children[0].classList.remove(
+            'api-nav-plus'
+          );
+          this.uls[key].name.parentElement.children[0].classList.add(
+            'api-nav-minus'
+          );
+        }
+      }
+      active.scrollIntoView(false);
+    }
   },
   methods: {
     onChange(event) {
@@ -350,34 +378,6 @@ export default {
         }
       };
     },
-  },
-  async mounted() {
-    await this.setClasses();
-    if (this.$route.hash) {
-      document.querySelector('.api-nav-select-wrapper').getBoundingClientRect();
-      let wrapperHeight = document
-        .querySelector('.api-nav-wrapper')
-        .getBoundingClientRect().height;
-      let aClass = this.$route.hash;
-      let active = document.querySelector(`a[href*='${aClass}']`);
-      active.classList.add('api-active');
-      const activePosition = this.links[active.hash];
-      for (let key in this.uls) {
-        if (
-          activePosition > this.uls[key].top &&
-          activePosition < this.uls[key].bottom
-        ) {
-          this.uls[key].name.classList.add('nav-display');
-          this.uls[key].name.parentElement.children[0].classList.remove(
-            'api-nav-plus'
-          );
-          this.uls[key].name.parentElement.children[0].classList.add(
-            'api-nav-minus'
-          );
-        }
-      }
-      active.scrollIntoView(false);
-    }
   },
 };
 </script>

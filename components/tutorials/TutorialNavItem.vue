@@ -1,16 +1,16 @@
 <template>
   <li
+    v-if="$props.menu !== ''"
     :class="
       $route.params.tutorial === $props.name
         ? 'side-nav-select-link family-side-nav-item side-nav-active'
         : 'side-nav-select-link family-side-nav-item'
     "
-    v-if="this.$props.menu !== ''"
   >
     <div
-      class="tutorial-nav-select-wrapper family-display"
       :id="$props.name"
-      v-html="$md.render(this.$props.menu)"
+      class="tutorial-nav-select-wrapper family-display"
+      v-html="$md.render($props.menu)"
     ></div>
   </li>
 </template>

@@ -8,9 +8,9 @@
           <div class="lang-wrapper">
             <div class="lang-text">Languages:</div>
             <select
-              @change="onChange($event)"
               :value="getLanguage"
               class="tutorial-lang-select"
+              @change="onChange($event)"
             >
               <option value="en_US">en-US</option>
               <option value="pt_BR">pt-BR</option>
@@ -53,12 +53,12 @@ const page = require('../../static/lib/tutorials/');
 import Ads from '~/components/Ads.vue';
 
 export default {
-  props: ['language', 'menu'],
-  computed: {
-    getLanguage() {
-      return this.$store.getters.loadLanguage;
-    },
+  components: {
+    SideFooter,
+    Ads,
+    TutorialNavItem,
   },
+  props: ['language', 'menu'],
   data() {
     return {
       links: {},
@@ -67,6 +67,11 @@ export default {
         ? this.$route.params.tutorial
         : 'gettingstarted',
     };
+  },
+  computed: {
+    getLanguage() {
+      return this.$store.getters.loadLanguage;
+    },
   },
   methods: {
     onChange(event) {
@@ -227,11 +232,6 @@ export default {
         }
       };
     },
-  },
-  components: {
-    SideFooter,
-    Ads,
-    TutorialNavItem,
   },
   // mounted() {
   //   this.setClasses()

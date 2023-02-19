@@ -6,7 +6,7 @@
         <Ads />
         <div class="family-sort-wrapper">
           <div>Sort By:</div>
-          <select @change="onChange($event)" class="family-sort" :value="sort">
+          <select class="family-sort" :value="sort" @change="onChange($event)">
             <option value="name">Name</option>
             <option value="stars">Stars</option>
             <option value="forks">Forks</option>
@@ -17,15 +17,13 @@
           <input
             class="family-module-search-box"
             :value="search"
-            v-on:keyup.enter="onSearch"
-            @input="onInput($event)"
             placeholder="Search Modules"
+            @keyup.enter="onSearch"
+            @input="onInput($event)"
           />
-          <div class="family-module-search-img" v-on:click="onSearch"></div>
+          <div class="family-module-search-img" @click="onSearch"></div>
         </div>
-        <button class="module-clear-button hide" v-on:click="onClear">
-          Clear
-        </button>
+        <button class="module-clear-button hide" @click="onClear">Clear</button>
       </div>
       <SideFooter />
     </div>
@@ -37,11 +35,11 @@ import SideFooter from '~/components/Footers/SideFooter.vue';
 import Ads from '~/components/Ads.vue';
 
 export default {
-  props: ['search', 'sort'],
   components: {
     SideFooter,
     Ads,
   },
+  props: ['search', 'sort'],
   methods: {
     onInput(event) {
       this.$emit('input', event);

@@ -7,7 +7,7 @@
       :usage="usage"
       :faq="faq"
       :advanced="advanced"
-      :moduleInfo="moduleAPI"
+      :module-info="moduleAPI"
     />
     <div class="community-wrapper">
       <Changelog :milestones="getMilestones" />
@@ -25,33 +25,6 @@ export default {
   components: {
     Changelog,
     LandingNav,
-  },
-  data() {
-    return {
-      moduleAPI: moduleInfo,
-      page: 'changelog',
-      intro: false,
-      example: false,
-      usage: false,
-      faq: false,
-      advanced: false,
-    };
-  },
-  head() {
-    return {
-      title:
-        'joi.dev - ' +
-        this.page.replace(/([A-Z])/g, ' $1').replace(/^./, function (str) {
-          return str.toUpperCase();
-        }),
-      meta: [
-        {
-          hid: 'description',
-          name: 'description',
-          content: "View hapi's version history",
-        },
-      ],
-    };
   },
   async asyncData({ params, $axios, route, store }) {
     let milestoneList = [];
@@ -102,6 +75,33 @@ export default {
       }
     }
     return { milestoneList };
+  },
+  data() {
+    return {
+      moduleAPI: moduleInfo,
+      page: 'changelog',
+      intro: false,
+      example: false,
+      usage: false,
+      faq: false,
+      advanced: false,
+    };
+  },
+  head() {
+    return {
+      title:
+        'joi.dev - ' +
+        this.page.replace(/([A-Z])/g, ' $1').replace(/^./, function (str) {
+          return str.toUpperCase();
+        }),
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: "View hapi's version history",
+        },
+      ],
+    };
   },
   computed: {
     getCommunity() {

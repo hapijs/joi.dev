@@ -1,10 +1,10 @@
 <template>
   <div class="logWrapper">
     <div class="logVersionWrapper">
-      <a :href="versionUrl" target="__blank" class="log-title" :id="version">{{
+      <a :id="version" :href="versionUrl" target="__blank" class="log-title">{{
         version
       }}</a>
-      <a :href="releaseURL" v-if="release" class="releaseLink" target="_blank"
+      <a v-if="release" :href="releaseURL" class="releaseLink" target="_blank"
         ><div class="release">
           <img
             class="releaseNotesImg"
@@ -19,11 +19,11 @@
     <div class="changelogtext-wrapper">
       <ChangelogText
         v-for="issue in issuesArray"
-        v-bind:key="issue.number"
-        :issueUrl="issue.html_url"
-        :issueNumber="issue.number"
-        :issueText="issue.title"
-        :issueLabels="issue.labels"
+        :key="issue.number"
+        :issue-url="issue.html_url"
+        :issue-number="issue.number"
+        :issue-text="issue.title"
+        :issue-labels="issue.labels"
       />
       <div
         :class="
@@ -34,18 +34,14 @@
       >
         <ChangelogText
           v-for="issue in hiddenIssues"
-          v-bind:key="issue.number"
-          :issueUrl="issue.html_url"
-          :issueNumber="issue.number"
-          :issueText="issue.title"
-          :issueLabels="issue.labels"
+          :key="issue.number"
+          :issue-url="issue.html_url"
+          :issue-number="issue.number"
+          :issue-text="issue.title"
+          :issue-labels="issue.labels"
         />
       </div>
-      <button
-        class="issuesButton"
-        v-if="showMoreButton"
-        v-on:click="showIssues()"
-      >
+      <button v-if="showMoreButton" class="issuesButton" @click="showIssues()">
         <img
           src="/img/down.png"
           alt="down arrow"
@@ -77,15 +73,6 @@ export default {
       hiddenIssues: [],
     };
   },
-  methods: {
-    showIssues() {
-      this.$data.showMoreIssues = !this.$data.showMoreIssues;
-      if (!this.$data.showMoreIssues) {
-        let id = document.getElementById(this.$props.version);
-        window.scrollTo(0, id.offsetTop);
-      }
-    },
-  },
   computed: {
     getShowMoreIssues() {
       return this.$data.showMoreIssues;
@@ -107,6 +94,15 @@ export default {
       this.$data.hiddenIssues = this.$props.issues.slice(10);
       this.$data.showMoreButton = true;
     }
+  },
+  methods: {
+    showIssues() {
+      this.$data.showMoreIssues = !this.$data.showMoreIssues;
+      if (!this.$data.showMoreIssues) {
+        let id = document.getElementById(this.$props.version);
+        window.scrollTo(0, id.offsetTop);
+      }
+    },
   },
 };
 </script>

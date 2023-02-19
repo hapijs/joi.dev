@@ -16,6 +16,32 @@ export default {
     HTML,
     PoliciesNav,
   },
+  async asyncData({ params, $axios }) {
+    const options = {
+      headers: {
+        accept: 'application/vnd.github.v3.raw+json',
+        authorization: 'token ' + process.env.GITHUB_TOKEN,
+      },
+    };
+    let coc = await $axios.$get(
+      'https://api.github.com/repos/hapijs/.github/contents/CODE_OF_CONDUCT.md',
+      options
+    );
+
+    const conduct = await $axios.$post(
+      'https://api.github.com/markdown',
+      {
+        text: coc.toString(),
+        mode: 'markdown',
+      },
+      {
+        headers: {
+          authorization: 'token ' + process.env.GITHUB_TOKEN,
+        },
+      }
+    );
+    return { conduct };
+  },
   data() {
     return {
       page: 'conduct',
@@ -42,32 +68,6 @@ export default {
       this.$store.commit('setCommunity', value);
       window.scrollTo(0, 0);
     },
-  },
-  async asyncData({ params, $axios }) {
-    const options = {
-      headers: {
-        accept: 'application/vnd.github.v3.raw+json',
-        authorization: 'token ' + process.env.GITHUB_TOKEN,
-      },
-    };
-    let coc = await $axios.$get(
-      'https://api.github.com/repos/hapijs/.github/contents/CODE_OF_CONDUCT.md',
-      options
-    );
-
-    const conduct = await $axios.$post(
-      'https://api.github.com/markdown',
-      {
-        text: coc.toString(),
-        mode: 'markdown',
-      },
-      {
-        headers: {
-          authorization: 'token ' + process.env.GITHUB_TOKEN,
-        },
-      }
-    );
-    return { conduct };
   },
 };
 </script>

@@ -1,6 +1,6 @@
 <template>
   <div class="page-container">
-    <div class="predict-upper-wrapper" id="predictability">
+    <div id="predictability" class="predict-upper-wrapper">
       <div class="quote-wrapper">
         <div class="quote">
           "hapi allows us to develop loosely coupled capabilities in a

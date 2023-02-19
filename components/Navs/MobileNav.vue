@@ -13,7 +13,7 @@
             <div
               class="mobile-link"
               title="Resources"
-              v-on:click="showMenu('resources')"
+              @click="showMenu('resources')"
             >
               Resources
             </div>
@@ -23,7 +23,7 @@
               class="mobile-link"
               title="Policies"
               href="/policies/coc"
-              v-on:click="showMenu('policies')"
+              @click="showMenu('policies')"
             >
               Policies
             </div>
@@ -33,7 +33,7 @@
               class="mobile-link"
               title="Family"
               href="/module"
-              v-on:click="showMenu('modules')"
+              @click="showMenu('modules')"
             >
               Modules
             </div>
@@ -43,7 +43,7 @@
       <div class="mobile-nav-flex-right">
         <div class="mobile-nav-flex-right-background"></div>
         <div class="mobile-nav-right-content">
-          <div class="hide" id="mobile-resources">
+          <div id="mobile-resources" class="hide">
             <h5 class="mobile-content-header">Resources</h5>
             <ul class="mobile-content-ul">
               <li class="mobile-link mobile-tutorial-link">
@@ -54,7 +54,7 @@
               </li>
             </ul>
           </div>
-          <div class="hide" id="mobile-policies">
+          <div id="mobile-policies" class="hide">
             <h5 class="mobile-content-header">Policies</h5>
             <ul class="mobile-content-ul">
               <li class="mobile-link mobile-tutorial-link">
@@ -76,31 +76,31 @@
               </li>
             </ul>
           </div>
-          <div class="hide" id="mobile-modules">
+          <div id="mobile-modules" class="hide">
             <h5 class="mobile-content-header">Modules</h5>
             <ul class="module-ul mobile-content-ul">
               <li
                 v-for="name in getModules"
-                v-bind:key="name"
+                :key="name"
                 :name="name"
                 class="mobile-link mobile-tutorial-link mobile-module-link"
                 :title="name"
               >
                 <div
+                  :id="name + '-wrapper'"
                   :href="'/family/' + name"
                   class="mobile-family-link mobile-family-plus"
-                  :id="name + '-wrapper'"
-                  v-on:click="triggerMenu(name)"
+                  @click="triggerMenu(name)"
                 >
                   {{ name }}
                 </div>
-                <ul class="mobile-subul" :id="name + '2'">
+                <ul :id="name + '2'" class="mobile-subul">
                   <li class="mobile-sublink">
                     <a :href="'/module/' + name">Home</a>
                   </li>
                   <li
-                    class="mobile-sublink"
                     v-if="moduleInfo[name].api === true"
+                    class="mobile-sublink"
                   >
                     <a :href="'/module/' + name + '/api'">API</a>
                   </li>
@@ -126,6 +126,11 @@ export default {
     return {
       moduleInfo: moduleInfo,
     };
+  },
+  computed: {
+    getModules() {
+      return this.$store.getters.loadModules;
+    },
   },
   methods: {
     closeNav() {
@@ -156,11 +161,6 @@ export default {
       let menu = document.querySelector('#mobile-' + name);
       menu.classList.add('visible');
       menu.classList.remove('hide');
-    },
-  },
-  computed: {
-    getModules() {
-      return this.$store.getters.loadModules;
     },
   },
 };

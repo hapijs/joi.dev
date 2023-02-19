@@ -1,9 +1,5 @@
 export default {
-  /*
-   ** Nuxt rendering mode
-   ** See https://nuxtjs.org/api/configuration-mode
-   */
-  mode: 'universal',
+  modern: true,
 
   server: {
     host: '0.0.0.0',

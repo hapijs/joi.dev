@@ -1,6 +1,6 @@
 <template>
   <div class="page-container">
-    <div class="quality-upper-wrapper" id="quality">
+    <div id="quality" class="quality-upper-wrapper">
       <div class="quote-wrapper">
         <div class="quote">
           "We love hapi’s clear structure. In particular, its plugin

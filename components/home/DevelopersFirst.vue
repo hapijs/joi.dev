@@ -1,6 +1,6 @@
 <template>
   <div class="page-container">
-    <div class="develop-upper-wrapper" id="developersfirst">
+    <div id="developersfirst" class="develop-upper-wrapper">
       <div class="quote-wrapper">
         <div class="quote">
           “With a well-planned interface and selection of patterns, hapi has

@@ -1,6 +1,6 @@
 <template>
   <div class="page-container">
-    <div class="security-upper-wrapper" id="security">
+    <div id="security" class="security-upper-wrapper">
       <div class="quote-wrapper">
         <div class="quote">
           "At Brave, developing web services with hapi allows us to focus on the

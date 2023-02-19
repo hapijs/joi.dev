@@ -5,15 +5,15 @@
         <div class="family-top-wrapper">
           <div class="family-nav-title">
             <a :href="'/module/' + family">{{ family }}</a>
-            <span class="family-span" v-if="page === 'api'">
+            <span v-if="page === 'api'" class="family-span">
               <select
-                @change="onVersionChange($event)"
                 class="family-version-select"
                 :value="version"
+                @change="onVersionChange($event)"
               >
                 <option
                   v-for="version in versions"
-                  v-bind:key="version"
+                  :key="version"
                   :value="version"
                 >
                   {{ version }}
@@ -22,15 +22,15 @@
             </span>
             <Ads />
           </div>
-          <div class="family-search" v-if="page === 'api'">
+          <div v-if="page === 'api'" class="family-search">
             <input
               class="family-search-box"
               :value="search"
-              v-on:keyup.enter="onSearch"
-              @input="onInput($event)"
               placeholder="Search API"
+              @keyup.enter="onSearch"
+              @input="onInput($event)"
             />
-            <div class="family-search-img" v-on:click="onSearch"></div>
+            <div class="family-search-img" @click="onSearch"></div>
             <div class="family-search-info">
               <div class="family-search-results">
                 <div class="family-search-results-wrapper">
@@ -39,13 +39,10 @@
                     {{ results.length }}
                   </div>
                   <div class="family-search-buttons">
-                    <button
-                      class="family-search-button"
-                      v-on:click="onPrevious"
-                    >
+                    <button class="family-search-button" @click="onPrevious">
                       Previous
                     </button>
-                    <button class="family-search-button" v-on:click="onNext">
+                    <button class="family-search-button" @click="onNext">
                       Next
                     </button>
                   </div>
@@ -180,7 +177,7 @@
           >
             <a href="/module/bell/providers">Providers</a>
           </div>
-          <ul class="side-nav-select-list" v-if="page === 'providers'">
+          <ul v-if="page === 'providers'" class="side-nav-select-list">
             <FamilyNavItem
               :name="getFamily"
               :menu="menuProvider"
@@ -190,7 +187,7 @@
               @change="onVersionChange"
             />
           </ul>
-          <hr class="landing-hr" v-if="family === 'bell'" />
+          <hr v-if="family === 'bell'" class="landing-hr" />
           <div
             v-if="family === 'bell'"
             id="bell2"
@@ -202,7 +199,7 @@
           >
             <a href="/module/bell/examples">Examples</a>
           </div>
-          <ul class="side-nav-select-list" v-if="page === 'examples'">
+          <ul v-if="page === 'examples'" class="side-nav-select-list">
             <FamilyNavItem
               :name="getFamily"
               :menu="menu"
@@ -223,7 +220,7 @@
           >
             <a :href="'/module/' + family + '/api'">API</a>
           </div>
-          <ul class="side-nav-select-list" v-if="page === 'api'">
+          <ul v-if="page === 'api'" class="side-nav-select-list">
             <FamilyNavItem
               :name="getFamily"
               :menu="menu"
@@ -273,6 +270,54 @@ export default {
     'moduleInfo',
     'menuProvider',
   ],
+  data() {
+    return {
+      header: this.$route.params.family,
+      showAPI: false,
+      hash: '',
+      family: '',
+    };
+  },
+  computed: {
+    getModules() {
+      return this.$store.getters.loadModules;
+    },
+    getVersion() {
+      return this.$store.getters.loadVersion;
+    },
+    getHash() {
+      return this.$route.hash;
+    },
+    getFamily() {
+      return this.$store.getters.loadFamily;
+    },
+    getIntro() {
+      return this.$store.getters.loadIntro;
+    },
+    getExample() {
+      return this.$store.getters.loadExample;
+    },
+    getUsage() {
+      return this.$store.getters.loadUsage;
+    },
+    getFaq() {
+      return this.$store.getters.loadFaq;
+    },
+    getAdvanced() {
+      return this.$store.getters.loadAdvanced;
+    },
+  },
+  created() {
+    this.$data.family = this.getFamily;
+  },
+  mounted() {
+    this.onScroll();
+    this.$data.hash = this.getHash;
+  },
+  updated() {
+    this.$data.hash = this.getHash;
+    this.$data.family = this.getFamily;
+  },
   methods: {
     async onVersionChange(event) {
       this.$store.commit('setVersion', event.target.value);
@@ -367,54 +412,6 @@ export default {
         }
       };
     },
-  },
-  data() {
-    return {
-      header: this.$route.params.family,
-      showAPI: false,
-      hash: '',
-      family: '',
-    };
-  },
-  computed: {
-    getModules() {
-      return this.$store.getters.loadModules;
-    },
-    getVersion() {
-      return this.$store.getters.loadVersion;
-    },
-    getHash() {
-      return this.$route.hash;
-    },
-    getFamily() {
-      return this.$store.getters.loadFamily;
-    },
-    getIntro() {
-      return this.$store.getters.loadIntro;
-    },
-    getExample() {
-      return this.$store.getters.loadExample;
-    },
-    getUsage() {
-      return this.$store.getters.loadUsage;
-    },
-    getFaq() {
-      return this.$store.getters.loadFaq;
-    },
-    getAdvanced() {
-      return this.$store.getters.loadAdvanced;
-    },
-  },
-  created() {
-    this.$data.family = this.getFamily;
-  },
-  mounted() {
-    this.onScroll();
-    this.$data.hash = this.getHash;
-  },
-  updated() {
-    this.$data.hash = this.getHash;
-    this.$data.family = this.getFamily;
   },
 };
 </script>

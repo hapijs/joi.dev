@@ -2,10 +2,10 @@
   <div class="ads-wrapper">
     <div v-if="loadAd">
       <script
+        id="_carbonads_js"
         async
         type="text/javascript"
         src="//cdn.carbonads.com/carbon.js?serve=CEAIL27W&placement=joidev"
-        id="_carbonads_js"
       ></script>
     </div>
   </div>

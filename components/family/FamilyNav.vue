@@ -7,13 +7,13 @@
             {{ header }}
             <span class="family-span">
               <select
-                @change="onVersionChange($event)"
                 class="family-version-select"
                 :value="version"
+                @change="onVersionChange($event)"
               >
                 <option
                   v-for="version in versions"
-                  v-bind:key="version"
+                  :key="version"
                   :value="version"
                 >
                   {{ version }}
@@ -26,11 +26,11 @@
             <input
               class="family-search-box"
               :value="search"
-              v-on:keyup.enter="onSearch"
-              @input="onInput($event)"
               placeholder="Search API"
+              @keyup.enter="onSearch"
+              @input="onInput($event)"
             />
-            <div class="family-search-img" v-on:click="onSearch"></div>
+            <div class="family-search-img" @click="onSearch"></div>
             <div class="family-search-info">
               <div class="family-search-results">
                 <div class="family-search-results-wrapper">
@@ -39,13 +39,10 @@
                     {{ results.length }}
                   </div>
                   <div class="family-search-buttons">
-                    <button
-                      class="family-search-button"
-                      v-on:click="onPrevious"
-                    >
+                    <button class="family-search-button" @click="onPrevious">
                       Previous
                     </button>
-                    <button class="family-search-button" v-on:click="onNext">
+                    <button class="family-search-button" @click="onNext">
                       Next
                     </button>
                   </div>
@@ -95,6 +92,30 @@ export default {
     'indexResults',
     'search',
   ],
+  data() {
+    return {
+      header: this.$route.params.family,
+      title: !this.$route.params.family
+        ? 'Bell'
+        : this.$route.params.family.charAt(0).toUpperCase(0) +
+          this.$route.params.family.slice(1),
+    };
+  },
+  computed: {
+    getModules() {
+      return this.$store.getters.loadModules;
+    },
+  },
+  mounted() {
+    let aClass = this.$route.hash;
+    if (this.$route.hash) {
+      let aClass = this.$route.hash;
+      let active = document.querySelector(
+        `.side-nav-wrapper a[href*='${aClass}']`
+      );
+      active.scrollIntoView(false);
+    }
+  },
   methods: {
     async onVersionChange(event) {
       this.$store.commit('setVersion', event.target.value);
@@ -136,30 +157,6 @@ export default {
         .classList.remove('nav-display');
       this.$emit('input', event.target.value);
     },
-  },
-  data() {
-    return {
-      header: this.$route.params.family,
-      title: !this.$route.params.family
-        ? 'Bell'
-        : this.$route.params.family.charAt(0).toUpperCase(0) +
-          this.$route.params.family.slice(1),
-    };
-  },
-  computed: {
-    getModules() {
-      return this.$store.getters.loadModules;
-    },
-  },
-  mounted() {
-    let aClass = this.$route.hash;
-    if (this.$route.hash) {
-      let aClass = this.$route.hash;
-      let active = document.querySelector(
-        `.side-nav-wrapper a[href*='${aClass}']`
-      );
-      active.scrollIntoView(false);
-    }
   },
 };
 </script>

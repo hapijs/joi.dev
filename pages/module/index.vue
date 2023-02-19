@@ -12,10 +12,10 @@
       <h1 class="hapi-header">joi Modules</h1>
       <div class="family-grid">
         <div
-          class="family-grid-cell"
-          :id="module.name + 1"
           v-for="module in moduleData"
-          v-bind:key="module.name"
+          :id="module.name + 1"
+          :key="module.name"
+          class="family-grid-cell"
         >
           <div class="family-grid-text-wrapper">
             <a :href="'/module/' + module.name" class="family-grid-link">
@@ -61,6 +61,36 @@ export default {
   components: {
     FamilyIndexNav,
   },
+  async asyncData({ params, $axios, route, store }) {
+    const options = {
+      headers: {
+        accept: 'application/vnd.github.v3.raw+json',
+        authorization: 'token ' + process.env.GITHUB_TOKEN,
+      },
+    };
+    let moduleData = [];
+    for (let module of store.getters.loadModules) {
+      try {
+        let forks = await $axios.$get(
+          'https://api.github.com/repos/hapijs/' + module,
+          options
+        );
+        let date = await new Date(forks.pushed_at);
+        moduleData.push({
+          name: module,
+          forks: await Number(forks.forks_count),
+          stars: await Number(forks.stargazers_count),
+          date: await forks.pushed_at,
+          updated: await date.toDateString(),
+          slogan: await forks.description,
+          link: 'https://github.com/hapijs/' + module,
+        });
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    return { moduleData };
+  },
   data() {
     return {
       modules: this.$store.getters.loadModules,
@@ -81,6 +111,23 @@ export default {
         },
       ],
     };
+  },
+  created() {
+    this.$store.commit('setDisplay', 'family');
+    const sortedBy = ['name', 'stars', 'forks', 'updated'];
+    if (sortedBy.includes(this.$route.query.sort)) {
+      this.sortModules(this.$route.query.sort);
+    } else {
+      this.$router.push({
+        query: { sort: 'name' },
+      });
+      this.sortModules('name');
+    }
+  },
+  updated() {
+    this.$router.push({
+      query: { sort: this.$data.sort },
+    });
   },
   methods: {
     onChildInput(event) {
@@ -118,53 +165,6 @@ export default {
         this.moduleData.sort((a, b) => (a.date < b.date ? 1 : -1));
       }
     },
-  },
-  async asyncData({ params, $axios, route, store }) {
-    const options = {
-      headers: {
-        accept: 'application/vnd.github.v3.raw+json',
-        authorization: 'token ' + process.env.GITHUB_TOKEN,
-      },
-    };
-    let moduleData = [];
-    for (let module of store.getters.loadModules) {
-      try {
-        let forks = await $axios.$get(
-          'https://api.github.com/repos/hapijs/' + module,
-          options
-        );
-        let date = await new Date(forks.pushed_at);
-        moduleData.push({
-          name: module,
-          forks: await Number(forks.forks_count),
-          stars: await Number(forks.stargazers_count),
-          date: await forks.pushed_at,
-          updated: await date.toDateString(),
-          slogan: await forks.description,
-          link: 'https://github.com/hapijs/' + module,
-        });
-      } catch (err) {
-        console.log(err);
-      }
-    }
-    return { moduleData };
-  },
-  created() {
-    this.$store.commit('setDisplay', 'family');
-    const sortedBy = ['name', 'stars', 'forks', 'updated'];
-    if (sortedBy.includes(this.$route.query.sort)) {
-      this.sortModules(this.$route.query.sort);
-    } else {
-      this.$router.push({
-        query: { sort: 'name' },
-      });
-      this.sortModules('name');
-    }
-  },
-  updated() {
-    this.$router.push({
-      query: { sort: this.$data.sort },
-    });
   },
 };
 </script>
