@@ -1,17 +1,17 @@
 <template>
   <li
+    :ref="name"
     :class="
-      this.$route.params.family === name
+      $route.params.family === name
         ? 'side-nav-select-link family-side-nav-item side-nav-active'
         : 'side-nav-select-link family-side-nav-item'
     "
-    :ref="name"
   >
     <div
-      class="family-nav-select-wrapper family-display"
       :id="name"
       :key="version"
-      v-html="$md.render(this.$props.menu)"
+      class="family-nav-select-wrapper family-display"
+      v-html="$md.render($props.menu)"
     ></div>
   </li>
 </template>

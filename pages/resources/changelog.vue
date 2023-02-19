@@ -20,38 +20,6 @@ export default {
     Changelog,
     ResourcesNav,
   },
-  data() {
-    return {
-      page: 'changelog',
-    };
-  },
-  head() {
-    return {
-      title:
-        'joi.dev - ' +
-        this.page.replace(/([A-Z])/g, ' $1').replace(/^./, function (str) {
-          return str.toUpperCase();
-        }),
-      meta: [
-        {
-          hid: 'description',
-          name: 'description',
-          content: "View hapi's version history",
-        },
-      ],
-    };
-  },
-  computed: {
-    getCommunity() {
-      return this.$store.getters.loadCommunity;
-    },
-    getMilestones() {
-      return this.milestoneList;
-    },
-  },
-  async created() {
-    await this.$store.commit('setDisplay', 'resources');
-  },
   async asyncData({ $axios, params, store }) {
     let milestoneList = [];
     let m = [];
@@ -94,6 +62,38 @@ export default {
     return {
       milestoneList,
     };
+  },
+  data() {
+    return {
+      page: 'changelog',
+    };
+  },
+  head() {
+    return {
+      title:
+        'joi.dev - ' +
+        this.page.replace(/([A-Z])/g, ' $1').replace(/^./, function (str) {
+          return str.toUpperCase();
+        }),
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: "View hapi's version history",
+        },
+      ],
+    };
+  },
+  computed: {
+    getCommunity() {
+      return this.$store.getters.loadCommunity;
+    },
+    getMilestones() {
+      return this.milestoneList;
+    },
+  },
+  async created() {
+    await this.$store.commit('setDisplay', 'resources');
   },
   methods: {
     changePage(value) {

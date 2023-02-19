@@ -12,7 +12,7 @@
       <tbody>
         <tr
           v-for="version in module.versions"
-          v-bind:key="version.name + version.license"
+          :key="version.name + version.license"
           class="module-row landing-table-row"
         >
           <td>
@@ -63,11 +63,11 @@
               target="_blank"
             >
               <img
+                :id="`ci${name}${version.name}`"
                 :src="`https://github.com/hapijs/${name}/workflows/ci/badge.svg?branch=${version.branch}`"
                 alt="Build Status"
                 class="hide"
                 @load="swapImg(`ci${name}${version.name}`, version.branch)"
-                :id="`ci${name}${version.name}`"
               />
             </a>
           </td>
@@ -105,6 +105,11 @@ export default {
       newRepos: moduleInfo,
     };
   },
+  computed: {
+    getModules() {
+      return this.$store.getters.loadModules;
+    },
+  },
   methods: {
     camelName(name) {
       return _.camelCase(name);
@@ -117,11 +122,6 @@ export default {
       } else {
         badge.parentNode.innerHTML = await this.img['nonMaster'];
       }
-    },
-  },
-  computed: {
-    getModules() {
-      return this.$store.getters.loadModules;
     },
   },
 };

@@ -1,13 +1,13 @@
 <template>
   <div class="container">
     <LandingNav
-      :moduleInfo="moduleAPI"
+      :module-info="moduleAPI"
       :menu="getMenu"
       :page="page"
       :version="getVersion"
       :versions="versionsArray"
       :results="results"
-      :indexResults="indexResults"
+      :index-results="indexResults"
       :search="search"
       :intro="intro"
       :example="example"
@@ -27,7 +27,7 @@
           >v{{ getVersion.match(/.*(?=\.)/)[0] }}.x</span
         >
       </h1>
-      <Install :name="name" :moduleAPI="moduleAPI" :version="version" />
+      <Install :name="name" :module-a-p-i="moduleAPI" :version="version" />
       <FamilyDisplay :display="getAPI" />
     </div>
     <div class="preload">
@@ -51,18 +51,6 @@ export default {
     LandingNav,
     Install,
     Changelog,
-  },
-  head() {
-    return {
-      title: 'joi.dev - ' + this.$route.params.family + ' v' + this.getVersion,
-      meta: [
-        {
-          hid: 'description',
-          name: 'description',
-          content: 'View the APIs for the hapi modules',
-        },
-      ],
-    };
   },
   data() {
     return {
@@ -88,6 +76,94 @@ export default {
       advanced: false,
       listeners: new Map(),
     };
+  },
+  head() {
+    return {
+      title: 'joi.dev - ' + this.$route.params.family + ' v' + this.getVersion,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'View the APIs for the hapi modules',
+        },
+      ],
+    };
+  },
+  computed: {
+    getAPI() {
+      return this.moduleAPI[this.$route.params.family][this.getVersion].api;
+    },
+    getVersion() {
+      return this.$store.getters.loadVersion;
+    },
+    getMenu() {
+      return this.moduleAPI[this.$route.params.family][this.getVersion].menu;
+    },
+  },
+  created() {
+    let module = this.$route.params.family;
+    let versionsArray = this.moduleAPI[this.$route.params.family].versionsArray;
+    if (!this.$store.getters.loadModules.includes(this.$route.params.family)) {
+      return this.$nuxt.error({ statusCode: 404 });
+    }
+
+    let apiVersion = this.versionsArray[0];
+    if (!this.$route.query.v) {
+      this.$router.push({
+        query: { v: this.versionsArray[0] },
+        hash: this.$route.hash,
+      });
+    } else {
+      for (let v of this.versionsArray) {
+        let version = this.$route.query.v.match(/^([^.]+)/);
+        if (v.startsWith(version[0])) {
+          apiVersion = v;
+          if (!this.versionsArray.includes(this.$route.query.v)) {
+            this.$router.push({
+              query: { v: v },
+              hash: this.$route.hash,
+            });
+          }
+          break;
+        } else if (!this.versionsArray.includes(this.$route.query.v)) {
+          this.$router.push({
+            query: { v: this.versionsArray[0] },
+            hash: this.$route.hash,
+          });
+        }
+      }
+    }
+    this.$store.commit('setDisplay', 'family');
+    this.$store.commit('setVersion', apiVersion);
+    this.$data.menu =
+      this.moduleAPI[this.$route.params.family][this.getVersion].menu;
+    this.$store.commit('setFamily', module);
+    if (this.moduleAPI[module][apiVersion].intro) {
+      this.$store.commit('setIntro', true);
+    }
+    if (this.moduleAPI[module][apiVersion].example) {
+      this.$store.commit('setExample', true);
+    }
+    if (this.moduleAPI[module][apiVersion].usage) {
+      this.$store.commit('setUsage', true);
+    }
+    if (this.moduleAPI[module][apiVersion].faq) {
+      this.$store.commit('setFaq', true);
+    }
+    if (this.moduleAPI[module][apiVersion].advanced) {
+      this.$store.commit('setAdvanced', true);
+    }
+  },
+  mounted() {
+    this.setClasses();
+    this.goToAnchor();
+    this.setClipboards();
+  },
+  beforeDestroy() {
+    for (let [element, listener] of this.listeners) {
+      element.removeEventListener('click', listener);
+    }
+    this.listeners.clear();
   },
   methods: {
     onClipboards() {
@@ -345,82 +421,6 @@ export default {
         }
       };
     },
-  },
-  computed: {
-    getAPI() {
-      return this.moduleAPI[this.$route.params.family][this.getVersion].api;
-    },
-    getVersion() {
-      return this.$store.getters.loadVersion;
-    },
-    getMenu() {
-      return this.moduleAPI[this.$route.params.family][this.getVersion].menu;
-    },
-  },
-  created() {
-    let module = this.$route.params.family;
-    let versionsArray = this.moduleAPI[this.$route.params.family].versionsArray;
-    if (!this.$store.getters.loadModules.includes(this.$route.params.family)) {
-      return this.$nuxt.error({ statusCode: 404 });
-    }
-
-    let apiVersion = this.versionsArray[0];
-    if (!this.$route.query.v) {
-      this.$router.push({
-        query: { v: this.versionsArray[0] },
-        hash: this.$route.hash,
-      });
-    } else {
-      for (let v of this.versionsArray) {
-        let version = this.$route.query.v.match(/^([^.]+)/);
-        if (v.startsWith(version[0])) {
-          apiVersion = v;
-          if (!this.versionsArray.includes(this.$route.query.v)) {
-            this.$router.push({
-              query: { v: v },
-              hash: this.$route.hash,
-            });
-          }
-          break;
-        } else if (!this.versionsArray.includes(this.$route.query.v)) {
-          this.$router.push({
-            query: { v: this.versionsArray[0] },
-            hash: this.$route.hash,
-          });
-        }
-      }
-    }
-    this.$store.commit('setDisplay', 'family');
-    this.$store.commit('setVersion', apiVersion);
-    this.$data.menu =
-      this.moduleAPI[this.$route.params.family][this.getVersion].menu;
-    this.$store.commit('setFamily', module);
-    if (this.moduleAPI[module][apiVersion].intro) {
-      this.$store.commit('setIntro', true);
-    }
-    if (this.moduleAPI[module][apiVersion].example) {
-      this.$store.commit('setExample', true);
-    }
-    if (this.moduleAPI[module][apiVersion].usage) {
-      this.$store.commit('setUsage', true);
-    }
-    if (this.moduleAPI[module][apiVersion].faq) {
-      this.$store.commit('setFaq', true);
-    }
-    if (this.moduleAPI[module][apiVersion].advanced) {
-      this.$store.commit('setAdvanced', true);
-    }
-  },
-  mounted() {
-    this.setClasses();
-    this.goToAnchor();
-    this.setClipboards();
-  },
-  beforeDestroy() {
-    for (let [element, listener] of this.listeners) {
-      element.removeEventListener('click', listener);
-    }
-    this.listeners.clear();
   },
 };
 </script>

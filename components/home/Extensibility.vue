@@ -1,6 +1,6 @@
 <template>
   <div class="page-container bottom-page-container">
-    <div class="extensibility-upper-wrapper" id="extensibility">
+    <div id="extensibility" class="extensibility-upper-wrapper">
       <div class="quote-wrapper">
         <div class="quote">
           "hapi's extensive plugin system allows us to quickly build, extend,

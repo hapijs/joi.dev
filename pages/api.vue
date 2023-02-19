@@ -1,17 +1,17 @@
 <template>
   <div class="container">
     <ApiNav
+      :menu="menu"
+      :search="search"
+      :results="results"
+      :index-results="indexResults"
+      :version="version"
+      :versions="versions"
       @change="onChildChange"
       @input="onChildInput"
       @search="onChildSearch"
       @previous="onChildIndex"
       @next="onChildIndex"
-      :menu="menu"
-      :search="search"
-      :results="results"
-      :indexResults="indexResults"
-      :version="version"
-      :versions="versions"
     />
     <div class="tutorial-markdown-window">
       <HTML :display="htmlDisplay" />
@@ -34,12 +34,86 @@ export default {
     HTML,
     ApiNav,
   },
-  head() {
+  async asyncData({ params, $axios }) {
+    let versions = [];
+    let branchVersions = {};
+    const options = {
+      headers: {
+        accept: 'application/vnd.github.v3.raw+json',
+        authorization: 'token ' + process.env.GITHUB_TOKEN,
+      },
+    };
+
+    let branches = await $axios.$get(
+      'https://api.github.com/repos/hapijs/joi/branches',
+      options
+    );
+    branches = branches.sort((a, b) => (a.name > b.name ? 1 : -1));
+
+    let apis = {};
+    let menus = {};
+
+    //Grab and store APIs
+    for (let branch of branches) {
+      let v = '';
+      try {
+        if (branch.name.match(/^v+[0-9]+/g) || branch.name === 'master') {
+          v = await $axios.$get(
+            'https://api.github.com/repos/hapijs/joi/contents/package.json?ref=' +
+              branch.name,
+            options
+          );
+          if (versions.indexOf(v.version) === -1) {
+            let branchVersion = v.version;
+            versions.push(v.version);
+            branchVersions[v.version] = branch.name;
+          }
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    versions = versions.sort((a, b) => Semver.compare(b, a));
+    for (let version of versions) {
+      const res = await $axios.$get(
+        'https://api.github.com/repos/hapijs/joi/contents/API.md?ref=' +
+          branchVersions[version],
+        options
+      );
+      const rawString = res.toString();
+
+      //Auto generate TOC
+      let apiTocString = '';
+      const apiTocArray = rawString.match(/\n#.+/g);
+
+      for (let i = 0; i < apiTocArray.length; ++i) {
+        apiTocString = apiTocString + apiTocArray[i];
+      }
+      const finalMenu = Toc(apiTocString, { bullets: '-' }).content;
+
+      // Split API menu from content
+      let finalDisplay = rawString
+        .replace(/\/>/g, '></a>')
+        .replace(/-\s\[(?:.+[\n\r])+/, '');
+      menus[version] = finalMenu;
+      const apiHTML = await $axios.$post(
+        'https://api.github.com/markdown',
+        {
+          text: finalDisplay,
+          mode: 'markdown',
+        },
+        {
+          headers: {
+            authorization: 'token ' + process.env.GITHUB_TOKEN,
+          },
+        }
+      );
+      apis[version] = apiHTML.toString().replace(/user-content-/g, '');
+    }
     return {
-      title: `joi.dev - ${this.$route.query.v} API Reference`,
-      meta: [
-        { hid: 'description', name: 'description', content: 'The joi API' },
-      ],
+      apis,
+      menus,
+      versions,
     };
   },
   data() {
@@ -52,6 +126,57 @@ export default {
       results: [],
       listeners: new Map(),
     };
+  },
+  head() {
+    return {
+      title: `joi.dev - ${this.$route.query.v} API Reference`,
+      meta: [
+        { hid: 'description', name: 'description', content: 'The joi API' },
+      ],
+    };
+  },
+  created() {
+    let apiVersion = this.versions[0];
+    if (!this.$route.query.v) {
+      this.$router.push({
+        query: { v: this.versions[0] },
+        hash: this.$route.hash,
+      });
+    } else {
+      for (let v of this.versions) {
+        let version = this.$route.query.v.match(/^([^.]+)/);
+        if (v.startsWith(version[0])) {
+          apiVersion = v;
+          if (!this.versions.includes(this.$route.query.v)) {
+            this.$router.push({
+              query: { v: v },
+              hash: this.$route.hash,
+            });
+          }
+          break;
+        } else if (!this.versions.includes(this.$route.query.v)) {
+          this.$router.push({
+            query: { v: this.versions[0] },
+            hash: this.$route.hash,
+          });
+        }
+      }
+    }
+
+    this.$data.version = apiVersion;
+    this.$data.htmlDisplay = this.apis[this.$data.version];
+    this.$data.menu = this.menus[this.$data.version];
+    this.$store.commit('setDisplay', 'api');
+  },
+  mounted() {
+    this.goToAnchor();
+    this.setClipboards();
+  },
+  beforeDestroy() {
+    for (const [element, listener] of this.listeners) {
+      element.removeEventListener('click', listener);
+    }
+    this.listeners.clear();
   },
   methods: {
     async onChildChange(value) {
@@ -231,131 +356,6 @@ export default {
         });
       }
     },
-  },
-  async asyncData({ params, $axios }) {
-    let versions = [];
-    let branchVersions = {};
-    const options = {
-      headers: {
-        accept: 'application/vnd.github.v3.raw+json',
-        authorization: 'token ' + process.env.GITHUB_TOKEN,
-      },
-    };
-
-    let branches = await $axios.$get(
-      'https://api.github.com/repos/hapijs/joi/branches',
-      options
-    );
-    branches = branches.sort((a, b) => (a.name > b.name ? 1 : -1));
-
-    let apis = {};
-    let menus = {};
-
-    //Grab and store APIs
-    for (let branch of branches) {
-      let v = '';
-      try {
-        if (branch.name.match(/^v+[0-9]+/g) || branch.name === 'master') {
-          v = await $axios.$get(
-            'https://api.github.com/repos/hapijs/joi/contents/package.json?ref=' +
-              branch.name,
-            options
-          );
-          if (versions.indexOf(v.version) === -1) {
-            let branchVersion = v.version;
-            versions.push(v.version);
-            branchVersions[v.version] = branch.name;
-          }
-        }
-      } catch (err) {
-        console.log(err);
-      }
-    }
-    versions = versions.sort((a, b) => Semver.compare(b, a));
-    for (let version of versions) {
-      const res = await $axios.$get(
-        'https://api.github.com/repos/hapijs/joi/contents/API.md?ref=' +
-          branchVersions[version],
-        options
-      );
-      const rawString = res.toString();
-
-      //Auto generate TOC
-      let apiTocString = '';
-      const apiTocArray = rawString.match(/\n#.+/g);
-
-      for (let i = 0; i < apiTocArray.length; ++i) {
-        apiTocString = apiTocString + apiTocArray[i];
-      }
-      const finalMenu = Toc(apiTocString, { bullets: '-' }).content;
-
-      // Split API menu from content
-      let finalDisplay = rawString
-        .replace(/\/>/g, '></a>')
-        .replace(/-\s\[(?:.+[\n\r])+/, '');
-      menus[version] = finalMenu;
-      const apiHTML = await $axios.$post(
-        'https://api.github.com/markdown',
-        {
-          text: finalDisplay,
-          mode: 'markdown',
-        },
-        {
-          headers: {
-            authorization: 'token ' + process.env.GITHUB_TOKEN,
-          },
-        }
-      );
-      apis[version] = apiHTML.toString().replace(/user-content-/g, '');
-    }
-    return {
-      apis,
-      menus,
-      versions,
-    };
-  },
-  created() {
-    let apiVersion = this.versions[0];
-    if (!this.$route.query.v) {
-      this.$router.push({
-        query: { v: this.versions[0] },
-        hash: this.$route.hash,
-      });
-    } else {
-      for (let v of this.versions) {
-        let version = this.$route.query.v.match(/^([^.]+)/);
-        if (v.startsWith(version[0])) {
-          apiVersion = v;
-          if (!this.versions.includes(this.$route.query.v)) {
-            this.$router.push({
-              query: { v: v },
-              hash: this.$route.hash,
-            });
-          }
-          break;
-        } else if (!this.versions.includes(this.$route.query.v)) {
-          this.$router.push({
-            query: { v: this.versions[0] },
-            hash: this.$route.hash,
-          });
-        }
-      }
-    }
-
-    this.$data.version = apiVersion;
-    this.$data.htmlDisplay = this.apis[this.$data.version];
-    this.$data.menu = this.menus[this.$data.version];
-    this.$store.commit('setDisplay', 'api');
-  },
-  mounted() {
-    this.goToAnchor();
-    this.setClipboards();
-  },
-  beforeDestroy() {
-    for (const [element, listener] of this.listeners) {
-      element.removeEventListener('click', listener);
-    }
-    this.listeners.clear();
   },
 };
 </script>

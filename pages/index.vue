@@ -22,7 +22,6 @@ import Predictability from '~/components/home/Predictability.vue';
 import Extensibility from '~/components/home/Extensibility.vue';
 
 export default {
-  layout: 'home',
   components: {
     Security,
     Quality,
@@ -30,6 +29,7 @@ export default {
     Predictability,
     Extensibility,
   },
+  layout: 'home',
   created() {
     this.$store.commit('setDisplay', 'home');
   },

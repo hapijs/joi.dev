@@ -7,95 +7,95 @@
           <ul class="nav-links">
             <li class="nav-links-li">
               <a
+                ref="api"
                 :class="
                   getDisplay === 'api' ? 'nav-link nav-link-active' : 'nav-link'
                 "
-                ref="api"
                 title="API"
                 href="/api"
-                v-on:click="addActive('api')"
+                @click="addActive('api')"
                 >API</a
               >
             </li>
             <li class="nav-links-li">
               <a
+                ref="resources"
                 :class="
                   getDisplay === 'resources'
                     ? 'nav-link nav-link-active'
                     : 'nav-link'
                 "
-                ref="resources"
                 title="Resources"
                 href="/resources/changelog"
-                v-on:click="addActive('resources')"
+                @click="addActive('resources')"
                 >Resources</a
               >
             </li>
             <li class="nav-links-li">
               <a
+                ref="policies"
                 :class="
                   getDisplay === 'policies'
                     ? 'nav-link nav-link-active'
                     : 'nav-link'
                 "
-                ref="policies"
                 title="Policies"
                 href="/policies/coc"
-                v-on:click="addActive('policies')"
+                @click="addActive('policies')"
                 >Policies</a
               >
             </li>
             <li class="nav-links-li">
               <a
+                ref="family"
                 :class="
                   getDisplay === 'family'
                     ? 'nav-link nav-link-active'
                     : 'nav-link'
                 "
-                ref="family"
                 title="Modules"
                 href="/module?sort=name"
-                v-on:click="addActive('family')"
+                @click="addActive('family')"
                 >Modules</a
               >
             </li>
             <li class="nav-links-li">
               <a
+                ref="tester"
                 :class="
                   getDisplay === 'tester'
                     ? 'nav-link nav-link-active'
                     : 'nav-link'
                 "
-                ref="tester"
                 title="Schema Tester"
                 href="/tester"
-                v-on:click="addActive('tester')"
+                @click="addActive('tester')"
                 >Sandbox</a
               >
             </li>
           </ul>
         </div>
         <a
+          ref="hamburger"
           href="javascript:void(0);"
           class="hamburger"
-          ref="hamburger"
           aria-label="hamburger"
-          v-on:click="showNav()"
+          @click="showNav()"
         >
           <span class="hamburger-line hamburger-line-upper" />
           <span class="hamburger-line hamburger-line-middle" />
           <span class="hamburger-line hamburger-line-lower" />
         </a>
         <img
+          ref="mobileClose"
           src="/img/close.png"
           class="mobile-close hide"
-          ref="mobileClose"
           alt="close"
-          v-on:click="closeNav()"
+          @click="closeNav()"
         />
       </div>
       <div ref="mobileNav" class="mobile-nav-wrapper">
-        <div ref="overlay" class="mobile-overlay" v-on:click="closeNav()"></div>
+        <div ref="overlay" class="mobile-overlay" @click="closeNav()"></div>
         <MobileNav />
       </div>
     </nav>
