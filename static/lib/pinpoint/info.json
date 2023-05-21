@@ -1,0 +1,45 @@
+{
+  "name": "pinpoint",
+  "versions": [
+    {
+      "name": "2.0.1",
+      "branch": "v2.0.1",
+      "license": "BSD",
+      "node": [
+        "14",
+        "16",
+        "18"
+      ]
+    }
+  ],
+  "versionsArray": [
+    "2.0.1"
+  ],
+  "docs": {
+    "2.0.1": {
+      "menu": {
+        "id": null,
+        "text": null,
+        "children": [
+          {
+            "id": "locationdepth",
+            "text": "location()"
+          }
+        ]
+      },
+      "api": "<h3 class=\"api-doc-header\" id=\"locationdepth\"><code>location(depth)</code></h3>\n<p>Returns the filename and line number of the caller in the call stack where:</p>\n<ul>\n<li><code>depth</code> - the distance from the <code>location()</code> function in the call stack. Defaults to <code>1</code> (caller).</li>\n</ul>\n<p>Returns an object with the <code>filename</code> and <code>line</code> number.</p>\n",
+      "intro": "",
+      "example": "",
+      "usage": "",
+      "faq": "",
+      "advanced": "",
+      "license": "BSD"
+    }
+  },
+  "api": true,
+  "slogan": "Return the filename and line number of the calling function.",
+  "forks": 7,
+  "stars": 6,
+  "updated": "2023-02-19T10:39:16Z",
+  "link": "https://github.com/hapijs/pinpoint"
+}

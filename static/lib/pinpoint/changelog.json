@@ -1,0 +1,73 @@
+[
+  {
+    "id": 4972533,
+    "number": 5,
+    "version": "2.0.1",
+    "date": "2023-02-19T10:39:22Z",
+    "url": "https://github.com/hapijs/pinpoint/milestone/5",
+    "issues": [
+      {
+        "id": 1590638297,
+        "number": 9,
+        "title": "chore: change package namespace",
+        "url": "https://github.com/hapijs/pinpoint/pull/9",
+        "labels": []
+      }
+    ]
+  },
+  {
+    "id": 4972532,
+    "number": 4,
+    "version": "2.0.0",
+    "date": "2020-01-04T08:57:53Z",
+    "url": "https://github.com/hapijs/pinpoint/milestone/4",
+    "issues": [
+      {
+        "id": 545260681,
+        "number": 7,
+        "title": "Only node 12",
+        "url": "https://github.com/hapijs/pinpoint/issues/7",
+        "labels": [
+          "dependency",
+          "breaking changes"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 4599691,
+    "number": 2,
+    "version": "1.0.2",
+    "date": "2019-09-12T08:36:35Z",
+    "url": "https://github.com/hapijs/pinpoint/milestone/2",
+    "issues": [
+      {
+        "id": 492663574,
+        "number": 3,
+        "title": "Fix TS namespace",
+        "url": "https://github.com/hapijs/pinpoint/issues/3",
+        "labels": [
+          "bug"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 4599658,
+    "number": 1,
+    "version": "1.0.1",
+    "date": "2019-08-24T06:33:58Z",
+    "url": "https://github.com/hapijs/pinpoint/milestone/1",
+    "issues": [
+      {
+        "id": 484785221,
+        "number": 2,
+        "title": "Change default depth to be 0",
+        "url": "https://github.com/hapijs/pinpoint/issues/2",
+        "labels": [
+          "bug"
+        ]
+      }
+    ]
+  }
+]

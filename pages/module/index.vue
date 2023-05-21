@@ -1,103 +1,90 @@
 <template>
-  <div class="container">
-    <FamilyIndexNav
-      :search="search"
-      :sort="sort"
-      @input="onChildInput"
-      @search="onChildSearch"
-      @clear="onChildClear"
-      @change="sortModules"
-    />
-    <div class="family-grid-wrapper">
-      <h1 class="hapi-header">joi Modules</h1>
-      <div class="family-grid">
-        <div
-          v-for="module in moduleData"
-          :id="module.name + 1"
-          :key="module.name"
-          class="family-grid-cell"
-        >
-          <div class="family-grid-text-wrapper">
-            <a :href="'/module/' + module.name" class="family-grid-link">
-              <div class="family-grid-cell-name">{{ module.name }}</div>
-            </a>
-            <div
-              class="family-grid-cell-slogan"
-              v-html="$md.render(moduleInfo[module.name].slogan)"
-            ></div>
-          </div>
-          <div class="family-grid-cell-stats">
-            <div class="stats-wrapper">
-              <div class="family-stats">
-                <a class="status-link" :href="module.link">
-                  <img
-                    class="stats-img-github"
-                    src="/img/githubLogo.png"
-                    alt="github logo"
-                  />
-                </a>
-              </div>
-              <div class="family-stats">
-                <img class="stats-img-star" src="/img/star.png" alt="star" />
-                {{ module.stars }}
-              </div>
-              <div class="family-stats">
-                <img class="stats-img-fork" src="/img/fork.png" alt="fork" />
-                {{ module.forks }}
-              </div>
+  <SlotLayout>
+    <template #header>
+      <TopNav class="header" />
+    </template>
+
+    <template #sidebar>
+      <FamilyIndexNav
+        :search="search"
+        :sort="sort"
+        class="sidebar"
+        @input="onChildInput"
+        @clear="onChildClear"
+        @change="changeSort"
+      />
+    </template>
+
+    <template #main>
+      <div class="main family-grid-wrapper">
+        <h1 class="hapi-header">joi Modules</h1>
+        <div class="family-grid">
+          <div
+            v-for="module in filteredModules"
+            :id="module.name + 1"
+            :key="module.name"
+            class="family-grid-cell"
+          >
+            <div class="family-grid-text-wrapper">
+              <a :href="`/module/${module.name}`" class="family-grid-link">
+                <div class="family-grid-cell-name">{{ module.name }}</div>
+              </a>
+              <div class="family-grid-cell-slogan" v-html="module.slogan"></div>
             </div>
-            <div class="family-updated">Updated: {{ module.updated }}</div>
+            <div class="family-grid-cell-stats">
+              <div class="stats-wrapper">
+                <div class="family-stats">
+                  <a class="status-link" :href="module.link">
+                    <img
+                      class="stats-img-github"
+                      src="/img/githubLogo.png"
+                      alt="github logo"
+                    />
+                  </a>
+                </div>
+                <div class="family-stats">
+                  <img class="stats-img-star" src="/img/star.png" alt="star" />
+                  {{ module.stars }}
+                </div>
+                <div class="family-stats">
+                  <img class="stats-img-fork" src="/img/fork.png" alt="fork" />
+                  {{ module.forks }}
+                </div>
+              </div>
+              <div class="family-updated">Updated: {{ module.updated }}</div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
+    </template>
+  </SlotLayout>
 </template>
 
 <script>
+import TopNav from '@/components/Navs/TopNav.vue';
+import SlotLayout from '@/components/SlotLayout.vue';
+import _ from 'lodash';
 import FamilyIndexNav from '~/components/family/FamilyIndexNav.vue';
-const moduleInfo = require('../../static/lib/moduleInfo.json');
+import moduleInfo from '../../static/lib/modules.json';
+
 export default {
   components: {
+    TopNav,
+    SlotLayout,
     FamilyIndexNav,
-  },
-  async asyncData({ params, $axios, route, store }) {
-    const options = {
-      headers: {
-        accept: 'application/vnd.github.v3.raw+json',
-        authorization: 'token ' + process.env.GITHUB_TOKEN,
-      },
-    };
-    let moduleData = [];
-    for (let module of store.getters.loadModules) {
-      try {
-        let forks = await $axios.$get(
-          'https://api.github.com/repos/hapijs/' + module,
-          options
-        );
-        let date = await new Date(forks.pushed_at);
-        moduleData.push({
-          name: module,
-          forks: await Number(forks.forks_count),
-          stars: await Number(forks.stargazers_count),
-          date: await forks.pushed_at,
-          updated: await date.toDateString(),
-          slogan: await forks.description,
-          link: 'https://github.com/hapijs/' + module,
-        });
-      } catch (err) {
-        console.log(err);
-      }
-    }
-    return { moduleData };
   },
   data() {
     return {
       modules: this.$store.getters.loadModules,
-      moduleInfo: moduleInfo,
+      moduleInfo,
       search: '',
       core: true,
-      sort: 'name',
+      sortDirections: {
+        name: 'asc',
+        stars: 'desc',
+        forks: 'desc',
+        updated: 'desc',
+      },
     };
   },
   head() {
@@ -112,73 +99,52 @@ export default {
       ],
     };
   },
+  computed: {
+    sort() {
+      return this.$route.query.sort || 'name';
+    },
+    filteredModules() {
+      const searchTerm = this.search.trim().toLowerCase();
+      return _(moduleInfo)
+        .pickBy(
+          (module, key) =>
+            key !== 'joi' &&
+            (!searchTerm ||
+              key.includes(searchTerm) ||
+              module.slogan.toLowerCase().includes(searchTerm))
+        )
+        .map((module, key) => ({ ...module, name: key }))
+        .orderBy(this.sort, this.sortDirections[this.sort])
+        .value();
+    },
+  },
   created() {
     this.$store.commit('setDisplay', 'family');
-    const sortedBy = ['name', 'stars', 'forks', 'updated'];
-    if (sortedBy.includes(this.$route.query.sort)) {
-      this.sortModules(this.$route.query.sort);
-    } else {
-      this.$router.push({
-        query: { sort: 'name' },
-      });
-      this.sortModules('name');
+    const sortedBy = Object.keys(this.sortDirections);
+    if (!sortedBy.includes(this.sort)) {
+      this.changeSort('name');
     }
-  },
-  updated() {
-    this.$router.push({
-      query: { sort: this.$data.sort },
-    });
   },
   methods: {
     onChildInput(event) {
-      this.$data.search = event.target.value;
-      if (this.$data.search === '') {
-        let hidden = document.querySelectorAll('.hide');
-        for (let hide of hidden) {
-          hide.classList.remove('hide');
-        }
-        document.querySelector('.module-clear-button').classList.add('hide');
-      }
-    },
-    onChildSearch() {
-      for (let module of this.moduleData) {
-        if (
-          !module.name.includes(this.$data.search.toLowerCase()) &&
-          !module.slogan.toLowerCase().includes(this.$data.search.toLowerCase())
-        ) {
-          document.querySelector('#' + module.name + 1).classList.add('hide');
-        }
-      }
+      this.search = event.target.value;
     },
     onChildClear() {
-      this.$data.search = '';
+      this.search = '';
     },
-    sortModules(value) {
-      this.$data.sort = value;
-      if (value === 'stars' || value === 'forks') {
-        this.moduleData.sort((a, b) =>
-          a[value.toLowerCase()] < b[value] ? 1 : -1
-        );
-      } else if (value === 'name') {
-        this.moduleData.sort((a, b) => (a.name > b.name ? 1 : -1));
-      } else if (value === 'updated') {
-        this.moduleData.sort((a, b) => (a.date < b.date ? 1 : -1));
-      }
+    changeSort(value) {
+      this.$router.push({
+        query: { sort: value },
+      });
     },
   },
 };
 </script>
 
-<style lang="scss">
-@import '../../assets/styles/main.scss';
-@import '../../assets/styles/api.scss';
+<style lang="postcss" scoped>
 .family-grid-wrapper {
   padding: 20px 100px;
   width: 100%;
-}
-.family-header {
-  margin-bottom: 30px;
-  font-size: 2rem;
 }
 .family-grid {
   display: grid;
@@ -192,21 +158,26 @@ export default {
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
-  border: 1px solid $dark-white;
+  border: 1px solid var(--dark-white);
   padding: 10px 15px;
   margin: 0;
-  background: $off-white;
+  background: var(--off-white);
 }
 .family-grid-text-wrapper {
   margin: 0;
 }
 .family-grid-cell-name {
-  color: $orange;
+  color: var(--orange);
   font-size: 1.2em;
   font-weight: 700;
 }
-.family-grid-link:hover {
-  color: $orange;
+.family-grid-link {
+  line-height: 1.5em;
+  text-decoration: none;
+
+  &:hover {
+    color: var(--orange);
+  }
 }
 .family-grid-cell-slogan {
   font-size: 0.95em;
@@ -277,7 +248,7 @@ export default {
 
 @media (prefers-color-scheme: dark) {
   .family-grid-cell {
-    background: $blacker;
+    background: var(--blacker);
     border: 1px solid #000;
   }
 }

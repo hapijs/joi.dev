@@ -1,0 +1,92 @@
+{
+  "joi": {
+    "slogan": "The most powerful schema description language and data validator for JavaScript.",
+    "link": "https://github.com/hapijs/joi",
+    "stars": 20238,
+    "forks": 1542,
+    "versions": [
+      {
+        "name": "17.11.0",
+        "branch": "v17.11.0",
+        "license": "BSD",
+        "node": [
+          "14",
+          "16",
+          "18"
+        ]
+      }
+    ]
+  },
+  "address": {
+    "slogan": "Validate email address and domain.",
+    "link": "https://github.com/hapijs/address",
+    "stars": 30,
+    "forks": 26,
+    "versions": [
+      {
+        "name": "5.1.1",
+        "branch": "v5.1.1",
+        "license": "BSD",
+        "node": [
+          "14",
+          "16",
+          "18"
+        ]
+      }
+    ]
+  },
+  "formula": {
+    "slogan": "Math and string formula parser.",
+    "link": "https://github.com/hapijs/formula",
+    "stars": 14,
+    "forks": 19,
+    "versions": [
+      {
+        "name": "3.0.2",
+        "branch": "v3.0.2",
+        "license": "BSD",
+        "node": [
+          "14",
+          "16",
+          "18"
+        ]
+      }
+    ]
+  },
+  "joi-date": {
+    "slogan": "Extensions for advance date rules.",
+    "link": "https://github.com/hapijs/joi-date",
+    "stars": 82,
+    "forks": 26,
+    "versions": [
+      {
+        "name": "2.1.0",
+        "branch": "v2.1.0",
+        "license": "BSD",
+        "node": [
+          "14",
+          "16",
+          "18"
+        ]
+      }
+    ]
+  },
+  "pinpoint": {
+    "slogan": "Return the filename and line number of the calling function.",
+    "link": "https://github.com/hapijs/pinpoint",
+    "stars": 6,
+    "forks": 7,
+    "versions": [
+      {
+        "name": "2.0.1",
+        "branch": "v2.0.1",
+        "license": "BSD",
+        "node": [
+          "14",
+          "16",
+          "18"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,130 @@
+[
+  {
+    "id": 9063122,
+    "number": 8,
+    "version": "3.0.2",
+    "date": "2023-02-19T10:51:54Z",
+    "url": "https://github.com/hapijs/formula/milestone/8",
+    "issues": [
+      {
+        "id": 1590641372,
+        "number": 11,
+        "title": "chore: change package namespace",
+        "url": "https://github.com/hapijs/formula/pull/11",
+        "labels": []
+      }
+    ]
+  },
+  {
+    "id": 4972530,
+    "number": 7,
+    "version": "3.0.1",
+    "date": "2023-02-19T10:50:16Z",
+    "url": "https://github.com/hapijs/formula/milestone/7",
+    "issues": [
+      {
+        "id": 1590642366,
+        "number": 12,
+        "title": "fix redos on numbers",
+        "url": "https://github.com/hapijs/formula/issues/12",
+        "labels": [
+          "bug",
+          "security"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 4972529,
+    "number": 6,
+    "version": "3.0.0",
+    "date": "2020-01-04T08:54:02Z",
+    "url": "https://github.com/hapijs/formula/milestone/6",
+    "issues": [
+      {
+        "id": 545260282,
+        "number": 10,
+        "title": "Support only node 12",
+        "url": "https://github.com/hapijs/formula/issues/10",
+        "labels": [
+          "breaking changes",
+          "dependency"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 4724607,
+    "number": 4,
+    "version": "2.0.0",
+    "date": "2019-10-07T04:46:26Z",
+    "url": "https://github.com/hapijs/formula/milestone/4",
+    "issues": [
+      {
+        "id": 503229738,
+        "number": 8,
+        "title": "Drop node 8",
+        "url": "https://github.com/hapijs/formula/issues/8",
+        "labels": [
+          "breaking changes",
+          "dependency"
+        ]
+      },
+      {
+        "id": 503046709,
+        "number": 7,
+        "title": "Change default export",
+        "url": "https://github.com/hapijs/formula/issues/7",
+        "labels": [
+          "breaking changes"
+        ]
+      },
+      {
+        "id": 503046658,
+        "number": 6,
+        "title": "Add types",
+        "url": "https://github.com/hapijs/formula/issues/6",
+        "labels": [
+          "types",
+          "breaking changes"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 4437361,
+    "number": 2,
+    "version": "1.2.0",
+    "date": "2019-08-09T08:37:32Z",
+    "url": "https://github.com/hapijs/formula/milestone/2",
+    "issues": [
+      {
+        "id": 478867827,
+        "number": 2,
+        "title": "Bind functions to context",
+        "url": "https://github.com/hapijs/formula/issues/2",
+        "labels": [
+          "feature"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 4437360,
+    "number": 1,
+    "version": "1.1.0",
+    "date": "2019-06-24T18:43:34Z",
+    "url": "https://github.com/hapijs/formula/milestone/1",
+    "issues": [
+      {
+        "id": 460038563,
+        "number": 1,
+        "title": "Identify single part",
+        "url": "https://github.com/hapijs/formula/issues/1",
+        "labels": [
+          "feature"
+        ]
+      }
+    ]
+  }
+]

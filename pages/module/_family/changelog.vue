@@ -1,85 +1,62 @@
 <template>
-  <div class="container">
-    <LandingNav
-      page="changelog"
-      :intro="intro"
-      :example="example"
-      :usage="usage"
-      :faq="faq"
-      :advanced="advanced"
-      :module-info="moduleAPI"
-    />
-    <div class="community-wrapper">
-      <Changelog :milestones="getMilestones" />
-    </div>
-  </div>
+  <SlotLayout>
+    <template #header>
+      <TopNav class="header" />
+    </template>
+
+    <template #sidebar>
+      <LandingNav
+        v-if="info"
+        page="changelog"
+        :family="family"
+        :intro="intro"
+        :example="example"
+        :usage="usage"
+        :faq="faq"
+        :advanced="advanced"
+        :module-info="info"
+      />
+    </template>
+
+    <template #main>
+      <div class="main community-wrapper" v-if="changelog">
+        <Changelog :milestones="changelog" />
+      </div>
+    </template>
+  </SlotLayout>
 </template>
 
 <script>
+import TopNav from '@/components/Navs/TopNav.vue';
+import SlotLayout from '@/components/SlotLayout.vue';
 import Changelog from '../../../components/resources/Changelog.vue';
 import LandingNav from '../../../components/family/LandingNav.vue';
-const moduleInfo = require('../../../static/lib/moduleInfo.json');
-let Semver = require('semver');
 
 export default {
   components: {
+    TopNav,
+    SlotLayout,
     Changelog,
     LandingNav,
   },
-  async asyncData({ params, $axios, route, store }) {
-    let milestoneList = [];
-    let m = [];
-    let milestones = [];
-    if (store.getters.loadModules.includes(params.family)) {
-      try {
-        //Changelog
-        const mileOptions = {
-          headers: {
-            accept: 'application/vnd.github.v3.raw+json',
-            authorization: 'token ' + process.env.GITHUB_TOKEN,
-          },
-        };
-        for (let p = 1; p <= 2; ++p) {
-          milestones = await $axios.$get(
-            'https://api.github.com/repos/hapijs/' +
-              params.family +
-              '/milestones?state=closed&per_page=100&page=' +
-              p,
-            mileOptions
-          );
-          m.push(milestones);
-        }
-        let flatM = [].concat(...m);
-        let sortedMilestones = flatM.sort(function (a, b) {
-          if (!Semver.valid(a.title)) {
-            a.title = Semver.clean(a.title + '.0', { loose: true });
-          }
-          return Semver.compare(b.title, a.title);
-        });
-        //Get milestone issues
-        for (let milestone of sortedMilestones) {
-          let m = await $axios.$get(
-            'https://api.github.com/repos/hapijs/' +
-              params.family +
-              '/issues?state=closed&milestone=' +
-              milestone.number +
-              '&per_page=200',
-            mileOptions
-          );
-          if (m.length > 0) {
-            milestoneList.push(m);
-          }
-        }
-      } catch (err) {
-        console.log('GITHUB ERRRORRRRRRRR!!!', err.message);
-      }
-    }
-    return { milestoneList };
+  async asyncData({ params }) {
+    const family = params.family;
+    const [{ default: info }, { default: changelog }] = await Promise.all([
+      import(`../../../static/lib/${family}/info.json`),
+      import(`../../../static/lib/${family}/changelog.json`),
+    ]);
+    return {
+      info,
+      changelog,
+      family,
+    };
   },
   data() {
     return {
-      moduleAPI: moduleInfo,
       page: 'changelog',
+      info: null,
+      family: '',
+      changelog: null,
       intro: false,
       example: false,
       usage: false,
@@ -98,7 +75,7 @@ export default {
         {
           hid: 'description',
           name: 'description',
-          content: "View hapi's version history",
+          content: `View ${this.$route.params.family}'s version history`,
         },
       ],
     };
@@ -107,28 +84,25 @@ export default {
     getCommunity() {
       return this.$store.getters.loadCommunity;
     },
-    getMilestones() {
-      return this.milestoneList;
-    },
   },
   created() {
-    let module = this.$route.params.family;
+    const module = this.$route.params.family;
+    const versionsArray = this.info.versionsArray;
     this.$store.commit('setDisplay', 'family');
-    let versionsArray = this.moduleAPI[this.$route.params.family].versionsArray;
     this.$store.commit('setFamily', module);
-    if (this.moduleAPI[module][versionsArray[0]].intro) {
+    if (this.info.docs[versionsArray[0]].intro) {
       this.$store.commit('setIntro', true);
     }
-    if (this.moduleAPI[module][versionsArray[0]].example) {
+    if (this.info.docs[versionsArray[0]].example) {
       this.$store.commit('setExample', true);
     }
-    if (this.moduleAPI[module][versionsArray[0]].usage) {
+    if (this.info.docs[versionsArray[0]].usage) {
       this.$store.commit('setUsage', true);
     }
-    if (this.moduleAPI[module][versionsArray[0]].faq) {
+    if (this.info.docs[versionsArray[0]].faq) {
       this.$store.commit('setFaq', true);
     }
-    if (this.moduleAPI[module][versionsArray[0]].advanced) {
+    if (this.info.docs[versionsArray[0]].advanced) {
       this.$store.commit('setAdvanced', true);
     }
   },
@@ -142,10 +116,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
-@import '../../../assets/styles/main.scss';
-@import '../../../assets/styles/markdown.scss';
-
+<style lang="postcss">
 .community-wrapper {
   margin: 0;
   width: 100%;
@@ -153,7 +124,7 @@ export default {
 
 .changelog-header {
   margin: 20px 0 10px 0;
-  border-bottom: 1px solid $dark-white;
+  border-bottom: 1px solid var(--dark-white);
   border-top: none;
   padding-bottom: 10px;
   width: auto;

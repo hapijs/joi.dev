@@ -15,30 +15,20 @@
 </template>
 
 <script>
-import Security from '~/components/home/Security.vue';
-import Quality from '~/components/home/Quality.vue';
-import DevelopersFirst from '~/components/home/DevelopersFirst.vue';
-import Predictability from '~/components/home/Predictability.vue';
-import Extensibility from '~/components/home/Extensibility.vue';
+import { mapMutations } from 'vuex';
 
 export default {
-  components: {
-    Security,
-    Quality,
-    DevelopersFirst,
-    Predictability,
-    Extensibility,
-  },
   layout: 'home',
   created() {
-    this.$store.commit('setDisplay', 'home');
+    this.setDisplay('home');
+  },
+  methods: {
+    ...mapMutations(['setDisplay']),
   },
 };
 </script>
 
-<style lang="scss">
-@import '../assets/styles/main.scss';
-
+<style lang="postcss">
 .home-container {
   margin: 50px auto 0 auto;
   height: 100%;
@@ -48,12 +38,7 @@ export default {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  color: $black;
   font-size: 1.3em;
-}
-
-.navbar {
-  max-width: 1100px;
 }
 
 .index-header {
@@ -68,70 +53,23 @@ export default {
 
 .index-button {
   border-radius: 10px;
-  border: none;
-  background: $orange;
+  background: var(--orange);
   padding: 5px 15px;
   font-size: 0.9em;
   font-weight: 700;
   margin: 40px 0;
-  color: $white;
+  color: var(--white);
   cursor: pointer;
   border: 4px solid rgba(0, 0, 0, 0);
+  text-decoration: none;
 }
 
 .index-button:hover,
-.bottom-button:hover {
-  border: 4px solid $orange;
-  background: $white;
-  color: $orange;
-  text-decoration: none;
+ {
+  border: 4px solid var(--orange);
+  background: var(--white);
+  color: var(--orange);
   transition: all 0.3s ease 0s;
-}
-
-.bottom-button {
-  border-radius: 10px;
-  border: none;
-  background: $orange;
-  padding: 5px 15px;
-  font-size: 0.9em;
-  font-weight: 700;
-  color: $white;
-  cursor: pointer;
-  border: 4px solid rgba(0, 0, 0, 0);
-  margin: 0 0 50px 0;
-}
-
-.index-about-header {
-  margin: 40px 0 20px 0;
-}
-
-.index-about {
-  display: flex;
-  flex-direction: column;
-  font-weight: 700;
-  font-size: 1em;
-  flex-wrap: wrap;
-  margin: 50px 0;
-  line-height: 30px;
-  width: 80%;
-}
-
-.index-about-top,
-.index-about-bottom {
-  display: flex;
-}
-
-.index-about-top {
-  margin-bottom: 10px;
-}
-
-.index-about-link:hover {
-  color: $orange;
-  text-decoration: underline;
-}
-
-.index-about-link {
-  cursor: pointer;
 }
 
 .index-divider {
@@ -139,11 +77,11 @@ export default {
 }
 
 .underline {
-  border-bottom: 2px solid $black;
+  border-bottom: 2px solid var(--black);
 }
 
 .code {
-  border: 1px solid $dark-white;
+  border: 1px solid var(--dark-white);
 }
 
 .page-container {
@@ -154,59 +92,6 @@ export default {
 
 .bottom-page-container {
   padding-bottom: 50px;
-}
-
-.quote-wrapper {
-  position: relative;
-  background: $quote-gray;
-  padding: 20px 0 40px 0;
-  text-align: left;
-  margin: 30px 0 80px 0;
-}
-
-.quote-wrapper:before {
-  content: '';
-  background-color: $quote-gray;
-  position: absolute;
-  height: 100%;
-  top: 0;
-  width: 5000px;
-  left: -2500px;
-  z-index: -1;
-}
-
-.quote-img-container {
-  position: relative;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  height: 62px;
-  margin: 0 20px 0 0;
-}
-
-.quote-img {
-  position: relative;
-  right: 0;
-  width: 150px;
-}
-
-.quote-text {
-  margin: 0;
-}
-
-.quote {
-  padding: 20px 0;
-}
-
-.quote-container {
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-}
-
-.quote-author {
-  font-weight: 700;
 }
 
 .home-header {
@@ -222,50 +107,11 @@ export default {
   margin: 40px 0;
 }
 
-.sec-helmet {
-  height: 125px;
-  float: left;
-  margin: 15px 0 0 0;
-}
-
-.qua-helmet {
-  width: 130px;
-  float: left;
-  margin: -5px 10px 0 0;
-}
-
-.dev-helmet {
-  width: 150px;
-  float: left;
-  margin: 0 10px 0 0;
-}
-
-.pre-helmet {
-  width: 115px;
-  float: left;
-  margin: 0;
-}
-
-.ext-helmet {
-  width: 125px;
-  float: left;
-  margin: -15px 10px 0 0;
-}
-
 @media screen and (max-width: 900px) {
   .home-container {
     margin-top: 70px;
     padding: 0 20px;
     font-size: 1.1em;
-  }
-
-  .index-about {
-    width: 100%;
-    font-size: 1.15rem;
-  }
-
-  .index-about-top {
-    margin-bottom: 5px;
   }
 
   .index-button {
@@ -274,7 +120,7 @@ export default {
   }
 
   .underline {
-    border-bottom: 1px solid $black;
+    border-bottom: 1px solid var(--black);
   }
 
   .index-divider {
@@ -285,40 +131,8 @@ export default {
     display: none;
   }
 
-  .quote-wrapper {
-    margin: 0;
-  }
-
-  .quote-container {
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-  }
-
-  .quote-img-container {
-    position: relative;
-    left: 0;
-    width: auto;
-    height: auto;
-    justify-content: flex-start;
-    align-items: flex-start;
-    padding-top: 5px;
-  }
-
-  .quote-img {
-    position: relative;
-    top: 0;
-    left: 0;
-    margin: 0;
-    width: 100px;
-  }
-
   .bottom-page-container {
     padding-bottom: 20px;
-  }
-
-  .bottom-button {
-    margin: 10px 0;
   }
 
   .home-header {
@@ -327,39 +141,15 @@ export default {
     justify-content: flex-start;
     align-items: center;
   }
-
-  .sec-helmet,
-  .qua-helmet,
-  .dev-helmet,
-  .pre-helmet,
-  .ext-helmet {
-    width: 65px;
-    height: 65px;
-  }
-
-  .ext-helmet {
-    margin-top: 0;
-  }
-}
-
-@media screen and (max-width: 330px) {
-  .index-about {
-    width: 100%;
-    font-size: 0.9rem;
-  }
 }
 
 @media (prefers-color-scheme: dark) {
   .home-container {
-    color: $off-white;
+    color: var(--off-white);
   }
   .underline,
   .code {
-    border-color: $blacker;
-  }
-  .quote-wrapper,
-  .quote-wrapper:before {
-    background-color: $blacker !important;
+    border-color: var(--blacker);
   }
 }
 </style>

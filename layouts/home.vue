@@ -1,70 +1,63 @@
 <template>
-  <div class="contain">
-    <Nav />
-    <nuxt />
-    <Footer />
+  <div class="container">
+    <TopNav class="header" />
+    <nuxt class="main" />
+    <MainFooter class="footer" />
   </div>
 </template>
 
 <script>
-import Nav from '~/components/Navs/Nav.vue';
-import Footer from '~/components/Footers/Footer.vue';
-import CopyCodeSnippetMixin from '~/mixins/CopyCodeSnippet';
+import TopNav from '@/components/Navs/TopNav.vue';
+import MainFooter from '~/components/Footers/MainFooter.vue';
 
 export default {
   components: {
-    Nav,
-    Footer,
+    TopNav,
+    MainFooter,
   },
-  mixins: [CopyCodeSnippetMixin],
 };
 </script>
 
-<style lang="scss">
-html {
-  word-spacing: 1px;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
+<style lang="postcss" scoped>
+.container {
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 150px 1fr 1fr;
+  grid-template-areas:
+    'header'
+    'main'
+    'footer';
+
+  > .header {
+    grid-area: header;
+    width: 100%;
+  }
+
+  > .main {
+    grid-area: main;
+  }
+
+  > .footer {
+    grid-area: footer;
+    padding-bottom: 100px;
+  }
 }
 
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-  margin: 0 auto;
-}
-
-.contain {
-  position: relative;
-  margin: 0 auto;
-  min-height: calc(100vh - 50px);
-  padding-bottom: 50px;
-}
-
-.logo {
-  background: url('/img/joiTransparent.png') no-repeat 0 0;
-  background-size: contain;
-  height: 150px !important;
-  width: 200px !important;
-  margin: 0;
+::v-deep .logo {
+  height: 150px;
+  width: 200px;
 }
 
 @media screen and (max-width: 900px) {
-  .contain {
-    min-height: calc(100vh - 80px);
-    padding-bottom: 100px;
+  .container {
+    grid-template-rows: 60px 1fr 1fr;
   }
 
-  .navbar {
-    position: fixed !important;
-    top: 0;
-  }
-
-  .logo {
-    height: 50px !important;
+  ::v-deep .logo {
+    height: 60px !important;
     width: calc(100px * (2 / 3)) !important;
     margin: 0 auto;
   }

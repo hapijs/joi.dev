@@ -1,0 +1,59 @@
+{
+  "name": "joi-date",
+  "versions": [
+    {
+      "name": "2.1.0",
+      "branch": "v2.1.0",
+      "license": "BSD",
+      "node": [
+        "14",
+        "16",
+        "18"
+      ]
+    }
+  ],
+  "versionsArray": [
+    "2.1.0"
+  ],
+  "docs": {
+    "2.1.0": {
+      "menu": {
+        "id": null,
+        "text": null,
+        "children": [
+          {
+            "id": "compatibility",
+            "text": "Compatibility"
+          },
+          {
+            "id": "rules",
+            "text": "Rules",
+            "children": [
+              {
+                "id": "dateformatformat",
+                "text": "date.format()"
+              },
+              {
+                "id": "dateutc",
+                "text": "date.utc()"
+              }
+            ]
+          }
+        ]
+      },
+      "api": "<h2 class=\"api-doc-header\" id=\"compatibility\">Compatibility</h2>\n<p>This version requires <strong>joi</strong> v17 or newer.</p>\n<h2 class=\"api-doc-header\" id=\"rules\">Rules</h2>\n<h3 class=\"api-doc-header\" id=\"dateformatformat\"><code>date.format(format)</code></h3>\n<p>Specifies the allowed date format:</p>\n<ul>\n<li><code>format</code> - string or array of strings that follow the <code>moment.js</code> <a href=\"http://momentjs.com/docs/#/parsing/string-format/\">format</a>.</li>\n</ul>\n<div class=\"code-snippet\"><pre><code class=\"language-js\"><span class=\"hljs-keyword\">const</span> schema = <span class=\"hljs-title class_\">Joi</span>.<span class=\"hljs-title function_\">date</span>().<span class=\"hljs-title function_\">format</span>([<span class=\"hljs-string\">&#x27;YYYY/MM/DD&#x27;</span>, <span class=\"hljs-string\">&#x27;DD-MM-YYYY&#x27;</span>]);\n</code></pre>\n</div><div class=\"code-snippet\"><pre><code class=\"language-js\"><span class=\"hljs-keyword\">const</span> schema = <span class=\"hljs-title class_\">Joi</span>.<span class=\"hljs-title function_\">date</span>().<span class=\"hljs-title function_\">format</span>(<span class=\"hljs-string\">&#x27;YYYY-MM-DD HH:mm&#x27;</span>);\n</code></pre>\n</div><h3 class=\"api-doc-header\" id=\"dateutc\"><code>date.utc()</code></h3>\n<p>Dates will be parsed as UTC instead of using the machine&#39;s local timezone.</p>\n<div class=\"code-snippet\"><pre><code class=\"language-js\"><span class=\"hljs-keyword\">const</span> schema = <span class=\"hljs-title class_\">Joi</span>.<span class=\"hljs-title function_\">date</span>().<span class=\"hljs-title function_\">utc</span>().<span class=\"hljs-title function_\">format</span>([<span class=\"hljs-string\">&#x27;YYYY/MM/DD&#x27;</span>, <span class=\"hljs-string\">&#x27;DD-MM-YYYY&#x27;</span>]);\n</code></pre>\n</div>",
+      "intro": "",
+      "example": "",
+      "usage": "## Usage\n\n```js\nconst Joi = require('joi')\n    .extend(require('@joi/date'));\n\nconst schema = Joi.date().format('YYYY-MM-DD').utc();\n```\n\n",
+      "faq": "",
+      "advanced": "",
+      "license": "BSD"
+    }
+  },
+  "api": true,
+  "slogan": "Extensions for advance date rules.",
+  "forks": 26,
+  "stars": 82,
+  "updated": "2022-11-10T12:54:22Z",
+  "link": "https://github.com/hapijs/joi-date"
+}

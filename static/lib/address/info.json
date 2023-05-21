@@ -1,0 +1,67 @@
+{
+  "name": "address",
+  "versions": [
+    {
+      "name": "5.1.1",
+      "branch": "v5.1.1",
+      "license": "BSD",
+      "node": [
+        "14",
+        "16",
+        "18"
+      ]
+    }
+  ],
+  "versionsArray": [
+    "5.1.1"
+  ],
+  "docs": {
+    "5.1.1": {
+      "menu": {
+        "id": null,
+        "text": null,
+        "children": [
+          {
+            "id": "methods",
+            "text": "Methods",
+            "children": [
+              {
+                "id": "analyzedomaindomain-options",
+                "text": "analyzeDomain()"
+              },
+              {
+                "id": "isdomainvaliddomain-options",
+                "text": "isDomainValid()"
+              },
+              {
+                "id": "analyzeemailemail-options",
+                "text": "analyzeEmail()"
+              },
+              {
+                "id": "isemailvalidemail-options",
+                "text": "isEmailValid()"
+              },
+              {
+                "id": "errorcodes",
+                "text": "errorCodes"
+              }
+            ]
+          }
+        ]
+      },
+      "api": "<h2 class=\"api-doc-header\" id=\"methods\">Methods</h2>\n<h3 class=\"api-doc-header\" id=\"analyzedomaindomain-options\"><code>analyzeDomain(domain, [options])</code></h3>\n<p>Analyzes a string to verify it is a valid domain name where:</p>\n<ul>\n<li><code>domain</code> - the domain name string being verified.</li>\n<li><code>options</code> - optional settings:<ul>\n<li><code>allowUnicode</code> - if <code>false</code>, Unicode characters are not allowed in domain names. Defaults to <code>true</code>.</li>\n<li><code>allowUnderscore</code> - if <code>false</code>, underscore (<code>_</code>) characters will not be allowed in the domain name. Defaults to <code>false</code>.</li>\n<li><code>minDomainSegments</code> - the minimum number of domain segments (e.g. <code>x.y.z</code> has 3 segments) required. Defaults to <code>2</code>.</li>\n<li><code>tlds</code> - options to validate the top-level-domain segment (e.g. <code>com</code> in <code>example.com</code>) where:<ul>\n<li><code>deny</code> - a <code>Set</code> with strings matching forbidden TLD values (all non-matching values are allowed).</li>\n<li><code>allow</code> - a <code>Set</code> with strings matching the only allowed TLD values.</li>\n</ul>\n</li>\n</ul>\n</li>\n</ul>\n<p>If the <code>domain</code> is valid, no return value. If the <code>domain</code> is invalid, an object is returned with:</p>\n<ul>\n<li><code>error</code> - a string containing the reason the domain is invalid.</li>\n</ul>\n<h3 class=\"api-doc-header\" id=\"isdomainvaliddomain-options\"><code>isDomainValid(domain, [options])</code></h3>\n<p>Validates a string to verify it is a valid domain name where:</p>\n<ul>\n<li><code>domain</code> - the domain name string being verified.</li>\n<li><code>options</code> - same options as <a href=\"#analyzedomaindomain-options\"><code>analyzeDomain()</code></a>.</li>\n</ul>\n<h3 class=\"api-doc-header\" id=\"analyzeemailemail-options\"><code>analyzeEmail(email, [options])</code></h3>\n<p>Analyzes a string to verify it is a valid email address where:</p>\n<ul>\n<li><code>email</code> - the email address string being verified.</li>\n<li><code>options</code> - optional settings:<ul>\n<li><code>allowUnicode</code> - if <code>false</code>, Unicode characters are not allowed in the email address local and domain parts. Defaults to <code>true</code>.</li>\n<li><code>allowUnderscore</code> - if <code>false</code>, underscore (<code>_</code>) characters will not be allowed in the domain name. Defaults to <code>false</code>.</li>\n<li><code>ignoreLength</code> - if <code>true</code>, the standards email maximum length limit is ignored. Defaults to <code>true</code>.</li>\n<li><code>minDomainSegments</code> - the minimum number of domain segments (e.g. <code>x.y.z</code> has 3 segments) required in the domain part. Defaults to <code>2</code>.</li>\n<li><code>tlds</code> - options to validate the top-level-domain segment (e.g. <code>com</code> in <code>example.com</code>) where:<ul>\n<li><code>deny</code> - a <code>Set</code> with strings matching forbidden TLD values (all non-matching values are allowed).</li>\n<li><code>allow</code> - a <code>Set</code> with strings matching the only allowed TLD values.</li>\n</ul>\n</li>\n</ul>\n</li>\n</ul>\n<p>If the <code>email</code> is valid, no return value. If the <code>email</code> is invalid, an object is returned with:</p>\n<ul>\n<li><code>error</code> - a string containing the reason the email is invalid.</li>\n</ul>\n<h3 class=\"api-doc-header\" id=\"isemailvalidemail-options\"><code>isEmailValid(email, [options])</code></h3>\n<p>Validates a string to verify it is a valid email address where:</p>\n<ul>\n<li><code>email</code> - the email address string being verified.</li>\n<li><code>options</code> - same options as <a href=\"#analyzeemailemail-options\"><code>analyzeEmail()</code></a>.</li>\n</ul>\n<h3 class=\"api-doc-header\" id=\"errorcodes\"><code>errorCodes</code></h3>\n<p>An object containing a key per error code with a matching string value description.</p>\n",
+      "intro": "",
+      "example": "",
+      "usage": "",
+      "faq": "",
+      "advanced": "",
+      "license": "BSD"
+    }
+  },
+  "api": true,
+  "slogan": "Validate email address and domain.",
+  "forks": 26,
+  "stars": 30,
+  "updated": "2023-03-11T10:50:26Z",
+  "link": "https://github.com/hapijs/address"
+}

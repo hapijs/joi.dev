@@ -1,67 +1,84 @@
 <template>
-  <div class="container">
-    <LandingNav
-      :module-info="moduleAPI"
-      :menu="getMenu"
-      :page="page"
-      :version="getVersion"
-      :versions="versionsArray"
-      :results="results"
-      :index-results="indexResults"
-      :search="search"
-      :intro="intro"
-      :example="example"
-      :usage="usage"
-      :faq="faq"
-      :advanced="advanced"
-      @clipboards="onClipboards"
-      @search="onChildSearch"
-      @previous="onChildIndex"
-      @next="onChildIndex"
-      @input="onChildInput"
-    />
-    <div class="tutorial-markdown-window">
-      <h1 class="hapi-family-header">
-        API
-        <span class="api-version-span"
-          >v{{ getVersion.match(/.*(?=\.)/)[0] }}.x</span
-        >
-      </h1>
-      <Install :name="name" :module-a-p-i="moduleAPI" :version="version" />
-      <FamilyDisplay :display="getAPI" />
-    </div>
-    <div class="preload">
-      <img src="/img/clipboardCheck.png" alt="clipboard" />
-    </div>
-  </div>
+  <SlotLayout>
+    <template #header>
+      <TopNav class="header" />
+    </template>
+
+    <template #sidebar>
+      <LandingNav
+        v-if="info"
+        :family="family"
+        :module-info="info"
+        :menu="getMenu"
+        :page="page"
+        :version="version"
+        :versions="versions"
+        :results="results"
+        :index-results="indexResults"
+        :search="search"
+        :intro="intro"
+        :example="example"
+        :usage="usage"
+        :faq="faq"
+        :advanced="advanced"
+        :get-documentation-ref="() => $refs.documentation"
+        :current-section="currentSection"
+      />
+    </template>
+
+    <template #main>
+      <div ref="documentation" class="main" @scroll="apiScroll">
+        <h1 class="hapi-family-header">
+          API
+          <span class="api-version-span"
+            >v{{ version.match(/.*(?=\.)/)[0] }}.x</span
+          >
+        </h1>
+        <Install :name="name" :module-a-p-i="info" :version="version" />
+
+        <MarkdownContainer :md="getAPI" @content-changed="collectHeaders" />
+      </div>
+    </template>
+  </SlotLayout>
 </template>
 
 <script>
-import FamilyDisplay from '~/components/family/FamilyDisplay.vue';
+import MarkdownContainer from '@/components/MarkdownContainer.vue';
+import TopNav from '@/components/Navs/TopNav.vue';
+import SlotLayout from '@/components/SlotLayout.vue';
+import { debounce } from 'lodash';
 import LandingNav from '~/components/family/LandingNav.vue';
 import Install from '~/components/family/Install.vue';
-import Changelog from '~/components/resources/Changelog.vue';
-const moduleInfo = require('../../../../static/lib/moduleInfo.json');
-import { copyToClipboard, setCodeClipboards } from '~/utils/clipboard';
-import Semver from 'semver';
 
 export default {
   components: {
-    FamilyDisplay,
+    MarkdownContainer,
+    TopNav,
+    SlotLayout,
     LandingNav,
     Install,
-    Changelog,
+  },
+  async asyncData({ params }) {
+    const family = params.family;
+    const { default: moduleInfo } = await import(
+      `../../../../static/lib/${family}/info.json`
+    );
+    return {
+      info: moduleInfo,
+      versions: moduleInfo.versionsArray,
+      family,
+    };
   },
   data() {
     return {
-      moduleAPI: moduleInfo,
-      versionsArray: moduleInfo[this.$route.params.family].versionsArray.sort(
-        (a, b) => Semver.compare(b, a)
-      ),
+      headers: [],
+      currentSection: '',
+      family: '',
+      info: {},
+      versions: [],
       display: '',
       page: 'api',
       modules: this.modules,
-      version: '',
       menu: '',
       name: this.$route.params.family,
       indexResults: 0,
@@ -79,55 +96,84 @@ export default {
   },
   head() {
     return {
-      title: 'joi.dev - ' + this.$route.params.family + ' v' + this.getVersion,
+      title: `joi.dev - ${this.$route.params.family} v${this.version}`,
       meta: [
         {
           hid: 'description',
           name: 'description',
-          content: 'View the APIs for the hapi modules',
+          content: `View the APIs for ${this.$route.params.family}`,
         },
       ],
     };
   },
   computed: {
-    getAPI() {
-      return this.moduleAPI[this.$route.params.family][this.getVersion].api;
+    version: {
+      get() {
+        let apiVersion = this.versions[0];
+        if (!this.$route.query.v) {
+          return this.versions[0];
+        } else {
+          for (let v of this.versions) {
+            let version = this.$route.query.v.match(/^([^.]+)/);
+            if (v.startsWith(version[0])) {
+              apiVersion = v;
+              if (!this.versions.includes(this.$route.query.v)) {
+                return v;
+              }
+              break;
+            } else if (!this.versions.includes(this.$route.query.v)) {
+              return this.versions[0];
+            }
+          }
+        }
+
+        return apiVersion;
+      },
+      set(v) {
+        this.$router.push({ query: { v }, hash: this.$route.hash });
+      },
     },
-    getVersion() {
-      return this.$store.getters.loadVersion;
+    getAPI() {
+      return this.info?.docs[this.version].api;
     },
     getMenu() {
-      return this.moduleAPI[this.$route.params.family][this.getVersion].menu;
+      return this.info?.docs[this.version].menu;
+    },
+    scrollPositions() {
+      const scrollPositions = [];
+      this.headers.forEach((node) => {
+        scrollPositions.push([node.offsetTop, node.id]);
+      });
+      return scrollPositions;
     },
   },
   created() {
-    let module = this.$route.params.family;
-    let versionsArray = this.moduleAPI[this.$route.params.family].versionsArray;
+    const module = this.$route.params.family;
     if (!this.$store.getters.loadModules.includes(this.$route.params.family)) {
       return this.$nuxt.error({ statusCode: 404 });
     }
 
-    let apiVersion = this.versionsArray[0];
+    let apiVersion = this.versions[0];
     if (!this.$route.query.v) {
       this.$router.push({
-        query: { v: this.versionsArray[0] },
+        query: { v: this.versions[0] },
         hash: this.$route.hash,
       });
     } else {
-      for (let v of this.versionsArray) {
-        let version = this.$route.query.v.match(/^([^.]+)/);
+      for (let v of this.versions) {
+        const version = this.$route.query.v.match(/^([^.]+)/);
         if (v.startsWith(version[0])) {
           apiVersion = v;
-          if (!this.versionsArray.includes(this.$route.query.v)) {
+          if (!this.versions.includes(this.$route.query.v)) {
             this.$router.push({
               query: { v: v },
               hash: this.$route.hash,
             });
           }
           break;
-        } else if (!this.versionsArray.includes(this.$route.query.v)) {
+        } else if (!this.versions.includes(this.$route.query.v)) {
           this.$router.push({
-            query: { v: this.versionsArray[0] },
+            query: { v: this.versions[0] },
             hash: this.$route.hash,
           });
         }
@@ -135,30 +181,28 @@ export default {
     }
     this.$store.commit('setDisplay', 'family');
     this.$store.commit('setVersion', apiVersion);
-    this.$data.menu =
-      this.moduleAPI[this.$route.params.family][this.getVersion].menu;
+    this.$data.menu = this.info?.docs[this.version].menu;
     this.$store.commit('setFamily', module);
-    if (this.moduleAPI[module][apiVersion].intro) {
-      this.$store.commit('setIntro', true);
-    }
-    if (this.moduleAPI[module][apiVersion].example) {
-      this.$store.commit('setExample', true);
-    }
-    if (this.moduleAPI[module][apiVersion].usage) {
-      this.$store.commit('setUsage', true);
-    }
-    if (this.moduleAPI[module][apiVersion].faq) {
-      this.$store.commit('setFaq', true);
-    }
-    if (this.moduleAPI[module][apiVersion].advanced) {
-      this.$store.commit('setAdvanced', true);
+    const docs = this.info?.docs[apiVersion];
+    if (docs) {
+      if (docs.intro) {
+        this.$store.commit('setIntro', true);
+      }
+      if (docs.example) {
+        this.$store.commit('setExample', true);
+      }
+      if (docs.usage) {
+        this.$store.commit('setUsage', true);
+      }
+      if (docs.faq) {
+        this.$store.commit('setFaq', true);
+      }
+      if (docs.advanced) {
+        this.$store.commit('setAdvanced', true);
+      }
     }
   },
-  mounted() {
-    this.setClasses();
-    this.goToAnchor();
-    this.setClipboards();
-  },
+  mounted() {},
   beforeDestroy() {
     for (let [element, listener] of this.listeners) {
       element.removeEventListener('click', listener);
@@ -166,281 +210,48 @@ export default {
     this.listeners.clear();
   },
   methods: {
-    onClipboards() {
-      let that = this;
-      setTimeout(function () {
-        that.setClipboards();
-      }, 100);
-      setCodeClipboards(that.listeners);
-    },
-    goToAnchor() {
-      let hash = document.location.hash;
-      if (hash != '') {
-        setTimeout(function () {
-          if (location.hash) {
-            window.scrollTo(0, 0);
-            window.location.href = hash;
-          }
-        }, 1);
-      } else {
-        return false;
-      }
-    },
-    onChildSearch() {
-      let headlines = [];
-      let text = [];
-      this.indexResults = 0;
-      const headers = ['H2', 'H3', 'H4', 'H5', 'H6'];
-      let pages = document
-        .querySelector('.family-markdown-wrapper')
-        .querySelectorAll('*');
-
-      //Check if search item is in a headline
-      for (let page of pages) {
-        if (
-          headers.indexOf(page.nodeName) !== -1 &&
-          page.innerHTML.indexOf(this.search.toLowerCase()) !== -1
-        ) {
-          headlines.push(page);
-        } else if (
-          headers.indexOf(page.nodeName) === -1 &&
-          page.innerHTML.indexOf(this.search.toLowerCase()) !== -1
-        ) {
-          text.push(page);
-        }
-      }
-
-      this.results = headlines.concat(text);
-      if (this.results.length) {
-        document
-          .querySelector('.family-search-results')
-          .classList.add('nav-display');
-        if (window.innerWidth <= 900) {
-          document.body.scrollTo(
-            0,
-            this.results[this.indexResults].offsetTop + 166
-          );
-        } else {
-          window.scrollTo(0, this.results[this.indexResults].offsetTop);
-        }
-      } else if (this.results.length === 0) {
-        document
-          .querySelector('.family-search-error')
-          .classList.add('nav-display');
-      }
-    },
-    onChildIndex(value) {
-      this.$data.indexResults = value;
-      window.scrollTo(0, this.results[this.indexResults].offsetTop);
-    },
-    onChildInput(value) {
-      this.$data.search = value;
-    },
-    setClipboards() {
-      let headers = document.querySelectorAll(
-        '.family-markdown-wrapper h2, .family-markdown-wrapper h3, .family-markdown-wrapper h4, .family-markdown-wrapper h5, .changelog-wrapper h2'
-      );
-
-      for (let header of headers) {
-        header.classList.add('api-doc-header', 'api-main-doc-header');
-        header.innerHTML =
-          header.innerHTML +
-          "<span class='api-clipboardCheck api-clipboard' title='Copy link to clipboard'></span>";
-      }
-
-      let clipboards = document.querySelectorAll('.api-clipboard');
-
-      for (let clipboard of clipboards) {
-        clipboard.addEventListener('click', function (event) {
-          let copyLink = clipboard.parentNode.firstElementChild.href;
-          copyToClipboard(copyLink);
-          clipboard.classList.remove('api-clipboard');
-          clipboard.classList.add('api-clipboardCheck');
-          setTimeout(function () {
-            clipboard.classList.add('api-clipboard');
-            clipboard.classList.remove('api-clipboardCheck');
-          }, 3000);
-        });
-      }
-    },
-    setClasses() {
-      //Set TOC classes
-      let anchors = document.querySelectorAll('.family-nav-select-wrapper a');
-      let code = document.querySelectorAll('.family-nav-select-wrapper a code');
-
-      for (let link of anchors) {
-        link.classList.add('family-anchor');
-        this.links[link.hash] = link.getBoundingClientRect().top;
-        link.addEventListener('click', function (event) {
-          let currentActive = document.querySelector('.family-active');
-          if (currentActive) {
-            currentActive.classList.remove('family-active');
-          }
-          link.classList.add('family-active');
-          if (
-            link.parentElement.children[1] &&
-            link.parentElement.children[1].classList.contains(
-              'family-ul-display'
-            )
-          ) {
-            link.parentElement.children[1].classList.remove(
-              'family-ul-display'
-            );
-            link.classList.remove('family-minus');
-            link.classList.add('family-plus');
-          } else if (
-            link.parentElement.children[1] &&
-            !link.parentElement.children[1].classList.contains(
-              'family-ul-display'
-            )
-          ) {
-            link.parentElement.children[1].classList.add('family-ul-display');
-            link.classList.remove('family-plus');
-            link.classList.add('family-minus');
-          }
-        });
-      }
-
-      for (let c of code) {
-        c.classList.add('family-code');
-      }
-
-      let familyUls = document.querySelectorAll(
-        '.family-nav-select-wrapper > ul ul'
-      );
-
-      for (let ul of familyUls) {
-        this.uls[ul.getBoundingClientRect().top] = {
-          name: ul,
-          top: ul.getBoundingClientRect().top,
-          bottom: ul.getBoundingClientRect().bottom,
-        };
-      }
-
-      let links = document.querySelectorAll(
-        '#' + this.$route.params.family + ' a'
-      );
-      let points = {};
-      let offsets = [];
-      for (let i = 0; i < links.length; i++) {
-        let point = document.querySelector(
-          `.tutorial-markdown-window h1 a[href='${links[i].hash}'],
-          .tutorial-markdown-window h2 a[href='${links[i].hash}'],
-          .tutorial-markdown-window h3 a[href='${links[i].hash}'],
-          .tutorial-markdown-window h4 a[href='${links[i].hash}'],
-           .tutorial-markdown-window h5 a[href='${links[i].hash}']`
+    apiScroll: debounce(function (event) {
+      const currentScroll = event.target.scrollTop;
+      if (this.scrollPositions.length) {
+        const tolerance = 5; // Anchor scrolling leads a few pixels above the anchor, let's tolerate a few pixels
+        const closest = this.scrollPositions.findIndex(
+          ([pos]) => pos > currentScroll + tolerance
         );
-        if (point) {
-          if (point.id) {
-            points[point.offsetTop + 220] = {
-              name: '#' + point.id,
-            };
-          } else {
-            points[point.offsetTop + 220] = {
-              name: point.hash,
-            };
-          }
 
-          offsets.push(point.offsetTop + 220);
+        if (closest !== -1) {
+          const scrollPosition = this.scrollPositions[closest - 1];
+          this.currentSection = scrollPosition ? scrollPosition[1] : '';
+        } else {
+          this.currentSection = '';
         }
       }
-      offsets = [...new Set(offsets)];
+    }, 100),
 
-      let currentElement = document.querySelector('.markdown-wrapper');
+    collectHeaders() {
+      this.headers =
+        this.$refs.documentation.querySelectorAll('.api-doc-header');
+    },
 
-      for (let ul of familyUls) {
-        ul.parentNode.children[0].classList.remove('family-minus');
-        ul.parentNode.children[0].classList.add('family-plus');
-        ul.classList.add('family-hide');
-      }
-
-      let that = this;
-
-      //Add active class to elements on scroll
-      window.onscroll = function () {
-        let location = document.documentElement.scrollTop;
-        let locationBody = document.body.scrollTop;
-        let actives = document.getElementsByClassName('family-active');
-        let active;
-        let element;
-        let i = 0;
-        if (
-          window.innerHeight + window.scrollY <
-          document.body.offsetHeight + 96
-        ) {
-          for (i in offsets) {
-            if (offsets[i] <= location || offsets[i] <= locationBody) {
-              let aClass = points[offsets[i]].name;
-              for (let active of actives) {
-                active.classList.remove('family-active');
-              }
-              element = document.querySelector(
-                `.side-nav-wrapper a[href='${aClass}']`
-              );
-              if (element && element.children.length !== 0) {
-                document
-                  .querySelector(`a[href='${aClass}']`)
-                  .classList.add('family-active');
-                active = document.querySelector('.family-active');
-              } else if (element && element.children.length === 0) {
-                document
-                  .querySelector(`a[href='${aClass}']`)
-                  .classList.add('family-active');
-                active = document.querySelector('.family-active');
-              }
-            }
-          }
-        }
-
-        if (active) {
-          let activeClass;
-          activeClass = active.hash;
-          let activeLink = document.querySelector(`a[href*='${activeClass}']`);
-          let activePosition = that.links[activeLink.hash];
-          for (let key in that.uls) {
-            if (
-              activePosition >= that.uls[key].top &&
-              activePosition < that.uls[key].bottom
-            ) {
-              that.uls[key].name.classList.add('family-ul-display');
-              that.uls[key].name.parentElement.children[0].classList.remove(
-                'family-plus'
-              );
-              that.uls[key].name.parentElement.children[0].classList.add(
-                'family-minus'
-              );
-            }
-          }
-          let bottom = active.getBoundingClientRect().bottom;
-          if (bottom > window.innerHeight) {
-            element.scrollIntoView(false);
-          }
-          if (that.$route.hash === active.hash && bottom === 0) {
-            active.scrollIntoView(false);
-          }
-        }
-      };
+    async onVersionChange(value) {
+      this.version = value;
+      this.$refs.documentation.scrollTo(0, 0);
     },
   },
 };
 </script>
 
-<style lang="scss">
-@import '../../../../assets/styles/main.scss';
-@import '../../../../assets/styles/api.scss';
-@import '../../../../assets/styles/markdown.scss';
-
+<style lang="postcss">
 .family-title {
   margin: 20px 0 -16px 100px;
   padding-bottom: 16px;
   box-sizing: border-box;
-  border-bottom: 1px solid $dark-white;
+  border-bottom: 1px solid var(--dark-white);
   display: inline-block;
 }
 
 .family-anchor {
   display: inline-block;
-  color: $gray;
+  color: var(--gray);
   font-size: 0.85em;
   height: 100%;
   width: 100%;
@@ -448,12 +259,12 @@ export default {
 }
 
 .family-anchor:hover {
-  color: $gray;
+  color: var(--gray);
 }
 
 .family-code {
-  background: $off-white;
-  color: $gray;
+  background: var(--off-white);
+  color: var(--gray);
   font-family: 'Lato', sans-serif;
   font-size: 1em;
   padding: 0;
@@ -465,13 +276,13 @@ export default {
 .family-plus code,
 .family-minus code {
   position: relative;
-  color: $orange;
+  color: var(--orange);
   text-decoration: none;
 }
 
 .family-plus:hover,
 .family-minus:hover {
-  color: $orange;
+  color: var(--orange);
 }
 
 .family-plus:after {
@@ -508,8 +319,8 @@ export default {
 .family-active,
 .family-active * {
   position: relative;
-  color: $white !important;
-  background: $gray !important;
+  color: var(--white) !important;
+  background: var(--gray) !important;
   height: 31px;
 }
 
@@ -538,7 +349,7 @@ export default {
 .changelog-header {
   margin: 20px 0 10px 0;
   padding-top: 10px;
-  border-top: 1px solid $dark-white;
+  border-top: 1px solid var(--dark-white);
   width: 100%;
 }
 

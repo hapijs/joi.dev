@@ -24,8 +24,10 @@ export default {
 };
 </script>
 
-<style lang="scss">
-@import '../assets/styles/variables.scss';
+<style lang="postcss">
+.ads-wrapper {
+  padding: 15px 0 0 0;
+}
 
 #carbonads {
   font-family: 'Lato', sans-serif;
@@ -35,7 +37,7 @@ export default {
   display: flex;
   max-width: 330px;
   background-color: hsl(0, 0%, 98%);
-  border: 1px solid $dark-white;
+  border: 1px solid var(--dark-white);
 }
 
 #carbonads a {
@@ -95,8 +97,8 @@ export default {
 
 @media (prefers-color-scheme: dark) {
   #carbonads {
-    background-color: $blacker;
-    border: 1px solid $blackest;
+    background-color: var(--blacker);
+    border: 1px solid var(--blackest);
   }
 }
 </style>

@@ -34,16 +34,10 @@ export default {
 };
 </script>
 
-<style lang="scss">
-@import '../../assets/styles/variables.scss';
-
-a {
-  color: $orange;
-  text-decoration: none;
-}
-
+<style lang="postcss">
 .footer-links {
   list-style-type: none;
+  padding: 0;
   margin: 0 auto 3px auto;
   width: 100%;
   text-align: center;
@@ -57,29 +51,8 @@ a {
 }
 
 .footer-link:hover {
-  color: $orange;
+  color: var(--orange);
   text-decoration: underline;
-}
-
-.index-about {
-  font-weight: 700;
-  font-size: 0.75em;
-  flex-wrap: wrap;
-  margin-bottom: 10px;
-  line-height: 30px;
-}
-
-.index-about-link:hover {
-  color: $orange;
-  text-decoration: underline;
-}
-
-.index-about:nth-child(-n + 5) {
-  padding-right: 10px;
-}
-
-.index-about-link {
-  cursor: pointer;
 }
 
 .index-divider {
@@ -100,17 +73,13 @@ a {
 }
 
 .footer-text-links:hover {
-  color: $orange;
+  color: var(--orange);
   text-decoration: underline;
 }
 
 @media screen and (max-width: 900px) {
   .side-footer {
     display: none;
-  }
-
-  a:hover {
-    color: $gray;
   }
 }
 </style>

@@ -11,7 +11,7 @@
       :id="name"
       :key="version"
       class="family-nav-select-wrapper family-display"
-      v-html="$md.render($props.menu)"
+      v-html="$props.menu"
     ></div>
   </li>
 </template>
@@ -27,8 +27,8 @@ export default {
 };
 </script>
 
-<style lang="scss">
-@import '../../assets/styles/sideNav.scss';
+<style lang="postcss">
+@import '../../assets/styles/sideNav.css';
 
 .family-side-nav-item {
   margin: 0 !important;
@@ -49,7 +49,7 @@ export default {
   list-style-type: none;
   text-decoration: none;
   margin: 0;
-  color: $gray;
+  color: var(--gray);
 }
 
 .family-nav-select-wrapper ul {
@@ -61,7 +61,7 @@ export default {
 }
 
 .family-nav-select-wrapper ul li {
-  color: $gray !important;
+  color: var(--gray) !important;
   margin: 0;
   list-style-type: none;
 }
