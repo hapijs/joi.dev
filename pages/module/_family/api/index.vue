@@ -34,7 +34,9 @@
             >v{{ version.match(/.*(?=\.)/)[0] }}.x</span
           >
         </h1>
-        <Install :name="name" :module-a-p-i="info" :version="version" />
+        <div class="install-section">
+          <Install :name="name" :version="version" />
+        </div>
 
         <MarkdownContainer :md="getAPI" @content-changed="collectHeaders" />
       </div>
@@ -399,6 +401,10 @@ h1 a {
 
 .tutorial-header {
   display: block !important;
+}
+
+.install-section {
+  margin-left: 100px;
 }
 
 @media screen and (max-width: 900px) {
