@@ -101,6 +101,8 @@ export default {
   padding-top: 10px;
   display: flex;
   flex-direction: column;
+  line-height: 30px;
+  font-size: 0.9em;
 
   li {
     margin: 0;
@@ -116,6 +118,7 @@ export default {
   margin: 0;
   cursor: pointer;
   text-decoration: none;
+  line-height: 0.5rem;
 
   &:hover {
     text-decoration: underline;
