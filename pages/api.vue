@@ -22,6 +22,7 @@
             :version="version"
             :versions="versions"
             @version-change="onVersionChange"
+            disable-ads
           />
         </div>
         <div ref="documentation" class="documentation">

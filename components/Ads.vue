@@ -6,7 +6,7 @@
         async
         type="text/javascript"
         src="//cdn.carbonads.com/carbon.js?serve=CEAIL27W&placement=joidev"
-      ></script>
+      />
     </div>
   </div>
 </template>
@@ -27,6 +27,7 @@ export default {
 <style lang="postcss">
 .ads-wrapper {
   padding: 15px 0 0 0;
+  box-sizing: border-box;
 }
 
 #carbonads {

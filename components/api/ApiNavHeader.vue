@@ -14,7 +14,7 @@
         </select>
       </div>
     </div>
-    <Ads />
+    <Ads v-if="!disableAds" />
   </div>
 </template>
 
@@ -29,6 +29,7 @@ export default {
   props: {
     version: { type: String, required: true },
     versions: { type: Array, required: true },
+    disableAds: { type: Boolean, default: false },
   },
   methods: {
     onVersionChange(event) {
