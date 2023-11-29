@@ -200,13 +200,6 @@ pre {
       }
     }
 
-    /*code,
-    .code {
-      color: var(--light-gray);
-      background-color: var(--blacker) !important;
-      border: 1px solid #000 !important;
-    }*/
-
     p {
       color: var(--off-white);
     }
@@ -214,7 +207,8 @@ pre {
     p code,
     li code {
       color: var(--light-gray);
-      background-color: var(--quote-gray-dark);
+      background-color: var(--blacker) !important;
+      border: 1px solid #000 !important;
     }
 
     a:hover {
