@@ -10,6 +10,9 @@
       <a class="index-button" href="/api" aria-label="get-started-button"
         >Get started with joi</a
       >
+      <a href="https://www.npmjs.com/package/joi" target="_blank"
+        >npm install joi</a
+      >
     </section>
   </main>
 </template>
