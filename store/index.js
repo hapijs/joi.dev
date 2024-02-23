@@ -24,7 +24,7 @@ Joi.object({
   repeat_password: "password",
   birth_year: 1994
 }`,
-  modules: ['address', 'formula', 'joi-date', 'pinpoint'],
+  modules: ['address', 'formula', 'joi-date', 'pinpoint', 'tlds'],
 });
 
 export const mutations = {

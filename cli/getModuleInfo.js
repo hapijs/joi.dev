@@ -178,11 +178,11 @@ async function getInfo() {
       currentModule.docs[fullVersion] = {
         menu: buildTree(headings),
         api: rendered,
-        intro: marked.parseInline(intro),
-        example,
-        usage,
-        faq,
-        advanced,
+        intro: marked.parse(intro),
+        example: marked.parse(example),
+        usage: marked.parse(usage),
+        faq: marked.parse(faq),
+        advanced: marked.parse(advanced),
         license: 'BSD',
       };
       currentModule.versionsArray.push(fullVersion);

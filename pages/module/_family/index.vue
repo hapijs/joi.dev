@@ -40,23 +40,23 @@
         <LandingTable :module="info" />
         <div v-if="intro" class="intro-wrapper">
           <a name="introduction" class="landing-link2 landing-anchor"></a>
-          <div v-html="intro"></div>
+          <MarkdownContainer :md="intro" />
         </div>
         <div v-if="exampleHTML" class="intro-wrapper">
           <a name="example" class="landing-link2 landing-anchor"></a>
-          <div v-html="exampleHTML"></div>
+          <MarkdownContainer :md="exampleHTML" />
         </div>
         <div v-if="usageHTML" class="intro-wrapper">
           <a name="usage" class="landing-link2 landing-anchor"></a>
-          <div v-html="usageHTML"></div>
+          <MarkdownContainer :md="usageHTML" />
         </div>
         <div v-if="advancedHTML" class="intro-wrapper">
           <a name="advanced" class="landing-link2 landing-anchor"></a>
-          <div v-html="advancedHTML"></div>
+          <MarkdownContainer :md="advancedHTML" />
         </div>
         <div v-if="faqHTML" class="intro-wrapper">
           <a name="faq" class="landing-link2 landing-anchor"></a>
-          <div v-html="faqHTML"></div>
+          <MarkdownContainer :md="faqHTML" />
         </div>
       </div>
     </template>
@@ -65,6 +65,7 @@
 
 <script>
 import Install from '@/components/family/Install.vue';
+import MarkdownContainer from '@/components/MarkdownContainer.vue';
 import TopNav from '@/components/Navs/TopNav.vue';
 import SlotLayout from '@/components/SlotLayout.vue';
 import LandingNav from '~/components/family/LandingNav.vue';
@@ -72,6 +73,7 @@ import LandingTable from '~/components/family/LandingTable.vue';
 
 export default {
   components: {
+    MarkdownContainer,
     Install,
     TopNav,
     SlotLayout,
@@ -221,6 +223,11 @@ export default {
   display: inline-block;
   border-top: none;
   margin: 30px 0 15px 0;
+}
+
+.intro-wrapper > .markdown-wrapper {
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .intro-wrapper p {
