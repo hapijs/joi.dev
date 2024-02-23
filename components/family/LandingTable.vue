@@ -66,10 +66,11 @@ export default {
 .landing-table-wrapper {
   width: 80%;
   min-width: 700px;
-  margin: 0;
+  margin: 0 auto;
 }
 
 .landing-table {
+  width: 100%;
   margin: 0;
   border-collapse: collapse;
   border-spacing: 0;

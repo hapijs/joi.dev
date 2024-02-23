@@ -1,4 +1,5 @@
 const { Octokit } = require('@octokit/rest');
+const Semver = require('semver');
 const { marked } = require('./markdown');
 
 const gh = new Octokit({
@@ -34,7 +35,7 @@ async function getMilestones(moduleName) {
   })) {
     milestones.push(...response.data);
   }
-  return milestones;
+  return milestones.sort((a, b) => Semver.compare(a.title, b.title));
 }
 
 async function getMilestoneIssues(moduleName, milestoneNumber) {
