@@ -1,54 +1,60 @@
 <template>
   <div class="logWrapper">
     <div class="logVersionWrapper">
-      <a :id="version" :href="versionUrl" target="__blank" class="log-title">{{
-        version
-      }}</a>
-      <a v-if="release" :href="releaseURL" class="releaseLink" target="_blank"
-        ><div class="release">
+      <a :id="version" :href="versionUrl" target="__blank" class="log-title">
+        {{ version }}
+      </a>
+      <a
+        v-if="releaseNotesUrl"
+        :href="releaseNotesUrl"
+        class="releaseLink"
+        target="_blank"
+      >
+        <div class="release">
           <img
             class="releaseNotesImg"
             src="/img/release-notes.png"
             alt="Release Notes"
             title="View Release Notes"
           />additional information
-        </div></a
-      >
+        </div>
+      </a>
       <div v-if="breaking" class="breaking">breaking changes</div>
     </div>
     <div class="changelogtext-wrapper">
       <ChangelogText
-        v-for="issue in issuesArray"
+        v-for="issue in visibleIssues"
         :key="issue.number"
-        :issue-url="issue.html_url"
+        :issue-url="issue.url"
         :issue-number="issue.number"
         :issue-text="issue.title"
-        :issue-labels="issue.labels"
       />
       <div
-        :class="
-          showMoreIssues
-            ? 'hidden-issues-wrapper activeIssues'
-            : 'hidden-issues-wrapper'
-        "
+        :class="{
+          'hidden-issues-wrapper': true,
+          activeIssues: showMoreIssues,
+        }"
       >
         <ChangelogText
           v-for="issue in hiddenIssues"
           :key="issue.number"
-          :issue-url="issue.html_url"
+          :issue-url="issue.url"
           :issue-number="issue.number"
           :issue-text="issue.title"
-          :issue-labels="issue.labels"
         />
       </div>
-      <button v-if="showMoreButton" class="issuesButton" @click="showIssues()">
+      <button
+        v-if="showMoreButton"
+        class="issuesButton"
+        @click="toggleShowIssues"
+      >
         <img
           src="/img/down.png"
           alt="down arrow"
           :class="
             showMoreIssues ? 'issuesButtonUpArrow' : 'issuesButtonDownArrow'
           "
-        />{{ !getShowMoreIssues ? 'Show More' : 'Hide Issues' }}
+        />{{ !showMoreIssues ? 'Show More' : 'Hide Issues' }}
       </button>
     </div>
   </div>
@@ -61,55 +67,47 @@ export default {
   components: {
     ChangelogText,
   },
-  props: ['version', 'versionUrl', 'issues'],
+  props: {
+    version: { type: String, required: true },
+    versionUrl: { type: String, required: true },
+    issues: { type: Array, required: true },
+  },
   data() {
     return {
-      issuesArray: [],
-      breaking: false,
-      release: false,
-      releaseURL: '',
-      showMoreButton: false,
       showMoreIssues: false,
-      hiddenIssues: [],
     };
   },
   computed: {
-    getShowMoreIssues() {
-      return this.$data.showMoreIssues;
+    breaking() {
+      return this.issues.some((issue) =>
+        issue.labels.some((label) => label === 'breaking changes')
+      );
+    },
+    releaseNotesUrl() {
+      const issue = this.issues.find((issue) =>
+        issue.labels.some((label) => label === 'release notes')
+      );
+      return issue ? issue.url : '';
+    },
+    showMoreButton() {
+      return this.issues.length > 10;
+    },
+    hiddenIssues() {
+      return this.issues.slice(10);
+    },
+    visibleIssues() {
+      return this.issues.slice(0, 10);
     },
   },
-  created() {
-    this.$data.issuesArray = this.$props.issues;
-    for (let issue of this.$data.issuesArray) {
-      if (issue.labels.some((label) => label.name === 'breaking changes')) {
-        this.$data.breaking = true;
-      }
-      if (issue.labels.some((label) => label.name === 'release notes')) {
-        this.$data.release = true;
-        this.$data.releaseURL = issue.html_url;
-      }
-    }
-    if (this.$data.issuesArray.length > 10) {
-      this.$data.issuesArray = this.$data.issuesArray.slice(0, 10);
-      this.$data.hiddenIssues = this.$props.issues.slice(10);
-      this.$data.showMoreButton = true;
-    }
-  },
   methods: {
-    showIssues() {
-      this.$data.showMoreIssues = !this.$data.showMoreIssues;
-      if (!this.$data.showMoreIssues) {
-        let id = document.getElementById(this.$props.version);
-        window.scrollTo(0, id.offsetTop);
-      }
+    toggleShowIssues() {
+      this.showMoreIssues = !this.showMoreIssues;
     },
   },
 };
 </script>
 
-<style lang="scss">
-@import '../../assets/styles/variables.scss';
-
+<style lang="postcss">
 .logWrapper {
   display: flex;
   flex-direction: column;
@@ -117,7 +115,8 @@ export default {
   align-items: flex-start;
   margin: 10px 0 0 0;
   padding-bottom: 10px;
-  border-bottom: 1px solid $dark-white;
+  border-bottom: 1px solid var(--dark-white);
+  width: 100%;
 }
 
 .logVersionWrapper {
@@ -130,12 +129,12 @@ export default {
   padding: 2px 4px;
   font-size: 0.8em;
   font-weight: 600;
-  background: $orange;
+  background: var(--orange);
 }
 
 .releaseLink,
 .releaseLink:hover {
-  color: $black;
+  color: var(--black);
 }
 
 .release {
@@ -155,8 +154,13 @@ export default {
 
 .log-title {
   font-size: 1.75rem;
-  color: $orange;
+  color: var(--orange);
   margin: 0 10px 0 0;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 .changelogtext-wrapper {
@@ -167,27 +171,24 @@ export default {
   overflow: hidden;
   max-height: 0;
   transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
-}
 
-.hidden-issues-wrapper.activeIssues {
-  max-height: 5000px;
-  transition: max-height 1s ease-in-out;
+  &.activeIssues {
+    max-height: 5000px;
+    transition: max-height 1s ease-in-out;
+  }
 }
 
 .issuesButton {
-  position: relative;
-  z-index: 10;
-  display: flex;
-  align-items: center;
   background: none;
   border: none;
+  margin: 0;
   padding: 2px 4px;
   font-size: 0.95em;
   cursor: pointer;
-}
 
-.issuesButton:focus {
-  outline: none;
+  &:focus {
+    outline: none;
+  }
 }
 
 .issuesButtonDownArrow {

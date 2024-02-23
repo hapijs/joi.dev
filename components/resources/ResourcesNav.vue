@@ -1,51 +1,57 @@
 <template>
-  <div class="side-nav-window">
-    <div class="side-nav-wrapper">
-      <div class="side-nav-inner-wrapper">
-        <div class="side-nav-title">Resources</div>
-        <Ads />
-        <div class="side-nav-select-wrapper">
-          <ul class="side-nav-select-list">
-            <li class="resources-header-link">
-              <a
-                :class="
-                  $props.page === 'changelog'
-                    ? 'side-nav-select-link resources-active'
-                    : 'side-nav-select-link'
-                "
-                href="/resources/changelog"
-                >Changelog</a
-              >
-            </li>
-            <li class="resources-header-link">
-              <a
-                :class="
-                  $props.page === 'status'
-                    ? 'side-nav-select-link resources-active'
-                    : 'side-nav-select-link'
-                "
-                href="/resources/status"
-                >Module Status</a
-              >
-            </li>
-          </ul>
-        </div>
-      </div>
+  <Sidebar>
+    <template #header>
+      <div class="side-nav-title">Resources</div>
+      <Ads />
+    </template>
+
+    <template #content>
+      <ul class="side-nav-select-list">
+        <li class="resources-header-link">
+          <a
+            :class="{
+              'side-nav-select-link': true,
+              'resources-active': page === 'changelog',
+            }"
+            href="/resources/changelog"
+          >
+            Changelog
+          </a>
+        </li>
+        <li class="resources-header-link">
+          <a
+            :class="{
+              'side-nav-select-link': true,
+              'resources-active': page === 'status',
+            }"
+            href="/resources/status"
+          >
+            Module Status
+          </a>
+        </li>
+      </ul>
+    </template>
+
+    <template #footer>
       <SideFooter />
-    </div>
-  </div>
+    </template>
+  </Sidebar>
 </template>
 
 <script>
+import Sidebar from '@/components/Sidebar.vue';
 import SideFooter from '~/components/Footers/SideFooter.vue';
 import Ads from '~/components/Ads.vue';
 
 export default {
   components: {
+    Sidebar,
     SideFooter,
     Ads,
   },
-  props: ['page'],
+  props: {
+    page: { type: String, required: true },
+  },
   mounted() {
     this.onScroll();
   },
@@ -110,8 +116,8 @@ export default {
 };
 </script>
 
-<style lang="scss">
-@import '../../assets/styles/sideNav.scss';
+<style lang="postcss" scoped>
+@import '../../assets/styles/sideNav.css';
 
 .resources-header-link {
   position: relative;
@@ -119,33 +125,37 @@ export default {
   margin-bottom: 5px;
 }
 
-.ads-wrapper {
-  padding: 15px 0 0 0;
-}
-
-.resources-ul {
+.side-nav-select-list {
   margin: 0;
+  padding: 0;
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+
+  li {
+    margin: 0;
+  }
 }
 
-.side-nav-select-link a {
+.side-nav-select-link {
   display: inline-block;
-  font-size: 0.78em;
+  font-size: 1.1em;
   width: 100%;
   padding: 5px 0;
-  color: $gray;
+  color: var(--gray);
   margin: 0;
-  border-bottom: 1px solid $dark-white;
   cursor: pointer;
-}
-
-.side-nav-select-link a:hover {
   text-decoration: none;
-}
 
-.resources-active {
-  position: relative;
-  color: $orange !important;
-  font-weight: 900;
-  transition: all 0.2s ease;
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &.resources-active {
+    position: relative;
+    color: var(--orange);
+    font-weight: 900;
+    transition: all 0.2s ease;
+  }
 }
 </style>

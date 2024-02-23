@@ -5,11 +5,11 @@
       >Changelog
     </h2>
     <ChangelogVersion
-      v-for="change in milestones"
-      :key="change[0].id"
-      :version="change[0].milestone.title"
-      :version-url="change[0].milestone.html_url"
-      :issues="change"
+      v-for="milestone in milestones"
+      :key="milestone.id"
+      :version="milestone.version"
+      :version-url="milestone.url"
+      :issues="milestone.issues"
     />
   </div>
 </template>
@@ -20,11 +20,13 @@ export default {
   components: {
     ChangelogVersion,
   },
-  props: ['milestones'],
+  props: {
+    milestones: { type: Array, required: true },
+  },
 };
 </script>
 
-<style lang="scss">
+<style lang="postcss">
 .changelog-wrapper {
   width: 100%;
   padding: 20px 100px 10px 100px;
@@ -35,16 +37,12 @@ export default {
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-}
 
-@media screen and (max-width: 1500px) {
-  .changelog-wrapper {
+  @media screen and (max-width: 1500px) {
     padding: 20px 40px;
   }
-}
 
-@media screen and (max-width: 900px) {
-  .changelog-wrapper {
+  @media screen and (max-width: 900px) {
     padding: 0;
   }
 }

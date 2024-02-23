@@ -1,0 +1,221 @@
+.api-nav-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  width: 100%;
+  height: auto;
+  min-height: calc(100vh - 122px);
+}
+
+.api-nav-inner-wrapper {
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 0;
+  position: relative;
+}
+
+.side-nav-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  width: 100%;
+  height: auto;
+  min-height: calc(100vh - 122px);
+}
+
+.side-nav-inner-wrapper {
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 0;
+}
+
+.side-nav-title {
+  font-size: 1.5rem;
+  color: var(--black);
+  margin: 0;
+}
+
+.lang-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 20px 0 0 0;
+  width: 100%;
+}
+
+.lang-text {
+  margin: 0 33px 0 0;
+  font-size: 1.1em;
+}
+
+.family-span {
+  font-size: 1rem;
+  color: #333;
+  font-weight: 400;
+}
+
+.family-version-select {
+  width: 70px;
+  padding: 0px 5px 0px 5px;
+  border: none;
+  height: 30px;
+  font-size: 1em;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: url(/static/img/down.png) 96% / 15% no-repeat var(--off-white);
+  cursor: pointer;
+}
+
+select {
+  width: 100px;
+  padding: 0px 5px 0px 5px;
+  border: 1px solid var(--dark-white);
+  height: 30px;
+  font-size: 0.9em;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: url(/static/img/down.png) 96% / 15% no-repeat var(--white);
+  cursor: pointer;
+}
+
+select:focus {
+  outline: none;
+}
+
+.api-side-nav-select-wrapper {
+  font-size: 1.1em;
+  color: var(--orange);
+  line-height: 30px;
+  width: 100%;
+  padding: 0 20px;
+}
+
+.side-nav-select-wrapper {
+  margin: 20px 0 0 0;
+  font-size: 1.1em;
+  color: #ed7d31;
+  line-height: 30px;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.family-nav-no-margin {
+  margin: 0;
+}
+
+.family-nav-select-list {
+  margin-left: 30px;
+}
+
+.side-nav-select-link {
+  cursor: pointer;
+  margin: 0 auto 0 0;
+  list-style-type: none;
+}
+
+.side-nav-select-link:hover {
+  color: var(--orange);
+  text-decoration: underline;
+}
+
+.side-nav-active {
+  font-weight: 900;
+}
+
+.ads-wrapper {
+  width: 319px;
+  height: 142px;
+}
+
+@media screen and (max-width: 900px) {
+  .side-nav-window,
+  .tutorial-nav-window {
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+    top: 0;
+    padding: 10px 20px;
+    min-height: auto;
+    max-height: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--dark-white);
+    width: 100%;
+  }
+
+  .side-nav-inner-wrapper {
+    margin: 0;
+  }
+
+  #carbonads {
+    max-width: none;
+  }
+
+  .ads-wrapper {
+    margin: 0;
+  }
+
+  .side-nav-wrapper {
+    min-height: auto;
+  }
+
+  .side-nav-select-list {
+    display: inline-block;
+  }
+
+  .side-nav-select-link {
+    display: inline-block;
+  }
+
+  .side-nav-select-wrapper,
+  .api-nav-select-wrapper {
+    display: none;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .side-nav-window,
+  .api-nav-window {
+    background: var(--blacker) !important;
+    border-color: var(--blackest) !important;
+  }
+  .side-nav-title {
+    color: var(--white);
+  }
+  .family-span {
+    color: var(--white);
+  }
+  .family-version-select,
+  select {
+    background: url(/static/img/down.png) 96% / 15% no-repeat var(--blackest);
+    color: var(--ash);
+    border-color: black;
+  }
+  .api-nav-window {
+    background: var(--blacker);
+  }
+
+  .family-version-select,
+  .family-search-box,
+  .api-search-box {
+    background-color: var(--blackest) !important;
+    border-color: var(--blackest) !important;
+    color: var(--light-gray) !important;
+  }
+
+  .family-top-wrapper,
+  .family-search-button,
+  .family-search-img,
+  .api-search-img {
+    background-color: var(--blackest) !important;
+    border-color: var(--blackest) !important;
+    color: var(--light-gray);
+  }
+}

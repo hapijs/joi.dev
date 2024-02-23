@@ -1,12 +1,19 @@
 <template>
-  <div class="side-nav-window">
-    <div class="side-nav-wrapper">
+  <Sidebar>
+    <template #header>
+      <div class="side-nav-title">Modules</div>
+      <Ads />
+    </template>
+
+    <template #content>
       <div class="side-nav-inner-wrapper">
-        <div class="side-nav-title">Modules</div>
-        <Ads />
         <div class="family-sort-wrapper">
           <div>Sort By:</div>
-          <select class="family-sort" :value="sort" @change="onChange($event)">
+          <select
+            class="family-sort"
+            :value="sort"
+            @change="onSortChange($event)"
+          >
             <option value="name">Name</option>
             <option value="stars">Stars</option>
             <option value="forks">Forks</option>
@@ -18,69 +25,59 @@
             class="family-module-search-box"
             :value="search"
             placeholder="Search Modules"
-            @keyup.enter="onSearch"
             @input="onInput($event)"
           />
           <div class="family-module-search-img" @click="onSearch"></div>
         </div>
-        <button class="module-clear-button hide" @click="onClear">Clear</button>
+        <button v-if="search" class="module-clear-button" @click="onClear">
+          Clear
+        </button>
       </div>
+    </template>
+
+    <template #footer>
       <SideFooter />
-    </div>
-  </div>
+    </template>
+  </Sidebar>
 </template>
 
 <script>
+import Sidebar from '@/components/Sidebar.vue';
 import SideFooter from '~/components/Footers/SideFooter.vue';
 import Ads from '~/components/Ads.vue';
 
 export default {
   components: {
+    Sidebar,
     SideFooter,
     Ads,
   },
-  props: ['search', 'sort'],
+  props: {
+    search: { type: String, required: true },
+    sort: { type: String, required: true },
+  },
   methods: {
     onInput(event) {
       this.$emit('input', event);
     },
     onSearch() {
-      if (this.search !== '') {
+      const searchTerm = this.search.trim();
+      if (searchTerm !== '') {
         this.$emit('search');
-        document.querySelector('.module-clear-button').classList.remove('hide');
       }
     },
     onClear() {
-      let hidden = document.querySelectorAll('.hide');
-      for (let hide of hidden) {
-        hide.classList.remove('hide');
-      }
-      document.querySelector('.module-clear-button').classList.add('hide');
       this.$emit('clear');
     },
-    onChange(event) {
+    onSortChange(event) {
       this.$emit('change', event.target.value);
     },
   },
 };
 </script>
 
-<style lang="scss">
-@import '../../assets/styles/sideNav.scss';
-
-.family-checkbox-wrapper {
-  display: flex;
-  align-items: center;
-  margin: 10px 0 0 0;
-}
-
-#module-checkbox {
-  margin-right: 10px;
-}
-
-.ads-wrapper {
-  padding: 15px 0 0 0;
-}
+<style lang="postcss" scoped>
+@import '../../assets/styles/sideNav.css';
 
 .family-sort-wrapper {
   display: flex;
@@ -92,14 +89,13 @@ export default {
   width: 90px;
   padding: 0 5px;
   margin-left: 10px;
-  border: none;
   height: 30px;
   font-size: 0.91em;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  background: url(/img/down.png) 96%/12% no-repeat $white;
-  border: 1px solid $dark-white;
+  background: url(/img/down.png) 96%/12% no-repeat var(--white);
+  border: 1px solid var(--dark-white);
   cursor: pointer;
 }
 
@@ -113,7 +109,7 @@ export default {
   height: 30px;
   outline: none;
   padding: 10px;
-  border: 1px solid $dark-white;
+  border: 1px solid var(--dark-white);
   width: 100%;
   font-size: 0.85rem;
   border-radius: 0;
@@ -124,14 +120,14 @@ export default {
   position: absolute;
   background: url('/img/search.png') no-repeat;
   background-position: center;
-  background-color: $white;
+  background-color: var(--white);
   background-size: contain;
   padding: 10px;
   right: 0;
   top: 0px;
-  border-top: 1px solid $dark-white;
-  border-right: 1px solid $dark-white;
-  border-bottom: 1px solid $dark-white;
+  border-top: 1px solid var(--dark-white);
+  border-right: 1px solid var(--dark-white);
+  border-bottom: 1px solid var(--dark-white);
   height: 30px;
   width: 30px;
   z-index: 25;
@@ -140,8 +136,8 @@ export default {
 
 .module-clear-button {
   outline: 0;
-  border: 1px solid $dark-white;
-  background: $white;
+  border: 1px solid var(--dark-white);
+  background: var(--white);
   padding: 4px 10px;
   color: #333;
   cursor: pointer;
@@ -151,14 +147,14 @@ export default {
 @media (prefers-color-scheme: dark) {
   .family-sort,
   .family-module-search-box {
-    background: $black;
-    border-color: $blackest;
-    color: $light-gray;
+    background: var(--black);
+    border-color: var(--blackest);
+    color: var(--light-gray);
   }
 
   .family-module-search-img {
-    background-color: $blackest;
-    border-color: $blackest;
+    background-color: var(--blackest);
+    border-color: var(--blackest);
   }
 }
 </style>

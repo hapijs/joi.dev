@@ -23,8 +23,8 @@
 </template>
 
 <script>
-import Nav from '~/components/Navs/Nav.vue';
-import Footer from '~/components/Footers/Footer.vue';
+import Nav from '@/components/Navs/TopNav.vue';
+import Footer from '~/components/Footers/MainFooter.vue';
 
 export default {
   components: {
@@ -39,9 +39,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
-@import '../assets/styles/main.scss';
-
+<style lang="postcss" scoped>
 .error {
   position: relative;
   margin: 0 auto;
@@ -60,14 +58,14 @@ export default {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  color: $black;
+  color: var(--black);
   font-size: 1.3em;
 }
 
 .error-heading {
   position: relative;
   font-size: 5rem;
-  color: $gray;
+  color: var(--gray);
 }
 
 .error-description-heading {
@@ -87,20 +85,20 @@ export default {
   position: relative;
   border-radius: 10px;
   border: none;
-  background: $orange;
+  background: var(--orange);
   padding: 5px 15px;
   font-size: 0.9em;
   font-weight: 700;
   margin: 40px 0;
-  color: $white;
+  color: var(--white);
   cursor: pointer;
   border: 4px solid rgba(0, 0, 0, 0);
 }
 
 .error-button:hover {
-  border: 4px solid $orange;
-  background: $white;
-  color: $orange;
+  border: 4px solid var(--orange);
+  background: var(--white);
+  color: var(--orange);
   text-decoration: none;
   transition: all 0.3s ease 0s;
 }
@@ -115,20 +113,16 @@ export default {
   align-items: center;
   height: 50px;
   max-width: 735px;
-  // background-color: $white !important;
   padding: 0 20px !important;
 }
 
 .footer-link {
-  color: $orange;
+  color: var(--orange);
 }
 
 .logo {
-  background: url('/img/joiTransparent.png') no-repeat 0 0;
-  background-size: contain;
   height: 112.5px;
   width: 150px;
-  margin: 0;
 }
 
 @keyframes drop {

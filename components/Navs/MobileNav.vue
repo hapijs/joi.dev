@@ -38,6 +38,9 @@
               Modules
             </div>
           </li>
+          <li class="mobile-links-li">
+            <a class="mobile-link" title="Sandbox" href="/tester">Sandbox</a>
+          </li>
         </ul>
       </div>
       <div class="mobile-nav-flex-right">
@@ -70,9 +73,9 @@
                 <a title="Security" href="/policies/security">Security</a>
               </li>
               <li class="mobile-link mobile-tutorial-link">
-                <a title="Style Guide" href="/policies/styleguide"
-                  >Style Guide</a
-                >
+                <a title="Style Guide" href="/policies/styleguide">
+                  Style Guide
+                </a>
               </li>
             </ul>
           </div>
@@ -98,10 +101,7 @@
                   <li class="mobile-sublink">
                     <a :href="'/module/' + name">Home</a>
                   </li>
-                  <li
-                    v-if="moduleInfo[name].api === true"
-                    class="mobile-sublink"
-                  >
+                  <li class="mobile-sublink">
                     <a :href="'/module/' + name + '/api'">API</a>
                   </li>
                   <li class="mobile-sublink">
@@ -118,15 +118,7 @@
 </template>
 
 <script>
-const page = require('../../static/lib/');
-const moduleInfo = require('../../static/lib/moduleInfo.json');
-
 export default {
-  data() {
-    return {
-      moduleInfo: moduleInfo,
-    };
-  },
   computed: {
     getModules() {
       return this.$store.getters.loadModules;
@@ -166,28 +158,20 @@ export default {
 };
 </script>
 
-<style lang="scss">
-@import '../../assets/styles/variables.scss';
-@import '../../assets/styles/markdown.scss';
-
+<style lang="postcss" scoped>
 .mobile-nav {
   position: relative;
   width: 100%;
-  min-height: calc(100vh - 50px);
+  min-height: calc(100vh - 60px);
   z-index: 20;
-  background: $off-white;
-}
-
-.mobile-hapi {
-  height: 50px;
-  margin: 0;
+  background: var(--off-white);
 }
 
 .mobile-nav-flex-wrapper {
   position: relative;
   display: flex;
   justify-content: space-between;
-  min-height: calc(100vh - 50px);
+  min-height: calc(100vh - 60px);
 }
 
 .mobile-nav-flex-left {
@@ -196,6 +180,7 @@ export default {
   width: 30%;
   align-self: flex-start;
   height: auto;
+  overflow-x: hidden;
   overflow-y: auto;
   padding-bottom: 100px;
 }
@@ -205,7 +190,7 @@ export default {
   width: 70%;
   overflow-y: auto;
   padding: 0 0 50px;
-  border-left: 1px solid $dark-white;
+  border-left: 1px solid var(--dark-white);
   background: white;
 }
 
@@ -233,14 +218,15 @@ export default {
 .mobile-content-header {
   font-size: 18px;
   font-weight: 700;
-  color: $black;
-  margin: 21px 0 0 0;
+  color: var(--black);
+  margin: 18px 0 0 0;
   padding-left: 10px;
-  border-bottom: 1px solid $dark-white;
+  border-bottom: 1px solid var(--dark-white);
 }
 
 .mobile-content-ul {
   margin-top: 0;
+  padding: 10px;
   display: flex;
   flex-direction: column;
 }
@@ -255,7 +241,7 @@ export default {
   top: 9px;
   bottom: 0;
   left: 0;
-  height: 31px;
+  height: 22px;
   width: 15px;
   z-index: 100;
 }
@@ -271,7 +257,7 @@ export default {
   top: 9px;
   bottom: 0;
   left: 0;
-  height: 31px;
+  height: 22px;
   width: 15px;
   z-index: 100;
 }
@@ -289,13 +275,13 @@ export default {
   padding-right: 0px !important;
   margin: 0;
   text-align: center;
-  border-bottom: 1px solid $dark-white;
+  border-bottom: 1px solid var(--dark-white);
 }
 
 .mobile-link {
   position: relative;
   display: inline;
-  color: $orange;
+  color: var(--orange);
   font-size: 16px;
   font-weight: 700;
   box-sizing: border-box;
@@ -305,6 +291,11 @@ export default {
   text-decoration: none;
   -webkit-transition: 0.2s linear;
   transition: 0.2s linear;
+  cursor: pointer;
+
+  a:visited {
+    color: var(--orange);
+  }
 }
 
 .mobile-tutorial-link {
@@ -313,17 +304,18 @@ export default {
 }
 
 .module-ul {
-  margin: 0 0 0 20px;
+  margin: 0;
 }
 
 .mobile-subul {
   display: none;
   margin: 0 0 5px 5px;
+  padding: 0;
 }
 
 .mobile-sublink {
   position: relative;
-  color: $orange;
+  color: var(--orange);
   font-weight: 400;
   box-sizing: border-box;
   border-radius: 6px;
@@ -338,11 +330,5 @@ export default {
 
 .mobile-module-link {
   padding-bottom: 0;
-}
-
-.mobile-helmet {
-  display: block;
-  width: 35px;
-  margin: 17.5px auto 17.5px auto;
 }
 </style>

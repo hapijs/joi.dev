@@ -1,49 +1,62 @@
 <template>
   <no-ssr>
-    <div class="test-container">
-      <div class="markdown-wrapper tester-wrapper">
-        <h1 class="hapi-header">
-          joi Sandbox <span class="api-version-span">v{{ version }}</span>
-        </h1>
-        <h2 class="tester-subTitle">Schema:</h2>
-        <codemirror
-          :value="schema"
-          :options="options"
-          @input="onSchemaChange"
-        />
-        <h2 class="tester-subTitle">Data To Validate:</h2>
-        <codemirror
-          :value="validate"
-          :options="options"
-          @input="onValidateChange"
-        />
-        <button class="validate-button" @click="onValidateClick">
-          Validate
-        </button>
-        <h2 class="tester-subTitle">Result:</h2>
-        <pre class="tester-result">{{ result }}</pre>
-        <h2 class="tester-subTitle">Validated Object:</h2>
-        <codemirror
-          class="validated-result"
-          :options="options"
-          :value="validatedResult"
-        />
-      </div>
-    </div>
+    <SlotLayout>
+      <template #header>
+        <TopNav class="header" />
+      </template>
+
+      <template #main>
+        <div class="main test-container">
+          <div class="markdown-wrapper tester-wrapper">
+            <h1 class="hapi-header">
+              joi Sandbox <span class="api-version-span">v{{ version }}</span>
+            </h1>
+            <h2 class="tester-subTitle">Schema:</h2>
+            <codemirror
+              :value="schema"
+              :options="options"
+              @input="onSchemaChange"
+            />
+            <h2 class="tester-subTitle">Data To Validate:</h2>
+            <codemirror
+              :value="validate"
+              :options="options"
+              @input="onValidateChange"
+            />
+            <button class="validate-button" @click="onValidateClick">
+              Validate
+            </button>
+            <h2 class="tester-subTitle">Result:</h2>
+            <pre class="tester-result">{{ result }}</pre>
+            <h2 class="tester-subTitle">Validated Object:</h2>
+            <codemirror
+              class="validated-result"
+              :options="options"
+              :value="validatedResult"
+            />
+          </div>
+        </div>
+      </template>
+    </SlotLayout>
   </no-ssr>
 </template>
 
 <script>
-const moduleInfo = require('../static/lib/moduleInfo.json');
-const Joi = require('joi');
-const { annotate } = require('../utils/annotate');
+import TopNav from '@/components/Navs/TopNav.vue';
+import SlotLayout from '@/components/SlotLayout.vue';
+import moduleInfo from '../static/lib/joi/info.json';
+import Joi from 'joi';
+import { annotate } from '../utils/annotate';
 
 if (process.client) {
   require('codemirror/mode/javascript/javascript.js');
 }
 
 export default {
-  layout: 'noSide',
+  components: {
+    SlotLayout,
+    TopNav,
+  },
   data() {
     return {
       schema: '',
@@ -91,25 +104,25 @@ export default {
     },
   },
   created() {
-    let versionsArray = this.moduleAPI.joi.versionsArray;
+    let versionsArray = this.moduleAPI.versionsArray;
     this.$data.version = versionsArray[0];
     this.$data.schema = this.getSchema;
     this.$data.validate = this.getValidate;
     this.$store.commit('setDisplay', 'tester');
     this.$store.commit('setFamily', 'joi');
-    if (this.moduleAPI.joi[versionsArray[0]].intro) {
+    if (this.moduleAPI.docs[versionsArray[0]].intro) {
       this.$store.commit('setIntro', true);
     }
-    if (this.moduleAPI.joi[versionsArray[0]].example) {
+    if (this.moduleAPI.docs[versionsArray[0]].example) {
       this.$store.commit('setExample', true);
     }
-    if (this.moduleAPI.joi[versionsArray[0]].usage) {
+    if (this.moduleAPI.docs[versionsArray[0]].usage) {
       this.$store.commit('setUsage', true);
     }
-    if (this.moduleAPI.joi[versionsArray[0]].faq) {
+    if (this.moduleAPI.docs[versionsArray[0]].faq) {
       this.$store.commit('setFaq', true);
     }
-    if (this.moduleAPI.joi[versionsArray[0]].advanced) {
+    if (this.moduleAPI.docs[versionsArray[0]].advanced) {
       this.$store.commit('setAdvanced', true);
     }
   },
@@ -169,8 +182,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
-@import '../assets/styles/main.scss';
+<style lang="postcss">
 @import 'codemirror/lib/codemirror.css';
 @import 'codemirror/theme/eclipse.css';
 @import 'codemirror/theme/darcula.css';
@@ -199,7 +211,7 @@ export default {
 }
 
 .CodeMirror {
-  border: 1px solid $dark-white;
+  border: 1px solid var(--dark-white);
   width: 100%;
   margin-left: 0 !important;
   overflow-x: hidden;
@@ -214,7 +226,7 @@ export default {
 }
 
 .cm-comment {
-  color: $gray-light !important;
+  color: var(--gray-light) !important;
 }
 
 .validated-result .cm-comment {
@@ -225,20 +237,20 @@ export default {
   display: block;
   border-radius: 10px;
   border: none;
-  background: $orange;
+  background: var(--orange);
   padding: 5px 15px;
   font-size: 1em;
   font-weight: 700;
-  color: $white;
+  color: var(--white);
   cursor: pointer;
   border: 4px solid rgba(0, 0, 0, 0);
   margin-bottom: 30px;
 }
 
 .validate-button:hover {
-  border: 4px solid $orange;
-  background: $white;
-  color: $orange;
+  border: 4px solid var(--orange);
+  background: var(--white);
+  color: var(--orange);
   text-decoration: none;
   transition: all 0.3s ease 0s;
 }
@@ -270,8 +282,8 @@ export default {
 
 @media (prefers-color-scheme: dark) {
   .tester-result {
-    background: $blacker;
-    color: $white;
+    background: var(--blacker);
+    color: var(--white);
   }
 }
 </style>

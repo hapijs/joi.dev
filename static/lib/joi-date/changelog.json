@@ -1,0 +1,182 @@
+[
+  {
+    "id": 4724219,
+    "number": 9,
+    "version": "2.1.0",
+    "date": "2021-03-30T17:07:34Z",
+    "url": "https://github.com/hapijs/joi-date/milestone/9",
+    "issues": [
+      {
+        "id": 844462507,
+        "number": 38,
+        "title": "Add typescript types",
+        "url": "https://github.com/hapijs/joi-date/pull/38",
+        "labels": [
+          "feature",
+          "types"
+        ]
+      },
+      {
+        "id": 537794284,
+        "number": 26,
+        "title": "Typescript Support?",
+        "url": "https://github.com/hapijs/joi-date/issues/26",
+        "labels": [
+          "types"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 4652451,
+    "number": 8,
+    "version": "2.0.1",
+    "date": "2019-10-05T17:39:20Z",
+    "url": "https://github.com/hapijs/joi-date/milestone/8",
+    "issues": [
+      {
+        "id": 499587630,
+        "number": 25,
+        "title": "Fails to enforce required format when value is a number string",
+        "url": "https://github.com/hapijs/joi-date/issues/25",
+        "labels": [
+          "bug"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 4247639,
+    "number": 7,
+    "version": "2.0.0",
+    "date": "2019-09-11T23:22:56Z",
+    "url": "https://github.com/hapijs/joi-date/milestone/7",
+    "issues": [
+      {
+        "id": 479153863,
+        "number": 22,
+        "title": "Support joi v16",
+        "url": "https://github.com/hapijs/joi-date/issues/22",
+        "labels": [
+          "dependency",
+          "breaking changes"
+        ]
+      },
+      {
+        "id": 386290578,
+        "number": 13,
+        "title": "Issue with \".allow\" whitelists",
+        "url": "https://github.com/hapijs/joi-date/issues/13",
+        "labels": [
+          "bug"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 4247638,
+    "number": 6,
+    "version": "1.3.0",
+    "date": "2019-04-22T07:25:30Z",
+    "url": "https://github.com/hapijs/joi-date/milestone/6",
+    "issues": [
+      {
+        "id": 435622391,
+        "number": 17,
+        "title": "Change module namespace",
+        "url": "https://github.com/hapijs/joi-date/issues/17",
+        "labels": [
+          "dependency"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 3277572,
+    "number": 5,
+    "version": "1.2.0",
+    "date": "2019-04-22T06:55:33Z",
+    "url": "https://github.com/hapijs/joi-date/milestone/5",
+    "issues": [
+      {
+        "id": 312027071,
+        "number": 9,
+        "title": "Add support for UTC parsing mode",
+        "url": "https://github.com/hapijs/joi-date/pull/9",
+        "labels": [
+          "feature"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 3123005,
+    "number": 4,
+    "version": "1.1.1",
+    "date": "2018-02-16T19:31:38Z",
+    "url": "https://github.com/hapijs/joi-date/milestone/4",
+    "issues": [
+      {
+        "id": 297846505,
+        "number": 7,
+        "title": "fix(package): remove unused hoek dependency",
+        "url": "https://github.com/hapijs/joi-date/pull/7",
+        "labels": [
+          "dependency"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 2795154,
+    "number": 3,
+    "version": "1.1.0",
+    "date": "2017-09-26T15:47:43Z",
+    "url": "https://github.com/hapijs/joi-date/milestone/3",
+    "issues": [
+      {
+        "id": 260659100,
+        "number": 5,
+        "title": "feat(index): use provided joi instance",
+        "url": "https://github.com/hapijs/joi-date/pull/5",
+        "labels": []
+      }
+    ]
+  },
+  {
+    "id": 2284541,
+    "number": 2,
+    "version": "1.0.2",
+    "date": "2017-09-26T15:47:44Z",
+    "url": "https://github.com/hapijs/joi-date/milestone/2",
+    "issues": [
+      {
+        "id": 203827772,
+        "number": 3,
+        "title": "Add Joi peerDependency",
+        "url": "https://github.com/hapijs/joi-date/pull/3",
+        "labels": [
+          "bug"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 2151876,
+    "number": 1,
+    "version": "1.0.1",
+    "date": "2016-11-22T16:19:54Z",
+    "url": "https://github.com/hapijs/joi-date/milestone/1",
+    "issues": [
+      {
+        "id": 191048766,
+        "number": 2,
+        "title": "Issue with optional date",
+        "url": "https://github.com/hapijs/joi-date/issues/2",
+        "labels": [
+          "bug"
+        ]
+      }
+    ]
+  }
+]

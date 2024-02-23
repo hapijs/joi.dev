@@ -1,205 +1,128 @@
 <template>
-  <div class="api-nav-window">
-    <div class="side-nav-wrapper">
+  <Sidebar class="landing-sidebar">
+    <template #header>
+      <div class="family-nav-title">
+        <a :href="`/module/${family}`">{{ family }}</a>
+        <span v-if="page === 'api' && version && versions" class="family-span">
+          <select
+            class="family-version-select"
+            :value="version"
+            @change="onVersionChange($event)"
+          >
+            <option v-for="v in versions" :key="v" :value="v">
+              {{ v }}
+            </option>
+          </select>
+        </span>
+        <Ads />
+      </div>
+    </template>
+
+    <template #content>
       <div class="side-nav-inner-wrapper">
-        <div class="family-top-wrapper">
-          <div class="family-nav-title">
-            <a :href="'/module/' + family">{{ family }}</a>
-            <span v-if="page === 'api'" class="family-span">
-              <select
-                class="family-version-select"
-                :value="version"
-                @change="onVersionChange($event)"
-              >
-                <option
-                  v-for="version in versions"
-                  :key="version"
-                  :value="version"
-                >
-                  {{ version }}
-                </option>
-              </select>
-            </span>
-            <Ads />
-          </div>
-          <div v-if="page === 'api'" class="family-search">
-            <input
-              class="family-search-box"
-              :value="search"
-              placeholder="Search API"
-              @keyup.enter="onSearch"
-              @input="onInput($event)"
-            />
-            <div class="family-search-img" @click="onSearch"></div>
-            <div class="family-search-info">
-              <div class="family-search-results">
-                <div class="family-search-results-wrapper">
-                  <div class="family-search-results-text">
-                    Showing result {{ indexResults + 1 }} of
-                    {{ results.length }}
-                  </div>
-                  <div class="family-search-buttons">
-                    <button class="family-search-button" @click="onPrevious">
-                      Previous
-                    </button>
-                    <button class="family-search-button" @click="onNext">
-                      Next
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div class="family-search-error">No results found</div>
-            </div>
-          </div>
-        </div>
         <div class="side-nav-select-wrapper landing-nav-select-wrapper">
           <div
             id="install1"
-            :class="
-              getHash === '#install'
-                ? 'landing-nav-api-title bold'
-                : 'landing-nav-api-title'
-            "
+            :class="{
+              'landing-nav-api-title': true,
+              'landing-active':
+                page === '' || page === 'home' || page === 'install',
+            }"
           >
             <a
-              :href="
-                page === 'home' ? '#install' : '/module/' + family + '#install'
-              "
-              >Installation</a
+              :href="page === 'home' ? '#install' : `/module/${family}#install`"
             >
+              Installation
+            </a>
           </div>
           <div
             id="status1"
-            :class="
-              getHash === '#status'
-                ? 'landing-nav-api-title bold'
-                : 'landing-nav-api-title'
-            "
+            :class="{
+              'landing-nav-api-title': true,
+              'landing-active': page === 'status',
+            }"
           >
-            <a
-              :href="
-                page === 'home' ? '#status' : '/module/' + family + '#status'
-              "
-              >Status</a
-            >
+            <a :href="page === 'home' ? '#status' : `/module/${family}#status`">
+              Status
+            </a>
           </div>
           <div
             v-if="getIntro"
             id="introduction1"
-            :class="
-              hash === '#introduction'
-                ? 'landing-nav-api-title bold'
-                : 'landing-nav-api-title'
-            "
+            :class="{
+              'landing-nav-api-title': true,
+              'landing-active': page === 'introduction',
+            }"
           >
             <a
               :href="
                 page === 'home'
                   ? '#introduction'
-                  : '/module/' + family + '#introduction'
+                  : `/module/${family}#introduction`
               "
-              >Introduction</a
             >
+              Introduction
+            </a>
           </div>
           <div
             v-if="getExample"
             id="example1"
-            :class="
-              hash === '#example'
-                ? 'landing-nav-api-title bold'
-                : 'landing-nav-api-title'
-            "
+            :class="{
+              'landing-nav-api-title': true,
+              'landing-active': page === 'example',
+            }"
           >
             <a
-              :href="
-                page === 'home' ? '#example' : '/module/' + family + '#example'
-              "
-              >Example</a
+              :href="page === 'home' ? '#example' : `/module/${family}#example`"
             >
+              Example
+            </a>
           </div>
           <div
             v-if="getUsage"
             id="usage1"
-            :class="
-              hash === '#usage'
-                ? 'landing-nav-api-title bold'
-                : 'landing-nav-api-title'
-            "
+            :class="{
+              'landing-nav-api-title': true,
+              'landing-active': page === 'usage',
+            }"
           >
-            <a
-              :href="
-                page === 'home' ? '#usage' : '/module/' + family + '#usage'
-              "
-              >Usage</a
-            >
+            <a :href="page === 'home' ? '#usage' : `/module/${family}#usage`">
+              Usage
+            </a>
           </div>
           <div
             v-if="getAdvanced"
             id="advanced1"
-            :class="
-              hash === '#advanced'
-                ? 'landing-nav-api-title bold'
-                : 'landing-nav-api-title'
-            "
+            :class="{
+              'landing-nav-api-title': true,
+              'landing-active': page === 'advanced',
+            }"
           >
             <a
               :href="
-                page === 'home'
-                  ? '#advanced'
-                  : '/module/' + header + '#advanced'
+                page === 'home' ? '#advanced' : `/module/${header}#advanced`
               "
-              >Advanced</a
             >
+              Advanced
+            </a>
           </div>
           <div
             v-if="getFaq"
             id="faq1"
-            :class="
-              hash === '#faq'
-                ? 'landing-nav-api-title bold'
-                : 'landing-nav-api-title'
-            "
+            :class="{
+              'landing-nav-api-title': true,
+              'landing-active': page === 'faq',
+            }"
           >
-            <a :href="page === 'home' ? '#faq' : '/module/' + family + '#faq'"
-              >F.A.Q.</a
-            >
+            <a :href="page === 'home' ? '#faq' : `/module/${family}#faq`">
+              F.A.Q.
+            </a>
           </div>
           <hr v-if="family === 'joi'" class="landing-hr" />
-          <hr v-if="family === 'bell'" class="landing-hr" />
-          <div
-            v-if="family === 'bell'"
-            id="bell1"
-            :class="
-              page === 'providers'
-                ? 'landing-nav-api-title bold'
-                : 'landing-nav-api-title'
-            "
+          <ul
+            v-if="page === 'examples' && version && versions"
+            class="side-nav-select-list"
           >
-            <a href="/module/bell/providers">Providers</a>
-          </div>
-          <ul v-if="page === 'providers'" class="side-nav-select-list">
-            <FamilyNavItem
-              :name="getFamily"
-              :menu="menuProvider"
-              :page="page"
-              :version="version"
-              :versions="versions"
-              @change="onVersionChange"
-            />
-          </ul>
-          <hr v-if="family === 'bell'" class="landing-hr" />
-          <div
-            v-if="family === 'bell'"
-            id="bell2"
-            :class="
-              page === 'examples'
-                ? 'landing-nav-api-title bold'
-                : 'landing-nav-api-title'
-            "
-          >
-            <a href="/module/bell/examples">Examples</a>
-          </div>
-          <ul v-if="page === 'examples'" class="side-nav-select-list">
             <FamilyNavItem
               :name="getFamily"
               :menu="menu"
@@ -211,80 +134,78 @@
           </ul>
           <hr class="landing-hr" />
           <div
-            v-if="moduleInfo[family].api === true"
-            :class="
-              page === 'api'
-                ? 'landing-nav-api-title bold'
-                : 'landing-nav-api-title'
-            "
+            v-if="moduleInfo.api === true"
+            :class="{
+              'landing-nav-api-title': true,
+              'landing-active': page === 'api',
+            }"
           >
-            <a :href="'/module/' + family + '/api'">API</a>
+            <a :href="`/module/${family}/api`">API</a>
           </div>
-          <ul v-if="page === 'api'" class="side-nav-select-list">
-            <FamilyNavItem
-              :name="getFamily"
+          <ul
+            v-if="page === 'api' && version && versions"
+            class="side-nav-select-list"
+          >
+            <ApiNavList
+              :ancestors="menuAncestors"
+              :current="currentSection"
               :menu="menu"
-              :page="page"
-              :version="version"
-              :versions="versions"
-              @change="onVersionChange"
+              :folded="false"
             />
           </ul>
           <hr class="landing-hr" />
           <div
-            :class="
-              page === 'changelog'
-                ? 'landing-nav-changelog-title bold'
-                : 'landing-nav-changelog-title'
-            "
+            :class="{
+              'landing-nav-api-title': true,
+              'landing-active': page === 'changelog',
+            }"
           >
-            <a :href="'/module/' + family + '/changelog'">Changelog</a>
+            <a :href="`/module/${family}/changelog`">Changelog</a>
           </div>
         </div>
       </div>
+    </template>
+
+    <template #footer>
       <SideFooter />
-    </div>
-  </div>
+    </template>
+  </Sidebar>
 </template>
 
 <script>
+import ApiNavList from '@/components/api/ApiNavList.vue';
+import Sidebar from '@/components/Sidebar.vue';
+import { computeMenuAncestors } from '@/utils/menuAncestors';
 import SideFooter from '~/components/Footers/SideFooter.vue';
 import FamilyNavItem from '~/components/family/FamilyNavItem.vue';
 import Ads from '~/components/Ads.vue';
 
 export default {
   components: {
+    ApiNavList,
+    Sidebar,
     SideFooter,
     FamilyNavItem,
     Ads,
   },
-  props: [
-    'page',
-    'moduleAPI',
-    'version',
-    'versions',
-    'menu',
-    'results',
-    'indexResults',
-    'search',
-    'moduleInfo',
-    'menuProvider',
-  ],
+  props: {
+    family: { type: String, required: true },
+    page: { type: String, required: true },
+    moduleInfo: { type: Object, required: true },
+    version: { type: String, required: true },
+    versions: { type: Array, default: () => [] },
+    menu: { type: Object, default: () => {} },
+    getDocumentationRef: { type: Function },
+    currentSection: { type: String, default: '' },
+  },
   data() {
     return {
       header: this.$route.params.family,
       showAPI: false,
       hash: '',
-      family: '',
     };
   },
   computed: {
-    getModules() {
-      return this.$store.getters.loadModules;
-    },
-    getVersion() {
-      return this.$store.getters.loadVersion;
-    },
     getHash() {
       return this.$route.hash;
     },
@@ -306,6 +227,9 @@ export default {
     getAdvanced() {
       return this.$store.getters.loadAdvanced;
     },
+    menuAncestors() {
+      return computeMenuAncestors(this.menu);
+    },
   },
   created() {
     this.$data.family = this.getFamily;
@@ -326,39 +250,9 @@ export default {
         query: { v: event.target.value },
       });
       this.$emit('input', '');
-      document
-        .querySelector('.family-search-results')
-        .classList.remove('nav-display');
-      document
-        .querySelector('.family-search-error')
-        .classList.remove('nav-display');
       window.scrollTo(0, 0);
       this.$parent.setClasses();
       this.$emit('clipboards');
-    },
-    onSearch() {
-      if (this.search !== '') {
-        this.$emit('search');
-      }
-    },
-    onPrevious() {
-      if (this.indexResults !== 0) {
-        this.$emit('previous', this.indexResults - 1, this.uls, this.links);
-      }
-    },
-    onNext() {
-      if (this.indexResults !== this.results.length - 1) {
-        this.$emit('next', this.indexResults + 1, this.uls, this.links);
-      }
-    },
-    onInput(event) {
-      document
-        .querySelector('.family-search-error')
-        .classList.remove('nav-display');
-      document
-        .querySelector('.family-search-results')
-        .classList.remove('nav-display');
-      this.$emit('input', event.target.value);
     },
     onScroll() {
       let links = [];
@@ -416,138 +310,87 @@ export default {
 };
 </script>
 
-<style lang="scss">
-@import '../../assets/styles/sideNav.scss';
-@import '../../assets/styles/markdown.scss';
+<style lang="postcss" scoped>
+@import '../../assets/styles/sideNav.css';
 
-.family-top-wrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-start;
+.landing-nav-api-title {
+  display: inline-block;
+  font-size: 1.1em;
   width: 100%;
+  padding: 5px 0;
   margin: 0;
-  padding: 20px;
-  position: sticky;
-  top: 0;
-  background: $off-white;
-  z-index: 1000;
+  cursor: pointer;
+
+  a {
+    color: var(--gray);
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &.landing-active a {
+    color: var(--orange);
+    font-weight: 900;
+    transition: all 0.2s ease;
+  }
 }
 
 .family-nav-title {
   font-size: 1.5rem;
-  color: $black;
+  color: var(--black);
   margin: 0;
-}
-
-.ads-wrapper {
-  padding: 15px 0 0 0;
 }
 
 .family-nav-title a {
-  color: $black;
+  color: var(--black);
 }
 
 .family-nav-title a:hover {
-  color: $black;
+  color: var(--black);
 }
 
-.family-search {
-  position: relative;
-  padding-right: 20px;
-  width: 100%;
-  margin: 20px 0 0 0;
-}
-
-.family-search-box {
+.family-version-select {
+  width: 70px;
+  padding: 0 5px 0 5px;
+  border: none;
   height: 30px;
-  outline: none;
-  padding: 10px;
-  border: 1px solid $dark-white;
-  width: 100%;
-  font-size: 0.85rem;
-}
-
-.family-search-img {
-  position: absolute;
-  background: url('/img/search.png') no-repeat;
-  background-position: center;
-  background-color: $white;
-  background-size: contain;
-  padding: 10px;
-  right: 20px;
-  top: 0px;
-  border-top: 1px solid $dark-white;
-  border-right: 1px solid $dark-white;
-  border-bottom: 1px solid $dark-white;
-  height: 30px;
-  width: 30px;
-  z-index: 25;
+  font-size: 1em;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: url(/img/down.png) 96% / 15% no-repeat var(--off-white);
   cursor: pointer;
 }
 
-.family-search-info {
-  margin-top: 5px;
-  width: 100%;
-}
-
-.family-search-error,
-.family-search-results {
-  display: none;
-  width: 100%;
-  font-size: 0.85em;
-}
-
-.family-search-results-wrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-}
-
-.family-search-results-text {
+.side-nav-select-list {
   margin: 0;
-}
-
-.family-search-buttons {
-  margin: 5px 0 0 0;
-}
-
-.family-search-button {
-  outline: none;
-  border: 1px solid $dark-white;
-  background: $white;
-  padding: 4px 10px;
-  color: $black;
-  cursor: pointer;
-  margin-right: 10px;
-}
-
-.resources-active {
-  position: relative;
-  color: $orange !important;
-  font-weight: 900;
-  transition: all 0.2s ease;
+  padding: 0;
 }
 
 .landing-nav-select-wrapper {
   margin: 0 !important;
-  padding-left: 20px;
   overflow-x: hidden;
 }
 
-@media screen and (max-width: 900px) {
-  .family-top-wrapper {
-    padding: 0;
-    z-index: 0;
-  }
+.landing-hr {
+  position: relative;
+  left: -30px;
+  height: 1px;
+  background-color: var(--dark-white);
+  width: calc(100% - 10px);
+  margin: 0;
+  border: none;
 
+  @media (prefers-color-scheme: dark) {
+    background-color: var(--blacker);
+  }
+}
+
+@media screen and (max-width: 900px) {
   .landing-nav-select-wrapper {
     display: none;
-  }
-
-  .mobile-top-wrapper {
-    align-items: center;
   }
 
   .family-span {
@@ -561,19 +404,17 @@ export default {
   .landing-hr {
     display: none;
   }
+
+  .landing-sidebar {
+    display: none;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
-  .family-top-wrapper,
-  .family-search-button {
-    background: $black !important;
-    border-color: $blackest !important;
-    color: $white !important;
-  }
   .family-nav-title,
   .family-nav-title a,
   .family-nav-title a:hover {
-    color: $white !important;
+    color: var(--white) !important;
   }
 }
 </style>

@@ -1,0 +1,117 @@
+{
+  "joi": {
+    "slogan": "The most powerful schema description language and data validator for JavaScript.",
+    "link": "https://github.com/hapijs/joi",
+    "stars": 20497,
+    "forks": 1510,
+    "updated": "2024-02-21T18:38:44Z",
+    "versions": [
+      {
+        "name": "17.12.2",
+        "branch": "v17.12.2",
+        "license": "BSD",
+        "node": [
+          "14",
+          "16",
+          "18"
+        ]
+      }
+    ]
+  },
+  "address": {
+    "slogan": "Validate email address and domain.",
+    "link": "https://github.com/hapijs/address",
+    "stars": 32,
+    "forks": 26,
+    "updated": "2024-01-29T12:37:22Z",
+    "versions": [
+      {
+        "name": "5.1.1",
+        "branch": "v5.1.1",
+        "license": "BSD",
+        "node": [
+          "14",
+          "16",
+          "18"
+        ]
+      }
+    ]
+  },
+  "formula": {
+    "slogan": "Math and string formula parser.",
+    "link": "https://github.com/hapijs/formula",
+    "stars": 14,
+    "forks": 20,
+    "updated": "2024-02-02T16:21:44Z",
+    "versions": [
+      {
+        "name": "3.0.2",
+        "branch": "v3.0.2",
+        "license": "BSD",
+        "node": [
+          "14",
+          "16",
+          "18"
+        ]
+      }
+    ]
+  },
+  "joi-date": {
+    "slogan": "Extensions for advance date rules.",
+    "link": "https://github.com/hapijs/joi-date",
+    "stars": 83,
+    "forks": 25,
+    "updated": "2022-11-10T12:54:22Z",
+    "versions": [
+      {
+        "name": "2.1.0",
+        "branch": "v2.1.0",
+        "license": "BSD",
+        "node": [
+          "14",
+          "16",
+          "18"
+        ]
+      }
+    ]
+  },
+  "pinpoint": {
+    "slogan": "Return the filename and line number of the calling function.",
+    "link": "https://github.com/hapijs/pinpoint",
+    "stars": 6,
+    "forks": 7,
+    "updated": "2023-11-12T09:48:56Z",
+    "versions": [
+      {
+        "name": "2.0.1",
+        "branch": "v2.0.1",
+        "license": "BSD",
+        "node": [
+          "14",
+          "16",
+          "18"
+        ]
+      }
+    ]
+  },
+  "tlds": {
+    "slogan": "TLDS list for domain validation.",
+    "link": "https://github.com/hapijs/tlds",
+    "stars": 0,
+    "forks": 1,
+    "updated": "2024-01-25T08:45:47Z",
+    "versions": [
+      {
+        "name": "1.0.2",
+        "branch": "v1.0.2",
+        "license": "BSD",
+        "node": [
+          "14",
+          "16",
+          "18",
+          "20"
+        ]
+      }
+    ]
+  }
+}

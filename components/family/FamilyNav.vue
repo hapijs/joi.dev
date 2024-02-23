@@ -161,8 +161,8 @@ export default {
 };
 </script>
 
-<style lang="scss">
-@import '../../assets/styles/sideNav.scss';
+<style lang="postcss">
+@import '../../assets/styles/sideNav.css';
 
 .family-top-wrapper {
   display: flex;
@@ -174,13 +174,13 @@ export default {
   padding: 20px;
   position: sticky;
   top: 0;
-  background: $off-white;
+  background: var(--off-white);
   z-index: 1000;
 }
 
 .family-nav-title {
   font-size: 1.5rem;
-  color: $black;
+  color: var(--black);
   margin: 0;
 }
 
@@ -194,7 +194,7 @@ export default {
   height: 30px;
   outline: none;
   padding: 10px;
-  border: 1px solid $dark-white;
+  border: 1px solid var(--dark-white);
   width: 100%;
   font-size: 0.85rem;
 }
@@ -203,14 +203,14 @@ export default {
   position: absolute;
   background: url('/img/search.png') no-repeat;
   background-position: center;
-  background-color: $white;
+  background-color: var(--white);
   background-size: contain;
   padding: 10px;
   right: 0px;
   top: 0px;
-  border-top: 1px solid $dark-white;
-  border-right: 1px solid $dark-white;
-  border-bottom: 1px solid $dark-white;
+  border-top: 1px solid var(--dark-white);
+  border-right: 1px solid var(--dark-white);
+  border-bottom: 1px solid var(--dark-white);
   height: 30px;
   width: 30px;
   z-index: 25;
@@ -246,10 +246,10 @@ export default {
 
 .family-search-button {
   outline: none;
-  border: 1px solid $dark-white;
-  background: $white;
+  border: 1px solid var(--dark-white);
+  background: var(--white);
   padding: 4px 10px;
-  color: $black;
+  color: var(--black);
   cursor: pointer;
   margin-right: 10px;
 }
@@ -279,21 +279,21 @@ export default {
 @media (prefers-color-scheme: dark) {
   .family-version-select,
   .family-search-box {
-    background-color: $black !important;
-    border-color: $blackest !important;
-    color: $light-gray !important;
+    background-color: var(--black) !important;
+    border-color: var(--blackest) !important;
+    color: var(--light-gray) !important;
   }
 
   .family-top-wrapper,
   .family-search-button,
   .family-search-img {
-    background: $black !important;
-    border-color: $blackest !important;
+    background: var(--black) !important;
+    border-color: var(--blackest) !important;
   }
 
   .family-search-img {
-    background-color: $blackest !important;
-    border-color: $blackest !important;
+    background-color: var(--blackest) !important;
+    border-color: var(--blackest) !important;
   }
 }
 </style>

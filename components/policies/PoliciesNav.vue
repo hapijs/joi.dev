@@ -1,139 +1,156 @@
 <template>
-  <div class="side-nav-window">
-    <div class="side-nav-wrapper">
-      <div class="side-nav-inner-wrapper">
-        <div class="side-nav-title">Policies</div>
-        <Ads />
-        <div class="side-nav-select-wrapper">
-          <ul class="side-nav-select-list">
-            <li class="policies-header-link">
-              <a
-                :class="
-                  $props.page === 'conduct'
-                    ? 'side-nav-select-link policies-active'
-                    : 'side-nav-select-link'
-                "
-                href="/policies/coc"
-                >Code of Conduct</a
-              >
-            </li>
-            <li class="policies-header-link">
-              <a
-                :class="
-                  $props.page === 'contributing'
-                    ? 'side-nav-select-link policies-active'
-                    : 'side-nav-select-link'
-                "
-                href="/policies/contributing"
-                >Contributing</a
-              >
-            </li>
-            <li class="policies-header-link">
-              <a
-                :class="
-                  $props.page === 'license'
-                    ? 'side-nav-select-link policies-active'
-                    : 'side-nav-select-link'
-                "
-                href="/policies/license"
-                >License</a
-              >
-            </li>
-            <li class="policies-header-link">
-              <a
-                :class="
-                  $props.page === 'security'
-                    ? 'side-nav-select-link policies-active'
-                    : 'side-nav-select-link'
-                "
-                href="/policies/security"
-                >Security</a
-              >
-            </li>
-            <li class="policies-header-link">
-              <a
-                :class="
-                  $props.page === 'styleguide'
-                    ? 'side-nav-select-link policies-active'
-                    : 'side-nav-select-link'
-                "
-                href="/policies/styleguide"
-                >Style Guide</a
-              >
-            </li>
+  <Sidebar>
+    <template #header>
+      <div class="side-nav-title">Policies</div>
+      <Ads />
+    </template>
 
-            <li class="policies-header-link">
-              <a
-                :class="
-                  $props.page === 'support'
-                    ? 'side-nav-select-link policies-active'
-                    : 'side-nav-select-link'
-                "
-                href="/policies/support"
-                >Support</a
-              >
-            </li>
-          </ul>
-        </div>
-      </div>
+    <template #content>
+      <ul class="side-nav-select-list">
+        <li class="policies-header-link">
+          <a
+            :class="{
+              'side-nav-select-link': true,
+              'policies-active': page === 'conduct',
+            }"
+            href="/policies/coc"
+            >Code of Conduct</a
+          >
+        </li>
+        <li class="policies-header-link">
+          <a
+            :class="{
+              'side-nav-select-link': true,
+              'policies-active': page === 'contributing',
+            }"
+            href="/policies/contributing"
+            >Contributing</a
+          >
+        </li>
+        <li class="policies-header-link">
+          <a
+            :class="{
+              'side-nav-select-link': true,
+              'policies-active': page === 'license',
+            }"
+            href="/policies/license"
+            >License</a
+          >
+        </li>
+        <li class="policies-header-link">
+          <a
+            :class="{
+              'side-nav-select-link': true,
+              'policies-active': page === 'security',
+            }"
+            href="/policies/security"
+            >Security</a
+          >
+        </li>
+        <li class="policies-header-link">
+          <a
+            :class="{
+              'side-nav-select-link': true,
+              'policies-active': page === 'styleguide',
+            }"
+            href="/policies/styleguide"
+            >Style Guide</a
+          >
+        </li>
+
+        <li class="policies-header-link">
+          <a
+            :class="{
+              'side-nav-select-link': true,
+              'policies-active': page === 'support',
+            }"
+            href="/policies/support"
+            >Support</a
+          >
+        </li>
+      </ul>
+    </template>
+
+    <template #footer>
       <SideFooter />
-    </div>
-  </div>
+    </template>
+  </Sidebar>
 </template>
 
 <script>
+import Sidebar from '~/components/Sidebar.vue';
 import SideFooter from '~/components/Footers/SideFooter.vue';
 import Ads from '~/components/Ads.vue';
 
 export default {
   components: {
+    Sidebar,
     SideFooter,
     Ads,
   },
   props: ['page'],
-  methods: {
-    onClick(ref) {
-      let actives = document.querySelectorAll('.policies-active');
-      for (let active of actives) {
-        active.classList.remove('policies-active');
-      }
-    },
-  },
 };
 </script>
 
-<style lang="scss">
-@import '../../assets/styles/sideNav.scss';
+<style lang="postcss" scoped>
+@import '../../assets/styles/sideNav.css';
+
+.side-nav-select-list {
+  margin: 0;
+  padding: 0;
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  line-height: 30px;
+  font-size: 0.9em;
+
+  li {
+    margin: 0;
+  }
+}
 
 .policies-header-link {
-  position: relative;
-  list-style-type: none;
-  margin-bottom: 5px;
-}
-
-.ads-wrapper {
-  padding: 15px 0 0 0;
-}
-
-.side-nav-select-link a {
   display: inline-block;
-  font-size: 0.78em;
+  font-size: 1.1em;
   width: 100%;
   padding: 5px 0;
-  color: $gray;
+  color: var(--gray);
   margin: 0;
-  border-bottom: 1px solid $dark-white;
   cursor: pointer;
-}
-
-.side-nav-select-link a:hover {
   text-decoration: none;
+  line-height: 0.5rem;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &.policies-active {
+    position: relative;
+    color: var(--orange);
+    font-weight: 900;
+    transition: all 0.2s ease;
+  }
 }
 
-.policies-active {
-  position: relative;
-  color: $orange !important;
-  font-weight: 900;
-  transition: all 0.2s ease;
+.side-nav-select-link {
+  display: inline-block;
+  font-size: 1.1em;
+  width: 100%;
+  padding: 5px 0;
+  color: var(--gray);
+  margin: 0;
+  cursor: pointer;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &.policies-active {
+    position: relative;
+    color: var(--orange);
+    font-weight: 900;
+    transition: all 0.2s ease;
+  }
 }
 </style>

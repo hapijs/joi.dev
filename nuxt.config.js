@@ -8,20 +8,11 @@ export default {
   generate: {
     fallback: true,
     interval: 2000,
-    routes: [
-      '/module/address',
-      '/module/address/api',
-      '/module/address/changelog',
-      '/module/formula',
-      '/module/formula/api',
-      '/module/formula/changelog',
-      '/module/joi-date',
-      '/module/joi-date/api',
-      '/module/joi-date/changelog',
-      '/module/pinpoint',
-      '/module/pinpoint/api',
-      '/module/pinpoint/changelog',
-    ],
+    routes: ['address', 'formula', 'joi-date', 'pinpoint'].flatMap((m) => [
+      `/module/${m}`,
+      `/module/${m}/api`,
+      `/module/${m}/changelog`,
+    ]),
   },
   /*
    ** Nuxt target
@@ -61,6 +52,13 @@ export default {
     ],
   },
 
+  css: [
+    './assets/styles/main.css',
+    './assets/styles/variables.css',
+    './assets/styles/api.css',
+    './assets/styles/markdown.css',
+  ],
+
   /*
    ** Customize the progress-bar color
    */
@@ -69,41 +67,17 @@ export default {
   /*
    ** Global CSS
    */
-  css: ['bulma'],
+  // css: ['bulma'],
   /*
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins
    */
-  plugins: [
-    '~/plugins/vue-codemirror',
-    '~/plugins/vue-highlightjs',
-    '~/plugins/vue-darkmode',
-  ],
+  plugins: ['~/plugins/vue-codemirror', '~/plugins/vue-darkmode'],
 
   /*
    ** Nuxt.js modules
    */
-  modules: [
-    // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/markdownit',
-    '@nuxtjs/axios',
-    '@nuxtjs/dotenv',
-    '@nuxtjs/svg',
-    '@nuxtjs/pwa',
-  ],
-
-  // [optional] markdownit options
-  // See https://github.com/markdown-it/markdown-it
-  markdownit: {
-    linkify: true,
-    html: true,
-    breaks: true,
-    injected: true,
-  },
-
-  env: {
-    GITHUB_TOKEN: process.env.GITHUB_TOKEN,
-  },
+  modules: ['@nuxtjs/svg', '@nuxtjs/pwa'],
 
   manifest: {
     name: 'joi.dev',
@@ -112,13 +86,6 @@ export default {
     theme_color: '#0080ff',
   },
 
-  /*
-   ** Axios module configuration
-   ** See https://axios.nuxtjs.org/options
-   */
-  axios: {
-    retry: true,
-  },
   /*
    ** Build configuration
    ** See https://nuxtjs.org/api/configuration-build/
@@ -140,12 +107,29 @@ export default {
         useShortDoctype: true,
       },
     },
-    loaders: {
-      scss: {
-        implementation: require('sass'),
+    cssSourceMap: true,
+    extractCSS: {
+      ignoreOrder: true,
+    },
+    optimization: {
+      splitChunks: {
+        cacheGroups: {
+          styles: {
+            name: 'styles',
+            test: /\.(css|vue)$/,
+            chunks: 'all',
+            enforce: true,
+          },
+        },
       },
     },
-    postcss: null,
+    postcss: {
+      postcssOptions: {
+        plugins: {
+          'postcss-nested': {},
+        },
+      },
+    },
     /*
      ** You can extend webpack config here
      */

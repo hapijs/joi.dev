@@ -8,24 +8,22 @@ export const state = () => ({
   faq: false,
   advanced: false,
   family: 'joi',
-  schema:
-    '//Insert your joi schema here \n' +
-    'Joi.object({\n' +
-    '  username: Joi.string().alphanum().min(3).max(30).required(),\n' +
-    '  password: Joi.string().pattern(/^[a-zA-Z0-9]{3,30}$/),\n' +
-    '  repeat_password: Joi.ref("password"),\n' +
-    '  access_token: [Joi.string(), Joi.number()],\n' +
-    '  birth_year: Joi.number().integer().min(1900).max(2013),\n' +
-    '  email: Joi.string().email({ minDomainSegments: 2, tlds: { allow: ["com", "net"] } } )\n' +
-    "}).with('username', 'birth_year').xor('password', 'access_token').with('password', 'repeat_password')",
-  validate:
-    '//Insert data to validate here \n' +
-    '{ \n' +
-    ' username: "abc",\n' +
-    ' password: "password",\n' +
-    ' repeat_password: "password",\n' +
-    ' birth_year: 1994\n' +
-    '}',
+  schema: `//Insert your joi schema here
+Joi.object({
+  username: Joi.string().alphanum().min(3).max(30).required(),
+  password: Joi.string().pattern(/^[a-zA-Z0-9]{3,30}$/),
+  repeat_password: Joi.ref("password"),
+  access_token: [Joi.string(), Joi.number()],
+  birth_year: Joi.number().integer().min(1900).max(2013),
+  email: Joi.string().email({ minDomainSegments: 2, tlds: { allow: ["com", "net"] } } )
+}).with('username', 'birth_year').xor('password', 'access_token').with('password', 'repeat_password')`,
+  validate: `//Insert data to validate here
+{
+  username: "abc",
+  password: "password",
+  repeat_password: "password",
+  birth_year: 1994
+}`,
   modules: ['address', 'formula', 'joi-date', 'pinpoint'],
 });
 
