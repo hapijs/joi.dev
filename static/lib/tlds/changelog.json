@@ -1,0 +1,38 @@
+[
+  {
+    "id": 9917343,
+    "number": 2,
+    "version": "1.0.2",
+    "date": "2023-09-13T13:24:24Z",
+    "url": "https://github.com/hapijs/tlds/milestone/2",
+    "issues": [
+      {
+        "id": 1893182002,
+        "number": 2,
+        "title": "Update tlds",
+        "url": "https://github.com/hapijs/tlds/pull/2",
+        "labels": [
+          "bug"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 8546104,
+    "number": 1,
+    "version": "1.0.1",
+    "date": "2023-09-13T13:24:26Z",
+    "url": "https://github.com/hapijs/tlds/milestone/1",
+    "issues": [
+      {
+        "id": 1410559815,
+        "number": 1,
+        "title": "chore: change module scope",
+        "url": "https://github.com/hapijs/tlds/pull/1",
+        "labels": [
+          "bug"
+        ]
+      }
+    ]
+  }
+]

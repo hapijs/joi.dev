@@ -30,6 +30,12 @@ const modules = {
       2: ['14', '16', '18'],
     },
   },
+  tlds: {
+    package: '@hapi/tlds',
+    compatibility: {
+      1: ['14', '16', '18', '20'],
+    },
+  },
 };
 
 exports.modules = modules;

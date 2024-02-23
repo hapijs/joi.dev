@@ -1,0 +1,52 @@
+{
+  "name": "tlds",
+  "versions": [
+    {
+      "name": "1.0.2",
+      "branch": "v1.0.2",
+      "license": "BSD",
+      "node": [
+        "14",
+        "16",
+        "18",
+        "20"
+      ]
+    }
+  ],
+  "versionsArray": [
+    "1.0.2"
+  ],
+  "docs": {
+    "1.0.2": {
+      "menu": {
+        "id": null,
+        "text": null,
+        "children": [
+          {
+            "id": "methods",
+            "text": "Methods",
+            "children": [
+              {
+                "id": "tlds",
+                "text": "tlds"
+              }
+            ]
+          }
+        ]
+      },
+      "api": "<h2 class=\"api-doc-header\" id=\"methods\">Methods</h2>\n<h3 class=\"api-doc-header\" id=\"tlds\"><code>tlds</code></h3>\n<p>A <code>Set</code> with strings based on the official list of <a href=\"http://data.iana.org/TLD/tlds-alpha-by-domain.txt\">registered names</a> in lowercase.</p>\n",
+      "intro": "",
+      "example": "",
+      "usage": "",
+      "faq": "",
+      "advanced": "",
+      "license": "BSD"
+    }
+  },
+  "api": true,
+  "slogan": "TLDS list for domain validation.",
+  "forks": 1,
+  "stars": 0,
+  "updated": "2024-01-25T08:45:47Z",
+  "link": "https://github.com/hapijs/tlds"
+}

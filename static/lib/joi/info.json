@@ -1322,7 +1322,7 @@
   },
   "api": true,
   "slogan": "The most powerful schema description language and data validator for JavaScript.",
-  "forks": 1511,
+  "forks": 1510,
   "stars": 20497,
   "updated": "2024-02-21T18:38:44Z",
   "link": "https://github.com/hapijs/joi"

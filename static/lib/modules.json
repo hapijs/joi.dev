@@ -3,7 +3,7 @@
     "slogan": "The most powerful schema description language and data validator for JavaScript.",
     "link": "https://github.com/hapijs/joi",
     "stars": 20497,
-    "forks": 1511,
+    "forks": 1510,
     "updated": "2024-02-21T18:38:44Z",
     "versions": [
       {
@@ -90,6 +90,26 @@
           "14",
           "16",
           "18"
+        ]
+      }
+    ]
+  },
+  "tlds": {
+    "slogan": "TLDS list for domain validation.",
+    "link": "https://github.com/hapijs/tlds",
+    "stars": 0,
+    "forks": 1,
+    "updated": "2024-01-25T08:45:47Z",
+    "versions": [
+      {
+        "name": "1.0.2",
+        "branch": "v1.0.2",
+        "license": "BSD",
+        "node": [
+          "14",
+          "16",
+          "18",
+          "20"
         ]
       }
     ]
