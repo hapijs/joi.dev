@@ -52,8 +52,8 @@
   },
   "api": true,
   "slogan": "Extensions for advance date rules.",
-  "forks": 26,
-  "stars": 82,
+  "forks": 25,
+  "stars": 83,
   "updated": "2022-11-10T12:54:22Z",
   "link": "https://github.com/hapijs/joi-date"
 }

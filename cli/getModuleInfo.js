@@ -216,6 +216,7 @@ async function getInfo() {
       link: currentModule.link,
       stars: currentModule.stars,
       forks: currentModule.forks,
+      updated: currentModule.updated,
       versions: currentModule.versions,
     };
   }

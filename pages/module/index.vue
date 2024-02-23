@@ -51,7 +51,9 @@
                   {{ module.forks }}
                 </div>
               </div>
-              <div class="family-updated">Updated: {{ module.updated }}</div>
+              <div class="family-updated">
+                Updated: {{ new Date(module.updated).toDateString() }}
+              </div>
             </div>
           </div>
         </div>

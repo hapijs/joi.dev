@@ -98,6 +98,24 @@
     ]
   },
   {
+    "id": 10482555,
+    "number": 24,
+    "version": "4.1.5",
+    "date": "2024-01-29T13:21:04Z",
+    "url": "https://github.com/hapijs/address/milestone/24",
+    "issues": [
+      {
+        "id": 2105392579,
+        "number": 47,
+        "title": "chore: update tlds",
+        "url": "https://github.com/hapijs/address/pull/47",
+        "labels": [
+          "bug"
+        ]
+      }
+    ]
+  },
+  {
     "id": 7446122,
     "number": 19,
     "version": "4.1.4",

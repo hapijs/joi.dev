@@ -2,12 +2,13 @@
   "joi": {
     "slogan": "The most powerful schema description language and data validator for JavaScript.",
     "link": "https://github.com/hapijs/joi",
-    "stars": 20238,
-    "forks": 1542,
+    "stars": 20497,
+    "forks": 1511,
+    "updated": "2024-02-21T18:38:44Z",
     "versions": [
       {
-        "name": "17.11.0",
-        "branch": "v17.11.0",
+        "name": "17.12.2",
+        "branch": "v17.12.2",
         "license": "BSD",
         "node": [
           "14",
@@ -20,8 +21,9 @@
   "address": {
     "slogan": "Validate email address and domain.",
     "link": "https://github.com/hapijs/address",
-    "stars": 30,
+    "stars": 32,
     "forks": 26,
+    "updated": "2024-01-29T12:37:22Z",
     "versions": [
       {
         "name": "5.1.1",
@@ -39,7 +41,8 @@
     "slogan": "Math and string formula parser.",
     "link": "https://github.com/hapijs/formula",
     "stars": 14,
-    "forks": 19,
+    "forks": 20,
+    "updated": "2024-02-02T16:21:44Z",
     "versions": [
       {
         "name": "3.0.2",
@@ -56,8 +59,9 @@
   "joi-date": {
     "slogan": "Extensions for advance date rules.",
     "link": "https://github.com/hapijs/joi-date",
-    "stars": 82,
-    "forks": 26,
+    "stars": 83,
+    "forks": 25,
+    "updated": "2022-11-10T12:54:22Z",
     "versions": [
       {
         "name": "2.1.0",
@@ -76,6 +80,7 @@
     "link": "https://github.com/hapijs/pinpoint",
     "stars": 6,
     "forks": 7,
+    "updated": "2023-11-12T09:48:56Z",
     "versions": [
       {
         "name": "2.0.1",

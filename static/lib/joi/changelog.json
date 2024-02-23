@@ -1,5 +1,180 @@
 [
   {
+    "id": 10588351,
+    "number": 202,
+    "version": "17.12.2",
+    "date": "2024-02-21T18:44:59Z",
+    "url": "https://github.com/hapijs/joi/milestone/202",
+    "issues": [
+      {
+        "id": 2139645423,
+        "number": 3018,
+        "title": "Fix issue 2730 - Wrong State['path'] type",
+        "url": "https://github.com/hapijs/joi/pull/3018",
+        "labels": [
+          "types"
+        ]
+      },
+      {
+        "id": 1111849600,
+        "number": 2730,
+        "title": "Wrong `State['path']` type",
+        "url": "https://github.com/hapijs/joi/issues/2730",
+        "labels": [
+          "types"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 10482661,
+    "number": 201,
+    "version": "17.12.1",
+    "date": "2024-01-29T13:44:48Z",
+    "url": "https://github.com/hapijs/joi/milestone/201",
+    "issues": [
+      {
+        "id": 2105483334,
+        "number": 3016,
+        "title": "fix: domain default tld validation",
+        "url": "https://github.com/hapijs/joi/pull/3016",
+        "labels": [
+          "bug"
+        ]
+      },
+      {
+        "id": 2097724714,
+        "number": 3015,
+        "title": "fix: domain default tld validation",
+        "url": "https://github.com/hapijs/joi/pull/3015",
+        "labels": [
+          "bug"
+        ]
+      },
+      {
+        "id": 2049526270,
+        "number": 3007,
+        "title": "Domain validation not checking IANA registry by default",
+        "url": "https://github.com/hapijs/joi/issues/3007",
+        "labels": [
+          "bug"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 10431827,
+    "number": 200,
+    "version": "17.12.0",
+    "date": "2024-01-18T00:04:23Z",
+    "url": "https://github.com/hapijs/joi/milestone/200",
+    "issues": [
+      {
+        "id": 2087195431,
+        "number": 3014,
+        "title": "feat: hex prefix",
+        "url": "https://github.com/hapijs/joi/pull/3014",
+        "labels": [
+          "feature"
+        ]
+      },
+      {
+        "id": 2073453048,
+        "number": 3011,
+        "title": "Allow 0x prefix for hex strings",
+        "url": "https://github.com/hapijs/joi/pull/3011",
+        "labels": [
+          "feature"
+        ]
+      },
+      {
+        "id": 641339086,
+        "number": 2386,
+        "title": "Allow 0x prefix for hex strings",
+        "url": "https://github.com/hapijs/joi/issues/2386",
+        "labels": [
+          "bug",
+          "feature"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 10419385,
+    "number": 199,
+    "version": "17.11.1",
+    "date": "2024-01-15T13:06:38Z",
+    "url": "https://github.com/hapijs/joi/milestone/199",
+    "issues": [
+      {
+        "id": 2081693958,
+        "number": 3013,
+        "title": "fix: precision issue on number().multiple()",
+        "url": "https://github.com/hapijs/joi/pull/3013",
+        "labels": [
+          "bug"
+        ]
+      },
+      {
+        "id": 2068151437,
+        "number": 3009,
+        "title": "fix: LanguageMessages type now supports languages in TypeScript",
+        "url": "https://github.com/hapijs/joi/pull/3009",
+        "labels": [
+          "bug",
+          "types"
+        ]
+      },
+      {
+        "id": 1990728854,
+        "number": 3001,
+        "title": "fix: do not override existing labels of underlying schemas in alternatives",
+        "url": "https://github.com/hapijs/joi/pull/3001",
+        "labels": [
+          "bug"
+        ]
+      },
+      {
+        "id": 1787687666,
+        "number": 2962,
+        "title": "Multiple doesn't work correct",
+        "url": "https://github.com/hapijs/joi/issues/2962",
+        "labels": [
+          "bug",
+          "support"
+        ]
+      },
+      {
+        "id": 1440500562,
+        "number": 2875,
+        "title": "Fix for #2874",
+        "url": "https://github.com/hapijs/joi/pull/2875",
+        "labels": [
+          "documentation",
+          "types"
+        ]
+      },
+      {
+        "id": 1440478135,
+        "number": 2874,
+        "title": "Missing helper.error() method parameter type definition",
+        "url": "https://github.com/hapijs/joi/issues/2874",
+        "labels": [
+          "support"
+        ]
+      },
+      {
+        "id": 1097031270,
+        "number": 2720,
+        "title": "Type declaration for `messages` option of any.validate() inconsistent with the documentation and actual code",
+        "url": "https://github.com/hapijs/joi/issues/2720",
+        "labels": [
+          "types"
+        ]
+      }
+    ]
+  },
+  {
     "id": 10001154,
     "number": 198,
     "version": "17.11.0",
