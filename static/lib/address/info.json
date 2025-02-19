@@ -8,7 +8,9 @@
       "node": [
         "14",
         "16",
-        "18"
+        "18",
+        "20",
+        "22"
       ]
     }
   ],
@@ -60,8 +62,8 @@
   },
   "api": true,
   "slogan": "Validate email address and domain.",
-  "forks": 26,
-  "stars": 32,
+  "forks": 27,
+  "stars": 34,
   "updated": "2024-01-29T12:37:22Z",
   "link": "https://github.com/hapijs/address"
 }

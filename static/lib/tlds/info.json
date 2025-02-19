@@ -2,22 +2,23 @@
   "name": "tlds",
   "versions": [
     {
-      "name": "1.0.2",
-      "branch": "v1.0.2",
+      "name": "1.1.0",
+      "branch": "v1.1.0",
       "license": "BSD",
       "node": [
         "14",
         "16",
         "18",
-        "20"
+        "20",
+        "22"
       ]
     }
   ],
   "versionsArray": [
-    "1.0.2"
+    "1.1.0"
   ],
   "docs": {
-    "1.0.2": {
+    "1.1.0": {
       "menu": {
         "id": null,
         "text": null,
@@ -45,8 +46,8 @@
   },
   "api": true,
   "slogan": "TLDS list for domain validation.",
-  "forks": 1,
-  "stars": 0,
-  "updated": "2024-01-25T08:45:47Z",
+  "forks": 2,
+  "stars": 1,
+  "updated": "2024-10-24T06:30:45Z",
   "link": "https://github.com/hapijs/tlds"
 }

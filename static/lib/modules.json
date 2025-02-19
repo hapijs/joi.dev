@@ -2,18 +2,20 @@
   "joi": {
     "slogan": "The most powerful schema description language and data validator for JavaScript.",
     "link": "https://github.com/hapijs/joi",
-    "stars": 20497,
-    "forks": 1510,
-    "updated": "2024-02-21T18:38:44Z",
+    "stars": 21043,
+    "forks": 1514,
+    "updated": "2024-08-28T16:08:36Z",
     "versions": [
       {
-        "name": "17.12.2",
-        "branch": "v17.12.2",
+        "name": "17.13.3",
+        "branch": "v17.13.3",
         "license": "BSD",
         "node": [
           "14",
           "16",
-          "18"
+          "18",
+          "20",
+          "22"
         ]
       }
     ]
@@ -21,8 +23,8 @@
   "address": {
     "slogan": "Validate email address and domain.",
     "link": "https://github.com/hapijs/address",
-    "stars": 32,
-    "forks": 26,
+    "stars": 34,
+    "forks": 27,
     "updated": "2024-01-29T12:37:22Z",
     "versions": [
       {
@@ -32,7 +34,9 @@
         "node": [
           "14",
           "16",
-          "18"
+          "18",
+          "20",
+          "22"
         ]
       }
     ]
@@ -40,8 +44,8 @@
   "formula": {
     "slogan": "Math and string formula parser.",
     "link": "https://github.com/hapijs/formula",
-    "stars": 14,
-    "forks": 20,
+    "stars": 16,
+    "forks": 22,
     "updated": "2024-02-02T16:21:44Z",
     "versions": [
       {
@@ -51,7 +55,9 @@
         "node": [
           "14",
           "16",
-          "18"
+          "18",
+          "20",
+          "22"
         ]
       }
     ]
@@ -59,18 +65,20 @@
   "joi-date": {
     "slogan": "Extensions for advance date rules.",
     "link": "https://github.com/hapijs/joi-date",
-    "stars": 83,
+    "stars": 84,
     "forks": 25,
-    "updated": "2022-11-10T12:54:22Z",
+    "updated": "2024-04-22T09:05:34Z",
     "versions": [
       {
-        "name": "2.1.0",
-        "branch": "v2.1.0",
+        "name": "2.1.1",
+        "branch": "v2.1.1",
         "license": "BSD",
         "node": [
           "14",
           "16",
-          "18"
+          "18",
+          "20",
+          "22"
         ]
       }
     ]
@@ -89,7 +97,9 @@
         "node": [
           "14",
           "16",
-          "18"
+          "18",
+          "20",
+          "22"
         ]
       }
     ]
@@ -97,19 +107,20 @@
   "tlds": {
     "slogan": "TLDS list for domain validation.",
     "link": "https://github.com/hapijs/tlds",
-    "stars": 0,
-    "forks": 1,
-    "updated": "2024-01-25T08:45:47Z",
+    "stars": 1,
+    "forks": 2,
+    "updated": "2024-10-24T06:30:45Z",
     "versions": [
       {
-        "name": "1.0.2",
-        "branch": "v1.0.2",
+        "name": "1.1.0",
+        "branch": "v1.1.0",
         "license": "BSD",
         "node": [
           "14",
           "16",
           "18",
-          "20"
+          "20",
+          "22"
         ]
       }
     ]

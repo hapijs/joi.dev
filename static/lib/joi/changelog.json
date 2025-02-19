@@ -1,5 +1,122 @@
 [
   {
+    "id": 11206916,
+    "number": 207,
+    "version": "17.13.3",
+    "date": "2024-06-19T15:17:24Z",
+    "url": "https://github.com/hapijs/joi/milestone/207",
+    "issues": [
+      {
+        "id": 2362616850,
+        "number": 3043,
+        "title": "fix: correct function type in alternatives error",
+        "url": "https://github.com/hapijs/joi/pull/3043",
+        "labels": [
+          "bug"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 11205378,
+    "number": 206,
+    "version": "17.13.2",
+    "date": "2024-06-19T12:37:04Z",
+    "url": "https://github.com/hapijs/joi/milestone/206",
+    "issues": [
+      {
+        "id": 2295899329,
+        "number": 3037,
+        "title": "fix: `stripUnknown` should honor local explicit `.unknown(false)`",
+        "url": "https://github.com/hapijs/joi/pull/3037",
+        "labels": [
+          "bug"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 11000255,
+    "number": 205,
+    "version": "17.13.1",
+    "date": "2024-06-19T09:15:12Z",
+    "url": "https://github.com/hapijs/joi/milestone/205",
+    "issues": [
+      {
+        "id": 2274746403,
+        "number": 3034,
+        "title": "fix: label false should also hide explicit labels",
+        "url": "https://github.com/hapijs/joi/pull/3034",
+        "labels": [
+          "bug"
+        ]
+      },
+      {
+        "id": 2273576913,
+        "number": 3033,
+        "title": "Setting `errors.label` to `false` does not remove labels from error messages for keys with labels",
+        "url": "https://github.com/hapijs/joi/issues/3033",
+        "labels": [
+          "bug"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 10769457,
+    "number": 204,
+    "version": "17.13.0",
+    "date": "2024-04-23T08:35:37Z",
+    "url": "https://github.com/hapijs/joi/milestone/204",
+    "issues": [
+      {
+        "id": 2258261381,
+        "number": 3032,
+        "title": "feat: support encoding uri (follow-up to #3027)",
+        "url": "https://github.com/hapijs/joi/pull/3032",
+        "labels": [
+          "feature"
+        ]
+      },
+      {
+        "id": 2216423112,
+        "number": 3027,
+        "title": "feat: Support encoding uri",
+        "url": "https://github.com/hapijs/joi/pull/3027",
+        "labels": [
+          "feature"
+        ]
+      },
+      {
+        "id": 1489081742,
+        "number": 2889,
+        "title": "string().uri() not working with accented characters",
+        "url": "https://github.com/hapijs/joi/issues/2889",
+        "labels": [
+          "feature"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 10769395,
+    "number": 203,
+    "version": "17.12.3",
+    "date": "2024-04-03T21:37:44Z",
+    "url": "https://github.com/hapijs/joi/milestone/203",
+    "issues": [
+      {
+        "id": 2215661765,
+        "number": 3026,
+        "title": "fix: handle bigint in unique rule",
+        "url": "https://github.com/hapijs/joi/pull/3026",
+        "labels": [
+          "bug"
+        ]
+      }
+    ]
+  },
+  {
     "id": 10588351,
     "number": 202,
     "version": "17.12.2",

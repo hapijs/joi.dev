@@ -1,5 +1,23 @@
 [
   {
+    "id": 6609017,
+    "number": 10,
+    "version": "2.1.1",
+    "date": "2024-04-22T09:08:12Z",
+    "url": "https://github.com/hapijs/joi-date/milestone/10",
+    "issues": [
+      {
+        "id": 2255988398,
+        "number": 45,
+        "title": "fix: wrong default export",
+        "url": "https://github.com/hapijs/joi-date/pull/45",
+        "labels": [
+          "bug"
+        ]
+      }
+    ]
+  },
+  {
     "id": 4724219,
     "number": 9,
     "version": "2.1.0",

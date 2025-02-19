@@ -8,7 +8,9 @@
       "node": [
         "14",
         "16",
-        "18"
+        "18",
+        "20",
+        "22"
       ]
     }
   ],
@@ -48,8 +50,8 @@
   },
   "api": true,
   "slogan": "Math and string formula parser.",
-  "forks": 20,
-  "stars": 14,
+  "forks": 22,
+  "stars": 16,
   "updated": "2024-02-02T16:21:44Z",
   "link": "https://github.com/hapijs/formula"
 }
