@@ -1,5 +1,99 @@
 [
   {
+    "id": 9147309,
+    "number": 190,
+    "version": "18.0.0",
+    "date": "2025-08-03T15:02:01Z",
+    "url": "https://github.com/hapijs/joi/milestone/190",
+    "issues": [
+      {
+        "id": 3278056010,
+        "number": 3084,
+        "title": "feat: add isAsync() helper",
+        "url": "https://github.com/hapijs/joi/pull/3084",
+        "labels": [
+          "feature"
+        ]
+      },
+      {
+        "id": 3150627812,
+        "number": 3082,
+        "title": "Added wrapper option to uuid function",
+        "url": "https://github.com/hapijs/joi/pull/3082",
+        "labels": [
+          "feature"
+        ]
+      },
+      {
+        "id": 3101562683,
+        "number": 3080,
+        "title": "feat: implement standard schema spec",
+        "url": "https://github.com/hapijs/joi/pull/3080",
+        "labels": [
+          "feature"
+        ]
+      },
+      {
+        "id": 3092026275,
+        "number": 3078,
+        "title": "Implement Standard Schema",
+        "url": "https://github.com/hapijs/joi/issues/3078",
+        "labels": [
+          "feature"
+        ]
+      },
+      {
+        "id": 1953253079,
+        "number": 2993,
+        "title": "What version of node does this library support?",
+        "url": "https://github.com/hapijs/joi/issues/2993",
+        "labels": [
+          "support"
+        ]
+      },
+      {
+        "id": 1865188160,
+        "number": 2982,
+        "title": "feat: Improve array().items type",
+        "url": "https://github.com/hapijs/joi/pull/2982",
+        "labels": [
+          "types"
+        ]
+      },
+      {
+        "id": 1865047279,
+        "number": 2981,
+        "title": "feat: Improve alternatives type",
+        "url": "https://github.com/hapijs/joi/pull/2981",
+        "labels": [
+          "types"
+        ]
+      },
+      {
+        "id": 1620062252,
+        "number": 2926,
+        "title": "18.0.0 Release Notes",
+        "url": "https://github.com/hapijs/joi/issues/2926",
+        "labels": [
+          "feature",
+          "breaking changes",
+          "release notes"
+        ]
+      },
+      {
+        "id": 1620047715,
+        "number": 2925,
+        "title": "chore: upgrade modules",
+        "url": "https://github.com/hapijs/joi/pull/2925",
+        "labels": [
+          "feature",
+          "breaking changes",
+          "dependency"
+        ]
+      }
+    ]
+  },
+  {
     "id": 11206916,
     "number": 207,
     "version": "17.13.3",
