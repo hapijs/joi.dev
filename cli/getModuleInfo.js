@@ -193,7 +193,7 @@ async function getInfo() {
         node: nodeVersions,
       });
     }
-    Semver.rsort(currentModule.versions);
+    currentModule.versions.sort((a, b) => Semver.rcompare(a.name, b.name));
 
     const readme = await getRawContent(moduleName, 'README.md');
     const repoInfo = await getRepoInfo(moduleName);

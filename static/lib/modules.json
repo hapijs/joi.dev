@@ -2,10 +2,20 @@
   "joi": {
     "slogan": "The most powerful schema description language and data validator for JavaScript.",
     "link": "https://github.com/hapijs/joi",
-    "stars": 21043,
-    "forks": 1514,
-    "updated": "2024-08-28T16:08:36Z",
+    "stars": 21136,
+    "forks": 1518,
+    "updated": "2025-08-03T14:37:25Z",
     "versions": [
+      {
+        "name": "18.0.0",
+        "branch": "v18.0.0",
+        "license": "BSD",
+        "node": [
+          "20",
+          "22",
+          "24"
+        ]
+      },
       {
         "name": "17.13.3",
         "branch": "v17.13.3",
@@ -45,7 +55,7 @@
     "slogan": "Math and string formula parser.",
     "link": "https://github.com/hapijs/formula",
     "stars": 16,
-    "forks": 22,
+    "forks": 21,
     "updated": "2024-02-02T16:21:44Z",
     "versions": [
       {
@@ -107,13 +117,13 @@
   "tlds": {
     "slogan": "TLDS list for domain validation.",
     "link": "https://github.com/hapijs/tlds",
-    "stars": 1,
+    "stars": 2,
     "forks": 2,
-    "updated": "2024-10-24T06:30:45Z",
+    "updated": "2025-05-21T15:07:20Z",
     "versions": [
       {
-        "name": "1.1.0",
-        "branch": "v1.1.0",
+        "name": "1.1.2",
+        "branch": "v1.1.2",
         "license": "BSD",
         "node": [
           "14",

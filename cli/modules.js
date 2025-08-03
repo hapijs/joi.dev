@@ -4,6 +4,7 @@ const modules = {
     package: 'joi',
     compatibility: {
       17: ['14', '16', '18', '20', '22'],
+      18: ['20', '22', '24'],
     },
   },
   address: {
