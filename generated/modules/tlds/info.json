@@ -1,0 +1,19 @@
+{
+  "api": true,
+  "forks": 2,
+  "link": "https://github.com/hapijs/tlds",
+  "name": "tlds",
+  "package": "@hapi/tlds",
+  "slogan": "TLDS list for domain validation.",
+  "stars": 2,
+  "updated": "2026-02-17T14:09:37Z",
+  "versions": [
+    {
+      "branch": "v1.1.6",
+      "license": "BSD",
+      "name": "1.1.6",
+      "node": ">= 14"
+    }
+  ],
+  "versionsArray": ["1.1.6"]
+}

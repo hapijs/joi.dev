@@ -1,0 +1,110 @@
+{
+  "address": {
+    "forks": 27,
+    "link": "https://github.com/hapijs/address",
+    "slogan": "Validate email address and domain.",
+    "stars": 33,
+    "updated": "2024-01-29T12:37:22Z",
+    "versions": [
+      {
+        "branch": "v5.1.1",
+        "license": "BSD",
+        "name": "5.1.1",
+        "node": ">= 14"
+      }
+    ],
+    "versionsArray": ["5.1.1"],
+    "package": "@hapi/address"
+  },
+  "formula": {
+    "forks": 20,
+    "link": "https://github.com/hapijs/formula",
+    "slogan": "Math and string formula parser.",
+    "stars": 17,
+    "updated": "2024-02-02T16:21:44Z",
+    "versions": [
+      {
+        "branch": "v3.0.2",
+        "license": "BSD",
+        "name": "3.0.2",
+        "node": ">= 14"
+      }
+    ],
+    "versionsArray": ["3.0.2"],
+    "package": "@hapi/formula"
+  },
+  "joi": {
+    "forks": 1509,
+    "link": "https://github.com/hapijs/joi",
+    "slogan": "The most powerful schema description language and data validator for JavaScript.",
+    "stars": 21199,
+    "updated": "2026-03-23T17:51:24Z",
+    "versions": [
+      {
+        "branch": "v17.13.3",
+        "license": "BSD",
+        "name": "17.13.3",
+        "node": ">= 14"
+      },
+      {
+        "branch": "v18.1.1",
+        "license": "BSD",
+        "name": "18.1.1",
+        "node": ">= 20"
+      }
+    ],
+    "versionsArray": ["18.1.1", "17.13.3"],
+    "package": "joi"
+  },
+  "joi-date": {
+    "forks": 23,
+    "link": "https://github.com/hapijs/joi-date",
+    "slogan": "Extensions for advance date rules.",
+    "stars": 81,
+    "updated": "2024-04-22T09:05:34Z",
+    "versions": [
+      {
+        "branch": "v2.1.1",
+        "license": "BSD",
+        "name": "2.1.1",
+        "node": ">= 14"
+      }
+    ],
+    "versionsArray": ["2.1.1"],
+    "package": "@joi/date"
+  },
+  "pinpoint": {
+    "forks": 6,
+    "link": "https://github.com/hapijs/pinpoint",
+    "slogan": "Return the filename and line number of the calling function.",
+    "stars": 6,
+    "updated": "2023-11-12T09:48:56Z",
+    "versions": [
+      {
+        "branch": "v2.0.1",
+        "license": "BSD",
+        "name": "2.0.1",
+        "node": ">= 14"
+      }
+    ],
+    "versionsArray": ["2.0.1"],
+    "package": "@hapi/pinpoint"
+  },
+  "tlds": {
+    "forks": 2,
+    "link": "https://github.com/hapijs/tlds",
+    "slogan": "TLDS list for domain validation.",
+    "stars": 2,
+    "updated": "2026-02-17T14:09:37Z",
+    "versions": [
+      {
+        "branch": "v1.1.6",
+        "license": "BSD",
+        "name": "1.1.6",
+        "node": ">= 14"
+      }
+    ],
+    "versionsArray": ["1.1.6"],
+    "package": "@hapi/tlds"
+  }
+}

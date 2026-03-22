@@ -1,0 +1,19 @@
+{
+  "api": true,
+  "forks": 6,
+  "link": "https://github.com/hapijs/pinpoint",
+  "name": "pinpoint",
+  "package": "@hapi/pinpoint",
+  "slogan": "Return the filename and line number of the calling function.",
+  "stars": 6,
+  "updated": "2023-11-12T09:48:56Z",
+  "versions": [
+    {
+      "branch": "v2.0.1",
+      "license": "BSD",
+      "name": "2.0.1",
+      "node": ">= 14"
+    }
+  ],
+  "versionsArray": ["2.0.1"]
+}

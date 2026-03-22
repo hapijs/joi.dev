@@ -1,0 +1,226 @@
+[
+  {
+    "date": "2026-02-17T14:10:31Z",
+    "id": 14842553,
+    "issues": [
+      {
+        "id": 3942686668,
+        "labels": ["bug"],
+        "number": 19,
+        "title": "Update TLDs",
+        "url": "https://github.com/hapijs/tlds/pull/19"
+      }
+    ],
+    "number": 14,
+    "url": "https://github.com/hapijs/tlds/milestone/14",
+    "version": "1.1.6"
+  },
+  {
+    "date": "2026-02-10T17:43:02Z",
+    "id": 14771796,
+    "issues": [
+      {
+        "id": 3911656405,
+        "labels": ["bug"],
+        "number": 18,
+        "title": "Update TLDs",
+        "url": "https://github.com/hapijs/tlds/pull/18"
+      }
+    ],
+    "number": 13,
+    "url": "https://github.com/hapijs/tlds/milestone/13",
+    "version": "1.1.5"
+  },
+  {
+    "date": "2025-10-23T07:58:41Z",
+    "id": 13960822,
+    "issues": [
+      {
+        "id": 3542734394,
+        "labels": ["bug"],
+        "number": 17,
+        "title": "Update TLDs",
+        "url": "https://github.com/hapijs/tlds/pull/17"
+      }
+    ],
+    "number": 12,
+    "url": "https://github.com/hapijs/tlds/milestone/12",
+    "version": "1.1.4"
+  },
+  {
+    "date": "2025-08-28T10:40:27Z",
+    "id": 13573111,
+    "issues": [
+      {
+        "id": 3361285890,
+        "labels": ["bug"],
+        "number": 16,
+        "title": "Update TLDs",
+        "url": "https://github.com/hapijs/tlds/pull/16"
+      }
+    ],
+    "number": 11,
+    "url": "https://github.com/hapijs/tlds/milestone/11",
+    "version": "1.1.3"
+  },
+  {
+    "date": "2025-05-21T15:07:29Z",
+    "id": 12933562,
+    "issues": [
+      {
+        "id": 3071189686,
+        "labels": ["bug"],
+        "number": 15,
+        "title": "Update TLDs",
+        "url": "https://github.com/hapijs/tlds/pull/15"
+      }
+    ],
+    "number": 10,
+    "url": "https://github.com/hapijs/tlds/milestone/10",
+    "version": "1.1.2"
+  },
+  {
+    "date": "2025-05-14T08:35:46Z",
+    "id": 12891565,
+    "issues": [
+      {
+        "id": 3062293368,
+        "labels": ["bug"],
+        "number": 14,
+        "title": "Update TLDs",
+        "url": "https://github.com/hapijs/tlds/pull/14"
+      }
+    ],
+    "number": 9,
+    "url": "https://github.com/hapijs/tlds/milestone/9",
+    "version": "1.1.1"
+  },
+  {
+    "date": "2024-10-23T09:18:14Z",
+    "id": 11779611,
+    "issues": [
+      {
+        "id": 2607832652,
+        "labels": ["feature"],
+        "number": 13,
+        "title": "chore: convert to hybrid module",
+        "url": "https://github.com/hapijs/tlds/pull/13"
+      }
+    ],
+    "number": 8,
+    "url": "https://github.com/hapijs/tlds/milestone/8",
+    "version": "1.1.0"
+  },
+  {
+    "date": "2024-10-23T08:52:50Z",
+    "id": 11779463,
+    "issues": [
+      {
+        "id": 2551720983,
+        "labels": ["bug"],
+        "number": 12,
+        "title": "Update TLDs",
+        "url": "https://github.com/hapijs/tlds/pull/12"
+      }
+    ],
+    "number": 7,
+    "url": "https://github.com/hapijs/tlds/milestone/7",
+    "version": "1.0.7"
+  },
+  {
+    "date": "2024-10-23T08:46:54Z",
+    "id": 11318593,
+    "issues": [
+      {
+        "id": 2401949990,
+        "labels": ["bug"],
+        "number": 11,
+        "title": "Update TLDs",
+        "url": "https://github.com/hapijs/tlds/pull/11"
+      }
+    ],
+    "number": 6,
+    "url": "https://github.com/hapijs/tlds/milestone/6",
+    "version": "1.0.6"
+  },
+  {
+    "date": "2024-06-20T08:29:24Z",
+    "id": 11205414,
+    "issues": [
+      {
+        "id": 2361845457,
+        "labels": ["bug"],
+        "number": 10,
+        "title": "Update TLDs",
+        "url": "https://github.com/hapijs/tlds/pull/10"
+      }
+    ],
+    "number": 5,
+    "url": "https://github.com/hapijs/tlds/milestone/5",
+    "version": "1.0.5"
+  },
+  {
+    "date": "2024-03-28T22:48:27Z",
+    "id": 10748776,
+    "issues": [
+      {
+        "id": 2214250247,
+        "labels": ["bug"],
+        "number": 8,
+        "title": "Update TLDs",
+        "url": "https://github.com/hapijs/tlds/pull/8"
+      }
+    ],
+    "number": 4,
+    "url": "https://github.com/hapijs/tlds/milestone/4",
+    "version": "1.0.4"
+  },
+  {
+    "date": "2024-03-28T22:48:25Z",
+    "id": 10738602,
+    "issues": [
+      {
+        "id": 2203186784,
+        "labels": ["bug"],
+        "number": 5,
+        "title": "Update TLDs to version 2024032200",
+        "url": "https://github.com/hapijs/tlds/pull/5"
+      }
+    ],
+    "number": 3,
+    "url": "https://github.com/hapijs/tlds/milestone/3",
+    "version": "1.0.3"
+  },
+  {
+    "date": "2023-09-13T13:24:24Z",
+    "id": 9917343,
+    "issues": [
+      {
+        "id": 1893182002,
+        "labels": ["bug"],
+        "number": 2,
+        "title": "Update tlds",
+        "url": "https://github.com/hapijs/tlds/pull/2"
+      }
+    ],
+    "number": 2,
+    "url": "https://github.com/hapijs/tlds/milestone/2",
+    "version": "1.0.2"
+  },
+  {
+    "date": "2023-09-13T13:24:26Z",
+    "id": 8546104,
+    "issues": [
+      {
+        "id": 1410559815,
+        "labels": ["bug"],
+        "number": 1,
+        "title": "chore: change module scope",
+        "url": "https://github.com/hapijs/tlds/pull/1"
+      }
+    ],
+    "number": 1,
+    "url": "https://github.com/hapijs/tlds/milestone/1",
+    "version": "1.0.1"
+  }
+]

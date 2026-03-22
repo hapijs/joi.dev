@@ -1,0 +1,62 @@
+.VPSidebar .nav {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - var(--vp-nav-height) - 128px);
+}
+
+.breaking-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 6px;
+  font-size: 11px;
+  font-weight: 600;
+  height: 18px;
+  line-height: 18px;
+  border-radius: 4px;
+  background-color: var(--vp-c-brand-1);
+  color: var(--vp-c-white);
+  text-transform: uppercase;
+  vertical-align: middle;
+  margin-left: 8px;
+  box-sizing: border-box;
+}
+
+.breaking-badge::after {
+  content: 'breaking changes';
+}
+
+.release-notes-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 6px;
+  font-size: 11px;
+  font-weight: 600;
+  height: 18px;
+  line-height: 18px;
+  border-radius: 4px;
+  background-color: var(--release-notes-bg);
+  color: var(--vp-c-black) !important;
+  text-transform: uppercase;
+  vertical-align: middle;
+  margin-left: 8px;
+  text-decoration: none !important;
+  box-sizing: border-box;
+}
+
+.release-notes-link::after {
+  content: 'release notes';
+  margin-left: 10px;
+}
+
+.release-notes-link span {
+  margin-left: 10px;
+}
+
+.release-notes-link:hover {
+  opacity: 0.8;
+}
+
+.release-notes-img {
+  width: 12px;
+  height: 12px;
+}

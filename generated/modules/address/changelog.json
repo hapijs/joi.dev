@@ -1,0 +1,429 @@
+[
+  {
+    "date": "2023-03-11T10:45:33Z",
+    "id": 9146991,
+    "issues": [
+      {
+        "id": 1619963599,
+        "labels": [],
+        "number": 45,
+        "title": "chore: target node 14",
+        "url": "https://github.com/hapijs/address/pull/45"
+      }
+    ],
+    "number": 23,
+    "url": "https://github.com/hapijs/address/milestone/23",
+    "version": "5.1.1"
+  },
+  {
+    "date": "2023-02-18T20:26:49Z",
+    "id": 9061974,
+    "issues": [
+      {
+        "id": 1590444869,
+        "labels": [],
+        "number": 44,
+        "title": "chore: change package namespace and upgrade dependencies",
+        "url": "https://github.com/hapijs/address/pull/44"
+      },
+      {
+        "id": 1357520760,
+        "labels": [],
+        "number": 43,
+        "title": "feat: add underscore support",
+        "url": "https://github.com/hapijs/address/pull/43"
+      },
+      {
+        "id": 1224352951,
+        "labels": ["bug"],
+        "number": 42,
+        "title": "fix: minor improvements to typings and binary conversion",
+        "url": "https://github.com/hapijs/address/pull/42"
+      }
+    ],
+    "number": 22,
+    "url": "https://github.com/hapijs/address/milestone/22",
+    "version": "5.1.0"
+  },
+  {
+    "date": "2022-05-02T05:42:21Z",
+    "id": 7793532,
+    "issues": [
+      {
+        "id": 1222504847,
+        "labels": ["breaking changes", "feature", "types"],
+        "number": 41,
+        "title": "Change API",
+        "url": "https://github.com/hapijs/address/issues/41"
+      },
+      {
+        "id": 1222504338,
+        "labels": ["breaking changes", "feature", "types"],
+        "number": 40,
+        "title": "Convert to TypeScript",
+        "url": "https://github.com/hapijs/address/issues/40"
+      },
+      {
+        "id": 1222245015,
+        "labels": ["breaking changes", "dependency"],
+        "number": 39,
+        "title": "Drop node 12 support",
+        "url": "https://github.com/hapijs/address/issues/39"
+      },
+      {
+        "id": 1202218015,
+        "labels": ["dependency"],
+        "number": 38,
+        "title": "Update tlds.js",
+        "url": "https://github.com/hapijs/address/pull/38"
+      }
+    ],
+    "number": 20,
+    "url": "https://github.com/hapijs/address/milestone/20",
+    "version": "5.0.0"
+  },
+  {
+    "date": "2024-01-29T13:21:04Z",
+    "id": 10482555,
+    "issues": [
+      {
+        "id": 2105392579,
+        "labels": ["bug"],
+        "number": 47,
+        "title": "chore: update tlds",
+        "url": "https://github.com/hapijs/address/pull/47"
+      }
+    ],
+    "number": 24,
+    "url": "https://github.com/hapijs/address/milestone/24",
+    "version": "4.1.5"
+  },
+  {
+    "date": "2022-03-22T23:22:57Z",
+    "id": 7446122,
+    "issues": [
+      {
+        "id": 1173205659,
+        "labels": ["dependency"],
+        "number": 37,
+        "title": "Update the TLDS for email validation",
+        "url": "https://github.com/hapijs/address/pull/37"
+      }
+    ],
+    "number": 19,
+    "url": "https://github.com/hapijs/address/milestone/19",
+    "version": "4.1.4"
+  },
+  {
+    "date": "2021-12-01T08:38:39Z",
+    "id": 6735874,
+    "issues": [
+      {
+        "id": 957589243,
+        "labels": ["bug"],
+        "number": 36,
+        "title": "Invalid input error validating link in schema",
+        "url": "https://github.com/hapijs/address/issues/36"
+      },
+      {
+        "id": 654430948,
+        "labels": ["bug"],
+        "number": 31,
+        "title": "Incorrect validation",
+        "url": "https://github.com/hapijs/address/issues/31"
+      }
+    ],
+    "number": 18,
+    "url": "https://github.com/hapijs/address/milestone/18",
+    "version": "4.1.3"
+  },
+  {
+    "date": "2021-05-07T06:11:07Z",
+    "id": 6403302,
+    "issues": [
+      {
+        "id": 878502441,
+        "labels": ["bug"],
+        "number": 35,
+        "title": "Fails to invalidate URI delimiter chars on domain end",
+        "url": "https://github.com/hapijs/address/issues/35"
+      }
+    ],
+    "number": 17,
+    "url": "https://github.com/hapijs/address/milestone/17",
+    "version": "4.1.2"
+  },
+  {
+    "date": "2021-02-08T01:02:42Z",
+    "id": 5619718,
+    "issues": [
+      {
+        "id": 803109463,
+        "labels": ["bug"],
+        "number": 33,
+        "title": "Email validations rejects valid email addresses",
+        "url": "https://github.com/hapijs/address/issues/33"
+      }
+    ],
+    "number": 16,
+    "url": "https://github.com/hapijs/address/milestone/16",
+    "version": "4.1.1"
+  },
+  {
+    "date": "2020-07-06T01:17:17Z",
+    "id": 5200674,
+    "issues": [
+      {
+        "id": 651176115,
+        "labels": ["feature"],
+        "number": 30,
+        "title": "Support maxDomainSegments",
+        "url": "https://github.com/hapijs/address/issues/30"
+      }
+    ],
+    "number": 15,
+    "url": "https://github.com/hapijs/address/milestone/15",
+    "version": "4.1.0"
+  },
+  {
+    "date": "2020-03-14T00:01:49Z",
+    "id": 4972515,
+    "issues": [
+      {
+        "id": 580941272,
+        "labels": ["bug"],
+        "number": 26,
+        "title": "Capture domain in relative uris",
+        "url": "https://github.com/hapijs/address/issues/26"
+      }
+    ],
+    "number": 14,
+    "url": "https://github.com/hapijs/address/milestone/14",
+    "version": "4.0.1"
+  },
+  {
+    "date": "2020-01-04T08:47:36Z",
+    "id": 4972513,
+    "issues": [
+      {
+        "id": 545259529,
+        "labels": ["breaking changes", "dependency"],
+        "number": 24,
+        "title": "Only support node 12",
+        "url": "https://github.com/hapijs/address/issues/24"
+      }
+    ],
+    "number": 12,
+    "url": "https://github.com/hapijs/address/milestone/12",
+    "version": "4.0.0"
+  },
+  {
+    "date": "2020-01-04T08:42:34Z",
+    "id": 4852228,
+    "issues": [
+      {
+        "id": 523950264,
+        "labels": ["bug"],
+        "number": 20,
+        "title": "\"a@a.com/asd\" is invalid email",
+        "url": "https://github.com/hapijs/address/issues/20"
+      }
+    ],
+    "number": 10,
+    "url": "https://github.com/hapijs/address/milestone/10",
+    "version": "3.2.2"
+  },
+  {
+    "date": "2019-11-17T05:50:55Z",
+    "id": 4800325,
+    "issues": [
+      {
+        "id": 523939966,
+        "labels": ["bug"],
+        "number": 18,
+        "title": "Error on email",
+        "url": "https://github.com/hapijs/address/issues/18"
+      }
+    ],
+    "number": 9,
+    "url": "https://github.com/hapijs/address/milestone/9",
+    "version": "3.2.1"
+  },
+  {
+    "date": "2019-10-30T23:35:01Z",
+    "id": 4756274,
+    "issues": [
+      {
+        "id": 515048003,
+        "labels": ["feature"],
+        "number": 16,
+        "title": "Add faster version of decodeURIComponent()",
+        "url": "https://github.com/hapijs/address/issues/16"
+      },
+      {
+        "id": 514435232,
+        "labels": ["feature"],
+        "number": 15,
+        "title": "Relocate joi uri and ip validation regex",
+        "url": "https://github.com/hapijs/address/issues/15"
+      }
+    ],
+    "number": 8,
+    "url": "https://github.com/hapijs/address/milestone/8",
+    "version": "3.2.0"
+  },
+  {
+    "date": "2019-10-16T04:38:58Z",
+    "id": 4724458,
+    "issues": [
+      {
+        "id": 506551200,
+        "labels": ["feature"],
+        "number": 14,
+        "title": "Error codes in a separate file. Closes #13",
+        "url": "https://github.com/hapijs/address/pull/14"
+      },
+      {
+        "id": 505180439,
+        "labels": ["feature"],
+        "number": 13,
+        "title": "Export errors codes to allow translation",
+        "url": "https://github.com/hapijs/address/issues/13"
+      }
+    ],
+    "number": 7,
+    "url": "https://github.com/hapijs/address/milestone/7",
+    "version": "3.1.0"
+  },
+  {
+    "date": "2019-10-06T01:46:35Z",
+    "id": 4724457,
+    "issues": [
+      {
+        "id": 503024394,
+        "labels": ["breaking changes", "types"],
+        "number": 12,
+        "title": "Add types",
+        "url": "https://github.com/hapijs/address/issues/12"
+      },
+      {
+        "id": 503024374,
+        "labels": ["breaking changes"],
+        "number": 11,
+        "title": "Drop node 8 support",
+        "url": "https://github.com/hapijs/address/issues/11"
+      }
+    ],
+    "number": 6,
+    "url": "https://github.com/hapijs/address/milestone/6",
+    "version": "3.0.0"
+  },
+  {
+    "date": "2020-01-04T08:41:53Z",
+    "id": 4852229,
+    "issues": [
+      {
+        "id": 523950299,
+        "labels": ["bug"],
+        "number": 21,
+        "title": "Backport #20",
+        "url": "https://github.com/hapijs/address/issues/21"
+      }
+    ],
+    "number": 11,
+    "url": "https://github.com/hapijs/address/milestone/11",
+    "version": "2.1.4"
+  },
+  {
+    "date": "2019-11-17T05:57:02Z",
+    "id": 4678328,
+    "issues": [
+      {
+        "id": 523941175,
+        "labels": ["bug"],
+        "number": 19,
+        "title": "Backport #18",
+        "url": "https://github.com/hapijs/address/issues/19"
+      }
+    ],
+    "number": 5,
+    "url": "https://github.com/hapijs/address/milestone/5",
+    "version": "2.1.3"
+  },
+  {
+    "date": "2019-09-20T20:04:52Z",
+    "id": 4633488,
+    "issues": [
+      {
+        "id": 496524175,
+        "labels": ["dependency"],
+        "number": 9,
+        "title": "Update tlds",
+        "url": "https://github.com/hapijs/address/issues/9"
+      },
+      {
+        "id": 496281024,
+        "labels": ["bug"],
+        "number": 8,
+        "title": "Ensure Buffer presence before using it",
+        "url": "https://github.com/hapijs/address/pull/8"
+      },
+      {
+        "id": 489753207,
+        "labels": ["dependency"],
+        "number": 7,
+        "title": "Re-implement #4, #6",
+        "url": "https://github.com/hapijs/address/issues/7"
+      }
+    ],
+    "number": 4,
+    "url": "https://github.com/hapijs/address/milestone/4",
+    "version": "2.1.2"
+  },
+  {
+    "date": "2019-09-05T09:14:22Z",
+    "id": 4623590,
+    "issues": [
+      {
+        "id": 489628727,
+        "labels": ["dependency"],
+        "number": 6,
+        "title": "Revert Url hack",
+        "url": "https://github.com/hapijs/address/issues/6"
+      }
+    ],
+    "number": 3,
+    "url": "https://github.com/hapijs/address/milestone/3",
+    "version": "2.1.1"
+  },
+  {
+    "date": "2019-09-03T13:40:33Z",
+    "id": 4167339,
+    "issues": [
+      {
+        "id": 488612705,
+        "labels": ["feature"],
+        "number": 5,
+        "title": "Make tlds optional",
+        "url": "https://github.com/hapijs/address/issues/5"
+      },
+      {
+        "id": 488146599,
+        "labels": ["dependency"],
+        "number": 4,
+        "title": "Replace punycode dep with URL hack",
+        "url": "https://github.com/hapijs/address/pull/4"
+      },
+      {
+        "id": 465915090,
+        "labels": ["feature"],
+        "number": 1,
+        "title": "Support option to allow longer email addresses",
+        "url": "https://github.com/hapijs/address/issues/1"
+      }
+    ],
+    "number": 2,
+    "url": "https://github.com/hapijs/address/milestone/2",
+    "version": "2.1.0"
+  }
+]
