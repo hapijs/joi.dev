@@ -1,0 +1,19 @@
+{
+  "api": true,
+  "forks": 23,
+  "link": "https://github.com/hapijs/joi-date",
+  "name": "joi-date",
+  "package": "@joi/date",
+  "slogan": "Extensions for advance date rules.",
+  "stars": 81,
+  "updated": "2024-04-22T09:05:34Z",
+  "versions": [
+    {
+      "branch": "v2.1.1",
+      "license": "BSD",
+      "name": "2.1.1",
+      "node": ">= 14"
+    }
+  ],
+  "versionsArray": ["2.1.1"]
+}

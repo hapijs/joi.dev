@@ -1,0 +1,25 @@
+{
+  "api": true,
+  "forks": 1509,
+  "link": "https://github.com/hapijs/joi",
+  "name": "joi",
+  "package": "joi",
+  "slogan": "The most powerful schema description language and data validator for JavaScript.",
+  "stars": 21199,
+  "updated": "2026-03-23T17:51:24Z",
+  "versions": [
+    {
+      "branch": "v17.13.3",
+      "license": "BSD",
+      "name": "17.13.3",
+      "node": ">= 14"
+    },
+    {
+      "branch": "v18.1.1",
+      "license": "BSD",
+      "name": "18.1.1",
+      "node": ">= 20"
+    }
+  ],
+  "versionsArray": ["18.1.1", "17.13.3"]
+}

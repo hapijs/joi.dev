@@ -1,20 +1,29 @@
-# joiSite
+# joi.dev
 
 ## Build Setup
 
 ```bash
 # install dependencies
-$ npm install
+$ pnpm install
 
-# serve with hot reload at localhost:3000
-$ npm run dev
+# serve with hot reload at localhost:5173
+$ pnpm dev
 
-# build for production and launch server
-$ npm run build
-$ npm run start
+# build for production
+$ pnpm build
 
-# generate static project
-$ npm run generate
+# preview production build
+$ pnpm preview
+
+# generate data and build for production
+$ pnpm generate
+
+# lint and format code
+$ pnpm lint
+$ pnpm fmt
+
+# run full check
+$ pnpm test
 ```
 
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+For more information on VitePress, check out [VitePress documentation](https://vitepress.dev).

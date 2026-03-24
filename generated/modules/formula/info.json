@@ -1,0 +1,19 @@
+{
+  "api": true,
+  "forks": 20,
+  "link": "https://github.com/hapijs/formula",
+  "name": "formula",
+  "package": "@hapi/formula",
+  "slogan": "Math and string formula parser.",
+  "stars": 17,
+  "updated": "2024-02-02T16:21:44Z",
+  "versions": [
+    {
+      "branch": "v3.0.2",
+      "license": "BSD",
+      "name": "3.0.2",
+      "node": ">= 14"
+    }
+  ],
+  "versionsArray": ["3.0.2"]
+}

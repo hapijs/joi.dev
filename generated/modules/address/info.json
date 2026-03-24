@@ -1,0 +1,19 @@
+{
+  "api": true,
+  "forks": 27,
+  "link": "https://github.com/hapijs/address",
+  "name": "address",
+  "package": "@hapi/address",
+  "slogan": "Validate email address and domain.",
+  "stars": 33,
+  "updated": "2024-01-29T12:37:22Z",
+  "versions": [
+    {
+      "branch": "v5.1.1",
+      "license": "BSD",
+      "name": "5.1.1",
+      "node": ">= 14"
+    }
+  ],
+  "versionsArray": ["5.1.1"]
+}
