@@ -15,15 +15,14 @@ import { EditorView, basicSetup } from 'codemirror';
 import { useData } from 'vitepress';
 import { onBeforeUnmount, onMounted, ref, watch } from 'vue';
 
-const { errorLines, language, modelValue, readOnly } = defineProps({
+const { errorLines, language, readOnly } = defineProps({
   errorLines: { default: () => [], type: Array },
   language: { default: 'javascript', type: String },
-  modelValue: { default: '', type: String },
   readOnly: { default: false, type: Boolean },
 });
 
 
-const emit = defineEmits(['update:modelValue']);
+const data = defineModel({ default: '', type: String });
 
 
 const { isDark } = useData();
@@ -81,7 +80,7 @@ onMounted(() => {
     themeCompartment.of(getThemeExtension()),
     EditorView.updateListener.of((update) => {
       if (update.docChanged) {
-        emit('update:modelValue', update.state.doc.toString());
+        data.value = update.state.doc.toString();
       }
     }),
   ];
@@ -97,7 +96,7 @@ onMounted(() => {
 
   view = new EditorView({
     parent: editorContainer.value,
-    state: EditorState.create({ doc: modelValue, extensions }),
+    state: EditorState.create({ doc: data.value, extensions }),
   });
 
   if (readOnly && errorLines.length > 0) {
@@ -106,16 +105,13 @@ onMounted(() => {
 });
 
 
-watch(
-  () => modelValue,
-  (newValue) => {
-    if (view && newValue !== view.state.doc.toString()) {
-      view.dispatch({
-        changes: { from: 0, insert: newValue, to: view.state.doc.length },
-      });
-    }
-  },
-);
+watch(data, (newValue) => {
+  if (view && newValue !== view.state.doc.toString()) {
+    view.dispatch({
+      changes: { from: 0, insert: newValue, to: view.state.doc.length },
+    });
+  }
+});
 
 
 watch(
