@@ -105,8 +105,7 @@ export const joiCompletionSource = async (context: CompletionContext, version: s
                 return null;
               }
 
-              const doc = `${entry.kind} ${entry.name}
-${details.documentation?.map((d) => d.text).join('\n') || ''}`;
+              const doc = `${details.documentation?.map((d) => d.text).join('\n') || ''}`;
 
               const div = document.createElement('div');
               div.className = 'cm-completionInfo-text';
