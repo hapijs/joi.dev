@@ -1,17 +1,18 @@
 import DefaultTheme from 'vitepress/theme';
-import { h } from 'vue';
+import { defineAsyncComponent, h } from 'vue';
 
 import './variables.css';
 import './main.css';
 import 'virtual:group-icons.css';
-import ApiOutline from '../../components/ApiOutline.vue';
-import CarbonAds from '../../components/CarbonAds.vue';
-import ModuleIndex from '../../components/ModuleIndex.vue';
-import StatusContent from '../../components/StatusContent.vue';
-import TesterContent from '../../components/TesterContent.vue';
 import { getRedirectPath } from './redirect.js';
 
 import type { Theme } from 'vitepress';
+
+const ApiOutline = defineAsyncComponent(() => import('../../components/ApiOutline.vue'));
+const CarbonAds = defineAsyncComponent(() => import('../../components/CarbonAds.vue'));
+const ModuleIndex = defineAsyncComponent(() => import('../../components/ModuleIndex.vue'));
+const StatusContent = defineAsyncComponent(() => import('../../components/StatusContent.vue'));
+const TesterContent = defineAsyncComponent(() => import('../../components/TesterContent.vue'));
 
 export default {
   Layout() {

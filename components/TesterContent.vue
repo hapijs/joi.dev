@@ -9,7 +9,7 @@
 
     <div class="field">
       <h2 class="tester-subTitle">Schema:</h2>
-      <CodeMirrorEditor v-model="schema" />
+      <CodeMirrorEditor v-model="schema" :joi-version="version" />
     </div>
 
     <div class="field">
@@ -71,7 +71,7 @@
 <script setup>
 import { useClipboard, useStorage } from '@vueuse/core';
 import { useRoute } from 'vitepress';
-import { onBeforeUnmount, onMounted, ref, watch } from 'vue';
+import { onMounted, ref, watch } from 'vue';
 
 import { annotate } from '../composables/annotate.ts';
 import joiInfo from '../generated/modules/joi/info.json' with { type: 'json' };

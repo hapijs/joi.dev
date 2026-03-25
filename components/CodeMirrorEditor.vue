@@ -3,11 +3,12 @@
 </template>
 
 <script setup>
+import { autocompletion } from '@codemirror/autocomplete';
 import { javascript } from '@codemirror/lang-javascript';
 import { json } from '@codemirror/lang-json';
 import { HighlightStyle, syntaxHighlighting } from '@codemirror/language';
 import { Compartment, EditorState, StateEffect, StateField } from '@codemirror/state';
-import { Decoration } from '@codemirror/view';
+import { Decoration, tooltips } from '@codemirror/view';
 import { tags as t } from '@lezer/highlight';
 import { darcula } from '@uiw/codemirror-theme-darcula';
 import { eclipse } from '@uiw/codemirror-theme-eclipse';
@@ -15,8 +16,11 @@ import { EditorView, basicSetup } from 'codemirror';
 import { useData } from 'vitepress';
 import { onBeforeUnmount, onMounted, ref, watch } from 'vue';
 
-const { errorLines, language, readOnly } = defineProps({
+import { joiCompletionSource } from '../composables/joiCompletionSource.ts';
+
+const { errorLines, joiVersion, language, readOnly } = defineProps({
   errorLines: { default: () => [], type: Array },
+  joiVersion: { default: null, type: String },
   language: { default: 'javascript', type: String },
   readOnly: { default: false, type: Boolean },
 });
@@ -31,6 +35,7 @@ let view = null;
 
 
 const themeCompartment = new Compartment();
+const joiCompartment = new Compartment();
 const setErrorLines = StateEffect.define();
 
 
@@ -72,12 +77,23 @@ const getThemeExtension = () => {
 };
 
 
+const getJoiExtension = () => {
+  if (!joiVersion) {
+    return [];
+  }
+  return autocompletion({
+    override: [(context) => joiCompletionSource(context, joiVersion)],
+  });
+};
+
+
 onMounted(() => {
   const extensions = [
     basicSetup,
     language === 'json' ? json() : javascript(),
     EditorView.lineWrapping,
     themeCompartment.of(getThemeExtension()),
+    joiCompartment.of(getJoiExtension()),
     EditorView.updateListener.of((update) => {
       if (update.docChanged) {
         data.value = update.state.doc.toString();
@@ -136,6 +152,18 @@ watch(isDark, () => {
 });
 
 
+watch(
+  () => joiVersion,
+  () => {
+    if (view) {
+      view.dispatch({
+        effects: joiCompartment.reconfigure(getJoiExtension()),
+      });
+    }
+  },
+);
+
+
 onBeforeUnmount(() => {
   if (view) {
     view.destroy();
@@ -147,8 +175,11 @@ onBeforeUnmount(() => {
 .editor-container {
   border: 1px solid var(--vp-c-divider);
   border-radius: 4px;
-  overflow: hidden;
   font-family: var(--vp-font-family-mono);
   font-size: 14px;
+}
+
+.editor-container :deep(.cm-tooltip-autocomplete > ul) {
+  max-height: 350px;
 }
 </style>
