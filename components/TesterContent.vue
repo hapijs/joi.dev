@@ -8,13 +8,19 @@
     </div>
 
     <div class="field">
-      <h2 class="tester-subTitle">Schema:</h2>
-      <CodeMirrorEditor v-model="schema" :joi-version="version" />
+      <div class="field-header">
+        <h2 class="tester-subTitle">Schema:</h2>
+        <button class="format-button" @click="schemaEditor.format()">Format</button>
+      </div>
+      <CodeMirrorEditor ref="schemaEditor" v-model="schema" :joi-version="version" />
     </div>
 
     <div class="field">
-      <h2 class="tester-subTitle">Data To Validate:</h2>
-      <CodeMirrorEditor v-model="validate" language="json" />
+      <div class="field-header">
+        <h2 class="tester-subTitle">Data To Validate:</h2>
+        <button class="format-button" @click="validateEditor.format()">Format</button>
+      </div>
+      <CodeMirrorEditor ref="validateEditor" v-model="validate" language="json" />
     </div>
 
     <div class="actions">
@@ -112,6 +118,10 @@ const isLoading = ref(false);
 const latestVersion = ref(joiInfo.versionsArray[0]);
 const { copy, copied: isCopied } = useClipboard();
 const showResetConfirm = ref(false);
+
+
+const schemaEditor = ref(null);
+const validateEditor = ref(null);
 
 
 const loadJoi = async (v) => {
@@ -302,6 +312,35 @@ const onShareClick = async () => {
 
 .field {
   margin-bottom: 20px;
+}
+
+.field-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.field-header .tester-subTitle {
+  margin-bottom: 0;
+}
+
+.format-button {
+  border-radius: 6px;
+  border: 1px solid var(--vp-c-divider);
+  background: var(--vp-c-bg-soft);
+  padding: 2px 10px;
+  font-size: 0.9em;
+  font-weight: 600;
+  color: var(--vp-c-text-1);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.format-button:hover {
+  border-color: var(--vp-c-brand-1);
+  color: var(--vp-c-brand-1);
+  background: var(--vp-c-bg);
 }
 
 .tester-subTitle {
