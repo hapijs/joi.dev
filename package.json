@@ -26,6 +26,7 @@
     "@codemirror/state": "^6.6.0",
     "@codemirror/view": "^6.40.0",
     "@lezer/highlight": "^1.2.3",
+    "@standard-schema/spec": "^1.1.0",
     "@typescript/vfs": "^1.6.4",
     "@uiw/codemirror-theme-darcula": "^4.25.8",
     "@uiw/codemirror-theme-eclipse": "^4.25.8",
@@ -34,7 +35,7 @@
     "es-toolkit": "^1.45.1",
     "joi-17": "npm:joi@17.13.3",
     "joi-18": "npm:joi@18.0.2",
-    "@standard-schema/spec": "^1.1.0",
+    "prettier": "^3.8.1",
     "semver": "^7.7.4",
     "vitepress-plugin-group-icons": "^1.7.1",
     "vue": "^3.5.30"

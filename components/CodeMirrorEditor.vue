@@ -87,6 +87,48 @@ const getJoiExtension = () => {
 };
 
 
+const format = async () => {
+  if (!view) {
+    return;
+  }
+
+
+  const code = view.state.doc.toString();
+  try {
+    const [prettier, prettierPluginBabel, prettierPluginEstree] = await Promise.all([
+      import('prettier/standalone'),
+      import('prettier/plugins/babel'),
+      import('prettier/plugins/estree'),
+    ]);
+
+
+    const formatted = await prettier.format(code, {
+      parser: language === 'json' ? 'json' : 'babel',
+      plugins: [
+        prettierPluginBabel.default || prettierPluginBabel,
+        prettierPluginEstree.default || prettierPluginEstree,
+      ],
+      printWidth: 120,
+      semi: false,
+      singleQuote: true,
+      trailingComma: 'all',
+    });
+
+
+    if (formatted !== code) {
+      view.dispatch({
+        changes: { from: 0, insert: formatted, to: view.state.doc.length },
+      });
+    }
+  } catch (err) {
+    console.error('Format error:', err);
+  }
+};
+
+
+defineExpose({ format });
+
+
 onMounted(() => {
   const extensions = [
     basicSetup,
