@@ -2,6 +2,8 @@
 title: Changelog
 ---
 
+<ApiOutline />
+
 # Changelog
 
 ::: v-pre

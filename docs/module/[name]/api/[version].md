@@ -2,6 +2,8 @@
 title: Module API
 ---
 
+<ApiOutline />
+
 # {{ $params.package }} API v{{ $params.fullVersion }}
 
 ::: code-group

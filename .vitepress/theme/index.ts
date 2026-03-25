@@ -4,6 +4,7 @@ import { h } from 'vue';
 import './variables.css';
 import './main.css';
 import 'virtual:group-icons.css';
+import ApiOutline from '../../components/ApiOutline.vue';
 import CarbonAds from '../../components/CarbonAds.vue';
 import ModuleIndex from '../../components/ModuleIndex.vue';
 import StatusContent from '../../components/StatusContent.vue';
@@ -22,6 +23,7 @@ export default {
     app.component('ModuleIndex', ModuleIndex);
     app.component('StatusContent', StatusContent);
     app.component('TesterContent', TesterContent);
+    app.component('ApiOutline', ApiOutline);
 
     if (typeof window !== 'undefined') {
       router.onBeforeRouteChange = (to) => {

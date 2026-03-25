@@ -2,6 +2,8 @@
 title: API
 ---
 
+<ApiOutline />
+
 # API v{{ $params.fullVersion }}
 
 ### Installation

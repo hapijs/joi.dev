@@ -27,6 +27,7 @@
     "@lezer/highlight": "^1.2.3",
     "@uiw/codemirror-theme-darcula": "^4.25.8",
     "@uiw/codemirror-theme-eclipse": "^4.25.8",
+    "@vueuse/core": "^14.2.1",
     "codemirror": "^6.0.2",
     "es-toolkit": "^1.45.1",
     "joi-17": "npm:joi@17.13.3",

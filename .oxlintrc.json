@@ -15,7 +15,7 @@
   },
   "globals": {
     "defineProps": "readonly",
-    "defineEmits": "readonly"
+    "defineModel": "readonly"
   },
   "rules": {
     "id-length": "off",

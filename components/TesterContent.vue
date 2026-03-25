@@ -69,6 +69,7 @@
 </template>
 
 <script setup>
+import { useClipboard, useStorage } from '@vueuse/core';
 import { useRoute } from 'vitepress';
 import { onBeforeUnmount, onMounted, ref, watch } from 'vue';
 
@@ -97,8 +98,8 @@ const DEFAULT_VALIDATE = `//Insert data to validate here
 
 
 const route = useRoute();
-const schema = ref(DEFAULT_SCHEMA);
-const validate = ref(DEFAULT_VALIDATE);
+const schema = useStorage('joi-sandbox-schema', DEFAULT_SCHEMA);
+const validate = useStorage('joi-sandbox-validate', DEFAULT_VALIDATE);
 const result = ref('');
 const resultEditorContent = ref('');
 const errorDetails = ref([]);
@@ -109,7 +110,7 @@ const version = ref('');
 const joiInstance = ref(null);
 const isLoading = ref(false);
 const latestVersion = ref(joiInfo.versionsArray[0]);
-const isCopied = ref(false);
+const { copy, copied: isCopied } = useClipboard();
 const showResetConfirm = ref(false);
 
 
@@ -176,31 +177,10 @@ onMounted(async () => {
         validate.value = state.data;
       }
     } catch {}
-  } else {
-    // Check if we have saved state in localStorage
-    const savedSchema = localStorage.getItem('joi-sandbox-schema');
-    const savedValidate = localStorage.getItem('joi-sandbox-validate');
-    if (savedSchema !== null) {
-      schema.value = savedSchema;
-    }
-    if (savedValidate !== null) {
-      validate.value = savedValidate;
-    }
   }
 
   await loadJoi(v);
 });
-
-
-onBeforeUnmount(() => {
-  saveState();
-});
-
-
-const saveState = () => {
-  localStorage.setItem('joi-sandbox-schema', schema.value);
-  localStorage.setItem('joi-sandbox-validate', validate.value);
-};
 
 
 watch(
@@ -211,7 +191,6 @@ watch(
     if (testerMatch) {
       const v = testerMatch.at(1);
       if (v !== version.value) {
-        saveState();
         await loadJoi(v);
       }
     }
@@ -225,10 +204,6 @@ const onValidateClick = () => {
     result.value = 'Joi is not loaded yet.';
     return;
   }
-
-
-  // Save to localStorage whenever we validate
-  saveState();
 
 
   try {
@@ -291,8 +266,6 @@ const cancelReset = () => {
 
 const confirmReset = () => {
   showResetConfirm.value = false;
-  localStorage.removeItem('joi-sandbox-schema');
-  localStorage.removeItem('joi-sandbox-validate');
 
 
   schema.value = DEFAULT_SCHEMA;
@@ -307,10 +280,6 @@ const confirmReset = () => {
 
 
 const onShareClick = async () => {
-  // Also save to localStorage when sharing
-  saveState();
-
-
   const state = JSON.stringify({
     data: validate.value,
     schema: schema.value,
@@ -321,11 +290,7 @@ const onShareClick = async () => {
     const encoded = btoa(unescape(encodeURIComponent(state)));
     const url = new URL(window.location.href);
     url.hash = `share=${encoded}`;
-    await navigator.clipboard.writeText(url.toString());
-    isCopied.value = true;
-    setTimeout(() => {
-      isCopied.value = false;
-    }, 2000);
+    await copy(url.toString());
   } catch {}
 };
 </script>
