@@ -57,7 +57,6 @@ import modulesData from '../generated/metadata/modules.json' with { type: 'json'
 
 const modules = ref(modulesData);
 
-
 const filteredModules = computed(() => modules.value);
 </script>
 

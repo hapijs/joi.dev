@@ -1,5 +1,21 @@
 [
   {
+    "date": "2026-03-30T18:05:09Z",
+    "id": 15356910,
+    "issues": [
+      {
+        "id": 4166157537,
+        "labels": ["bug"],
+        "number": 3107,
+        "title": "fix: improve JSON Schema conversion for number.port() and number.sign()",
+        "url": "https://github.com/hapijs/joi/pull/3107"
+      }
+    ],
+    "number": 212,
+    "url": "https://github.com/hapijs/joi/milestone/212",
+    "version": "18.1.2"
+  },
+  {
     "date": "2026-03-23T17:52:59Z",
     "id": 15258251,
     "issues": [

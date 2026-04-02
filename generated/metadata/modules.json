@@ -38,8 +38,8 @@
     "link": "https://github.com/hapijs/joi",
     "package": "joi",
     "slogan": "The most powerful schema description language and data validator for JavaScript.",
-    "stars": 21199,
-    "updated": "2026-03-23T17:51:24Z",
+    "stars": 21202,
+    "updated": "2026-03-30T17:24:52Z",
     "versions": [
       {
         "branch": "v17.13.3",
@@ -48,13 +48,13 @@
         "node": ">= 14"
       },
       {
-        "branch": "v18.1.1",
+        "branch": "v18.1.2",
         "license": "BSD",
-        "name": "18.1.1",
+        "name": "18.1.2",
         "node": ">= 20"
       }
     ],
-    "versionsArray": ["18.1.1", "17.13.3"]
+    "versionsArray": ["18.1.2", "17.13.3"]
   },
   "joi-date": {
     "forks": 23,

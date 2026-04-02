@@ -2,10 +2,12 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 
 import { Semaphore } from 'es-toolkit';
+import { Feed } from 'feed';
 import Semver from 'semver';
 
 import { getMilestoneIssues, getMilestones } from './gh.js';
-import { getExisting, getModuleChangelogPath, getModuleMarkdownChangelogPath } from './paths.js';
+import { modules } from './modules.js';
+import { getExisting, getModuleChangelogPath, getModuleMarkdownChangelogPath, PUBLIC_ATOM_DIR } from './paths.js';
 
 import type { ChangelogItem } from './types.js';
 
@@ -65,6 +67,54 @@ export const generateChangelog = async (moduleName: string) => {
   }
 
   await generateModuleMarkdownChangelog(moduleName, sortedChangelog);
+  await generateModuleAtom(moduleName, sortedChangelog);
+};
+
+const generateModuleAtom = async (moduleName: string, sortedChangelog: ChangelogItem[]) => {
+  const isJoi = moduleName === 'joi';
+  const spec = modules[moduleName];
+  const fullModuleName = spec?.package ?? moduleName;
+  const baseLink = isJoi ? 'https://joi.dev' : `https://joi.dev/module/${moduleName}`;
+  const changelogLink = isJoi
+    ? 'https://joi.dev/resources/changelog'
+    : `https://joi.dev/module/${moduleName}/changelog`;
+
+  const feed = new Feed({
+    favicon: 'https://joi.dev/favicon.png',
+    id: baseLink,
+    image: 'https://joi.dev/img/logo.png',
+    language: 'en',
+    link: baseLink,
+    title: `${fullModuleName} changelog`,
+    updated: new Date(sortedChangelog[0]?.date ?? Date.now()),
+  });
+
+  const items = sortedChangelog.slice(0, 50);
+
+  for (const item of items) {
+    const title = `${fullModuleName} v${item.version}`;
+    const link = `${changelogLink}#${item.version}`;
+    const date = new Date(item.date);
+
+    let content = '<ul>';
+    for (const issue of item.issues) {
+      content += `<li><a href="${issue.url}">[#${issue.number}]</a> ${escapeHtml(issue.title)}</li>`;
+    }
+    content += '</ul>';
+
+    feed.addItem({
+      content,
+      date,
+      description: title,
+      id: item.url,
+      link,
+      title,
+    });
+  }
+
+  const atomPath = path.join(PUBLIC_ATOM_DIR, `${moduleName}.atom`);
+  await fs.mkdir(path.dirname(atomPath), { recursive: true });
+  await fs.writeFile(atomPath, feed.atom1());
 };
 
 const generateModuleMarkdownChangelog = async (moduleName: string, sortedChangelog: ChangelogItem[]) => {

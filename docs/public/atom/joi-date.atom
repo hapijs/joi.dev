@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://joi.dev/module/joi-date</id>
+    <title>@joi/date changelog</title>
+    <updated>2024-04-22T09:08:12.000Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://joi.dev/module/joi-date"/>
+    <logo>https://joi.dev/img/logo.png</logo>
+    <icon>https://joi.dev/favicon.png</icon>
+    <entry>
+        <title type="html"><![CDATA[@joi/date v2.1.1]]></title>
+        <id>https://github.com/hapijs/joi-date/milestone/10</id>
+        <link href="https://joi.dev/module/joi-date/changelog#2.1.1"/>
+        <updated>2024-04-22T09:08:12.000Z</updated>
+        <summary type="html"><![CDATA[@joi/date v2.1.1]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/joi-date/pull/45">[#45]</a> fix: wrong default export</li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[@joi/date v2.1.0]]></title>
+        <id>https://github.com/hapijs/joi-date/milestone/9</id>
+        <link href="https://joi.dev/module/joi-date/changelog#2.1.0"/>
+        <updated>2021-03-30T17:07:34.000Z</updated>
+        <summary type="html"><![CDATA[@joi/date v2.1.0]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/joi-date/pull/38">[#38]</a> Add typescript types</li><li><a href="https://github.com/hapijs/joi-date/issues/26">[#26]</a> Typescript Support?</li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[@joi/date v2.0.1]]></title>
+        <id>https://github.com/hapijs/joi-date/milestone/8</id>
+        <link href="https://joi.dev/module/joi-date/changelog#2.0.1"/>
+        <updated>2019-10-05T17:39:20.000Z</updated>
+        <summary type="html"><![CDATA[@joi/date v2.0.1]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/joi-date/issues/25">[#25]</a> Fails to enforce required format when value is a number string</li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[@joi/date v2.0.0]]></title>
+        <id>https://github.com/hapijs/joi-date/milestone/7</id>
+        <link href="https://joi.dev/module/joi-date/changelog#2.0.0"/>
+        <updated>2019-09-11T23:22:56.000Z</updated>
+        <summary type="html"><![CDATA[@joi/date v2.0.0]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/joi-date/issues/22">[#22]</a> Support joi v16</li><li><a href="https://github.com/hapijs/joi-date/issues/13">[#13]</a> Issue with ".allow" whitelists</li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[@joi/date v1.3.0]]></title>
+        <id>https://github.com/hapijs/joi-date/milestone/6</id>
+        <link href="https://joi.dev/module/joi-date/changelog#1.3.0"/>
+        <updated>2019-04-22T07:25:30.000Z</updated>
+        <summary type="html"><![CDATA[@joi/date v1.3.0]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/joi-date/issues/17">[#17]</a> Change module namespace</li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[@joi/date v1.2.0]]></title>
+        <id>https://github.com/hapijs/joi-date/milestone/5</id>
+        <link href="https://joi.dev/module/joi-date/changelog#1.2.0"/>
+        <updated>2019-04-22T06:55:33.000Z</updated>
+        <summary type="html"><![CDATA[@joi/date v1.2.0]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/joi-date/pull/9">[#9]</a> Add support for UTC parsing mode</li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[@joi/date v1.1.1]]></title>
+        <id>https://github.com/hapijs/joi-date/milestone/4</id>
+        <link href="https://joi.dev/module/joi-date/changelog#1.1.1"/>
+        <updated>2018-02-16T19:31:38.000Z</updated>
+        <summary type="html"><![CDATA[@joi/date v1.1.1]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/joi-date/pull/7">[#7]</a> fix(package): remove unused hoek dependency</li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[@joi/date v1.1.0]]></title>
+        <id>https://github.com/hapijs/joi-date/milestone/3</id>
+        <link href="https://joi.dev/module/joi-date/changelog#1.1.0"/>
+        <updated>2017-09-26T15:47:43.000Z</updated>
+        <summary type="html"><![CDATA[@joi/date v1.1.0]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/joi-date/pull/5">[#5]</a> feat(index): use provided joi instance</li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[@joi/date v1.0.2]]></title>
+        <id>https://github.com/hapijs/joi-date/milestone/2</id>
+        <link href="https://joi.dev/module/joi-date/changelog#1.0.2"/>
+        <updated>2017-09-26T15:47:44.000Z</updated>
+        <summary type="html"><![CDATA[@joi/date v1.0.2]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/joi-date/pull/3">[#3]</a> Add Joi peerDependency</li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[@joi/date v1.0.1]]></title>
+        <id>https://github.com/hapijs/joi-date/milestone/1</id>
+        <link href="https://joi.dev/module/joi-date/changelog#1.0.1"/>
+        <updated>2016-11-22T16:19:54.000Z</updated>
+        <summary type="html"><![CDATA[@joi/date v1.0.1]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/joi-date/issues/2">[#2]</a> Issue with optional date</li></ul>]]></content>
+    </entry>
+</feed>

@@ -12,6 +12,7 @@ import {
   API_DIR,
   METADATA_DIR,
   MODULE_DIR,
+  PACKAGE_JSON_PATH,
   POLICIES_GENERATED_DIR,
   getExisting,
   getModuleInfoPath,
@@ -225,6 +226,34 @@ await Promise.all(
 
 await fs.mkdir(METADATA_DIR, { recursive: true });
 await fs.writeFile(path.join(METADATA_DIR, 'modules.json'), JSON.stringify(sortedRepos, null, 2));
+
+console.info('Updating joi dependencies...');
+const packageJson = JSON.parse(await fs.readFile(PACKAGE_JSON_PATH, 'utf8'));
+const joiMajors = Object.keys(modules.joi.compatibility);
+const joiRepo = repos.joi;
+let changed = false;
+
+for (const majorStr of joiMajors) {
+  const major = parseInt(majorStr, 10);
+  const depName = `joi-${major}`;
+  const latestVersion = joiRepo?.versionsArray?.find((v) => Semver.major(v) === major);
+
+  if (latestVersion) {
+    const depValue = `npm:joi@${latestVersion}`;
+    if (packageJson.dependencies[depName] !== depValue) {
+      packageJson.dependencies[depName] = depValue;
+      changed = true;
+    }
+  } else {
+    console.warn(`Could not find latest version for joi major ${major}`);
+  }
+}
+
+if (changed) {
+  await fs.writeFile(PACKAGE_JSON_PATH, `${JSON.stringify(packageJson, null, 2)}\n`);
+  console.info('Running pnpm install...');
+  execFileSync('pnpm', ['install'], { stdio: 'inherit' });
+}
 
 // Generate module/index.md
 const moduleIndexMdPath = path.join(MODULE_DIR, 'index.md');

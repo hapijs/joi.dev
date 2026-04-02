@@ -16,6 +16,9 @@
   --cm-selection-bg-dark: #3e4451;
   --cm-selection-bg-light: #d7d4f0;
 
+  /* Atom Icon */
+  --vp-c-orange: #f26522;
+
   /* Modal & Overlays */
   --overlay-bg: rgba(0, 0, 0, 0.5);
   --modal-shadow: rgba(0, 0, 0, 0.3);

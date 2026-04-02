@@ -1,5 +1,9 @@
 ## Version 18 {#v18}
 
+### [18.1.2](https://github.com/hapijs/joi/milestone/212) {#18.1.2}
+
+- [#3107](https://github.com/hapijs/joi/pull/3107) fix: improve JSON Schema conversion for number.port() and number.sign()
+
 ### [18.1.1](https://github.com/hapijs/joi/milestone/211) {#18.1.1}
 
 - [#3103](https://github.com/hapijs/joi/pull/3103) fix: allow NaN in schema describe() output validation
