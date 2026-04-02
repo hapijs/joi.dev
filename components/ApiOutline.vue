@@ -4,7 +4,6 @@ import { onMounted, ref } from 'vue';
 
 const outline = ref(null);
 
-
 const onActiveChange = (mutations) => {
   for (const { target, type, attributeName } of mutations) {
     if (
@@ -18,11 +17,9 @@ const onActiveChange = (mutations) => {
   }
 };
 
-
 onMounted(() => {
   outline.value = document.querySelector('.VPDocAsideOutline');
 });
-
 
 useMutationObserver(outline, onActiveChange, {
   attributeFilter: ['class'],

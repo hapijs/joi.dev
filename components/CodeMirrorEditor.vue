@@ -25,19 +25,15 @@ const { errorLines, joiVersion, language, readOnly } = defineProps({
   readOnly: { default: false, type: Boolean },
 });
 
-
 const data = defineModel({ default: '', type: String });
-
 
 const { isDark } = useData();
 const editorContainer = ref(null);
 let view = null;
 
-
 const themeCompartment = new Compartment();
 const joiCompartment = new Compartment();
 const setErrorLines = StateEffect.define();
-
 
 const errorLineField = StateField.define({
   create() {
@@ -62,7 +58,6 @@ const errorLineField = StateField.define({
   },
 });
 
-
 const getThemeExtension = () => {
   const theme = isDark.value ? darcula : eclipse;
   const cursorTheme = EditorView.theme({
@@ -76,7 +71,6 @@ const getThemeExtension = () => {
   return [theme, cursorTheme];
 };
 
-
 const getJoiExtension = () => {
   if (!joiVersion) {
     return [];
@@ -86,12 +80,10 @@ const getJoiExtension = () => {
   });
 };
 
-
 const format = async () => {
   if (!view) {
     return;
   }
-
 
   const code = view.state.doc.toString();
   try {
@@ -100,7 +92,6 @@ const format = async () => {
       import('prettier/plugins/babel'),
       import('prettier/plugins/estree'),
     ]);
-
 
     const formatted = await prettier.format(code, {
       parser: language === 'json' ? 'json' : 'babel',
@@ -114,7 +105,6 @@ const format = async () => {
       trailingComma: 'all',
     });
 
-
     if (formatted !== code) {
       view.dispatch({
         changes: { from: 0, insert: formatted, to: view.state.doc.length },
@@ -125,9 +115,7 @@ const format = async () => {
   }
 };
 
-
 defineExpose({ format });
-
 
 onMounted(() => {
   const extensions = [
@@ -162,7 +150,6 @@ onMounted(() => {
   }
 });
 
-
 watch(data, (newValue) => {
   if (view && newValue !== view.state.doc.toString()) {
     view.dispatch({
@@ -170,7 +157,6 @@ watch(data, (newValue) => {
     });
   }
 });
-
 
 watch(
   () => errorLines,
@@ -184,7 +170,6 @@ watch(
   { deep: true },
 );
 
-
 watch(isDark, () => {
   if (view) {
     view.dispatch({
@@ -192,7 +177,6 @@ watch(isDark, () => {
     });
   }
 });
-
 
 watch(
   () => joiVersion,
@@ -204,7 +188,6 @@ watch(
     }
   },
 );
-
 
 onBeforeUnmount(() => {
   if (view) {

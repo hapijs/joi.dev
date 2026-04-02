@@ -60,3 +60,23 @@
   width: 12px;
   height: 12px;
 }
+
+.atom-link {
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+  color: var(--vp-c-text-2);
+  transition: color 0.2s;
+  text-decoration: none !important;
+  margin-left: 12px;
+}
+
+.atom-link:hover {
+  color: var(--vp-c-orange) !important;
+}
+
+.atom-icon {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+}

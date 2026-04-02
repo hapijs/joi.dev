@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://joi.dev</id>
+    <title>joi changelog</title>
+    <updated>2026-03-30T18:05:09.000Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://joi.dev"/>
+    <logo>https://joi.dev/img/logo.png</logo>
+    <icon>https://joi.dev/favicon.png</icon>
+    <entry>
+        <title type="html"><![CDATA[joi v18.1.2]]></title>
+        <id>https://github.com/hapijs/joi/milestone/212</id>
+        <link href="https://joi.dev/resources/changelog#18.1.2"/>
+        <updated>2026-03-30T18:05:09.000Z</updated>
+        <summary type="html"><![CDATA[joi v18.1.2]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/joi/pull/3107">[#3107]</a> fix: improve JSON Schema conversion for number.port() and number.sign()</li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[joi v18.1.1]]></title>
+        <id>https://github.com/hapijs/joi/milestone/211</id>
+        <link href="https://joi.dev/resources/changelog#18.1.1"/>
+        <updated>2026-03-23T17:52:59.000Z</updated>
+        <summary type="html"><![CDATA[joi v18.1.1]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/joi/pull/3103">[#3103]</a> fix: allow NaN in schema describe() output validation</li><li><a href="https://github.com/hapijs/joi/pull/3099">[#3099]</a> Fix braces escaping when template doesn't contains any variable</li><li><a href="https://github.com/hapijs/joi/issues/3098">[#3098]</a> Support libraryOptions in standard validator validate()</li><li><a href="https://github.com/hapijs/joi/pull/3097">[#3097]</a> feat: enhance validation to support options in standard function</li><li><a href="https://github.com/hapijs/joi/issues/3094">[#3094]</a> any.describe() throws an error if the schema contains .allow(NaN)</li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[joi v18.1.0]]></title>
+        <id>https://github.com/hapijs/joi/milestone/210</id>
+        <link href="https://joi.dev/resources/changelog#18.1.0"/>
+        <updated>2026-03-23T17:05:08.000Z</updated>
+        <summary type="html"><![CDATA[joi v18.1.0]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/joi/pull/3102">[#3102]</a> feat: add Standard JSON Schema</li><li><a href="https://github.com/hapijs/joi/issues/3096">[#3096]</a> Consider implementing Standard JSON Schema</li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[joi v18.0.2]]></title>
+        <id>https://github.com/hapijs/joi/milestone/209</id>
+        <link href="https://joi.dev/resources/changelog#18.0.2"/>
+        <updated>2025-11-19T15:50:15.000Z</updated>
+        <summary type="html"><![CDATA[joi v18.0.2]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/joi/pull/3092">[#3092]</a> fix: allow coercion of string booleans with trailing whitespace</li><li><a href="https://github.com/hapijs/joi/issues/3091">[#3091]</a> Joi.boolean() does not handle strings with trailing spaces</li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[joi v18.0.1]]></title>
+        <id>https://github.com/hapijs/joi/milestone/208</id>
+        <link href="https://joi.dev/resources/changelog#18.0.1"/>
+        <updated>2025-08-20T08:21:01.000Z</updated>
+        <summary type="html"><![CDATA[joi v18.0.1]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/joi/pull/3087">[#3087]</a> fix: proper types for more complex cases of array</li><li><a href="https://github.com/hapijs/joi/issues/3086">[#3086]</a> .array().items() dynamic type item type schema causes issues in typescript</li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[joi v18.0.0]]></title>
+        <id>https://github.com/hapijs/joi/milestone/190</id>
+        <link href="https://joi.dev/resources/changelog#18.0.0"/>
+        <updated>2025-08-03T15:02:01.000Z</updated>
+        <summary type="html"><![CDATA[joi v18.0.0]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/joi/pull/3084">[#3084]</a> feat: add isAsync() helper</li><li><a href="https://github.com/hapijs/joi/pull/3082">[#3082]</a> Added wrapper option to uuid function</li><li><a href="https://github.com/hapijs/joi/pull/3080">[#3080]</a> feat: implement standard schema spec</li><li><a href="https://github.com/hapijs/joi/issues/3078">[#3078]</a> Implement Standard Schema</li><li><a href="https://github.com/hapijs/joi/issues/2993">[#2993]</a> What version of node does this library support?</li><li><a href="https://github.com/hapijs/joi/pull/2982">[#2982]</a> feat: Improve array().items type</li><li><a href="https://github.com/hapijs/joi/pull/2981">[#2981]</a> feat: Improve alternatives type</li><li><a href="https://github.com/hapijs/joi/issues/2926">[#2926]</a> 18.0.0 Release Notes</li><li><a href="https://github.com/hapijs/joi/pull/2925">[#2925]</a> chore: upgrade modules</li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[joi v17.13.3]]></title>
+        <id>https://github.com/hapijs/joi/milestone/207</id>
+        <link href="https://joi.dev/resources/changelog#17.13.3"/>
+        <updated>2024-06-19T15:17:24.000Z</updated>
+        <summary type="html"><![CDATA[joi v17.13.3]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/joi/pull/3043">[#3043]</a> fix: correct function type in alternatives error</li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[joi v17.13.2]]></title>
+        <id>https://github.com/hapijs/joi/milestone/206</id>
+        <link href="https://joi.dev/resources/changelog#17.13.2"/>
+        <updated>2024-06-19T12:37:04.000Z</updated>
+        <summary type="html"><![CDATA[joi v17.13.2]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/joi/pull/3037">[#3037]</a> fix: `stripUnknown` should honor local explicit `.unknown(false)`</li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[joi v17.13.1]]></title>
+        <id>https://github.com/hapijs/joi/milestone/205</id>
+        <link href="https://joi.dev/resources/changelog#17.13.1"/>
+        <updated>2024-06-19T09:15:12.000Z</updated>
+        <summary type="html"><![CDATA[joi v17.13.1]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/joi/pull/3034">[#3034]</a> fix: label false should also hide explicit labels</li><li><a href="https://github.com/hapijs/joi/issues/3033">[#3033]</a> Setting `errors.label` to `false` does not remove labels from error messages for keys with labels</li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[joi v17.13.0]]></title>
+        <id>https://github.com/hapijs/joi/milestone/204</id>
+        <link href="https://joi.dev/resources/changelog#17.13.0"/>
+        <updated>2024-04-23T08:35:37.000Z</updated>
+        <summary type="html"><![CDATA[joi v17.13.0]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/joi/pull/3032">[#3032]</a> feat: support encoding uri (follow-up to #3027)</li><li><a href="https://github.com/hapijs/joi/pull/3027">[#3027]</a> feat: Support encoding uri</li><li><a href="https://github.com/hapijs/joi/issues/2889">[#2889]</a> string().uri() not working with accented characters</li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[joi v17.12.3]]></title>
+        <id>https://github.com/hapijs/joi/milestone/203</id>
+        <link href="https://joi.dev/resources/changelog#17.12.3"/>
+        <updated>2024-04-03T21:37:44.000Z</updated>
+        <summary type="html"><![CDATA[joi v17.12.3]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/joi/pull/3026">[#3026]</a> fix: handle bigint in unique rule</li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[joi v17.12.2]]></title>
+        <id>https://github.com/hapijs/joi/milestone/202</id>
+        <link href="https://joi.dev/resources/changelog#17.12.2"/>
+        <updated>2024-02-21T18:44:59.000Z</updated>
+        <summary type="html"><![CDATA[joi v17.12.2]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/joi/pull/3018">[#3018]</a> Fix issue 2730 - Wrong State['path'] type</li><li><a href="https://github.com/hapijs/joi/issues/2730">[#2730]</a> Wrong `State['path']` type</li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[joi v17.12.1]]></title>
+        <id>https://github.com/hapijs/joi/milestone/201</id>
+        <link href="https://joi.dev/resources/changelog#17.12.1"/>
+        <updated>2024-01-29T13:44:48.000Z</updated>
+        <summary type="html"><![CDATA[joi v17.12.1]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/joi/pull/3016">[#3016]</a> fix: domain default tld validation</li><li><a href="https://github.com/hapijs/joi/pull/3015">[#3015]</a> fix: domain default tld validation</li><li><a href="https://github.com/hapijs/joi/issues/3007">[#3007]</a> Domain validation not checking IANA registry by default</li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[joi v17.12.0]]></title>
+        <id>https://github.com/hapijs/joi/milestone/200</id>
+        <link href="https://joi.dev/resources/changelog#17.12.0"/>
+        <updated>2024-01-18T00:04:23.000Z</updated>
+        <summary type="html"><![CDATA[joi v17.12.0]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/joi/pull/3014">[#3014]</a> feat: hex prefix</li><li><a href="https://github.com/hapijs/joi/pull/3011">[#3011]</a> Allow 0x prefix for hex strings</li><li><a href="https://github.com/hapijs/joi/issues/2386">[#2386]</a> Allow 0x prefix for hex strings</li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[joi v17.11.1]]></title>
+        <id>https://github.com/hapijs/joi/milestone/199</id>
+        <link href="https://joi.dev/resources/changelog#17.11.1"/>
+        <updated>2024-01-15T13:06:38.000Z</updated>
+        <summary type="html"><![CDATA[joi v17.11.1]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/joi/pull/3013">[#3013]</a> fix: precision issue on number().multiple()</li><li><a href="https://github.com/hapijs/joi/pull/3009">[#3009]</a> fix: LanguageMessages type now supports languages in TypeScript</li><li><a href="https://github.com/hapijs/joi/pull/3001">[#3001]</a> fix: do not override existing labels of underlying schemas in alternatives</li><li><a href="https://github.com/hapijs/joi/issues/2962">[#2962]</a> Multiple doesn't work correct</li><li><a href="https://github.com/hapijs/joi/pull/2875">[#2875]</a> Fix for #2874</li><li><a href="https://github.com/hapijs/joi/issues/2874">[#2874]</a> Missing helper.error() method parameter type definition</li><li><a href="https://github.com/hapijs/joi/issues/2720">[#2720]</a> Type declaration for `messages` option of any.validate() inconsistent with the documentation and actual code</li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[joi v17.11.0]]></title>
+        <id>https://github.com/hapijs/joi/milestone/198</id>
+        <link href="https://joi.dev/resources/changelog#17.11.0"/>
+        <updated>2023-10-04T14:25:52.000Z</updated>
+        <summary type="html"><![CDATA[joi v17.11.0]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/joi/pull/2988">[#2988]</a> feat: allow custom expression functions</li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[joi v17.10.2]]></title>
+        <id>https://github.com/hapijs/joi/milestone/197</id>
+        <link href="https://joi.dev/resources/changelog#17.10.2"/>
+        <updated>2023-09-17T15:57:12.000Z</updated>
+        <summary type="html"><![CDATA[joi v17.10.2]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/joi/pull/2986">[#2986]</a> fix: missing template reference</li><li><a href="https://github.com/hapijs/joi/pull/2985">[#2985]</a> Unit test showing example of formula parsing bug</li><li><a href="https://github.com/hapijs/joi/issues/2974">[#2974]</a> Unable to access object property with a space in its key via expression templates</li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[joi v17.10.1]]></title>
+        <id>https://github.com/hapijs/joi/milestone/196</id>
+        <link href="https://joi.dev/resources/changelog#17.10.1"/>
+        <updated>2023-08-31T15:49:29.000Z</updated>
+        <summary type="html"><![CDATA[joi v17.10.1]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/joi/pull/2983">[#2983]</a> fix: allow any.error() return type to be ErrorReport[]</li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[joi v17.10.0]]></title>
+        <id>https://github.com/hapijs/joi/milestone/195</id>
+        <link href="https://joi.dev/resources/changelog#17.10.0"/>
+        <updated>2023-08-27T17:04:32.000Z</updated>
+        <summary type="html"><![CDATA[joi v17.10.0]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/joi/pull/2975">[#2975]</a> property metas in Description</li><li><a href="https://github.com/hapijs/joi/pull/2964">[#2964]</a> #2963 make return value of validate match type definitions</li><li><a href="https://github.com/hapijs/joi/pull/2961">[#2961]</a> Associate Buffer with BinarySchema</li><li><a href="https://github.com/hapijs/joi/pull/2960">[#2960]</a> feat: support bindary buffer that has been JSON.parse(JSON.strinified())</li><li><a href="https://github.com/hapijs/joi/pull/2957">[#2957]</a> feat: support uuidv6, uuidv7 and uuidv8 guid types</li><li><a href="https://github.com/hapijs/joi/issues/2954">[#2954]</a> Coerce toJSON'ed Buffer to real Buffer</li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[joi v17.9.2]]></title>
+        <id>https://github.com/hapijs/joi/milestone/194</id>
+        <link href="https://joi.dev/resources/changelog#17.9.2"/>
+        <updated>2023-04-24T20:47:29.000Z</updated>
+        <summary type="html"><![CDATA[joi v17.9.2]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/joi/pull/2945">[#2945]</a> fix: commit states to avoid memory leak</li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[joi v17.9.1]]></title>
+        <id>https://github.com/hapijs/joi/milestone/193</id>
+        <link href="https://joi.dev/resources/changelog#17.9.1"/>
+        <updated>2023-03-21T08:42:49.000Z</updated>
+        <summary type="html"><![CDATA[joi v17.9.1]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/joi/pull/2932">[#2932]</a> fix: do not trigger warnings and externals on arrays and alternatives mismatches</li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[joi v17.9.0]]></title>
+        <id>https://github.com/hapijs/joi/milestone/192</id>
+        <link href="https://joi.dev/resources/changelog#17.9.0"/>
+        <updated>2023-03-20T08:25:14.000Z</updated>
+        <summary type="html"><![CDATA[joi v17.9.0]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/joi/pull/2931">[#2931]</a> feat: improve external helpers</li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[joi v17.8.4]]></title>
+        <id>https://github.com/hapijs/joi/milestone/191</id>
+        <link href="https://joi.dev/resources/changelog#17.8.4"/>
+        <updated>2023-03-20T08:25:12.000Z</updated>
+        <summary type="html"><![CDATA[joi v17.8.4]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/joi/pull/2928">[#2928]</a> fix: validation warning types</li><li><a href="https://github.com/hapijs/joi/issues/2927">[#2927]</a> Type definition incorrect for "warning" return type from validateAsync</li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[joi v17.8.3]]></title>
+        <id>https://github.com/hapijs/joi/milestone/189</id>
+        <link href="https://joi.dev/resources/changelog#17.8.3"/>
+        <updated>2023-03-20T08:25:09.000Z</updated>
+        <summary type="html"><![CDATA[joi v17.8.3]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/joi/pull/2919">[#2919]</a> chore: revert 17.8.x line</li><li><a href="https://github.com/hapijs/joi/issues/2917">[#2917]</a> Cannot find module '@hapi/hoek/assert' from 'index.js'</li><li><a href="https://github.com/hapijs/joi/issues/2914">[#2914]</a> Support for older Node versions maybe lost in v17.8</li><li><a href="https://github.com/hapijs/joi/issues/2913">[#2913]</a> node_modules/@hapi/hoek/lib/deepEqual.js:274  </li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[joi v17.8.2]]></title>
+        <id>https://github.com/hapijs/joi/milestone/188</id>
+        <link href="https://joi.dev/resources/changelog#17.8.2"/>
+        <updated>2023-03-20T08:25:06.000Z</updated>
+        <summary type="html"><![CDATA[joi v17.8.2]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/joi/pull/2916">[#2916]</a> fix: properly transform domain</li><li><a href="https://github.com/hapijs/joi/issues/2915">[#2915]</a> Email validation error in v17.8.1</li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[joi v17.8.1]]></title>
+        <id>https://github.com/hapijs/joi/milestone/187</id>
+        <link href="https://joi.dev/resources/changelog#17.8.1"/>
+        <updated>2023-02-19T12:33:29.000Z</updated>
+        <summary type="html"><![CDATA[joi v17.8.1]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/joi/pull/2910">[#2910]</a> fix: transpile optional chaining</li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[joi v17.8.0]]></title>
+        <id>https://github.com/hapijs/joi/milestone/186</id>
+        <link href="https://joi.dev/resources/changelog#17.8.0"/>
+        <updated>2023-02-19T11:51:58.000Z</updated>
+        <summary type="html"><![CDATA[joi v17.8.0]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/joi/pull/2909">[#2909]</a> chore: use latest address module</li><li><a href="https://github.com/hapijs/joi/issues/2630">[#2630]</a> Joi.string().domain() treats '_http._tcp.archive.ubuntu.com' as invalid domain name, even though it works</li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[joi v17.7.1]]></title>
+        <id>https://github.com/hapijs/joi/milestone/185</id>
+        <link href="https://joi.dev/resources/changelog#17.7.1"/>
+        <updated>2023-02-19T11:51:56.000Z</updated>
+        <summary type="html"><![CDATA[joi v17.7.1]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/joi/pull/2905">[#2905]</a> Upgrade `@sideway/formula` to `3.0.1` for `CVE-2023-25166`</li><li><a href="https://github.com/hapijs/joi/pull/2892">[#2892]</a> Allow null values in BooleanSchema methods</li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[joi v17.7.0]]></title>
+        <id>https://github.com/hapijs/joi/milestone/184</id>
+        <link href="https://joi.dev/resources/changelog#17.7.0"/>
+        <updated>2022-11-10T10:33:24.000Z</updated>
+        <summary type="html"><![CDATA[joi v17.7.0]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/joi/pull/2867">[#2867]</a> fix: better unsafe check of exponential numbers</li><li><a href="https://github.com/hapijs/joi/pull/2762">[#2762]</a> Add isPresent option to object dependencies</li><li><a href="https://github.com/hapijs/joi/issues/2672">[#2672]</a> Some exponential notation strings are validated as unsafe numbers</li><li><a href="https://github.com/hapijs/joi/issues/2542">[#2542]</a> Number validation fails on some strings with E-notation</li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[joi v17.6.4]]></title>
+        <id>https://github.com/hapijs/joi/milestone/183</id>
+        <link href="https://joi.dev/resources/changelog#17.6.4"/>
+        <updated>2022-10-22T10:08:17.000Z</updated>
+        <summary type="html"><![CDATA[joi v17.6.4]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/joi/pull/2859">[#2859]</a> Fix/throwing errors if required argument is omitted</li><li><a href="https://github.com/hapijs/joi/issues/2729">[#2729]</a> Some validation methods don't throw an error when their required argument is omitted</li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[joi v17.6.3]]></title>
+        <id>https://github.com/hapijs/joi/milestone/182</id>
+        <link href="https://joi.dev/resources/changelog#17.6.3"/>
+        <updated>2022-10-11T10:04:10.000Z</updated>
+        <summary type="html"><![CDATA[joi v17.6.3]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/joi/pull/2860">[#2860]</a> fix: allow all schema types to be defined and inferred</li><li><a href="https://github.com/hapijs/joi/issues/2857">[#2857]</a> Typing issues with `attempt()`</li><li><a href="https://github.com/hapijs/joi/issues/2753">[#2753]</a> Typescript typing on `Joi.string().validate(...)`</li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[joi v17.6.2]]></title>
+        <id>https://github.com/hapijs/joi/milestone/181</id>
+        <link href="https://joi.dev/resources/changelog#17.6.2"/>
+        <updated>2022-09-29T16:09:13.000Z</updated>
+        <summary type="html"><![CDATA[joi v17.6.2]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/joi/pull/2851">[#2851]</a> Try improving handling of unions</li><li><a href="https://github.com/hapijs/joi/pull/2850">[#2850]</a> fix: do not confuse booleans for alernatives in strict mode</li><li><a href="https://github.com/hapijs/joi/issues/2848">[#2848]</a> Strict object schema with a boolean property expects alternative, not boolean</li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[joi v17.6.1]]></title>
+        <id>https://github.com/hapijs/joi/milestone/180</id>
+        <link href="https://joi.dev/resources/changelog#17.6.1"/>
+        <updated>2022-09-22T12:01:44.000Z</updated>
+        <summary type="html"><![CDATA[joi v17.6.1]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/joi/pull/2844">[#2844]</a> types: support strict alternatives</li><li><a href="https://github.com/hapijs/joi/pull/2843">[#2843]</a> chore: update license</li><li><a href="https://github.com/hapijs/joi/pull/2842">[#2842]</a> Fix spelling</li><li><a href="https://github.com/hapijs/joi/pull/2841">[#2841]</a> Allow sub-objects for TypeScript strict object schema</li><li><a href="https://github.com/hapijs/joi/pull/2838">[#2838]</a> feat: change validateAsync return type to match options</li><li><a href="https://github.com/hapijs/joi/pull/2836">[#2836]</a> fix(d.ts): allow nested object schema for strictly typed object</li><li><a href="https://github.com/hapijs/joi/pull/2829">[#2829]</a> fix(d.ts)!: type details param of ValidationError constructor</li><li><a href="https://github.com/hapijs/joi/pull/2819">[#2819]</a> Add artifact to typings.</li><li><a href="https://github.com/hapijs/joi/issues/2818">[#2818]</a> Typescript support for .artifact()</li><li><a href="https://github.com/hapijs/joi/pull/2813">[#2813]</a> Fix Joi issue #2746</li><li><a href="https://github.com/hapijs/joi/pull/2808">[#2808]</a> feat(d.ts): Add type information for `maxDomainSegments` to `EmailOptions` and `DomainOptions` interfaces</li><li><a href="https://github.com/hapijs/joi/pull/2797">[#2797]</a> feat(d.ts): improve attempt return type</li><li><a href="https://github.com/hapijs/joi/pull/2788">[#2788]</a> Include local into `ErrorReport` type</li><li><a href="https://github.com/hapijs/joi/pull/2785">[#2785]</a> fix(typings): incompatible type issue for nested strict object schemas</li><li><a href="https://github.com/hapijs/joi/issues/2764">[#2764]</a> Incompatible type expected for object schemas nested in strict object schemas</li><li><a href="https://github.com/hapijs/joi/pull/2749">[#2749]</a> fixed typo</li><li><a href="https://github.com/hapijs/joi/issues/2746">[#2746]</a> Using `Joi.attempt` with `{ convert: false }` does not prevent conversion.</li><li><a href="https://github.com/hapijs/joi/pull/2727">[#2727]</a> Fix validateAsync return type</li><li><a href="https://github.com/hapijs/joi/issues/2663">[#2663]</a> Property "local" does not exist on type "ErrorReport" </li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[joi v17.6.0]]></title>
+        <id>https://github.com/hapijs/joi/milestone/179</id>
+        <link href="https://joi.dev/resources/changelog#17.6.0"/>
+        <updated>2022-01-26T23:07:42.000Z</updated>
+        <summary type="html"><![CDATA[joi v17.6.0]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/joi/issues/2732">[#2732]</a> Support length() in templates</li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[joi v17.5.0]]></title>
+        <id>https://github.com/hapijs/joi/milestone/178</id>
+        <link href="https://joi.dev/resources/changelog#17.5.0"/>
+        <updated>2021-12-02T06:39:50.000Z</updated>
+        <summary type="html"><![CDATA[joi v17.5.0]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/joi/issues/2708">[#2708]</a> How can I define both specific error messages and a default error message?</li><li><a href="https://github.com/hapijs/joi/issues/2706">[#2706]</a> Error messages do not distinguish between numbers and strings！Easily misleading</li><li><a href="https://github.com/hapijs/joi/pull/2703">[#2703]</a> issue #2606: pass TSchema from ObjectSchema to .validate function</li><li><a href="https://github.com/hapijs/joi/pull/2698">[#2698]</a> Add Date -&gt; Joi.DateSchema map to ObjectPropertiesSchema&lt;T&gt;</li><li><a href="https://github.com/hapijs/joi/issues/2687">[#2687]</a> string().min(0) is failing to validate a zero-length string</li><li><a href="https://github.com/hapijs/joi/pull/2666">[#2666]</a> Updated `multiple` rule to support decimal/float base</li><li><a href="https://github.com/hapijs/joi/pull/2665">[#2665]</a> Fix typings on any.external(): add helpers argument</li><li><a href="https://github.com/hapijs/joi/pull/2651">[#2651]</a> Fix label elimination for externals</li><li><a href="https://github.com/hapijs/joi/pull/2649">[#2649]</a> fix: Joi.string().hostname() not returning errors for CIDR notation</li><li><a href="https://github.com/hapijs/joi/issues/2648">[#2648]</a> Incorrect hostname validation</li><li><a href="https://github.com/hapijs/joi/issues/2635">[#2635]</a> any.external: can't disable label</li><li><a href="https://github.com/hapijs/joi/issues/2605">[#2605]</a> "ExternalValidationFunction" type is missing "helpers" parameter in index.d.ts</li><li><a href="https://github.com/hapijs/joi/issues/2600">[#2600]</a> Joi.external() error message</li><li><a href="https://github.com/hapijs/joi/issues/2590">[#2590]</a> defaults in alternatives should work recursively</li><li><a href="https://github.com/hapijs/joi/pull/2589">[#2589]</a> merge subschema matches when subchemas are objects, or alternatives of objects</li><li><a href="https://github.com/hapijs/joi/pull/2577">[#2577]</a> add subschema property validation failures to context</li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[joi v17.4.3]]></title>
+        <id>https://github.com/hapijs/joi/milestone/177</id>
+        <link href="https://joi.dev/resources/changelog#17.4.3"/>
+        <updated>2021-12-01T08:48:44.000Z</updated>
+        <summary type="html"><![CDATA[joi v17.4.3]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/joi/issues/2685">[#2685]</a> Joi.string().email() passes for `foo@bar%2ecom`</li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[joi v17.4.2]]></title>
+        <id>https://github.com/hapijs/joi/milestone/176</id>
+        <link href="https://joi.dev/resources/changelog#17.4.2"/>
+        <updated>2021-08-01T21:18:00.000Z</updated>
+        <summary type="html"><![CDATA[joi v17.4.2]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/joi/pull/2642">[#2642]</a> Fix issue with only required items. Fixes #2620.</li><li><a href="https://github.com/hapijs/joi/pull/2624">[#2624]</a> Fix Web Workers compatibility</li><li><a href="https://github.com/hapijs/joi/issues/2620">[#2620]</a> If all elements of array is required, it does not validate unknown items</li><li><a href="https://github.com/hapijs/joi/issues/2251">[#2251]</a> `dist/joi-browser.min.js` doesn't work in workers</li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[joi v17.4.1]]></title>
+        <id>https://github.com/hapijs/joi/milestone/175</id>
+        <link href="https://joi.dev/resources/changelog#17.4.1"/>
+        <updated>2021-07-11T05:04:34.000Z</updated>
+        <summary type="html"><![CDATA[joi v17.4.1]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/joi/pull/2627">[#2627]</a> Add object type guards schema</li><li><a href="https://github.com/hapijs/joi/pull/2586">[#2586]</a> fix isSchema type definition</li><li><a href="https://github.com/hapijs/joi/issues/2585">[#2585]</a> type problem in Joi.isSchema function</li><li><a href="https://github.com/hapijs/joi/pull/2573">[#2573]</a> Add option array type to AlternativesSchema.conditional</li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[joi v17.4.0]]></title>
+        <id>https://github.com/hapijs/joi/milestone/174</id>
+        <link href="https://joi.dev/resources/changelog#17.4.0"/>
+        <updated>2021-02-08T01:06:29.000Z</updated>
+        <summary type="html"><![CDATA[joi v17.4.0]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/joi/pull/2556">[#2556]</a> fix: any.when() options parameters not supported as Array in index.d.ts</li><li><a href="https://github.com/hapijs/joi/issues/2555">[#2555]</a> Type definition for the function `any.when()`  mismatch the documentation and usage</li><li><a href="https://github.com/hapijs/joi/pull/2551">[#2551]</a> feat: Make Joi.Schema generic</li><li><a href="https://github.com/hapijs/joi/pull/2548">[#2548]</a> fix: defaults in ordered array are not filled</li><li><a href="https://github.com/hapijs/joi/issues/2543">[#2543]</a> URI validation, allowRelative with domain</li><li><a href="https://github.com/hapijs/joi/pull/2536">[#2536]</a> merge the results of a .match('all') if all the subschemas are objects</li><li><a href="https://github.com/hapijs/joi/issues/2535">[#2535]</a> defaults in alternatives with a match mode set are not returned</li><li><a href="https://github.com/hapijs/joi/pull/2534">[#2534]</a> Remove incorrect errors type</li><li><a href="https://github.com/hapijs/joi/pull/2532">[#2532]</a> Fix confusing message when refs are passed</li><li><a href="https://github.com/hapijs/joi/pull/2528">[#2528]</a> Added guid separator and made version optional</li><li><a href="https://github.com/hapijs/joi/issues/2523">[#2523]</a> errors is always undefined in ValidationResult</li><li><a href="https://github.com/hapijs/joi/pull/2521">[#2521]</a> Fix type of schema passed to alter functions</li><li><a href="https://github.com/hapijs/joi/pull/2518">[#2518]</a> fix for stripUnknown not working for nested object on invalid object</li><li><a href="https://github.com/hapijs/joi/pull/2502">[#2502]</a> Appends the allowed object keys in typescript</li><li><a href="https://github.com/hapijs/joi/issues/2479">[#2479]</a> Inconsistency with stripUnknown: true and failing validation rules</li><li><a href="https://github.com/hapijs/joi/issues/2471">[#2471]</a> Joi.object().xor() throws with "must be a string or a reference" when passed a reference</li><li><a href="https://github.com/hapijs/joi/issues/2459">[#2459]</a> stripUnknown doesn't work for nested objects</li><li><a href="https://github.com/hapijs/joi/issues/2404">[#2404]</a> defaults in ordered array are not filled</li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[joi v17.3.0]]></title>
+        <id>https://github.com/hapijs/joi/milestone/173</id>
+        <link href="https://joi.dev/resources/changelog#17.3.0"/>
+        <updated>2020-10-24T07:26:46.000Z</updated>
+        <summary type="html"><![CDATA[joi v17.3.0]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/joi/pull/2477">[#2477]</a> Add RegExp to the supported types for Extension.type</li><li><a href="https://github.com/hapijs/joi/pull/2475">[#2475]</a> Add render property to ReferenceOptions TS def</li><li><a href="https://github.com/hapijs/joi/issues/2465">[#2465]</a> @hapi/formula@2.0.0 Deprecated</li><li><a href="https://github.com/hapijs/joi/pull/2455">[#2455]</a> Expose prefs in external()</li><li><a href="https://github.com/hapijs/joi/pull/2454">[#2454]</a> CustomValidator return type adjusted in typescript</li><li><a href="https://github.com/hapijs/joi/pull/2442">[#2442]</a> Update index.d.ts</li><li><a href="https://github.com/hapijs/joi/issues/2441">[#2441]</a> Wrong field name in ValidationError (index.d.ts)</li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[joi v17.2.1]]></title>
+        <id>https://github.com/hapijs/joi/milestone/171</id>
+        <link href="https://joi.dev/resources/changelog#17.2.1"/>
+        <updated>2020-08-19T16:57:59.000Z</updated>
+        <summary type="html"><![CDATA[joi v17.2.1]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/joi/issues/2450">[#2450]</a> Update dev site</li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[joi v17.2.0]]></title>
+        <id>https://github.com/hapijs/joi/milestone/170</id>
+        <link href="https://joi.dev/resources/changelog#17.2.0"/>
+        <updated>2020-08-05T02:12:08.000Z</updated>
+        <summary type="html"><![CDATA[joi v17.2.0]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/joi/issues/2431">[#2431]</a> Import types from DT</li><li><a href="https://github.com/hapijs/joi/pull/2421">[#2421]</a> Support ISO8601 with hours timeshift only</li><li><a href="https://github.com/hapijs/joi/issues/2419">[#2419]</a> isoDate doesn't recognize correct string</li><li><a href="https://github.com/hapijs/joi/pull/2408">[#2408]</a> Fix number padding (e.g. 00000) and trailing decimal points (e.g. 2.)</li><li><a href="https://github.com/hapijs/joi/issues/2407">[#2407]</a> "2." throws number.unsafe</li><li><a href="https://github.com/hapijs/joi/issues/2406">[#2406]</a> "00000" throws number.unsafe</li><li><a href="https://github.com/hapijs/joi/issues/2398">[#2398]</a> Support maxDomainSegments</li><li><a href="https://github.com/hapijs/joi/issues/2380">[#2380]</a> Joi.build() does not work with complex extension bases</li><li><a href="https://github.com/hapijs/joi/pull/2377">[#2377]</a> Add extension validation for "cast"</li><li><a href="https://github.com/hapijs/joi/issues/2361">[#2361]</a> Validation artifacts collected from successful rules</li><li><a href="https://github.com/hapijs/joi/issues/2348">[#2348]</a> object.default() broke when object is extended</li><li><a href="https://github.com/hapijs/joi/issues/2337">[#2337]</a> tlds fails to error on invalid segment</li><li><a href="https://github.com/hapijs/joi/issues/2330">[#2330]</a> Consistently apply wrap setting</li><li><a href="https://github.com/hapijs/joi/issues/2320">[#2320]</a> invalid GUID/UUID is validated as valid</li><li><a href="https://github.com/hapijs/joi/issues/2318">[#2318]</a> `larger than` is incorrect for comparing quanties</li><li><a href="https://github.com/hapijs/joi/issues/2303">[#2303]</a> Add option to resolve `.ref()` and `.in()` values in error messages.</li><li><a href="https://github.com/hapijs/joi/issues/2284">[#2284]</a> Array item could not be an Error</li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[joi v17.1.1]]></title>
+        <id>https://github.com/hapijs/joi/milestone/169</id>
+        <link href="https://joi.dev/resources/changelog#17.1.1"/>
+        <updated>2020-03-14T21:26:52.000Z</updated>
+        <summary type="html"><![CDATA[joi v17.1.1]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/joi/issues/2316">[#2316]</a> Validate domain in relative uri</li><li><a href="https://github.com/hapijs/joi/pull/2293">[#2293]</a> Fix error on changeless forks. Fixes #2292.</li><li><a href="https://github.com/hapijs/joi/issues/2292">[#2292]</a> Fork object with option already applied</li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[joi v17.1.0]]></title>
+        <id>https://github.com/hapijs/joi/milestone/168</id>
+        <link href="https://joi.dev/resources/changelog#17.1.0"/>
+        <updated>2020-01-20T00:03:02.000Z</updated>
+        <summary type="html"><![CDATA[joi v17.1.0]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/joi/issues/2280">[#2280]</a> isError()</li><li><a href="https://github.com/hapijs/joi/issues/2279">[#2279]</a> Remove annotate() from assert() when used in the browser</li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[joi v17.0.2]]></title>
+        <id>https://github.com/hapijs/joi/milestone/167</id>
+        <link href="https://joi.dev/resources/changelog#17.0.2"/>
+        <updated>2020-01-09T18:47:40.000Z</updated>
+        <summary type="html"><![CDATA[joi v17.0.2]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/joi/issues/2269">[#2269]</a> Ensure keys term always has right constructor</li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[joi v17.0.1]]></title>
+        <id>https://github.com/hapijs/joi/milestone/166</id>
+        <link href="https://joi.dev/resources/changelog#17.0.1"/>
+        <updated>2020-01-09T18:37:15.000Z</updated>
+        <summary type="html"><![CDATA[joi v17.0.1]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/joi/issues/2268">[#2268]</a> Move flag back to proto</li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[joi v17.0.0]]></title>
+        <id>https://github.com/hapijs/joi/milestone/164</id>
+        <link href="https://joi.dev/resources/changelog#17.0.0"/>
+        <updated>2020-01-06T19:40:08.000Z</updated>
+        <summary type="html"><![CDATA[joi v17.0.0]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/joi/issues/2263">[#2263]</a> Update deps</li><li><a href="https://github.com/hapijs/joi/issues/2262">[#2262]</a> 17.0.0 Release Notes</li><li><a href="https://github.com/hapijs/joi/issues/2261">[#2261]</a> Remove ValidationError.annotate() from browser build</li><li><a href="https://github.com/hapijs/joi/issues/2260">[#2260]</a> object.regex()</li><li><a href="https://github.com/hapijs/joi/issues/2254">[#2254]</a> Giving an array argument to any.valid returns incorrect error</li><li><a href="https://github.com/hapijs/joi/pull/2243">[#2243]</a> Allow `_` in alias, arg, flag, modifier, override, rule, and term names</li><li><a href="https://github.com/hapijs/joi/issues/2242">[#2242]</a> Can you allow `_` in rule names?</li><li><a href="https://github.com/hapijs/joi/issues/2231">[#2231]</a> Change errors.wrapArrays to errors.wrap.array</li><li><a href="https://github.com/hapijs/joi/issues/2219">[#2219]</a> Add the ability to extend all types in place</li><li><a href="https://github.com/hapijs/joi/issues/2200">[#2200]</a> Move ip and uri logic to address</li><li><a href="https://github.com/hapijs/joi/issues/2199">[#2199]</a> Remove node 8, 10</li><li><a href="https://github.com/hapijs/joi/issues/2189">[#2189]</a> Change default function second argument to full helpers (from prefs)</li><li><a href="https://github.com/hapijs/joi/issues/2182">[#2182]</a> Remove quotation marks from error messages</li><li><a href="https://github.com/hapijs/joi/issues/2163">[#2163]</a> string().hostiname() - validation of non-ASCII chars containing domains</li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[joi v16.1.8]]></title>
+        <id>https://github.com/hapijs/joi/milestone/163</id>
+        <link href="https://joi.dev/resources/changelog#16.1.8"/>
+        <updated>2019-11-24T10:02:03.000Z</updated>
+        <summary type="html"><![CDATA[joi v16.1.8]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/joi/issues/2226">[#2226]</a> object.with and object.without throw error on $ prefixed keys</li><li><a href="https://github.com/hapijs/joi/issues/2218">[#2218]</a> Maximum call stack size exceeded​​ error for dataUri validation</li><li><a href="https://github.com/hapijs/joi/issues/2212">[#2212]</a> Joi.string().email() considers "a@a.com/asd" as valid email</li><li><a href="https://github.com/hapijs/joi/pull/2208">[#2208]</a> fix: describe() on schema with default value null</li><li><a href="https://github.com/hapijs/joi/issues/2207">[#2207]</a> describe() on schema with default value null results in "Cannot read property 'Symbol(literal)' of null"</li><li><a href="https://github.com/hapijs/joi/issues/2205">[#2205]</a> Cannot require a minimal number of matching object properties with `pattern`</li><li><a href="https://github.com/hapijs/joi/issues/2190">[#2190]</a> Joi.string().domain() treats an email address as a valid domain name</li><li><a href="https://github.com/hapijs/joi/issues/2187">[#2187]</a> Giving an array argument to any.allow(...values) gives incorrect error</li><li><a href="https://github.com/hapijs/joi/issues/2181">[#2181]</a>  Joi.alternatives produces confusing message when used with nested object and `{ abortEarly: false }`</li><li><a href="https://github.com/hapijs/joi/issues/2176">[#2176]</a> joi.types() is missing `func` alias</li><li><a href="https://github.com/hapijs/joi/issues/2173">[#2173]</a> [Request] Allow mixing patch version</li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[joi v16.1.7]]></title>
+        <id>https://github.com/hapijs/joi/milestone/162</id>
+        <link href="https://joi.dev/resources/changelog#16.1.7"/>
+        <updated>2019-10-05T17:37:42.000Z</updated>
+        <summary type="html"><![CDATA[joi v16.1.7]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/joi/issues/2168">[#2168]</a> Date fails to enforce format when value is a number string</li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[joi v16.1.6]]></title>
+        <id>https://github.com/hapijs/joi/milestone/161</id>
+        <link href="https://joi.dev/resources/changelog#16.1.6"/>
+        <updated>2019-10-05T03:41:01.000Z</updated>
+        <summary type="html"><![CDATA[joi v16.1.6]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/joi/issues/2167">[#2167]</a> Error.captureStackTrace can't be used in all browser builds</li><li><a href="https://github.com/hapijs/joi/issues/2165">[#2165]</a> Cannot read property 'delete' of undefined</li></ul>]]></content>
+    </entry>
+</feed>

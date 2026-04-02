@@ -93,7 +93,6 @@ Joi.object({
   email: Joi.string().email({ minDomainSegments: 2, tlds: { allow: ["com", "net"] } } )
 }).with('username', 'birth_year').xor('password', 'access_token').with('password', 'repeat_password')`;
 
-
 const DEFAULT_VALIDATE = `//Insert data to validate here
 {
   username: "abc",
@@ -101,7 +100,6 @@ const DEFAULT_VALIDATE = `//Insert data to validate here
   repeat_password: "password",
   birth_year: 1994
 }`;
-
 
 const route = useRoute();
 const schema = useStorage('joi-sandbox-schema', DEFAULT_SCHEMA);
@@ -119,17 +117,14 @@ const latestVersion = ref(joiInfo.versionsArray[0]);
 const { copy, copied: isCopied } = useClipboard();
 const showResetConfirm = ref(false);
 
-
 const schemaEditor = ref(null);
 const validateEditor = ref(null);
-
 
 const loadJoi = async (v) => {
   if (!v) {
     return;
   }
   isLoading.value = true;
-
 
   // Map masked version back to full version if necessary
   let actualVersion = v;
@@ -138,9 +133,7 @@ const loadJoi = async (v) => {
     actualVersion = joiInfo.versionsArray.find((ver) => ver.startsWith(`${match[1]}.`)) || v;
   }
 
-
   version.value = actualVersion;
-
 
   try {
     let module;
@@ -151,7 +144,6 @@ const loadJoi = async (v) => {
     } else {
       throw new Error(`Version ${actualVersion} not supported locally`);
     }
-
 
     if (module && module.default) {
       joiInstance.value = module.default;
@@ -164,7 +156,6 @@ const loadJoi = async (v) => {
     isLoading.value = false;
   }
 };
-
 
 onMounted(async () => {
   const path = (route && route.path ? route.path : '').replace(/\/$/, '').replace(/\.html$/, '');
@@ -192,7 +183,6 @@ onMounted(async () => {
   await loadJoi(v);
 });
 
-
 watch(
   () => route.path,
   async (newPath) => {
@@ -208,35 +198,28 @@ watch(
   { immediate: false },
 );
 
-
 const onValidateClick = () => {
   if (!joiInstance.value) {
     result.value = 'Joi is not loaded yet.';
     return;
   }
 
-
   try {
     // oxlint-disable-next-line no-new-func
     const dataToValidate = new Function(`"use strict";return (${validate.value})`)();
 
-
     // oxlint-disable-next-line no-new-func
     const joiSchemaFunc = new Function('Joi', `"use strict";return (${schema.value})`);
 
-
     const joiSchema = joiSchemaFunc(joiInstance.value);
-
 
     if (typeof joiSchema.validate !== 'function') {
       throw new TypeError('Created schema does not have a validate method. Is Joi loaded correctly?');
     }
 
-
     const { error, value } = joiSchema.validate(dataToValidate, {
       abortEarly: false,
     });
-
 
     if (error) {
       result.value = 'Validation Error';
@@ -263,20 +246,16 @@ const onValidateClick = () => {
   }
 };
 
-
 const onResetClick = () => {
   showResetConfirm.value = true;
 };
-
 
 const cancelReset = () => {
   showResetConfirm.value = false;
 };
 
-
 const confirmReset = () => {
   showResetConfirm.value = false;
-
 
   schema.value = DEFAULT_SCHEMA;
   validate.value = DEFAULT_VALIDATE;
@@ -288,13 +267,11 @@ const confirmReset = () => {
   hasValidated.value = false;
 };
 
-
 const onShareClick = async () => {
   const state = JSON.stringify({
     data: validate.value,
     schema: schema.value,
   });
-
 
   try {
     const encoded = btoa(unescape(encodeURIComponent(state)));

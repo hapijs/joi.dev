@@ -52,7 +52,6 @@ const search = ref('');
 const sort = ref('name');
 const moduleInfo = ref(modulesData);
 
-
 const filteredModules = computed(() => {
   const searchTerm = search.value.trim().toLowerCase();
   const modules = Object.entries(moduleInfo.value)

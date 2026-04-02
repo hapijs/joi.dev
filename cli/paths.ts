@@ -8,6 +8,9 @@ export const MARKDOWN_DIR = path.join(GENERATED_DIR, 'markdown');
 export const POLICIES_GENERATED_DIR = path.join(MARKDOWN_DIR, 'policies');
 export const METADATA_DIR = path.join(GENERATED_DIR, 'metadata');
 export const MODULES_DIR = path.join(GENERATED_DIR, 'modules');
+export const ROOT_DIR = path.join(import.meta.dirname, '..');
+export const PACKAGE_JSON_PATH = path.join(ROOT_DIR, 'package.json');
+export const PUBLIC_ATOM_DIR = path.join(import.meta.dirname, '../docs/public/atom');
 
 export const getModuleMarkdownPath = (moduleName: string, major: string | number) =>
   path.join(MARKDOWN_DIR, moduleName, major.toString(), 'api.md');
@@ -21,6 +24,8 @@ export const getModuleInfoPath = (moduleName: string) => path.join(getModuleStor
 
 export const getModuleChangelogPath = (moduleName: string) =>
   path.join(getModuleStoragePath(moduleName), 'changelog.json');
+
+export const getModuleAtomPath = (moduleName: string) => path.join(getModuleStoragePath(moduleName), 'changelog.atom');
 
 export const getExisting = async <T>(filePath: string): Promise<T | undefined> => {
   try {

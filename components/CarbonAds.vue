@@ -4,13 +4,11 @@ import { onMounted, watch } from 'vue';
 
 const route = useRoute();
 
-
 const load = () => {
   const script = document.createElement('script');
   script.id = '_carbonads_js';
   script.src = `//cdn.carbonads.com/carbon.js?serve=CEAIL27W&placement=joidev`;
   script.async = true;
-
 
   const container = document.querySelector('#carbon-ad');
   if (container) {
@@ -19,11 +17,9 @@ const load = () => {
   }
 };
 
-
 onMounted(() => {
   load();
 });
-
 
 watch(
   () => route.path,

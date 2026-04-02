@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://joi.dev/module/address</id>
+    <title>@hapi/address changelog</title>
+    <updated>2023-03-11T10:45:33.000Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://joi.dev/module/address"/>
+    <logo>https://joi.dev/img/logo.png</logo>
+    <icon>https://joi.dev/favicon.png</icon>
+    <entry>
+        <title type="html"><![CDATA[@hapi/address v5.1.1]]></title>
+        <id>https://github.com/hapijs/address/milestone/23</id>
+        <link href="https://joi.dev/module/address/changelog#5.1.1"/>
+        <updated>2023-03-11T10:45:33.000Z</updated>
+        <summary type="html"><![CDATA[@hapi/address v5.1.1]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/address/pull/45">[#45]</a> chore: target node 14</li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[@hapi/address v5.1.0]]></title>
+        <id>https://github.com/hapijs/address/milestone/22</id>
+        <link href="https://joi.dev/module/address/changelog#5.1.0"/>
+        <updated>2023-02-18T20:26:49.000Z</updated>
+        <summary type="html"><![CDATA[@hapi/address v5.1.0]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/address/pull/44">[#44]</a> chore: change package namespace and upgrade dependencies</li><li><a href="https://github.com/hapijs/address/pull/43">[#43]</a> feat: add underscore support</li><li><a href="https://github.com/hapijs/address/pull/42">[#42]</a> fix: minor improvements to typings and binary conversion</li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[@hapi/address v5.0.0]]></title>
+        <id>https://github.com/hapijs/address/milestone/20</id>
+        <link href="https://joi.dev/module/address/changelog#5.0.0"/>
+        <updated>2022-05-02T05:42:21.000Z</updated>
+        <summary type="html"><![CDATA[@hapi/address v5.0.0]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/address/issues/41">[#41]</a> Change API</li><li><a href="https://github.com/hapijs/address/issues/40">[#40]</a> Convert to TypeScript</li><li><a href="https://github.com/hapijs/address/issues/39">[#39]</a> Drop node 12 support</li><li><a href="https://github.com/hapijs/address/pull/38">[#38]</a> Update tlds.js</li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[@hapi/address v4.1.5]]></title>
+        <id>https://github.com/hapijs/address/milestone/24</id>
+        <link href="https://joi.dev/module/address/changelog#4.1.5"/>
+        <updated>2024-01-29T13:21:04.000Z</updated>
+        <summary type="html"><![CDATA[@hapi/address v4.1.5]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/address/pull/47">[#47]</a> chore: update tlds</li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[@hapi/address v4.1.4]]></title>
+        <id>https://github.com/hapijs/address/milestone/19</id>
+        <link href="https://joi.dev/module/address/changelog#4.1.4"/>
+        <updated>2022-03-22T23:22:57.000Z</updated>
+        <summary type="html"><![CDATA[@hapi/address v4.1.4]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/address/pull/37">[#37]</a> Update the TLDS for email validation</li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[@hapi/address v4.1.3]]></title>
+        <id>https://github.com/hapijs/address/milestone/18</id>
+        <link href="https://joi.dev/module/address/changelog#4.1.3"/>
+        <updated>2021-12-01T08:38:39.000Z</updated>
+        <summary type="html"><![CDATA[@hapi/address v4.1.3]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/address/issues/36">[#36]</a> Invalid input error validating link in schema</li><li><a href="https://github.com/hapijs/address/issues/31">[#31]</a> Incorrect validation</li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[@hapi/address v4.1.2]]></title>
+        <id>https://github.com/hapijs/address/milestone/17</id>
+        <link href="https://joi.dev/module/address/changelog#4.1.2"/>
+        <updated>2021-05-07T06:11:07.000Z</updated>
+        <summary type="html"><![CDATA[@hapi/address v4.1.2]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/address/issues/35">[#35]</a> Fails to invalidate URI delimiter chars on domain end</li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[@hapi/address v4.1.1]]></title>
+        <id>https://github.com/hapijs/address/milestone/16</id>
+        <link href="https://joi.dev/module/address/changelog#4.1.1"/>
+        <updated>2021-02-08T01:02:42.000Z</updated>
+        <summary type="html"><![CDATA[@hapi/address v4.1.1]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/address/issues/33">[#33]</a> Email validations rejects valid email addresses</li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[@hapi/address v4.1.0]]></title>
+        <id>https://github.com/hapijs/address/milestone/15</id>
+        <link href="https://joi.dev/module/address/changelog#4.1.0"/>
+        <updated>2020-07-06T01:17:17.000Z</updated>
+        <summary type="html"><![CDATA[@hapi/address v4.1.0]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/address/issues/30">[#30]</a> Support maxDomainSegments</li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[@hapi/address v4.0.1]]></title>
+        <id>https://github.com/hapijs/address/milestone/14</id>
+        <link href="https://joi.dev/module/address/changelog#4.0.1"/>
+        <updated>2020-03-14T00:01:49.000Z</updated>
+        <summary type="html"><![CDATA[@hapi/address v4.0.1]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/address/issues/26">[#26]</a> Capture domain in relative uris</li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[@hapi/address v4.0.0]]></title>
+        <id>https://github.com/hapijs/address/milestone/12</id>
+        <link href="https://joi.dev/module/address/changelog#4.0.0"/>
+        <updated>2020-01-04T08:47:36.000Z</updated>
+        <summary type="html"><![CDATA[@hapi/address v4.0.0]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/address/issues/24">[#24]</a> Only support node 12</li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[@hapi/address v3.2.2]]></title>
+        <id>https://github.com/hapijs/address/milestone/10</id>
+        <link href="https://joi.dev/module/address/changelog#3.2.2"/>
+        <updated>2020-01-04T08:42:34.000Z</updated>
+        <summary type="html"><![CDATA[@hapi/address v3.2.2]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/address/issues/20">[#20]</a> "a@a.com/asd" is invalid email</li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[@hapi/address v3.2.1]]></title>
+        <id>https://github.com/hapijs/address/milestone/9</id>
+        <link href="https://joi.dev/module/address/changelog#3.2.1"/>
+        <updated>2019-11-17T05:50:55.000Z</updated>
+        <summary type="html"><![CDATA[@hapi/address v3.2.1]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/address/issues/18">[#18]</a> Error on email</li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[@hapi/address v3.2.0]]></title>
+        <id>https://github.com/hapijs/address/milestone/8</id>
+        <link href="https://joi.dev/module/address/changelog#3.2.0"/>
+        <updated>2019-10-30T23:35:01.000Z</updated>
+        <summary type="html"><![CDATA[@hapi/address v3.2.0]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/address/issues/16">[#16]</a> Add faster version of decodeURIComponent()</li><li><a href="https://github.com/hapijs/address/issues/15">[#15]</a> Relocate joi uri and ip validation regex</li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[@hapi/address v3.1.0]]></title>
+        <id>https://github.com/hapijs/address/milestone/7</id>
+        <link href="https://joi.dev/module/address/changelog#3.1.0"/>
+        <updated>2019-10-16T04:38:58.000Z</updated>
+        <summary type="html"><![CDATA[@hapi/address v3.1.0]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/address/pull/14">[#14]</a> Error codes in a separate file. Closes #13</li><li><a href="https://github.com/hapijs/address/issues/13">[#13]</a> Export errors codes to allow translation</li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[@hapi/address v3.0.0]]></title>
+        <id>https://github.com/hapijs/address/milestone/6</id>
+        <link href="https://joi.dev/module/address/changelog#3.0.0"/>
+        <updated>2019-10-06T01:46:35.000Z</updated>
+        <summary type="html"><![CDATA[@hapi/address v3.0.0]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/address/issues/12">[#12]</a> Add types</li><li><a href="https://github.com/hapijs/address/issues/11">[#11]</a> Drop node 8 support</li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[@hapi/address v2.1.4]]></title>
+        <id>https://github.com/hapijs/address/milestone/11</id>
+        <link href="https://joi.dev/module/address/changelog#2.1.4"/>
+        <updated>2020-01-04T08:41:53.000Z</updated>
+        <summary type="html"><![CDATA[@hapi/address v2.1.4]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/address/issues/21">[#21]</a> Backport #20</li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[@hapi/address v2.1.3]]></title>
+        <id>https://github.com/hapijs/address/milestone/5</id>
+        <link href="https://joi.dev/module/address/changelog#2.1.3"/>
+        <updated>2019-11-17T05:57:02.000Z</updated>
+        <summary type="html"><![CDATA[@hapi/address v2.1.3]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/address/issues/19">[#19]</a> Backport #18</li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[@hapi/address v2.1.2]]></title>
+        <id>https://github.com/hapijs/address/milestone/4</id>
+        <link href="https://joi.dev/module/address/changelog#2.1.2"/>
+        <updated>2019-09-20T20:04:52.000Z</updated>
+        <summary type="html"><![CDATA[@hapi/address v2.1.2]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/address/issues/9">[#9]</a> Update tlds</li><li><a href="https://github.com/hapijs/address/pull/8">[#8]</a> Ensure Buffer presence before using it</li><li><a href="https://github.com/hapijs/address/issues/7">[#7]</a> Re-implement #4, #6</li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[@hapi/address v2.1.1]]></title>
+        <id>https://github.com/hapijs/address/milestone/3</id>
+        <link href="https://joi.dev/module/address/changelog#2.1.1"/>
+        <updated>2019-09-05T09:14:22.000Z</updated>
+        <summary type="html"><![CDATA[@hapi/address v2.1.1]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/address/issues/6">[#6]</a> Revert Url hack</li></ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[@hapi/address v2.1.0]]></title>
+        <id>https://github.com/hapijs/address/milestone/2</id>
+        <link href="https://joi.dev/module/address/changelog#2.1.0"/>
+        <updated>2019-09-03T13:40:33.000Z</updated>
+        <summary type="html"><![CDATA[@hapi/address v2.1.0]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/address/issues/5">[#5]</a> Make tlds optional</li><li><a href="https://github.com/hapijs/address/pull/4">[#4]</a> Replace punycode dep with URL hack</li><li><a href="https://github.com/hapijs/address/issues/1">[#1]</a> Support option to allow longer email addresses</li></ul>]]></content>
+    </entry>
+</feed>
