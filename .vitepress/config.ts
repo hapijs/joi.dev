@@ -68,7 +68,7 @@ export default defineConfig({
     footer: {
       copyright: 'Copyright © 2012-present hapi.js team',
       message:
-        '<a href="https://www.netlify.com" target="_blank"><img src="https://www.netlify.com/assets/badges/netlify-badge-dark.svg" alt="Deploys by Netlify" style="display: inline-block; vertical-align: middle; height: 20px; margin-left: 10px;" /></a>',
+        '<a href="https://www.netlify.com" target="_blank"><img src="https://www.netlify.com/assets/badges/netlify-badge-dark.svg" alt="Deploys by Netlify" style="display: inline-block; vertical-align: middle; height: 30px; margin-left: 10px;" /></a>',
     },
     logo: '/img/joiTransparent.png',
     nav: [
