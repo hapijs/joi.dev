@@ -110,8 +110,8 @@ const format = async () => {
         changes: { from: 0, insert: formatted, to: view.state.doc.length },
       });
     }
-  } catch (err) {
-    console.error('Format error:', err);
+  } catch (error) {
+    console.error('Format error:', error);
   }
 };
 
