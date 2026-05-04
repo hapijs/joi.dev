@@ -1,5 +1,44 @@
 [
   {
+    "date": "2026-05-04T16:09:20Z",
+    "id": 15790448,
+    "issues": [
+      {
+        "id": 4377943724,
+        "labels": ["bug"],
+        "number": 3113,
+        "title": "fix: protect link recursion from max call stack",
+        "url": "https://github.com/hapijs/joi/pull/3113"
+      }
+    ],
+    "number": 214,
+    "url": "https://github.com/hapijs/joi/milestone/214",
+    "version": "18.2.1"
+  },
+  {
+    "date": "2026-05-04T15:16:15Z",
+    "id": 15789816,
+    "issues": [
+      {
+        "id": 4377623767,
+        "labels": ["feature"],
+        "number": 3111,
+        "title": "feat: add maxRecursion limit to links",
+        "url": "https://github.com/hapijs/joi/pull/3111"
+      },
+      {
+        "id": 1150539161,
+        "labels": ["support"],
+        "number": 2747,
+        "title": "Limit depth of self-referencing schema",
+        "url": "https://github.com/hapijs/joi/issues/2747"
+      }
+    ],
+    "number": 213,
+    "url": "https://github.com/hapijs/joi/milestone/213",
+    "version": "18.2.0"
+  },
+  {
     "date": "2026-03-30T18:05:09Z",
     "id": 15356910,
     "issues": [

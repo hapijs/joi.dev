@@ -1,5 +1,14 @@
 ## Version 18 {#v18}
 
+### [18.2.1](https://github.com/hapijs/joi/milestone/214) {#18.2.1}
+
+- [#3113](https://github.com/hapijs/joi/pull/3113) fix: protect link recursion from max call stack
+
+### [18.2.0](https://github.com/hapijs/joi/milestone/213) {#18.2.0}
+
+- [#3111](https://github.com/hapijs/joi/pull/3111) feat: add maxRecursion limit to links
+- [#2747](https://github.com/hapijs/joi/issues/2747) Limit depth of self-referencing schema
+
 ### [18.1.2](https://github.com/hapijs/joi/milestone/212) {#18.1.2}
 
 - [#3107](https://github.com/hapijs/joi/pull/3107) fix: improve JSON Schema conversion for number.port() and number.sign()

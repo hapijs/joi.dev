@@ -252,7 +252,7 @@ for (const majorStr of joiMajors) {
 if (changed) {
   await fs.writeFile(PACKAGE_JSON_PATH, `${JSON.stringify(packageJson, null, 2)}\n`);
   console.info('Running pnpm install...');
-  execFileSync('pnpm', ['install'], { stdio: 'inherit' });
+  execFileSync('pnpm', ['install', '--no-frozen-lockfile'], { stdio: 'inherit' });
 }
 
 // Generate module/index.md

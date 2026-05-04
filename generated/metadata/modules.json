@@ -48,13 +48,13 @@
         "node": ">= 14"
       },
       {
-        "branch": "v18.1.2",
+        "branch": "v18.2.1",
         "license": "BSD",
-        "name": "18.1.2",
+        "name": "18.2.1",
         "node": ">= 20"
       }
     ],
-    "versionsArray": ["18.1.2", "17.13.3"]
+    "versionsArray": ["18.2.1", "17.13.3"]
   },
   "joi-date": {
     "forks": 23,
