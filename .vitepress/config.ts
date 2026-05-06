@@ -1,3 +1,4 @@
+import { slug as githubSlug } from 'github-slugger';
 import { defineConfig } from 'vitepress';
 import { groupIconMdPlugin, groupIconVitePlugin } from 'vitepress-plugin-group-icons';
 
@@ -49,6 +50,9 @@ export default defineConfig({
   description: 'The most powerful data validation library for JS',
   head: [['link', { href: '/favicon2.png', rel: 'icon' }]],
   markdown: {
+    anchor: {
+      slugify: (s) => githubSlug(s),
+    },
     config(md) {
       md.use(groupIconMdPlugin);
     },

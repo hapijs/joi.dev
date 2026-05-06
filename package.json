@@ -34,6 +34,7 @@
     "codemirror": "^6.0.2",
     "es-toolkit": "^1.45.1",
     "feed": "^5.2.0",
+    "github-slugger": "^2.0.0",
     "joi-17": "npm:joi@17.13.3",
     "joi-18": "npm:joi@18.2.1",
     "prettier": "^3.8.1",
