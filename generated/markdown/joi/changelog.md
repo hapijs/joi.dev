@@ -50,6 +50,10 @@
 
 ## Version 17 {#v17}
 
+### [17.13.4](https://github.com/hapijs/joi/milestone/216) {#17.13.4}
+
+- [#3123](https://github.com/hapijs/joi/pull/3123) chore: backport #3113 to v17
+
 ### [17.13.3](https://github.com/hapijs/joi/milestone/207) {#17.13.3}
 
 - [#3043](https://github.com/hapijs/joi/pull/3043) fix: correct function type in alternatives error

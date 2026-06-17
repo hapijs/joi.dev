@@ -72,6 +72,14 @@
         <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/joi/pull/3084">[#3084]</a> feat: add isAsync() helper</li><li><a href="https://github.com/hapijs/joi/pull/3082">[#3082]</a> Added wrapper option to uuid function</li><li><a href="https://github.com/hapijs/joi/pull/3080">[#3080]</a> feat: implement standard schema spec</li><li><a href="https://github.com/hapijs/joi/issues/3078">[#3078]</a> Implement Standard Schema</li><li><a href="https://github.com/hapijs/joi/issues/2993">[#2993]</a> What version of node does this library support?</li><li><a href="https://github.com/hapijs/joi/pull/2982">[#2982]</a> feat: Improve array().items type</li><li><a href="https://github.com/hapijs/joi/pull/2981">[#2981]</a> feat: Improve alternatives type</li><li><a href="https://github.com/hapijs/joi/issues/2926">[#2926]</a> 18.0.0 Release Notes</li><li><a href="https://github.com/hapijs/joi/pull/2925">[#2925]</a> chore: upgrade modules</li></ul>]]></content>
     </entry>
     <entry>
+        <title type="html"><![CDATA[joi v17.13.4]]></title>
+        <id>https://github.com/hapijs/joi/milestone/216</id>
+        <link href="https://joi.dev/resources/changelog#17.13.4"/>
+        <updated>2026-06-17T07:55:02.000Z</updated>
+        <summary type="html"><![CDATA[joi v17.13.4]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/joi/pull/3123">[#3123]</a> chore: backport #3113 to v17</li></ul>]]></content>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[joi v17.13.3]]></title>
         <id>https://github.com/hapijs/joi/milestone/207</id>
         <link href="https://joi.dev/resources/changelog#17.13.3"/>
@@ -398,13 +406,5 @@
         <updated>2020-01-06T19:40:08.000Z</updated>
         <summary type="html"><![CDATA[joi v17.0.0]]></summary>
         <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/joi/issues/2263">[#2263]</a> Update deps</li><li><a href="https://github.com/hapijs/joi/issues/2262">[#2262]</a> 17.0.0 Release Notes</li><li><a href="https://github.com/hapijs/joi/issues/2261">[#2261]</a> Remove ValidationError.annotate() from browser build</li><li><a href="https://github.com/hapijs/joi/issues/2260">[#2260]</a> object.regex()</li><li><a href="https://github.com/hapijs/joi/issues/2254">[#2254]</a> Giving an array argument to any.valid returns incorrect error</li><li><a href="https://github.com/hapijs/joi/pull/2243">[#2243]</a> Allow `_` in alias, arg, flag, modifier, override, rule, and term names</li><li><a href="https://github.com/hapijs/joi/issues/2242">[#2242]</a> Can you allow `_` in rule names?</li><li><a href="https://github.com/hapijs/joi/issues/2231">[#2231]</a> Change errors.wrapArrays to errors.wrap.array</li><li><a href="https://github.com/hapijs/joi/issues/2219">[#2219]</a> Add the ability to extend all types in place</li><li><a href="https://github.com/hapijs/joi/issues/2200">[#2200]</a> Move ip and uri logic to address</li><li><a href="https://github.com/hapijs/joi/issues/2199">[#2199]</a> Remove node 8, 10</li><li><a href="https://github.com/hapijs/joi/issues/2189">[#2189]</a> Change default function second argument to full helpers (from prefs)</li><li><a href="https://github.com/hapijs/joi/issues/2182">[#2182]</a> Remove quotation marks from error messages</li><li><a href="https://github.com/hapijs/joi/issues/2163">[#2163]</a> string().hostiname() - validation of non-ASCII chars containing domains</li></ul>]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[joi v16.1.8]]></title>
-        <id>https://github.com/hapijs/joi/milestone/163</id>
-        <link href="https://joi.dev/resources/changelog#16.1.8"/>
-        <updated>2019-11-24T10:02:03.000Z</updated>
-        <summary type="html"><![CDATA[joi v16.1.8]]></summary>
-        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/joi/issues/2226">[#2226]</a> object.with and object.without throw error on $ prefixed keys</li><li><a href="https://github.com/hapijs/joi/issues/2218">[#2218]</a> Maximum call stack size exceeded​​ error for dataUri validation</li><li><a href="https://github.com/hapijs/joi/issues/2212">[#2212]</a> Joi.string().email() considers "a@a.com/asd" as valid email</li><li><a href="https://github.com/hapijs/joi/pull/2208">[#2208]</a> fix: describe() on schema with default value null</li><li><a href="https://github.com/hapijs/joi/issues/2207">[#2207]</a> describe() on schema with default value null results in "Cannot read property 'Symbol(literal)' of null"</li><li><a href="https://github.com/hapijs/joi/issues/2205">[#2205]</a> Cannot require a minimal number of matching object properties with `pattern`</li><li><a href="https://github.com/hapijs/joi/issues/2190">[#2190]</a> Joi.string().domain() treats an email address as a valid domain name</li><li><a href="https://github.com/hapijs/joi/issues/2187">[#2187]</a> Giving an array argument to any.allow(...values) gives incorrect error</li><li><a href="https://github.com/hapijs/joi/issues/2181">[#2181]</a>  Joi.alternatives produces confusing message when used with nested object and `{ abortEarly: false }`</li><li><a href="https://github.com/hapijs/joi/issues/2176">[#2176]</a> joi.types() is missing `func` alias</li><li><a href="https://github.com/hapijs/joi/issues/2173">[#2173]</a> [Request] Allow mixing patch version</li></ul>]]></content>
     </entry>
 </feed>
