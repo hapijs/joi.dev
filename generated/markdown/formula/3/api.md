@@ -4,21 +4,21 @@
 const Formula = require('@hapi/formula');
 
 const functions = {
-  x: (value) => value + 10,
+    x: (value) => value + 10,
 };
 
 const constants = {
-  Z: 100,
+    Z: 100,
 };
 
 const reference = function (name) {
-  return (context) => context[name];
+    return (context) => context[name];
 };
 
 const formula = new Formula.Parser('1 + a.b.c.2.4.x + [b] + x([y + 4] + Z)', {
-  functions,
-  constants,
-  reference,
+    functions,
+    constants,
+    reference,
 });
 
 formula.evaluate({ 'a.b.c.2.4.x': 2, b: 3, 'y + 4': 5 }); // 1 + 2 + 3 + 5 + 10 + 100
@@ -33,10 +33,10 @@ Creates a new formula parser object where:
 
 - `formula` - the formula string to parse.
 - `options` - optional settings:
-  - `constants` - a hash of key-value pairs used to convert constants to values.
-  - `tokenRx` - a regular expression used to validate token variables.
-  - `reference` - a variable resolver factory function with signature `function(variable)` which returns a function with signature `function(context)` returning the resolved `variable`.
-  - `functions` - a hash of key-value pairs used to resolve formula functions.
+    - `constants` - a hash of key-value pairs used to convert constants to values.
+    - `tokenRx` - a regular expression used to validate token variables.
+    - `reference` - a variable resolver factory function with signature `function(variable)` which returns a function with signature `function(context)` returning the resolved `variable`.
+    - `functions` - a hash of key-value pairs used to resolve formula functions.
 
 ### `parser.evaluate([context])`
 

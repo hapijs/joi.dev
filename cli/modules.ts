@@ -1,41 +1,41 @@
 import type { ModuleSpec } from './types.js';
 
 export const modules: Record<string, ModuleSpec> = {
-  address: {
-    compatibility: {
-      5: '>= 14',
+    address: {
+        compatibility: {
+            5: '>= 14',
+        },
+        package: '@hapi/address',
     },
-    package: '@hapi/address',
-  },
-  formula: {
-    compatibility: {
-      3: '>= 14',
+    formula: {
+        compatibility: {
+            3: '>= 14',
+        },
+        package: '@hapi/formula',
     },
-    package: '@hapi/formula',
-  },
-  joi: {
-    compatibility: {
-      17: '>= 14',
-      18: '>= 20',
+    joi: {
+        compatibility: {
+            17: '>= 14',
+            18: '>= 20',
+        },
+        package: 'joi',
     },
-    package: 'joi',
-  },
-  'joi-date': {
-    compatibility: {
-      2: '>= 14',
+    'joi-date': {
+        compatibility: {
+            2: '>= 14',
+        },
+        package: '@joi/date',
     },
-    package: '@joi/date',
-  },
-  pinpoint: {
-    compatibility: {
-      2: '>= 14',
+    pinpoint: {
+        compatibility: {
+            2: '>= 14',
+        },
+        package: '@hapi/pinpoint',
     },
-    package: '@hapi/pinpoint',
-  },
-  tlds: {
-    compatibility: {
-      1: '>= 14',
+    tlds: {
+        compatibility: {
+            1: '>= 14',
+        },
+        package: '@hapi/tlds',
     },
-    package: '@hapi/tlds',
-  },
 };

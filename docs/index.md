@@ -4,29 +4,29 @@ layout: home
 title: Home
 
 hero:
-  name: 'joi'
-  tagline: 'The most powerful schema description language and data validator for JavaScript'
-  actions:
-    - theme: brand
-      text: Get started with joi
-      link: /api
-    - theme: alt
-      text: Try it in the sandbox
-      link: /tester
-  image:
-    src: /img/joiTransparent.png
-    alt: joi logo
+    name: 'joi'
+    tagline: 'The most powerful schema description language and data validator for JavaScript'
+    actions:
+        - theme: brand
+          text: Get started with joi
+          link: /api
+        - theme: alt
+          text: Try it in the sandbox
+          link: /tester
+    image:
+        src: /img/joiTransparent.png
+        alt: joi logo
 
 features:
-  - title: Expressive
-    details: |
-      <b>Over 150 built-in validators</b> across strings, numbers, dates, arrays, objects, binaries, and more — with chainable rules that read like English.
-  - title: Declarative
-    details: |
-      <b>Describe complex relationships between fields</b> without writing callback logic. Cross-field references, conditional schemas, and key dependencies — all as one-liners.
-  - title: Extensible
-    details: |
-      <b>Build your own schema types</b> with Joi's extension system. Add custom rules, coercions, and chainable methods — then share them as plugins.
+    - title: Expressive
+      details: |
+          <b>Over 150 built-in validators</b> across strings, numbers, dates, arrays, objects, binaries, and more — with chainable rules that read like English.
+    - title: Declarative
+      details: |
+          <b>Describe complex relationships between fields</b> without writing callback logic. Cross-field references, conditional schemas, and key dependencies — all as one-liners.
+    - title: Extensible
+      details: |
+          <b>Build your own schema types</b> with Joi's extension system. Add custom rules, coercions, and chainable methods — then share them as plugins.
 ---
 
 ## Get started in seconds
@@ -51,15 +51,15 @@ pnpm add joi
 import Joi from 'joi';
 
 const schema = Joi.object({
-  username: Joi.string().alphanum().min(3).max(30).required(),
-  email: Joi.string().email().required(),
-  age: Joi.number().integer().min(18),
+    username: Joi.string().alphanum().min(3).max(30).required(),
+    email: Joi.string().email().required(),
+    age: Joi.number().integer().min(18),
 });
 
 const { error, value } = schema.validate({
-  username: 'danilo',
-  email: 'danilo@example.com',
-  age: 28,
+    username: 'danilo',
+    email: 'danilo@example.com',
+    age: 28,
 });
 ```
 
@@ -71,11 +71,11 @@ Define one schema. Produce specialized versions for different contexts — like 
 
 ```js
 const schema = Joi.object({
-  id: Joi.number().alter({
-    create: (s) => s.forbidden(),
-    update: (s) => s.required(),
-  }),
-  name: Joi.string().required(),
+    id: Joi.number().alter({
+        create: (s) => s.forbidden(),
+        update: (s) => s.required(),
+    }),
+    name: Joi.string().required(),
 });
 
 const createSchema = schema.tailor('create');
@@ -90,13 +90,13 @@ Express relationships between fields without writing validation logic. Joi handl
 
 ```js
 const schema = Joi.object({
-  email: Joi.string().email(),
-  phone: Joi.string().pattern(/^\+?[0-9]{7,15}$/),
-  address: Joi.string(),
+    email: Joi.string().email(),
+    phone: Joi.string().pattern(/^\+?[0-9]{7,15}$/),
+    address: Joi.string(),
 })
-  .or('email', 'phone') // at least one contact method
-  .with('phone', 'address') // phone requires address
-  .xor('email', 'phone'); // but not both
+    .or('email', 'phone') // at least one contact method
+    .with('phone', 'address') // phone requires address
+    .xor('email', 'phone'); // but not both
 ```
 
 _Seven dependency methods: `.with()`, `.without()`, `.or()`, `.and()`, `.xor()`, `.oxor()`, `.nand()`._
@@ -107,10 +107,10 @@ Reference other fields directly in validation rules. No callbacks, no workaround
 
 ```js
 const schema = Joi.object({
-  startDate: Joi.date().required(),
-  endDate: Joi.date().greater(Joi.ref('startDate')).required(),
-  password: Joi.string().min(8).required(),
-  confirm: Joi.any().valid(Joi.ref('password')).required(),
+    startDate: Joi.date().required(),
+    endDate: Joi.date().greater(Joi.ref('startDate')).required(),
+    password: Joi.string().min(8).required(),
+    confirm: Joi.any().valid(Joi.ref('password')).required(),
 });
 ```
 

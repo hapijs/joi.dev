@@ -1,5 +1,9 @@
 ## Version 1 {#v1}
 
+### [1.1.7](https://github.com/hapijs/tlds/milestone/15) {#1.1.7}
+
+- [#20](https://github.com/hapijs/tlds/pull/20) Update TLDs
+
 ### [1.1.6](https://github.com/hapijs/tlds/milestone/14) {#1.1.6}
 
 - [#19](https://github.com/hapijs/tlds/pull/19) Update TLDs
