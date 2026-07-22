@@ -3338,7 +3338,7 @@ Where:
         - `helpers`: [Validation helpers](#validation-helpers)
         - `args`: Resolved and validated arguments mapped by their names.
         - `rule`: The rule definitions passed to `$_addRule` left untouched. Useful if you need access to the raw arguments before validation.
-- `overrides`: A hash of method names and their overridden implementation. To refer to the parent method, use [`$_parent()`](#\_parentmethod-args)
+- `overrides`: A hash of method names and their overridden implementation. To refer to the parent method, use [`$_parent()`](#_parentmethod-args)
 
 ```js
 const Joi = require('joi');
@@ -3441,7 +3441,7 @@ const schema = custom.object({
 - `prefs`: The prepared validation options.
 - `schema`: The reference to the current schema. Useful if you need to use any of the [Advanced functions](#advanced-functions).
 - `state`: The current validation state. See [Validation state](#validation-state).
-- `error`: A function with signature `function (code, local, localState = currentState) {}` similar to [`$_createError()`](#\_createerrorcode-value-local-state-prefs-options) but with the current value, validation options, current state passed where:
+- `error`: A function with signature `function (code, local, localState = currentState) {}` similar to [`$_createError()`](#_createerrorcode-value-local-state-prefs-options) but with the current value, validation options, current state passed where:
     - `code`: The error code.
     - `local`: Local context used to interpolate the message.
     - `localState`: The localized state.

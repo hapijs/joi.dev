@@ -1,3 +1,10 @@
+## Version 2 {#v2}
+
+### [2.0.0](https://github.com/hapijs/tlds/milestone/16) <a class="release-notes-link" href="https://github.com/hapijs/tlds/issues/24" target="_blank" title="View Release Notes"><img class="release-notes-img" src="/img/release-notes.png" alt="" /></a> <span class="breaking-badge"></span> {#2.0.0}
+
+- [#24](https://github.com/hapijs/tlds/issues/24) 2.0.0 Release Notes
+- [#22](https://github.com/hapijs/tlds/pull/22) chore: change entire toolchain
+
 ## Version 1 {#v1}
 
 ### [1.1.7](https://github.com/hapijs/tlds/milestone/15) {#1.1.7}

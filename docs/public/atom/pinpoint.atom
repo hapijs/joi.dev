@@ -2,11 +2,19 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://joi.dev/module/pinpoint</id>
     <title>@hapi/pinpoint changelog</title>
-    <updated>2023-02-19T10:39:22.000Z</updated>
+    <updated>2026-07-01T14:59:17.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://joi.dev/module/pinpoint"/>
     <logo>https://joi.dev/img/logo.png</logo>
     <icon>https://joi.dev/favicon.png</icon>
+    <entry>
+        <title type="html"><![CDATA[@hapi/pinpoint v3.0.0]]></title>
+        <id>https://github.com/hapijs/pinpoint/milestone/6</id>
+        <link href="https://joi.dev/module/pinpoint/changelog#3.0.0"/>
+        <updated>2026-07-01T14:59:17.000Z</updated>
+        <summary type="html"><![CDATA[@hapi/pinpoint v3.0.0]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/pinpoint/issues/13">[#13]</a> 3.0.0 Release Notes</li><li><a href="https://github.com/hapijs/pinpoint/pull/12">[#12]</a> Convert to native ESM (vitest + oxc toolchain)</li></ul>]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[@hapi/pinpoint v2.0.1]]></title>
         <id>https://github.com/hapijs/pinpoint/milestone/5</id>

@@ -1,5 +1,28 @@
 [
     {
+        "date": "2026-07-01T13:16:43Z",
+        "id": 16609837,
+        "issues": [
+            {
+                "id": 4785890569,
+                "labels": ["release notes", "breaking changes"],
+                "number": 19,
+                "title": "4.0.0 Release Notes",
+                "url": "https://github.com/hapijs/formula/issues/19"
+            },
+            {
+                "id": 4754127619,
+                "labels": ["breaking changes"],
+                "number": 18,
+                "title": "Convert to native ESM (vitest + oxc toolchain)",
+                "url": "https://github.com/hapijs/formula/pull/18"
+            }
+        ],
+        "number": 9,
+        "url": "https://github.com/hapijs/formula/milestone/9",
+        "version": "4.0.0"
+    },
+    {
         "date": "2023-02-19T10:51:54Z",
         "id": 9063122,
         "issues": [

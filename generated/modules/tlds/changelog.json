@@ -1,5 +1,28 @@
 [
     {
+        "date": "2026-06-28T08:59:04Z",
+        "id": 16293391,
+        "issues": [
+            {
+                "id": 4761651419,
+                "labels": ["breaking changes", "release notes"],
+                "number": 24,
+                "title": "2.0.0 Release Notes",
+                "url": "https://github.com/hapijs/tlds/issues/24"
+            },
+            {
+                "id": 4633805502,
+                "labels": ["breaking changes"],
+                "number": 22,
+                "title": "chore: change entire toolchain",
+                "url": "https://github.com/hapijs/tlds/pull/22"
+            }
+        ],
+        "number": 16,
+        "url": "https://github.com/hapijs/tlds/milestone/16",
+        "version": "2.0.0"
+    },
+    {
         "date": "2026-06-10T10:29:38Z",
         "id": 16286332,
         "issues": [

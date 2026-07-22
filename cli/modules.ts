@@ -10,6 +10,7 @@ export const modules: Record<string, ModuleSpec> = {
     formula: {
         compatibility: {
             3: '>= 14',
+            4: '>= 22',
         },
         package: '@hapi/formula',
     },
@@ -29,12 +30,14 @@ export const modules: Record<string, ModuleSpec> = {
     pinpoint: {
         compatibility: {
             2: '>= 14',
+            3: '>= 22',
         },
         package: '@hapi/pinpoint',
     },
     tlds: {
         compatibility: {
             1: '>= 14',
+            2: '>= 22',
         },
         package: '@hapi/tlds',
     },

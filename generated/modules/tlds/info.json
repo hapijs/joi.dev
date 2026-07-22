@@ -13,7 +13,13 @@
             "license": "BSD",
             "name": "1.1.7",
             "node": ">= 14"
+        },
+        {
+            "branch": "v2.0.0",
+            "license": "BSD",
+            "name": "2.0.0",
+            "node": ">= 22"
         }
     ],
-    "versionsArray": ["1.1.7"]
+    "versionsArray": ["2.0.0", "1.1.7"]
 }

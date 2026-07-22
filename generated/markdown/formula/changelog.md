@@ -1,3 +1,10 @@
+## Version 4 {#v4}
+
+### [4.0.0](https://github.com/hapijs/formula/milestone/9) <a class="release-notes-link" href="https://github.com/hapijs/formula/issues/19" target="_blank" title="View Release Notes"><img class="release-notes-img" src="/img/release-notes.png" alt="" /></a> <span class="breaking-badge"></span> {#4.0.0}
+
+- [#19](https://github.com/hapijs/formula/issues/19) 4.0.0 Release Notes
+- [#18](https://github.com/hapijs/formula/pull/18) Convert to native ESM (vitest + oxc toolchain)
+
 ## Version 3 {#v3}
 
 ### [3.0.2](https://github.com/hapijs/formula/milestone/8) {#3.0.2}

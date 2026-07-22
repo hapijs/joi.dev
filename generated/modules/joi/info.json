@@ -15,11 +15,11 @@
             "node": ">= 14"
         },
         {
-            "branch": "v18.2.1",
+            "branch": "v18.2.3",
             "license": "BSD",
-            "name": "18.2.1",
+            "name": "18.2.3",
             "node": ">= 20"
         }
     ],
-    "versionsArray": ["18.2.1", "17.13.4"]
+    "versionsArray": ["18.2.3", "17.13.4"]
 }

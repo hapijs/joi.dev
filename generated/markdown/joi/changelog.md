@@ -1,5 +1,15 @@
 ## Version 18 {#v18}
 
+### [18.2.3](https://github.com/hapijs/joi/milestone/217) {#18.2.3}
+
+- [#3125](https://github.com/hapijs/joi/pull/3125) fix: expose multiple string patterns in json schemas
+- [#3124](https://github.com/hapijs/joi/pull/3124) chore: deny prototype pollution in objects by restoring prototype
+
+### [18.2.2](https://github.com/hapijs/joi/milestone/215) {#18.2.2}
+
+- [#3120](https://github.com/hapijs/joi/pull/3120) fix: json schema bugfixes
+- [#3118](https://github.com/hapijs/joi/pull/3118) chore: switch to for..of loops
+
 ### [18.2.1](https://github.com/hapijs/joi/milestone/214) {#18.2.1}
 
 - [#3113](https://github.com/hapijs/joi/pull/3113) fix: protect link recursion from max call stack
@@ -163,7 +173,7 @@
 ### [17.8.0](https://github.com/hapijs/joi/milestone/186) {#17.8.0}
 
 - [#2909](https://github.com/hapijs/joi/pull/2909) chore: use latest address module
-- [#2630](https://github.com/hapijs/joi/issues/2630) Joi.string().domain() treats '\_http.\_tcp.archive.ubuntu.com' as invalid domain name, even though it works
+- [#2630](https://github.com/hapijs/joi/issues/2630) Joi.string().domain() treats '_http._tcp.archive.ubuntu.com' as invalid domain name, even though it works
 
 ### [17.7.1](https://github.com/hapijs/joi/milestone/185) {#17.7.1}
 
@@ -467,7 +477,7 @@
 - [#2018](https://github.com/hapijs/joi/issues/2018) Support joi schema in refs assert
 - [#2016](https://github.com/hapijs/joi/issues/2016) Consolidate refs assert's message/code
 - [#2015](https://github.com/hapijs/joi/issues/2015) Ensure all levels of coerce are only called on non-undefined values
-- [#2014](https://github.com/hapijs/joi/issues/2014) Change all \_methods used on schema to use definition
+- [#2014](https://github.com/hapijs/joi/issues/2014) Change all _methods used on schema to use definition
 - [#2013](https://github.com/hapijs/joi/issues/2013) Expose all internal extend() options externally
 - [#2012](https://github.com/hapijs/joi/issues/2012) Rename func to function
 - [#2010](https://github.com/hapijs/joi/issues/2010) New extension API
@@ -514,7 +524,7 @@
 - [#1948](https://github.com/hapijs/joi/issues/1948) Cannot read property 'ancestors' of null
 - [#1946](https://github.com/hapijs/joi/issues/1946) Remove applyFunctionToChildren()
 - [#1945](https://github.com/hapijs/joi/issues/1945) Throw when Joi.reach() is reaching into non-object
-- [#1944](https://github.com/hapijs/joi/issues/1944) Remove any.\_getLabel()
+- [#1944](https://github.com/hapijs/joi/issues/1944) Remove any._getLabel()
 - [#1943](https://github.com/hapijs/joi/issues/1943) Rename any.schemaType to any.type
 - [#1942](https://github.com/hapijs/joi/issues/1942) Rename object.type() to object.instance()
 - [#1941](https://github.com/hapijs/joi/issues/1941) Remove root.validate() and root.describe()

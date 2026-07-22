@@ -1,5 +1,28 @@
 [
     {
+        "date": "2026-07-01T14:59:17Z",
+        "id": 16611432,
+        "issues": [
+            {
+                "id": 4786705859,
+                "labels": ["breaking changes", "release notes"],
+                "number": 13,
+                "title": "3.0.0 Release Notes",
+                "url": "https://github.com/hapijs/pinpoint/issues/13"
+            },
+            {
+                "id": 4754131626,
+                "labels": ["breaking changes"],
+                "number": 12,
+                "title": "Convert to native ESM (vitest + oxc toolchain)",
+                "url": "https://github.com/hapijs/pinpoint/pull/12"
+            }
+        ],
+        "number": 6,
+        "url": "https://github.com/hapijs/pinpoint/milestone/6",
+        "version": "3.0.0"
+    },
+    {
         "date": "2023-02-19T10:39:22Z",
         "id": 4972533,
         "issues": [

@@ -3203,7 +3203,7 @@ When `pattern` is a _string_ all its occurrences will be replaced.
 
 #### `string.token()`
 
-Requires the string value to only contain a-z, A-Z, 0-9, and underscore \_.
+Requires the string value to only contain a-z, A-Z, 0-9, and underscore _.
 
 ```js
 const schema = Joi.string().token();
@@ -3402,8 +3402,7 @@ Where:
         - `options`: The options passed to `jsonSchema.input()` or `jsonSchema.output()`.
 
         Must return the modified JSON Schema object.
-
-- `overrides`: A hash of method names and their overridden implementation. To refer to the parent method, use [`$_parent()`](#\_parentmethod-args)
+- `overrides`: A hash of method names and their overridden implementation. To refer to the parent method, use [`$_parent()`](#_parentmethod-args)
 
 ```js
 const Joi = require('joi');
@@ -3506,7 +3505,7 @@ const schema = custom.object({
 - `prefs`: The prepared validation options.
 - `schema`: The reference to the current schema. Useful if you need to use any of the [Advanced functions](#advanced-functions).
 - `state`: The current validation state. See [Validation state](#validation-state).
-- `error`: A function with signature `function (code, local, localState = currentState) {}` similar to [`$_createError()`](#\_createerrorcode-value-local-state-prefs-options) but with the current value, validation options, current state passed where:
+- `error`: A function with signature `function (code, local, localState = currentState) {}` similar to [`$_createError()`](#_createerrorcode-value-local-state-prefs-options) but with the current value, validation options, current state passed where:
     - `code`: The error code.
     - `local`: Local context used to interpolate the message.
     - `localState`: The localized state.
@@ -3526,26 +3525,26 @@ The validation state is an object that contains information about the validation
 
 ### Advanced functions
 
-#### $\_root
+#### $_root
 
 A reference to the current Joi instance. Useful when you want access to the **extended instance**, not the default Joi module.
 
-#### $\_parent(method, ...args)
+#### $_parent(method, ...args)
 
 Calls the original method before overriding, similar to `super.method()` when overriding class methods where:
 
 - `method`: The name of the parent method.
 - `...args`: The arguments passed directly to the parent method.
 
-#### $\_temp
+#### $_temp
 
 TODO
 
-#### $\_terms
+#### $_terms
 
 TODO
 
-#### $\_addRule(options)
+#### $_addRule(options)
 
 Adds a rule to the rules queue where:
 
@@ -3553,16 +3552,17 @@ Adds a rule to the rules queue where:
     - `name`: The name of the rule.
     - `args`: The arguments to be processed.
     - `method`: The name of another rule to reuse.
-      You can also pass extra properties and they will be accessible within the `rule` argument of the `validate` method.
 
-#### $\_compile(schema, options)
+    You can also pass extra properties and they will be accessible within the `rule` argument of the `validate` method.
+
+#### $_compile(schema, options)
 
 Compiles a literal schema definition to a Joi schema object where:
 
 - `schema`: The schema to compile.
 - `options`: TODO
 
-#### $\_createError(code, value, local, state, prefs, options)
+#### $_createError(code, value, local, state, prefs, options)
 
 Creates a Joi validation error where:
 
@@ -3573,47 +3573,47 @@ Creates a Joi validation error where:
 - `prefs`: Prepared validation options.
 - `options`: Error options. TODO
 
-#### $\_getFlag(name)
+#### $_getFlag(name)
 
 Gets a flag named `name`.
 
-#### $\_getRule(name)
+#### $_getRule(name)
 
 Gets a single (`multi` set to `false`) rule named `name`.
 
-#### $\_mapLabels(path)
+#### $_mapLabels(path)
 
 TODO
 
-#### $\_match(value, state, prefs, overrides)
+#### $_match(value, state, prefs, overrides)
 
 TODO
 
-#### $\_modify(options)
+#### $_modify(options)
 
 TODO
 
-#### $\_mutateRebuild()
+#### $_mutateRebuild()
 
 TODO
 
-#### $\_mutateRegister(schema, options)
+#### $_mutateRegister(schema, options)
 
 TODO
 
-#### $\_property(name)
+#### $_property(name)
 
 TODO
 
-#### $\_reach(path)
+#### $_reach(path)
 
 TODO
 
-#### $\_rootReferences()
+#### $_rootReferences()
 
 TODO
 
-#### $\_setFlag(name, value, options)
+#### $_setFlag(name, value, options)
 
 Sets a flag where:
 
@@ -3622,7 +3622,7 @@ Sets a flag where:
 - `options`: Optional options where:
     - `clone`: Whether to clone the schema. Defaults to `true`. Only set to `false` if the schema has already been cloned before.
 
-#### $\_validate(value, state, prefs)
+#### $_validate(value, state, prefs)
 
 Performs validation against the current schema without the extra overhead of merging validation options to a default set of values where:
 

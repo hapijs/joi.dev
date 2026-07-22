@@ -29,9 +29,15 @@
                 "license": "BSD",
                 "name": "3.0.2",
                 "node": ">= 14"
+            },
+            {
+                "branch": "v4.0.0",
+                "license": "BSD",
+                "name": "4.0.0",
+                "node": ">= 22"
             }
         ],
-        "versionsArray": ["3.0.2"]
+        "versionsArray": ["4.0.0", "3.0.2"]
     },
     "joi": {
         "forks": 1509,
@@ -48,13 +54,13 @@
                 "node": ">= 14"
             },
             {
-                "branch": "v18.2.1",
+                "branch": "v18.2.3",
                 "license": "BSD",
-                "name": "18.2.1",
+                "name": "18.2.3",
                 "node": ">= 20"
             }
         ],
-        "versionsArray": ["18.2.1", "17.13.4"]
+        "versionsArray": ["18.2.3", "17.13.4"]
     },
     "joi-date": {
         "forks": 23,
@@ -86,9 +92,15 @@
                 "license": "BSD",
                 "name": "2.0.1",
                 "node": ">= 14"
+            },
+            {
+                "branch": "v3.0.0",
+                "license": "BSD",
+                "name": "3.0.0",
+                "node": ">= 22"
             }
         ],
-        "versionsArray": ["2.0.1"]
+        "versionsArray": ["3.0.0", "2.0.1"]
     },
     "tlds": {
         "forks": 2,
@@ -103,8 +115,14 @@
                 "license": "BSD",
                 "name": "1.1.7",
                 "node": ">= 14"
+            },
+            {
+                "branch": "v2.0.0",
+                "license": "BSD",
+                "name": "2.0.0",
+                "node": ">= 22"
             }
         ],
-        "versionsArray": ["1.1.7"]
+        "versionsArray": ["2.0.0", "1.1.7"]
     }
 }

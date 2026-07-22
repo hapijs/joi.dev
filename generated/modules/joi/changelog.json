@@ -1,5 +1,51 @@
 [
     {
+        "date": "2026-06-17T16:53:50Z",
+        "id": 16400025,
+        "issues": [
+            {
+                "id": 4685314769,
+                "labels": ["bug"],
+                "number": 3125,
+                "title": "fix: expose multiple string patterns in json schemas",
+                "url": "https://github.com/hapijs/joi/pull/3125"
+            },
+            {
+                "id": 4685031423,
+                "labels": [],
+                "number": 3124,
+                "title": "chore: deny prototype pollution in objects by restoring prototype",
+                "url": "https://github.com/hapijs/joi/pull/3124"
+            }
+        ],
+        "number": 217,
+        "url": "https://github.com/hapijs/joi/milestone/217",
+        "version": "18.2.3"
+    },
+    {
+        "date": "2026-06-17T10:17:05Z",
+        "id": 16005187,
+        "issues": [
+            {
+                "id": 4533728834,
+                "labels": ["bug"],
+                "number": 3120,
+                "title": "fix: json schema bugfixes",
+                "url": "https://github.com/hapijs/joi/pull/3120"
+            },
+            {
+                "id": 4484846379,
+                "labels": [],
+                "number": 3118,
+                "title": "chore: switch to for..of loops",
+                "url": "https://github.com/hapijs/joi/pull/3118"
+            }
+        ],
+        "number": 215,
+        "url": "https://github.com/hapijs/joi/milestone/215",
+        "version": "18.2.2"
+    },
+    {
         "date": "2026-05-04T16:09:20Z",
         "id": 15790448,
         "issues": [
