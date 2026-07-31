@@ -64,6 +64,7 @@ const processModule = async (moduleName: string, specs: ModuleSpec) => {
     const currentModule: ModuleInfo = {
         api: false,
         forks: 0,
+        latestVersion: '',
         link: '',
         name: moduleName,
         package: specs.package,
@@ -79,6 +80,7 @@ const processModule = async (moduleName: string, specs: ModuleSpec) => {
     const filteredVersions = getFilteredVersions(specs, versions);
 
     currentModule.versionsArray = filteredVersions.map((v) => v.fullVersion).toSorted((a, b) => Semver.compare(b, a));
+    currentModule.latestVersion = `${currentModule.versionsArray[0].split('.')[0]}.x.x`;
 
     const versionLimit = new Semaphore(10);
     const versionTasks = filteredVersions.map(async ({ nodeVersion, fullVersion, major }) => {
@@ -178,6 +180,7 @@ const processModule = async (moduleName: string, specs: ModuleSpec) => {
 
     repos[moduleName] = {
         forks: currentModule.forks,
+        latestVersion: currentModule.latestVersion,
         link: currentModule.link,
         package: currentModule.package,
         slogan: currentModule.slogan,

@@ -1,6 +1,7 @@
 {
     "api": true,
     "forks": 23,
+    "latestVersion": "3.x.x",
     "link": "https://github.com/hapijs/joi-date",
     "name": "joi-date",
     "package": "@joi/date",

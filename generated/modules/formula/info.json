@@ -1,6 +1,7 @@
 {
     "api": true,
     "forks": 20,
+    "latestVersion": "4.x.x",
     "link": "https://github.com/hapijs/formula",
     "name": "formula",
     "package": "@hapi/formula",

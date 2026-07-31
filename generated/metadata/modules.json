@@ -1,6 +1,7 @@
 {
     "address": {
         "forks": 27,
+        "latestVersion": "5.x.x",
         "link": "https://github.com/hapijs/address",
         "package": "@hapi/address",
         "slogan": "Validate email address and domain.",
@@ -18,6 +19,7 @@
     },
     "formula": {
         "forks": 20,
+        "latestVersion": "4.x.x",
         "link": "https://github.com/hapijs/formula",
         "package": "@hapi/formula",
         "slogan": "Math and string formula parser.",
@@ -41,6 +43,7 @@
     },
     "joi": {
         "forks": 1509,
+        "latestVersion": "18.x.x",
         "link": "https://github.com/hapijs/joi",
         "package": "joi",
         "slogan": "The most powerful schema description language and data validator for JavaScript.",
@@ -64,6 +67,7 @@
     },
     "joi-date": {
         "forks": 23,
+        "latestVersion": "3.x.x",
         "link": "https://github.com/hapijs/joi-date",
         "package": "@joi/date",
         "slogan": "Extensions for advance date rules.",
@@ -87,6 +91,7 @@
     },
     "pinpoint": {
         "forks": 6,
+        "latestVersion": "3.x.x",
         "link": "https://github.com/hapijs/pinpoint",
         "package": "@hapi/pinpoint",
         "slogan": "Return the filename and line number of the calling function.",
@@ -110,6 +115,7 @@
     },
     "tlds": {
         "forks": 2,
+        "latestVersion": "2.x.x",
         "link": "https://github.com/hapijs/tlds",
         "package": "@hapi/tlds",
         "slogan": "TLDS list for domain validation.",

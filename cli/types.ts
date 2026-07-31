@@ -49,6 +49,7 @@ export interface ModuleInfo {
         node: string;
     }[];
     versionsArray: string[];
+    latestVersion: string;
     api: boolean;
     package: string;
 }
@@ -60,6 +61,7 @@ export interface ModuleMetadata {
     forks: number;
     updated: string;
     versionsArray: string[];
+    latestVersion: string;
     versions: {
         name: string;
         branch: string;

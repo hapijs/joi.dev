@@ -1,6 +1,7 @@
 {
     "api": true,
     "forks": 1509,
+    "latestVersion": "18.x.x",
     "link": "https://github.com/hapijs/joi",
     "name": "joi",
     "package": "joi",

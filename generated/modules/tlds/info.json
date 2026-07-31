@@ -1,6 +1,7 @@
 {
     "api": true,
     "forks": 2,
+    "latestVersion": "2.x.x",
     "link": "https://github.com/hapijs/tlds",
     "name": "tlds",
     "package": "@hapi/tlds",

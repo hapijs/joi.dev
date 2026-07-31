@@ -1,6 +1,7 @@
 {
     "api": true,
     "forks": 27,
+    "latestVersion": "5.x.x",
     "link": "https://github.com/hapijs/address",
     "name": "address",
     "package": "@hapi/address",

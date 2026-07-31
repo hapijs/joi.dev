@@ -24,11 +24,11 @@ const getModuleSidebar = (moduleName: string) => {
             items: [
                 { link: `/module/${moduleName}/install`, text: 'Installation' },
                 {
-                    items: moduleData.versions.map((version) => ({
+                    items: [...moduleData.versions].toReversed().map((version) => ({
                         link: `/module/${moduleName}/api/${formatVersion(version.name)}`,
                         text: formatVersion(version.name),
                     })),
-                    link: `/module/${moduleName}/api/${formatVersion(moduleData.versions[0].name)}`,
+                    link: `/module/${moduleName}/api/${moduleData.latestVersion}`,
                     text: 'API',
                 },
                 { link: `/module/${moduleName}/changelog`, text: 'Changelog' },
@@ -79,7 +79,7 @@ export default defineConfig({
             { link: '/', text: 'Home' },
             {
                 activeMatch: '^/api/',
-                link: `/api/${formatVersion(JoiInfo.versionsArray[0])}`,
+                link: `/api/${JoiInfo.latestVersion}`,
                 text: 'API',
             },
             {
@@ -104,7 +104,7 @@ export default defineConfig({
                                 link: `/api/${formatVersion(version)}`,
                                 text: formatVersion(version),
                             })),
-                            link: `/api/${formatVersion(JoiInfo.versionsArray[0])}`,
+                            link: `/api/${JoiInfo.latestVersion}`,
                             text: 'API',
                         },
                     ],
