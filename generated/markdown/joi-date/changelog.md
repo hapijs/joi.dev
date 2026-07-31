@@ -1,3 +1,10 @@
+## Version 3 {#v3}
+
+### [3.0.0](https://github.com/hapijs/joi-date/milestone/11) <a class="release-notes-link" href="https://github.com/hapijs/joi-date/issues/49" target="_blank" title="View Release Notes"><img class="release-notes-img" src="/img/release-notes.png" alt="" /></a> <span class="breaking-badge"></span> {#3.0.0}
+
+- [#49](https://github.com/hapijs/joi-date/issues/49) 3.0.0 Release Notes
+- [#48](https://github.com/hapijs/joi-date/pull/48) chore: switch to ESM+TS and dayjs
+
 ## Version 2 {#v2}
 
 ### [2.1.1](https://github.com/hapijs/joi-date/milestone/10) {#2.1.1}

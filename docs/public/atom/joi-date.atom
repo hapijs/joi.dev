@@ -2,11 +2,19 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://joi.dev/module/joi-date</id>
     <title>@joi/date changelog</title>
-    <updated>2024-04-22T09:08:12.000Z</updated>
+    <updated>2026-07-31T14:07:37.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://joi.dev/module/joi-date"/>
     <logo>https://joi.dev/img/logo.png</logo>
     <icon>https://joi.dev/favicon.png</icon>
+    <entry>
+        <title type="html"><![CDATA[@joi/date v3.0.0]]></title>
+        <id>https://github.com/hapijs/joi-date/milestone/11</id>
+        <link href="https://joi.dev/module/joi-date/changelog#3.0.0"/>
+        <updated>2026-07-31T14:07:37.000Z</updated>
+        <summary type="html"><![CDATA[@joi/date v3.0.0]]></summary>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/hapijs/joi-date/issues/49">[#49]</a> 3.0.0 Release Notes</li><li><a href="https://github.com/hapijs/joi-date/pull/48">[#48]</a> chore: switch to ESM+TS and dayjs</li></ul>]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[@joi/date v2.1.1]]></title>
         <id>https://github.com/hapijs/joi-date/milestone/10</id>

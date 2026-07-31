@@ -1,5 +1,28 @@
 [
     {
+        "date": "2026-07-31T14:07:37Z",
+        "id": 17074638,
+        "issues": [
+            {
+                "id": 5030288604,
+                "labels": ["release notes", "breaking changes"],
+                "number": 49,
+                "title": "3.0.0 Release Notes",
+                "url": "https://github.com/hapijs/joi-date/issues/49"
+            },
+            {
+                "id": 5030180498,
+                "labels": ["feature", "breaking changes"],
+                "number": 48,
+                "title": "chore: switch to ESM+TS and dayjs",
+                "url": "https://github.com/hapijs/joi-date/pull/48"
+            }
+        ],
+        "number": 11,
+        "url": "https://github.com/hapijs/joi-date/milestone/11",
+        "version": "3.0.0"
+    },
+    {
         "date": "2024-04-22T09:08:12Z",
         "id": 6609017,
         "issues": [

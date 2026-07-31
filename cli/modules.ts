@@ -24,6 +24,7 @@ export const modules: Record<string, ModuleSpec> = {
     'joi-date': {
         compatibility: {
             2: '>= 14',
+            3: '>= 22',
         },
         package: '@joi/date',
     },
