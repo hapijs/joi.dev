@@ -1,5 +1,173 @@
 [
     {
+        "date": "2026-10-16T14:09:05Z",
+        "id": 18640877,
+        "issues": [
+            {
+                "id": 5885523017,
+                "labels": ["feature"],
+                "number": 3160,
+                "title": "feat: accept undefined values in prepare",
+                "url": "https://github.com/hapijs/joi/pull/3160"
+            }
+        ],
+        "number": 228,
+        "url": "https://github.com/hapijs/joi/milestone/228",
+        "version": "18.3.0"
+    },
+    {
+        "date": "2026-09-11T13:29:11Z",
+        "id": 17799075,
+        "issues": [
+            {
+                "id": 5424731573,
+                "labels": ["bug"],
+                "number": 3152,
+                "title": "chore: cleanup for #3151",
+                "url": "https://github.com/hapijs/joi/pull/3152"
+            },
+            {
+                "id": 5402234060,
+                "labels": ["bug"],
+                "number": 3151,
+                "title": "Reject __proto__ as a flat messages() code, closing a sibling of GHSA-gg4h-3hg2-grpc",
+                "url": "https://github.com/hapijs/joi/pull/3151"
+            },
+            {
+                "id": 5402228310,
+                "labels": ["bug"],
+                "number": 3150,
+                "title": "messages(): __proto__ as a flat message code still hijacks the returned object's prototype (sibling of GHSA-gg4h-3hg2-grpc)",
+                "url": "https://github.com/hapijs/joi/issues/3150"
+            }
+        ],
+        "number": 226,
+        "url": "https://github.com/hapijs/joi/milestone/226",
+        "version": "18.2.9"
+    },
+    {
+        "date": "2026-09-02T22:03:14Z",
+        "id": 17619383,
+        "issues": [
+            {
+                "id": 5329647008,
+                "labels": [],
+                "number": 3149,
+                "title": "chore: optimize schema creation",
+                "url": "https://github.com/hapijs/joi/pull/3149"
+            }
+        ],
+        "number": 225,
+        "url": "https://github.com/hapijs/joi/milestone/225",
+        "version": "18.2.8"
+    },
+    {
+        "date": "2026-09-02T16:59:43Z",
+        "id": 17610474,
+        "issues": [
+            {
+                "id": 5324353934,
+                "labels": ["bug"],
+                "number": 3148,
+                "title": "chore: optimize processing of large arrays",
+                "url": "https://github.com/hapijs/joi/pull/3148"
+            },
+            {
+                "id": 5324313845,
+                "labels": ["bug"],
+                "number": 3147,
+                "title": "fix: inner external shouldn't execute when parent failover applied",
+                "url": "https://github.com/hapijs/joi/pull/3147"
+            },
+            {
+                "id": 5278784525,
+                "labels": ["bug"],
+                "number": 3141,
+                "title": "failover + external breakage",
+                "url": "https://github.com/hapijs/joi/issues/3141"
+            }
+        ],
+        "number": 224,
+        "url": "https://github.com/hapijs/joi/milestone/224",
+        "version": "18.2.7"
+    },
+    {
+        "date": "2026-09-02T11:14:43Z",
+        "id": 17606011,
+        "issues": [
+            {
+                "id": 5321852906,
+                "labels": ["test"],
+                "number": 3144,
+                "title": "chore: add regression test for #3143",
+                "url": "https://github.com/hapijs/joi/pull/3144"
+            },
+            {
+                "id": 5309403429,
+                "labels": ["bug", "security"],
+                "number": 3143,
+                "title": "fix(isoDate): pad a bare-hour timeshift with a colon, not just zeros",
+                "url": "https://github.com/hapijs/joi/pull/3143"
+            },
+            {
+                "id": 673747763,
+                "labels": ["bug"],
+                "number": 2434,
+                "title": "Fix time regex",
+                "url": "https://github.com/hapijs/joi/issues/2434"
+            }
+        ],
+        "number": 222,
+        "url": "https://github.com/hapijs/joi/milestone/222",
+        "version": "18.2.6"
+    },
+    {
+        "date": "2026-08-19T15:09:26Z",
+        "id": 17374259,
+        "issues": [
+            {
+                "id": 5193871177,
+                "labels": ["bug", "security"],
+                "number": 3138,
+                "title": "fix: prevent messages proto injection",
+                "url": "https://github.com/hapijs/joi/pull/3138"
+            },
+            {
+                "id": 4952073997,
+                "labels": ["bug"],
+                "number": 3131,
+                "title": "fix: allow allowUnderscore on string().email()",
+                "url": "https://github.com/hapijs/joi/pull/3131"
+            },
+            {
+                "id": 1839037988,
+                "labels": ["documentation"],
+                "number": 2972,
+                "title": "Incorrect documentation for string().email() 'allowUnderscore' option",
+                "url": "https://github.com/hapijs/joi/issues/2972"
+            }
+        ],
+        "number": 220,
+        "url": "https://github.com/hapijs/joi/milestone/220",
+        "version": "18.2.5"
+    },
+    {
+        "date": "2026-08-19T09:48:50Z",
+        "id": 17370049,
+        "issues": [
+            {
+                "id": 5191253756,
+                "labels": ["bug", "security"],
+                "number": 3134,
+                "title": "fix: prevent proto on renames",
+                "url": "https://github.com/hapijs/joi/pull/3134"
+            }
+        ],
+        "number": 218,
+        "url": "https://github.com/hapijs/joi/milestone/218",
+        "version": "18.2.4"
+    },
+    {
         "date": "2026-06-17T16:53:50Z",
         "id": 16400025,
         "issues": [
@@ -284,6 +452,70 @@
         "number": 190,
         "url": "https://github.com/hapijs/joi/milestone/190",
         "version": "18.0.0"
+    },
+    {
+        "date": "2026-09-11T13:29:10Z",
+        "id": 17799603,
+        "issues": [
+            {
+                "id": 5424846422,
+                "labels": ["bug"],
+                "number": 3153,
+                "title": "chore: backport #3151",
+                "url": "https://github.com/hapijs/joi/pull/3153"
+            }
+        ],
+        "number": 227,
+        "url": "https://github.com/hapijs/joi/milestone/227",
+        "version": "17.13.8"
+    },
+    {
+        "date": "2026-09-02T11:14:42Z",
+        "id": 17606471,
+        "issues": [
+            {
+                "id": 5321909653,
+                "labels": ["bug", "security"],
+                "number": 3145,
+                "title": "backport #3143 and #3144",
+                "url": "https://github.com/hapijs/joi/pull/3145"
+            }
+        ],
+        "number": 223,
+        "url": "https://github.com/hapijs/joi/milestone/223",
+        "version": "17.13.7"
+    },
+    {
+        "date": "2026-08-19T15:14:22Z",
+        "id": 17374272,
+        "issues": [
+            {
+                "id": 5193881347,
+                "labels": ["bug", "security"],
+                "number": 3139,
+                "title": "fix: prevent messages proto injection",
+                "url": "https://github.com/hapijs/joi/pull/3139"
+            }
+        ],
+        "number": 221,
+        "url": "https://github.com/hapijs/joi/milestone/221",
+        "version": "17.13.6"
+    },
+    {
+        "date": "2026-08-19T09:51:09Z",
+        "id": 17370074,
+        "issues": [
+            {
+                "id": 5191266401,
+                "labels": ["bug", "security"],
+                "number": 3135,
+                "title": "chore: backport prevent proto on renames",
+                "url": "https://github.com/hapijs/joi/pull/3135"
+            }
+        ],
+        "number": 219,
+        "url": "https://github.com/hapijs/joi/milestone/219",
+        "version": "17.13.5"
     },
     {
         "date": "2026-06-17T07:55:02Z",

@@ -1,5 +1,41 @@
 ## Version 18 {#v18}
 
+### [18.3.0](https://github.com/hapijs/joi/milestone/228) {#18.3.0}
+
+- [#3160](https://github.com/hapijs/joi/pull/3160) feat: accept undefined values in prepare
+
+### [18.2.9](https://github.com/hapijs/joi/milestone/226) {#18.2.9}
+
+- [#3152](https://github.com/hapijs/joi/pull/3152) chore: cleanup for #3151
+- [#3151](https://github.com/hapijs/joi/pull/3151) Reject **proto** as a flat messages() code, closing a sibling of GHSA-gg4h-3hg2-grpc
+- [#3150](https://github.com/hapijs/joi/issues/3150) messages(): **proto** as a flat message code still hijacks the returned object's prototype (sibling of GHSA-gg4h-3hg2-grpc)
+
+### [18.2.8](https://github.com/hapijs/joi/milestone/225) {#18.2.8}
+
+- [#3149](https://github.com/hapijs/joi/pull/3149) chore: optimize schema creation
+
+### [18.2.7](https://github.com/hapijs/joi/milestone/224) {#18.2.7}
+
+- [#3148](https://github.com/hapijs/joi/pull/3148) chore: optimize processing of large arrays
+- [#3147](https://github.com/hapijs/joi/pull/3147) fix: inner external shouldn't execute when parent failover applied
+- [#3141](https://github.com/hapijs/joi/issues/3141) failover + external breakage
+
+### [18.2.6](https://github.com/hapijs/joi/milestone/222) {#18.2.6}
+
+- [#3144](https://github.com/hapijs/joi/pull/3144) chore: add regression test for #3143
+- [#3143](https://github.com/hapijs/joi/pull/3143) fix(isoDate): pad a bare-hour timeshift with a colon, not just zeros
+- [#2434](https://github.com/hapijs/joi/issues/2434) Fix time regex
+
+### [18.2.5](https://github.com/hapijs/joi/milestone/220) {#18.2.5}
+
+- [#3138](https://github.com/hapijs/joi/pull/3138) fix: prevent messages proto injection
+- [#3131](https://github.com/hapijs/joi/pull/3131) fix: allow allowUnderscore on string().email()
+- [#2972](https://github.com/hapijs/joi/issues/2972) Incorrect documentation for string().email() 'allowUnderscore' option
+
+### [18.2.4](https://github.com/hapijs/joi/milestone/218) {#18.2.4}
+
+- [#3134](https://github.com/hapijs/joi/pull/3134) fix: prevent proto on renames
+
 ### [18.2.3](https://github.com/hapijs/joi/milestone/217) {#18.2.3}
 
 - [#3125](https://github.com/hapijs/joi/pull/3125) fix: expose multiple string patterns in json schemas
@@ -59,6 +95,22 @@
 - [#2925](https://github.com/hapijs/joi/pull/2925) chore: upgrade modules
 
 ## Version 17 {#v17}
+
+### [17.13.8](https://github.com/hapijs/joi/milestone/227) {#17.13.8}
+
+- [#3153](https://github.com/hapijs/joi/pull/3153) chore: backport #3151
+
+### [17.13.7](https://github.com/hapijs/joi/milestone/223) {#17.13.7}
+
+- [#3145](https://github.com/hapijs/joi/pull/3145) backport #3143 and #3144
+
+### [17.13.6](https://github.com/hapijs/joi/milestone/221) {#17.13.6}
+
+- [#3139](https://github.com/hapijs/joi/pull/3139) fix: prevent messages proto injection
+
+### [17.13.5](https://github.com/hapijs/joi/milestone/219) {#17.13.5}
+
+- [#3135](https://github.com/hapijs/joi/pull/3135) chore: backport prevent proto on renames
 
 ### [17.13.4](https://github.com/hapijs/joi/milestone/216) {#17.13.4}
 
