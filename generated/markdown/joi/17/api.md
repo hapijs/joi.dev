@@ -2665,7 +2665,7 @@ const value = await Joi.compile(schema).validateAsync(input);
 // value === { x123x: 'x', x1x: 'y', x0x: 'z', x4x: 'test' }
 ```
 
-Possible validation errors: [`object.rename.multiple`](#objectrenamemultiple), [`object.rename.override`](#objectrenameoverride)
+Possible validation errors: [`object.rename.multiple`](#objectrenamemultiple), [`object.rename.override`](#objectrenameoverride), [`object.rename.proto`](#objectrenameproto)
 
 #### `object.schema([type])`
 
@@ -3155,7 +3155,7 @@ When `pattern` is a _string_ all its occurrences will be replaced.
 
 #### `string.token()`
 
-Requires the string value to only contain a-z, A-Z, 0-9, and underscore \_.
+Requires the string value to only contain a-z, A-Z, 0-9, and underscore _.
 
 ```js
 const schema = Joi.string().token();
@@ -3461,26 +3461,26 @@ The validation state is an object that contains information about the validation
 
 ### Advanced functions
 
-#### $\_root
+#### $_root
 
 A reference to the current Joi instance. Useful when you want access to the **extended instance**, not the default Joi module.
 
-#### $\_parent(method, ...args)
+#### $_parent(method, ...args)
 
 Calls the original method before overriding, similar to `super.method()` when overriding class methods where:
 
 - `method`: The name of the parent method.
 - `...args`: The arguments passed directly to the parent method.
 
-#### $\_temp
+#### $_temp
 
 TODO
 
-#### $\_terms
+#### $_terms
 
 TODO
 
-#### $\_addRule(options)
+#### $_addRule(options)
 
 Adds a rule to the rules queue where:
 
@@ -3488,16 +3488,17 @@ Adds a rule to the rules queue where:
     - `name`: The name of the rule.
     - `args`: The arguments to be processed.
     - `method`: The name of another rule to reuse.
-      You can also pass extra properties and they will be accessible within the `rule` argument of the `validate` method.
 
-#### $\_compile(schema, options)
+    You can also pass extra properties and they will be accessible within the `rule` argument of the `validate` method.
+
+#### $_compile(schema, options)
 
 Compiles a literal schema definition to a Joi schema object where:
 
 - `schema`: The schema to compile.
 - `options`: TODO
 
-#### $\_createError(code, value, local, state, prefs, options)
+#### $_createError(code, value, local, state, prefs, options)
 
 Creates a Joi validation error where:
 
@@ -3508,47 +3509,47 @@ Creates a Joi validation error where:
 - `prefs`: Prepared validation options.
 - `options`: Error options. TODO
 
-#### $\_getFlag(name)
+#### $_getFlag(name)
 
 Gets a flag named `name`.
 
-#### $\_getRule(name)
+#### $_getRule(name)
 
 Gets a single (`multi` set to `false`) rule named `name`.
 
-#### $\_mapLabels(path)
+#### $_mapLabels(path)
 
 TODO
 
-#### $\_match(value, state, prefs, overrides)
+#### $_match(value, state, prefs, overrides)
 
 TODO
 
-#### $\_modify(options)
+#### $_modify(options)
 
 TODO
 
-#### $\_mutateRebuild()
+#### $_mutateRebuild()
 
 TODO
 
-#### $\_mutateRegister(schema, options)
+#### $_mutateRegister(schema, options)
 
 TODO
 
-#### $\_property(name)
+#### $_property(name)
 
 TODO
 
-#### $\_reach(path)
+#### $_reach(path)
 
 TODO
 
-#### $\_rootReferences()
+#### $_rootReferences()
 
 TODO
 
-#### $\_setFlag(name, value, options)
+#### $_setFlag(name, value, options)
 
 Sets a flag where:
 
@@ -3557,7 +3558,7 @@ Sets a flag where:
 - `options`: Optional options where:
     - `clone`: Whether to clone the schema. Defaults to `true`. Only set to `false` if the schema has already been cloned before.
 
-#### $\_validate(value, state, prefs)
+#### $_validate(value, state, prefs)
 
 Performs validation against the current schema without the extra overhead of merging validation options to a default set of values where:
 
@@ -4305,6 +4306,20 @@ Additional local context properties:
 #### `object.rename.override`
 
 The target property already exists and you disallowed overrides.
+
+Additional local context properties:
+
+```ts
+{
+    from: string, // Origin property name of the rename
+    to: string, // Target property of the rename
+    pattern: boolean // Indicates if the rename source was a pattern (regular expression)
+}
+```
+
+#### `object.rename.proto`
+
+The target property is `__proto__`, which would set the object prototype instead of creating a key.
 
 Additional local context properties:
 

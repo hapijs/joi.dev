@@ -10,17 +10,17 @@
     "updated": "2026-03-30T17:24:52Z",
     "versions": [
         {
-            "branch": "v17.13.4",
+            "branch": "v17.13.8",
             "license": "BSD",
-            "name": "17.13.4",
+            "name": "17.13.8",
             "node": ">= 14"
         },
         {
-            "branch": "v18.2.3",
+            "branch": "v18.3.0",
             "license": "BSD",
-            "name": "18.2.3",
+            "name": "18.3.0",
             "node": ">= 20"
         }
     ],
-    "versionsArray": ["18.2.3", "17.13.4"]
+    "versionsArray": ["18.3.0", "17.13.8"]
 }
