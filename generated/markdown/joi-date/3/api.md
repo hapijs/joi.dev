@@ -5,8 +5,8 @@ This version requires **joi** v18 or newer, and **node** v22 or newer.
 ## Usage
 
 ```js
-import BaseJoi from 'joi';
 import { JoiDate } from '@joi/date';
+import BaseJoi from 'joi';
 
 const Joi = BaseJoi.extend(JoiDate);
 
