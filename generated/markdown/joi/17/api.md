@@ -588,7 +588,9 @@ Custom cache implementation must implement the following interface:
 ```js
 class {
     set(key, value) {}
-    get(key) { return found ? value : undefined; }
+    get(key) {
+        return found ? value : undefined;
+    }
 }
 ```
 
